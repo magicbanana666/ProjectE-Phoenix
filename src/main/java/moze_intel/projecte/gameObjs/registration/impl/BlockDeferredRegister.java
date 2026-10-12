@@ -28,7 +28,7 @@ public class BlockDeferredRegister extends DoubleDeferredRegister<Block, Item> {
 	}
 
 	public BlockRegistryObject<Block, BlockItem> register(String name, BlockBehaviour.Properties properties) {
-		return register(name, () -> new Block(properties.setId(blockKey(name))), block -> PEBlockItem.of(block, new Item.Properties().setId(itemKey(name))), BlockRegistryObject::new);
+		return register(name, () -> new Block(properties.setId(blockKey(name))), block -> PEBlockItem.of(block, new Item.Properties().setId(itemKey(name)).useBlockDescriptionPrefix()), BlockRegistryObject::new);
 	}
 
 	public <BLOCK extends Block> BlockRegistryObject<BLOCK, BlockItem> register(String name, Function<BlockBehaviour.Properties, BLOCK> blockFactory) {
@@ -43,12 +43,12 @@ public class BlockDeferredRegister extends DoubleDeferredRegister<Block, Item> {
 		DeferredHolder<Block, WALL_BLOCK> wallObject = primaryRegister.register("wall_" + name, () -> wallBlockSupplier.apply(propertiesSupplier.get().setId(blockKey("wall_" + name)).overrideLootTable(
 				Optional.of(ResourceKey.create(Registries.LOOT_TABLE, primaryObject.getKey().identifier())))));
 		return new WallOrFloorBlockRegistryObject<>(primaryObject, wallObject, secondaryRegister.register(name, () -> new StandingAndWallBlockItem(primaryObject.get(), wallObject.get(),
-				Direction.DOWN, new Item.Properties().setId(itemKey(name)))));
+				Direction.DOWN, new Item.Properties().setId(itemKey(name)).useBlockDescriptionPrefix())));
 	}
 
 	public <BLOCK extends Block, ITEM extends BlockItem> BlockRegistryObject<BLOCK, ITEM> register(String name, Function<BlockBehaviour.Properties, BLOCK> blockFactory,
 			BiFunction<BLOCK, Item.Properties, ITEM> itemCreator) {
-		return register(name, () -> blockFactory.apply(BlockBehaviour.Properties.of().setId(blockKey(name))), block -> itemCreator.apply(block, new Item.Properties().setId(itemKey(name))), BlockRegistryObject::new);
+		return register(name, () -> blockFactory.apply(BlockBehaviour.Properties.of().setId(blockKey(name))), block -> itemCreator.apply(block, new Item.Properties().setId(itemKey(name)).useBlockDescriptionPrefix()), BlockRegistryObject::new);
 	}
 
 	private ResourceKey<Block> blockKey(String name) {

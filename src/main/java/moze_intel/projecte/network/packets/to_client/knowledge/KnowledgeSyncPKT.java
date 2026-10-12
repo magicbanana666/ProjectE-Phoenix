@@ -8,6 +8,7 @@ import moze_intel.projecte.impl.capability.KnowledgeImpl.KnowledgeAttachment;
 import moze_intel.projecte.network.packets.IPEPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -39,7 +40,8 @@ public record KnowledgeSyncPKT(KnowledgeAttachment data) implements IPEPacket {
 				container.transmutationInventory.updateClientTargets(false);
 			} else {
 				//Let any transmutation gui that is not one of ours know that its targets may have changed
-				ExpansionTransmutationSync.onKnowledgeSynced(player);
+				//Pass it as Object so verifying this class on a dedicated server never needs LocalPlayer
+				ExpansionTransmutationSync.onKnowledgeSynced((Player) (Object) player);
 			}
 		}
 		PECore.debugLog("** RECEIVED TRANSMUTATION DATA CLIENTSIDE **");

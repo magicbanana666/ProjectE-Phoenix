@@ -26,9 +26,11 @@ public class PERecipeSerializers {
 
 	/**
 	 * Replacement for the removed {@code SimpleCraftingRecipeSerializer}: a codec-less serializer for recipes
-	 * whose payload carries no data (MapCodec.unit creates a new instance per decode).
+	 * whose payload carries no data.
 	 */
 	private static <T extends Recipe<?>> RecipeSerializer<T> simpleSerializer(java.util.function.Supplier<T> factory) {
-		return new RecipeSerializer<>(MapCodec.unit(factory), StreamCodec.unit(factory.get()));
+		//One shared instance: StreamCodec.unit only encodes the exact instance it was given, so a fresh one per decode breaks recipe sync
+		T instance = factory.get();
+		return new RecipeSerializer<>(MapCodec.unit(instance), StreamCodec.unit(instance));
 	}
 }

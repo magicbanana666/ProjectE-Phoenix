@@ -17,7 +17,7 @@ plugins {
 
 tasks.named('wrapper', Wrapper) {
     //Define wrapper values here so as to not have to always do so when updating gradlew.properties
-    gradleVersion = '8.12.1'
+    gradleVersion = '9.2.1'
     distributionType = Wrapper.DistributionType.ALL
 }
 
@@ -125,6 +125,9 @@ version = "${projecte_version}"
 group = "moze_intel.projecte"
 project.base.archivesName = "projecte"
 
+// Keep build output out of OneDrive (it locks files while syncing)
+layout.buildDirectory = file("${System.getProperty('user.home')}/.gradle-builds/${project.name}")
+
 java {
     toolchain {
         //Minecraft 26.x requires Java 25
@@ -172,6 +175,7 @@ neoForge.runs {
             systemProperties.put('terminal.ansi', (String) property('forge_force_ansi'))
         }
         systemProperties.put('projecte.skip_top', "true")
+        gameDirectory = file("${System.getProperty('user.home')}/.gradle-builds/${project.name}/run")
 
         //if the selected toolchain is a JBR, enable DCEVM
         if (javaToolchains.launcherFor(java.toolchain).map { it.metadata.vendor }.getOrElse('').contains('JetBrains')) {
@@ -182,6 +186,10 @@ neoForge.runs {
     }
     client {
         client()
+        // -Pquickplay=<world> loads straight into a singleplayer world (automated smoke tests)
+        if (project.hasProperty('quickplay')) {
+            programArguments.addAll('--quickPlaySingleplayer', project.property('quickplay').toString())
+        }
         //Note: To enable logging into the client account, set the mc_devlogin property to true in your gradle user home
         if (findProperty('mc_devlogin') ?: false) {
             //If the property is present and set to true, enable dev login
