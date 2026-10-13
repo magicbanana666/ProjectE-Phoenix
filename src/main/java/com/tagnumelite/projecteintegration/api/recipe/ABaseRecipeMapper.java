@@ -1,0 +1,227 @@
+/*
+ * Copyright (c) 2019-2022 TagnumElite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+package com.tagnumelite.projecteintegration.api.recipe;
+
+import com.tagnumelite.projecteintegration.PEIntegration;
+import com.tagnumelite.projecteintegration.api.Utils;
+import com.tagnumelite.projecteintegration.api.recipe.nss.NSSInput;
+import com.tagnumelite.projecteintegration.api.recipe.nss.NSSOutput;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import moze_intel.projecte.api.mapper.collector.IMappingCollector;
+import moze_intel.projecte.api.mapper.recipe.INSSFakeGroupManager;
+import moze_intel.projecte.api.mapper.recipe.RecipeTypeMapper;
+import moze_intel.projecte.api.nss.NormalizedSimpleStack;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.Tuple;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.fluids.FluidStack;
+
+import java.util.*;
+
+public abstract class ABaseRecipeMapper<R> implements IRecipeMapper<R> {
+    protected Identifier recipeID;
+    protected IMappingCollector<NormalizedSimpleStack, Long> mapper;
+    protected INSSFakeGroupManager fakeGroupManager;
+    protected RegistryAccess registryAccess;
+
+    @Deprecated(forRemoval = true, since = "8.3.0")
+    protected static boolean addIngredient(Object2IntMap<NormalizedSimpleStack> ingredientMap, FluidStack stack) {
+        return Utils.addIngredient(ingredientMap, stack, stack.getAmount());
+    }
+
+    @Override
+    public String getDescription() {
+        return "ProjectE-Integration Recipe Mapper for " + getName().replaceAll("(\\p{Ll})(\\p{Lu})", "$1 $2") +
+                ". Required Mods: [" + String.join(",", getRequiredMods()) + ']';
+    }
+
+    /**
+     * Convert the recipe into an EMC map
+     *
+     * @param recipe The recipe to be converted into an EMC Map
+     * @return A boolean value denoting whether the recipe was handled successfully or not.
+     */
+    public boolean convertRecipe(R recipe) {
+        NSSOutput output = getOutput(recipe);
+        if (output == null || output.isEmpty()) {
+            PEIntegration.debugLog("Recipe ({}) contains no outputs: {}", recipeID, output);
+            return false;
+        }
+
+        NSSInput input = getInput(recipe);
+        if (input == null || !input.successful()) {
+            if (input != null) PEIntegration.LOGGER.warn("Recipe ({}) has failed NSSInput ({})", recipeID, input);
+            return addConversionsAndReturn(input != null ? input.fakeGroupMap() : null, true);
+        }
+
+        mapper.addConversion(output.amount, output.nss, input.getMap());
+        return addConversionsAndReturn(input.fakeGroupMap(), true);
+    }
+
+    @Deprecated(forRemoval = true, since = "8.3.0")
+    protected NSSInput convertFluidIngredients(List<List<FluidStack>> fluidIngredients) {
+        if (fluidIngredients == null || fluidIngredients.isEmpty()) {
+            PEIntegration.debugLog("Recipe ({}) contains no inputs: {}", recipeID, fluidIngredients);
+            return null;
+        }
+
+        List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap = new ArrayList<>();
+        Object2IntMap<NormalizedSimpleStack> ingredientMap = new Object2IntOpenHashMap<>();
+
+        for (List<FluidStack> ingredient : fluidIngredients) {
+            if (!convertFluidIngredient(ingredient, ingredientMap, fakeGroupMap)) {
+                return new NSSInput(ingredientMap, fakeGroupMap, false);
+            }
+        }
+        return new NSSInput(ingredientMap, fakeGroupMap, true);
+    }
+
+    @Deprecated(forRemoval = true, since = "8.3.0")
+    protected boolean convertFluidIngredient(FluidStack fluidIngredient,
+                                             Object2IntMap<NormalizedSimpleStack> ingredientMap,
+                                             List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap) {
+        return Utils.convertFluidIngredient(-1, Collections.singletonList(fluidIngredient), ingredientMap, fakeGroupMap,
+                fakeGroupManager, recipeID.toString());
+    }
+
+    @Deprecated(forRemoval = true, since = "8.3.0")
+    protected boolean convertFluidIngredient(List<FluidStack> fluidIngredient,
+                                             Object2IntMap<NormalizedSimpleStack> ingredientMap,
+                                             List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap) {
+        return convertFluidIngredient(-1, fluidIngredient, ingredientMap, fakeGroupMap);
+    }
+
+    @Deprecated(forRemoval = true, since = "8.3.0")
+    protected boolean convertFluidIngredient(int amount, List<FluidStack> fluidIngredient,
+                                             Object2IntMap<NormalizedSimpleStack> ingredientMap,
+                                             List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap) {
+        return Utils.convertFluidIngredient(amount, fluidIngredient, ingredientMap, fakeGroupMap, fakeGroupManager,
+                recipeID.toString());
+    }
+
+    protected NSSInput convertSingleItemStack(ItemStack stack) {
+        return convertSingleIngredient(stack.getCount(), Ingredient.of(stack.getItem()));
+    }
+
+    protected NSSInput convertSingleFluidStack(FluidStack stack) {
+        return convertSingleIngredient(stack.getAmount(), Collections.singletonList(stack));
+    }
+
+    protected NSSInput convertSingleIngredient(int amount, Ingredient ingredient) {
+        Object2IntMap<NormalizedSimpleStack> ingMap = new Object2IntOpenHashMap<>();
+        List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap = new ArrayList<>();
+
+        boolean successful = convertIngredient(amount, ingredient, ingMap, fakeGroupMap);
+
+        return new NSSInput(ingMap, fakeGroupMap, successful);
+    }
+
+    protected NSSInput convertSingleIngredient(int amount, List<FluidStack> fluidStacks) {
+        return getInputBuilder().addFluid(amount, fluidStacks).build();
+    }
+
+    @Deprecated(forRemoval = true, since = "8.3.0")
+    protected boolean convertItemStack(ItemStack stack, Object2IntMap<NormalizedSimpleStack> ingredientMap,
+                                       List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap) {
+        return convertIngredient(stack.getCount(), Ingredient.of(stack.getItem()), ingredientMap, fakeGroupMap);
+    }
+
+    @Deprecated(forRemoval = true, since = "8.3.0")
+    protected boolean convertIngredient(Ingredient ingredient, Object2IntMap<NormalizedSimpleStack> ingredientMap,
+                                        List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap) {
+        return convertIngredient(-1, ingredient, ingredientMap, fakeGroupMap);
+    }
+
+    @Deprecated(forRemoval = true, since = "8.3.0")
+    protected boolean convertIngredient(int amount, Ingredient ingredient,
+                                        Object2IntMap<NormalizedSimpleStack> ingredientMap,
+                                        List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap) {
+        return Utils.convertIngredient(amount, ingredient, ingredientMap, fakeGroupMap, fakeGroupManager,
+                recipeID.toString());
+    }
+
+    protected NSSOutput mapOutputs(Object... allOutputs) {
+        return Utils.mapOutputs(mapper, fakeGroupManager, recipeID.toString(), allOutputs);
+    }
+
+    protected NSSOutput mapOutput(Object... outputVariants) {
+        return Utils.mapOutput(mapper, fakeGroupManager, recipeID.toString(), outputVariants);
+    }
+
+    //TODO: CHANGE THE BELOW CODE SOON!
+
+    /**
+     * This method can be used as a helper method to return a specific value and add any existing group conversions. It is important that we add any valid group
+     * conversions that we have, regardless of whether the recipe as a whole is valid, because we only create one instance of our group's NSS representation so even if
+     * parts of the recipe are not valid, the conversion may be valid and exist in another recipe.
+     */
+    protected boolean addConversionsAndReturn(
+            List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> dummyGroupInfos,
+            boolean returnValue) {
+        //If we have any conversions make sure to add them even if we are returning early
+        if (dummyGroupInfos != null) {
+            for (Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>> dummyGroupInfo : dummyGroupInfos) {
+                for (Object2IntMap<NormalizedSimpleStack> groupIngredientMap : dummyGroupInfo.getB()) {
+                    mapper.addConversion(1, dummyGroupInfo.getA(), groupIngredientMap);
+                }
+            }
+        }
+        return returnValue;
+    }
+
+    /**
+     * @param stacks
+     * @return
+     */
+    protected INSSFakeGroupManager.FakeGroupData getFakeGroup(NormalizedSimpleStack... stacks) {
+        return fakeGroupManager.getOrCreateFakeGroup(new HashSet<>(Arrays.asList(stacks)));
+    }
+
+    /**
+     * A helper function to return a {@link NSSOutput.Builder} initialized with the appropriate args.
+     *
+     * @return A NSSOutput.Builder to be used for mapping outputs
+     */
+    public NSSOutput.Builder getOutputBuilder() {
+        return new NSSOutput.Builder(mapper, fakeGroupManager, recipeID);
+    }
+
+    /**
+     * Utility method to create a builder
+     *
+     * @return A NSSInput builder to convert recipes with
+     */
+    protected NSSInput.Builder getInputBuilder() {
+        return new NSSInput.Builder(mapper, fakeGroupManager, recipeID);
+    }
+
+    /**
+     * Returns a list of required mods from the {@link RecipeTypeMapper} annotation
+     *
+     * @return A list of modids or null.
+     */
+    public abstract String[] getRequiredMods();
+}

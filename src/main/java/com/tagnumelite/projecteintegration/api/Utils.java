@@ -1,0 +1,441 @@
+/*
+ * Copyright (c) 2019-2021 TagnumElite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+package com.tagnumelite.projecteintegration.api;
+
+import com.tagnumelite.projecteintegration.PEIntegration;
+import com.tagnumelite.projecteintegration.api.recipe.ACustomRecipeMapper;
+import com.tagnumelite.projecteintegration.api.recipe.CustomRecipeMapper;
+import com.tagnumelite.projecteintegration.api.recipe.nss.NSSOutput;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import moze_intel.projecte.api.mapper.collector.IMappingCollector;
+import moze_intel.projecte.api.mapper.recipe.INSSFakeGroupManager;
+import moze_intel.projecte.api.nss.NSSFluid;
+import moze_intel.projecte.api.nss.NSSItem;
+import moze_intel.projecte.api.nss.NormalizedSimpleStack;
+import moze_intel.projecte.utils.Constants;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.Tuple;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforgespi.language.ModFileScanData;
+import org.objectweb.asm.Type;
+
+import java.lang.reflect.Field;
+import java.util.*;
+
+public class Utils {
+    private static final Type CUSTOM_RECIPE_MAPPER_TYPE = Type.getType(CustomRecipeMapper.class);
+
+    public static Map<? extends ACustomRecipeMapper<?>, String> getCustomRecipeMappers() {
+        ModList modList = ModList.get();
+        Map<ACustomRecipeMapper<?>, String> recipeTypeMappers = new HashMap<>();
+        for (ModFileScanData scanData : modList.getAllScanData()) {
+            for (ModFileScanData.AnnotationData data : scanData.getAnnotations()) {
+                if (CUSTOM_RECIPE_MAPPER_TYPE.equals(data.annotationType()) && checkRequiredMod(data)) {
+                    ACustomRecipeMapper<?> mapper = createOrGetInstance(data.memberName(), ACustomRecipeMapper.class);
+                    if (mapper != null) {
+                        recipeTypeMappers.put(mapper, getAnnotationData(data, "value"));
+                        PEIntegration.LOGGER.info("Instantiated custom recipe mapper: {}", mapper.getName());
+                    }
+                }
+            }
+        }
+        return recipeTypeMappers;
+    }
+
+    public static <T> T createOrGetInstance(String className, Class<T> baseClass) {
+        try {
+            Class<? extends T> subClass = Class.forName(className).asSubclass(baseClass);
+            return subClass.getDeclaredConstructor().newInstance();
+        } catch (LinkageError | ReflectiveOperationException e) {
+            PEIntegration.LOGGER.error("Failed to load: {}", className, e);
+        }
+        return null;
+    }
+
+    public static boolean checkRequiredMod(ModFileScanData.AnnotationData data) {
+        return checkRequiredMod(data, "value");
+    }
+
+    public static boolean checkRequiredMod(ModFileScanData.AnnotationData data, String key) {
+        String modId = getAnnotationData(data, key);
+        if (modId != null && !ModList.get().isLoaded(modId)) {
+            PEIntegration.debugLog("Skipped checking class {}, as its required mod ({}) is not loaded.",
+                    data.memberName(), modId);
+            return false;
+        }
+        return true;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T getAnnotationData(ModFileScanData.AnnotationData data, String key) {
+        Map<String, Object> annotationData = data.annotationData();
+        if (annotationData.containsKey(key)) {
+            try {
+                return (T) annotationData.get(key);
+            } catch (ClassCastException e) {
+                PEIntegration.LOGGER.fatal("Annotation Data {}:{} was casted to an invalid class", key,
+                        annotationData.get(key), e);
+            }
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @param amount
+     * @param fluidIngredient
+     * @param ingredientMap
+     * @param fakeGroupMap
+     * @param fakeGroupManager
+     * @param recipeID
+     * @return
+     */
+    public static boolean convertFluidIngredient(int amount, List<FluidStack> fluidIngredient,
+                                                 Object2IntMap<NormalizedSimpleStack> ingredientMap,
+                                                 List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap,
+                                                 INSSFakeGroupManager fakeGroupManager, String recipeID) {
+        if (fluidIngredient == null || fluidIngredient.isEmpty()) {
+            return false;
+        } else if (fluidIngredient.size() == 1) {
+            //Handle this ingredient as a direct representation of the stack it represents
+            return !addIngredient(ingredientMap, fluidIngredient.getFirst(), amount);
+        } else {
+            Set<NormalizedSimpleStack> rawNSSMatches = new HashSet<>();
+            List<FluidStack> fluids = new ArrayList<>();
+
+            for (FluidStack match : fluidIngredient) {
+                //Validate it is not an empty stack in case mods do weird things in custom ingredients
+                if (!match.isEmpty()) {
+                    rawNSSMatches.add(NSSFluid.createFluid(match));
+                    fluids.add(match);
+                }
+            }
+
+            int count = fluids.size();
+            if (count == 1) {
+                return !addIngredient(ingredientMap, fluids.getFirst(), amount);
+            } else if (count > 1) {
+                //Handle this ingredient as the representation of all the fluids it supports
+                INSSFakeGroupManager.FakeGroupData group = fakeGroupManager.getOrCreateFakeGroup(rawNSSMatches);
+                NormalizedSimpleStack dummy = group.dummy();
+                ingredientMap.put(dummy, Math.max(amount, 1));
+                if (group.created()) {
+                    //Only lookup the matching fluids for the group with conversion if we don't already have
+                    // a group created for this dummy ingredient
+                    // Note: We soft ignore cases where it fails/there are no matching group ingredients
+                    // as then our fake ingredient will never actually have an emc value assigned with it
+                    // so the recipe won't either
+                    List<Object2IntMap<NormalizedSimpleStack>> groupIngredientMaps = new ArrayList<>();
+                    for (FluidStack fluid : fluids) {
+                        Object2IntMap<NormalizedSimpleStack> groupIngredientMap = new Object2IntOpenHashMap<>();
+                        if (addIngredient(groupIngredientMap, fluid.copy(), amount)) {
+                            return false;
+                        }
+                        groupIngredientMaps.add(groupIngredientMap);
+                    }
+                    fakeGroupMap.add(new Tuple<>(dummy, groupIngredientMaps));
+                }
+            }
+        }
+        return true;
+    }
+
+    public static boolean convertIngredient(int amount, Ingredient ingredient,
+                                            Object2IntMap<NormalizedSimpleStack> ingredientMap,
+                                            List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap,
+                                            INSSFakeGroupManager fakeGroupManager, String recipeID) {
+        ItemStack[] matches = getMatchingStacks(ingredient, recipeID);
+        if (matches == null) {
+            return false;
+        } else if (matches.length == 1) {
+            //Handle this ingredient as a direct representation of the stack it represents
+            return !addIngredient(ingredientMap, getStack(matches[0], amount), recipeID);
+        } else if (matches.length > 0) {
+            Set<NormalizedSimpleStack> rawNSSMatches = new HashSet<>();
+            List<ItemStack> stacks = new ArrayList<>();
+
+            for (ItemStack match : matches) {
+                //Validate it is not an empty stack in case mods do weird things in custom ingredients
+                if (!match.isEmpty()) {
+                    rawNSSMatches.add(NSSItem.createItem(match));
+                    stacks.add(match);
+                }
+            }
+
+            int count = stacks.size();
+            if (count == 1) {
+                return !addIngredient(ingredientMap, getStack(stacks.getFirst(), amount), recipeID);
+            } else if (count > 1) {
+                //Handle this ingredient as the representation of all the stacks it supports
+                INSSFakeGroupManager.FakeGroupData group = fakeGroupManager.getOrCreateFakeGroup(rawNSSMatches);
+                NormalizedSimpleStack dummy = group.dummy();
+                ingredientMap.mergeInt(dummy, Math.max(amount, 1), Constants.INT_SUM);
+                if (group.created()) {
+                    //Only lookup the matching stacks for the group with conversion if we don't already have
+                    // a group created for this dummy ingredient
+                    // Note: We soft ignore cases where it fails/there are no matching group ingredients
+                    // as then our fake ingredient will never actually have an emc value assigned with it
+                    // so the recipe won't either
+                    List<Object2IntMap<NormalizedSimpleStack>> groupIngredientMaps = new ArrayList<>();
+                    for (ItemStack stack : stacks) {
+                        Object2IntMap<NormalizedSimpleStack> groupIngredientMap = new Object2IntOpenHashMap<>();
+                        if (addIngredient(groupIngredientMap, stack.copy(), recipeID)) {
+                            return false;
+                        }
+                        groupIngredientMaps.add(groupIngredientMap);
+                    }
+                    fakeGroupMap.add(new Tuple<>(dummy, groupIngredientMaps));
+                }
+            }
+        }
+        return true;
+    }
+
+    // Borrowed from ProjectE with a few modifications
+    // https://github.com/sinkillerj/ProjectE/blob/mc1.19.x/src/main/java/moze_intel/projecte/emc/mappers/recipe/BaseRecipeTypeMapper.java#L158-L195
+    public static boolean addIngredient(Object2IntMap<NormalizedSimpleStack> ingredientMap, ItemStack stack,
+                                        String recipeID) {
+        stack = stack.copy();
+        Item item = stack.getItem();
+        boolean hasContainerItem = false;
+
+        try {
+            //Note: We include the hasContainerItem check in the try catch, as if a mod is handling tags incorrectly
+            // there is a chance their hasContainerItem is checking something about tags, and
+            //26.1: Item#hasCraftingRemainingItem/getCraftingRemainingItem were replaced by ItemStack#getCraftingRemainder
+            net.minecraft.world.item.ItemStackTemplate remainder = stack.getCraftingRemainder();
+            hasContainerItem = remainder != null;
+            if (hasContainerItem) {
+                //If this item has a container for the stack, we remove the cost of the container itself
+                ItemStack remainderStack = remainder.create();
+                ingredientMap.mergeInt(NSSItem.createItem(remainderStack), -remainderStack.getCount(), Constants.INT_SUM);
+            }
+        } catch (Exception e) {
+            Identifier itemName = BuiltInRegistries.ITEM.getKey(item);
+            if (hasContainerItem) {
+                if (isTagException(e)) {
+                    PEIntegration.LOGGER.fatal(
+                            "Error mapping recipe {}. Item: {} reported that it has a container item, " +
+                                    "but errors when trying to get the container item due to not properly deserializing and handling tags. " +
+                                    "Please report this to {}.", recipeID, itemName, itemName.getNamespace(), e);
+                } else {
+                    PEIntegration.LOGGER.fatal(
+                            "Error mapping recipe {}. Item: {} reported that it has a container item, " +
+                                    "but errors when trying to get the container item based on the stack in the recipe. " +
+                                    "Please report this to {}.", recipeID, itemName, itemName.getNamespace(), e);
+                }
+            } else if (isTagException(e)) {
+                PEIntegration.LOGGER.fatal(
+                        "Error mapping recipe {}. Item: {} crashed when checking if the stack has a container item, " +
+                                "due to not properly deserializing and handling tags. Please report this to {}.",
+                        recipeID, itemName, itemName.getNamespace(), e);
+            } else {
+                PEIntegration.LOGGER.fatal(
+                        "Error mapping recipe {}. Item: {} crashed when checking if the stack in the recipe has a container item. " +
+                                "Please report this to {}.", recipeID, itemName, itemName.getNamespace(), e);
+            }
+            //If something failed because the recipe errored, return that we did handle it so that we don't try to handle it later
+            // as there is a 99% chance it will just fail again anyway
+            return true;
+        }
+        ingredientMap.mergeInt(NSSItem.createItem(stack), stack.getCount(), Constants.INT_SUM);
+        return false;
+    }
+
+    public static boolean addIngredient(Object2IntMap<NormalizedSimpleStack> ingredientMap, FluidStack stack, int amount) {
+        ingredientMap.put(NSSFluid.createFluid(stack), amount);
+        return false;
+    }
+
+    // Also from ProjectE, a dependency for the above code:
+    // https://github.com/sinkillerj/ProjectE/blob/mc1.16.x/src/main/java/moze_intel/projecte/emc/mappers/recipe/BaseRecipeTypeMapper.java#L187-L189
+    public static boolean isTagException(Exception e) {
+        return e instanceof IllegalStateException && e.getMessage().matches("Tag \\S*:\\S* used before it was bound");
+    }
+
+    public static NSSOutput mapOutputs(IMappingCollector<NormalizedSimpleStack, Long> mapper,
+                                       INSSFakeGroupManager fakeGroupManager, String recipeID, Object... allOutputs) {
+        List<Object> outputs = Arrays.asList(allOutputs);
+        if (allOutputs.length == 1 && allOutputs[0] instanceof Collection) {
+            outputs = new ArrayList<>((Collection<?>) allOutputs[0]);
+        }
+
+        // Assume output stacks will be the size length as outputs
+        Map<NormalizedSimpleStack, Integer> outputStacks = new HashMap<>(outputs.size());
+
+        int totalOutputs = 0;
+        for (Object output : outputs) {
+            switch (output) {
+                case ItemStack item -> {
+                    if (item.isEmpty()) continue;
+
+                    outputStacks.put(NSSItem.createItem(item), item.getCount());
+                    totalOutputs += item.getCount();
+                }
+                case FluidStack fluid -> {
+                    if (fluid.isEmpty()) continue;
+
+                    outputStacks.put(NSSFluid.createFluid(fluid), fluid.getAmount());
+                    totalOutputs += fluid.getAmount();
+                }
+                default -> PEIntegration.LOGGER.warn("Recipe ({}) has unsupported outputs: {}. Skipping...", recipeID,
+                        output);
+            }
+
+        }
+
+        NormalizedSimpleStack dummy = fakeGroupManager.getOrCreateFakeGroup(outputStacks.keySet()).dummy();
+
+        for (Map.Entry<NormalizedSimpleStack, Integer> entry : outputStacks.entrySet()) {
+            mapper.addConversion(entry.getValue(), entry.getKey(), getDummyMap(dummy, entry.getValue()));
+        }
+
+        return new NSSOutput(totalOutputs, dummy);
+    }
+
+    public static NSSOutput mapOutput(IMappingCollector<NormalizedSimpleStack, Long> mapper,
+                                      INSSFakeGroupManager fakeGroupManager, String recipeID,
+                                      Object... outputVariants) {
+        List<Object> outputs = Arrays.asList(outputVariants);
+        if (outputVariants.length == 1 && outputVariants[0] instanceof Collection) {
+            outputs = new ArrayList<>((Collection<?>) outputVariants[0]);
+        }
+
+        // Assume output stacks will be the size length as outputs
+        Map<NormalizedSimpleStack, Integer> outputStacks = new HashMap<>(outputs.size());
+
+        for (Object output : outputs) {
+            switch (output) {
+                case ItemStack item -> {
+                    if (item.isEmpty()) continue;
+
+                    outputStacks.put(NSSItem.createItem(item), item.getCount());
+                }
+                case FluidStack fluid -> {
+                    if (fluid.isEmpty()) continue;
+
+                    outputStacks.put(NSSFluid.createFluid(fluid), fluid.getAmount());
+                }
+                default -> PEIntegration.LOGGER.warn("Recipe ({}) has unsupported output: {}. Skipping...", recipeID,
+                        output);
+            }
+
+        }
+
+        NormalizedSimpleStack dummy = fakeGroupManager.getOrCreateFakeGroup(outputStacks.keySet()).dummy();
+
+        for (Map.Entry<NormalizedSimpleStack, Integer> entry : outputStacks.entrySet()) {
+            mapper.addConversion(entry.getValue(), entry.getKey(), getDummyMap(dummy, 1));
+        }
+
+        return new NSSOutput(1, dummy);
+    }
+
+    /**
+     * Finds the result of a recipe that keeps it in a private {@link net.minecraft.world.item.ItemStackTemplate} field
+     * without exposing it through display(). Walks up the class hierarchy and returns the first template field.
+     */
+    @org.jetbrains.annotations.Nullable
+    public static net.minecraft.world.item.ItemStackTemplate findResultTemplate(Object recipe) {
+        for (Class<?> type = recipe.getClass(); type != null && type != Object.class; type = type.getSuperclass()) {
+            for (java.lang.reflect.Field field : type.getDeclaredFields()) {
+                if (field.getType() == net.minecraft.world.item.ItemStackTemplate.class && !java.lang.reflect.Modifier.isStatic(field.getModifiers())) {
+                    try {
+                        field.setAccessible(true);
+                        return (net.minecraft.world.item.ItemStackTemplate) field.get(recipe);
+                    } catch (ReflectiveOperationException | RuntimeException e) {
+                        PEIntegration.LOGGER.warn("Failed to read result of recipe {}", recipe.getClass().getName(), e);
+                        return null;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public static ItemStack[] getMatchingStacks(Ingredient ingredient, String recipeID) {
+        try {
+            return ingredient.items().map(ItemStack::new).toArray(ItemStack[]::new);
+        } catch (Exception e) {
+            PEIntegration.LOGGER.fatal("Failed to map recipe ({}). Ingredient ({}) failed to get matching stacks",
+                    recipeID, ingredient.getClass().getName(), e);
+            return null;
+        }
+    }
+
+    public static ItemStack getStack(ItemStack item, int amount) {
+        if (amount > 0) {
+            return new ItemStack(item.getItem(), amount);
+        }
+        return item.copy();
+    }
+
+    public static Object2IntMap<NormalizedSimpleStack> getDummyMap(NormalizedSimpleStack dummy) {
+        return getDummyMap(dummy, 1);
+    }
+
+    public static Object2IntMap<NormalizedSimpleStack> getDummyMap(NormalizedSimpleStack dummy, int amount) {
+        Object2IntMap<NormalizedSimpleStack> ingredientMap = new Object2IntOpenHashMap<>();
+        ingredientMap.put(dummy, amount);
+        return ingredientMap;
+    }
+
+    public static <CLZ> Field getField(Class<CLZ> clazz, String fieldName) throws NoSuchFieldException {
+        try {
+            return clazz.getDeclaredField(fieldName);
+        } catch (NoSuchFieldException e) {
+            Class<? super CLZ> superClass = clazz.getSuperclass();
+            if (superClass == null) {
+                throw e;
+            } else {
+                return getField(superClass, fieldName);
+            }
+        }
+    }
+
+    public static boolean addBlockToIngredientMap(Object2IntMap<NormalizedSimpleStack> ingredientMap, Block block) {
+        NormalizedSimpleStack nss = getNSSFromBlock(block);
+        if (nss == null) return false;
+        int amount = block instanceof LiquidBlock ? 1000 : 1;
+        ingredientMap.put(nss, amount);
+        return true;
+    }
+
+    public static NormalizedSimpleStack getNSSFromBlock(Block block) {
+        if (block instanceof LiquidBlock liquidBlock) {
+            return NSSFluid.createFluid(liquidBlock.fluid);
+        } else {
+            if (block.asItem() == Items.AIR) return null;
+            return NSSItem.createItem(block);
+        }
+    }
+}

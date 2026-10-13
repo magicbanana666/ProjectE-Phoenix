@@ -48,8 +48,9 @@ public class ItemInfiniteFuel extends Item {
 	 */
 	@Override
 	public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType, FuelValues fuelValues) {
-		int cost = Config.server.infiniteFuelCost.get();
-		int burnTime = Config.server.infiniteFuelBurnTime.get();
+		//Mods such as Thermal query burn times before the server config is loaded
+		int cost = Config.server.infiniteFuelCost.getOrDefault();
+		int burnTime = Config.server.infiniteFuelBurnTime.getOrDefault();
 		if (cost == 0 || burnTime == 0) return 0;
 		@Nullable ExpansionDataComponentTypes.OwnerData owner = stack.get(ExpansionDataComponentTypes.OWNER);
 		@Nullable IKnowledgeProvider provider = owner == null ? null : Util.getKnowledgeProvider(owner.uuid());

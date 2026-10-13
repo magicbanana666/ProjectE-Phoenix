@@ -123,7 +123,7 @@ def replaceResources = tasks.register("replaceResources", Copy) {
 
 version = "${projecte_version}"
 group = "moze_intel.projecte"
-project.base.archivesName = "projecte"
+project.base.archivesName = "projecte-phoenix"
 
 // Keep build output out of OneDrive (it locks files while syncing)
 layout.buildDirectory = file("${System.getProperty('user.home')}/.gradle-builds/${project.name}")
@@ -311,6 +311,17 @@ dependencies {
     compileOnly("net.darkhax.gamestages:GameStages-Forge-1.20.3:${gamestages_version}")
 
     //Note: CraftTweaker has not been released for 26.x yet, so its integration is disabled on this branch
+
+    //ProjectE Integration addons compile against the 26.1.2 jars of the supported mods. Point -PmodJarsDir at a mods folder;
+    // they are optional at runtime (each mapper is gated by @RecipeTypeMapper(requiredMods))
+    def modJarsDir = file(project.findProperty('modJarsDir') ?: "${System.getProperty('user.home')}/AppData/Roaming/PrismLauncher/instances/26.1/minecraft/mods")
+    compileOnly(fileTree(modJarsDir) {
+        include 'appliedenergistics2-*.jar', 'enderio-*.jar', 'farmingforblockheads-*.jar', 'balm-*.jar', 'shogi-*.jar',
+                'MysticalAgriculture-*.jar', 'Cucumber-*.jar', 'occultism-*.jar', 'Mekanism-*.jar'
+    })
+    //Ender IO (OutputStack) and Shogi (used by Farming for Blockheads) keep part of their API in a jar-in-jar
+    compileOnly(files({ fileTree(modJarsDir) { include 'enderio-*.jar', 'shogi-*.jar' }.files.collect { jar ->
+        zipTree(jar).matching { include 'META-INF/jarjar/com.enderio.endercore-*.jar', 'META-INF/jarjar/*shogi-api-*.jar' }.files }.flatten() }))
 
     implementation(shadow(group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'))
 }

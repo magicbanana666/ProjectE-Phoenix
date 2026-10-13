@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
+import net.neoforged.neoforge.common.conditions.ICondition;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
@@ -209,6 +210,11 @@ public class PECodecHelper implements IPECodecHelper {
 			json = JsonParser.parseReader(reader);
 		} catch (JsonParseException e) {
 			PECore.LOGGER.error("Couldn't parse {}", description, e);
+			return Optional.empty();
+		}
+		//Phoenix: honour NeoForge load conditions so bundled files for optional mods can be skipped
+		if (json.isJsonObject() && json.getAsJsonObject().has("neoforge:conditions") && !ICondition.conditionsMatched(ops, json)) {
+			PECore.debugLog("Skipping {} as its conditions are not met", description);
 			return Optional.empty();
 		}
 		DataResult<TYPE> result = codec.parse(ops, json);

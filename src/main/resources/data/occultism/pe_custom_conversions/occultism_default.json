@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "occultism"
+    }
+  ],
+  "comment": "Default ProjectE Conversions for occultism by ProjectE Integration",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "emc_value": 16,
+        "id": "occultism:tallow"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 64,
+        "id": "occultism:afrit_essence"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 512,
+        "tag": "c:ingots/iesnium"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "enderio"
+    }
+  ],
+  "comment": "Default ProjectE conversions for enderio, from ProjectE Integration. Silicon: the sag mill gives 1 silicon from sand at 50% chance, so it costs 2 sand.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "emc_value": 4,
+        "id": "enderio:grains_of_infinity"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 8,
+        "id": "enderio:suspicious_seed"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 2048,
+        "id": "enderio:enderman_head"
+      }
+    ],
+    "conversion": [
+      {
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "id": "minecraft:sand",
+            "amount": 2
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "id": "enderio:silicon"
+        }
+      }
+    ]
+  }
+}

@@ -87,6 +87,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -160,6 +161,10 @@ public class PECore {
 		PEEntityTypes.ENTITY_TYPES.register(modEventBus);
 		PEItems.ITEMS.register(modEventBus);
 		PENormalizedSimpleStacks.NSS_SERIALIZERS.register(modEventBus);
+		if (ModList.get().isLoaded("mekanism")) {
+			//Mekanism's own ProjectE integration (chemical NSS, recipe mappers) is built into ProjectE Phoenix
+			moze_intel.projecte.integration.mekanism.MekanismNormalizedSimpleStacks.NSS_SERIALIZERS.register(modEventBus);
+		}
 		PERecipeConditions.CONDITION_CODECS.register(modEventBus);
 		PERecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
 		PESoundEvents.SOUND_EVENTS.register(modEventBus);
@@ -206,6 +211,7 @@ public class PECore {
 		new ThreadCheckUpdate().start();
 		EMCMappingHandler.loadMappers();
 		moze_intel.projecte.expansion.ExpansionCore.init();
+		com.tagnumelite.projecteintegration.PEIntegration.commonSetup();
 
 		event.enqueueWork(() -> {
 			//Dispenser Behavior
