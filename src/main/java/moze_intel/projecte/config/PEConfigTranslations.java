@@ -10,6 +10,8 @@ public enum PEConfigTranslations implements IConfigTranslation {
 	//Client Config
 	CLIENT_PHILO_OVERLAY("client.philo_overlay", "Pulsating Overlay", "The Philosopher's Stone overlay softly pulsates."),
 
+	CLIENT_RITUAL_PARTICLES("client.ritual_particles", "Ritual Particles",
+			"Multiplier for the amount of particles of the Alchemical Crucible. 0 turns them off."),
 	CLIENT_TOOLTIPS("client.tooltips", "Tooltip Settings", "Settings for configuring Tooltips provided by ProjectE.", true),
 
 	CLIENT_TOOLTIPS_EMC("client.tooltips.emc", "EMC Tooltips", "Show the EMC value as a tooltip on items and blocks."),
@@ -180,6 +182,22 @@ public enum PEConfigTranslations implements IConfigTranslation {
 			"Shows the EMC value of blocks when looking at them in Jade, TOP, or WTHIT."),
 	SERVER_MISC_SHOW_MISSING_STAGES("server.misc.show_missing_game_stages", "Show Missing Game Stages",
 			"If enabled, warnings will tell you which Game Stages you are missing to use blacklisted items."),
+
+	SERVER_RITUAL("server.ritual", "Magnum Opus", "Settings of the ritual in the Alchemical Crucible that creates the Philosopher's Stone.", true),
+	SERVER_RITUAL_CATALYST("server.ritual.catalyst", "Catalyst",
+			"The item that sits in the centre of the Alchemical Crucible, next to the three False Philosopher's Stones. A Nether Star by default."),
+	SERVER_RITUAL_NIGREDO_EMC("server.ritual.nigredo_emc", "Nigredo EMC", "Personal EMC the owner pays during the Nigredo stage."),
+	SERVER_RITUAL_ALBEDO_EMC("server.ritual.albedo_emc", "Albedo EMC", "Personal EMC the owner pays during the Albedo stage."),
+	SERVER_RITUAL_CITRINITAS_EMC("server.ritual.citrinitas_emc", "Citrinitas EMC", "Personal EMC the owner pays during the Citrinitas stage."),
+	SERVER_RITUAL_RUBEDO_EMC("server.ritual.rubedo_emc", "Rubedo EMC", "Personal EMC the owner pays during the Rubedo stage."),
+	SERVER_RITUAL_NIGREDO_DURATION("server.ritual.nigredo_duration", "Nigredo Duration", "Length of the Nigredo stage, in ticks."),
+	SERVER_RITUAL_ALBEDO_DURATION("server.ritual.albedo_duration", "Albedo Duration", "Length of the Albedo stage, in ticks."),
+	SERVER_RITUAL_CITRINITAS_DURATION("server.ritual.citrinitas_duration", "Citrinitas Duration", "Length of the Citrinitas stage, in ticks."),
+	SERVER_RITUAL_RUBEDO_DURATION("server.ritual.rubedo_duration", "Rubedo Duration", "Length of the Rubedo stage, in ticks."),
+	SERVER_RITUAL_CITRINITAS_SKY("server.ritual.citrinitas_needs_sky", "Citrinitas Needs Sky",
+			"If true, the Citrinitas stage only progresses while the Alchemical Crucible can see the sky."),
+	SERVER_RITUAL_RUBEDO_RESETS("server.ritual.rubedo_resets_when_stalled", "Rubedo Resets When Stalled",
+			"If true, the Rubedo stage starts over when it stalls, for example because the owner ran out of EMC. Earlier stages are kept."),
 
 	//EMC Mapping
 	MAPPING_DUMP_TO_FILE("mapping.dump_to_file", "Dump Everything To File",

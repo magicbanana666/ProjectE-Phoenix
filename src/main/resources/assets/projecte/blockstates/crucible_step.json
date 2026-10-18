@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "projecte:block/crucible_step"
+      }
+    }
+  ]
+}

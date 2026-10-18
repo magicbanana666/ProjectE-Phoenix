@@ -20,7 +20,6 @@ public class ItemFinalStarShard extends Item {
 	public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flag) {
 		super.appendHoverText(stack, context, display, tooltip, flag);
 		tooltip.accept(Lang.Items.FINAL_STAR_SHARD_TOOLTIP.translateColored(ChatFormatting.GRAY));
-		tooltip.accept(Lang.SEE_WIKI.translateColored(ChatFormatting.AQUA));
 	}
 }
 

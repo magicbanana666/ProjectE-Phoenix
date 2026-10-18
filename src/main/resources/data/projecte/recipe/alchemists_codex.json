@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projecte:philosophers_stone",
+    "minecraft:book"
+  ],
+  "result": {
+    "id": "projecte:alchemists_codex"
+  }
+}

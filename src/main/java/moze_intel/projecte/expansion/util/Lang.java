@@ -10,7 +10,6 @@ public enum Lang implements ILangEntry {
 	// Text
 	WIP("text", "wip"),
 	PROVIDER_ERROR("text", "provider_error"),
-	SEE_WIKI("text", "see_wiki"),
 	COST("text", "cost"),
 	NOT_OWNER("text", "not_owner"),
 	NBT_FILTER_DISABLED("text", "nbt_filter", "disabled"),
@@ -293,6 +292,7 @@ public enum Lang implements ILangEntry {
 		// Misc
 		COMRESSED_COLLECTOR_TOOLTIP("compressed_collector", "tooltip"),
 		ALCHEMICAL_BOOK_TOOLTIP("alchemical_book", "tooltip"),
+		ALCHEMISTS_CODEX_TOOLTIP("alchemists_codex", "tooltip"),
 		ALCHEMICAL_BOOK_TOOLTIP_BASIC("alchemical_book", "tooltip_basic"),
 		ALCHEMICAL_BOOK_TOOLTIP_ADVANCED("alchemical_book", "tooltip_advanced"),
 		ALCHEMICAL_BOOK_TOOLTIP_MASTER("alchemical_book", "tooltip_master"),

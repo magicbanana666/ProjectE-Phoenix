@@ -6,6 +6,9 @@
         "items": [
           {
             "items": "projecte:philosophers_stone"
+          },
+          {
+            "items": "projecte:false_philosophers_stone"
           }
         ]
       },

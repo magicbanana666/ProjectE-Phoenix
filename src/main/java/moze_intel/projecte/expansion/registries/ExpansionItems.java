@@ -2,6 +2,7 @@ package moze_intel.projecte.expansion.registries;
 
 import moze_intel.projecte.PECore;
 import moze_intel.projecte.expansion.item.ItemAlchemicalBook;
+import moze_intel.projecte.expansion.item.ItemAlchemistsCodex;
 import moze_intel.projecte.expansion.item.ItemArcaneTransmutationTablet;
 import moze_intel.projecte.expansion.item.ItemFinalStar;
 import moze_intel.projecte.expansion.item.ItemFinalStarShard;
@@ -27,5 +28,6 @@ public class ExpansionItems {
 	public static final ItemRegistryObject<ItemAlchemicalBook> ADVANCED_ALCHEMICAL_BOOK = ITEMS.registerSimple("advanced_alchemical_book", properties -> new ItemAlchemicalBook(properties, ItemAlchemicalBook.Tier.ADVANCED));
 	public static final ItemRegistryObject<ItemAlchemicalBook> MASTER_ALCHEMICAL_BOOK = ITEMS.registerSimple("master_alchemical_book", properties -> new ItemAlchemicalBook(properties, ItemAlchemicalBook.Tier.MASTER));
 	public static final ItemRegistryObject<ItemAlchemicalBook> ARCANE_ALCHEMICAL_BOOK = ITEMS.registerSimple("arcane_alchemical_book", properties -> new ItemAlchemicalBook(properties, ItemAlchemicalBook.Tier.ARCANE));
+	public static final ItemRegistryObject<ItemAlchemistsCodex> ALCHEMISTS_CODEX = ITEMS.registerSimple("alchemists_codex", properties -> new ItemAlchemistsCodex(properties));
 	public static final ItemRegistryObject<ItemArcaneTransmutationTablet> ARCANE_TRANSMUTATION_TABLET = ITEMS.registerSimple("arcane_transmutation_tablet", properties -> new ItemArcaneTransmutationTablet(properties));
 }

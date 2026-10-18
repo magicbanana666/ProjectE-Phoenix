@@ -79,7 +79,6 @@ public class BlockRelay extends Block implements IHasMatter, EntityBlock, IMatte
 		tooltip.accept(Lang.Blocks.RELAY_TOOLTIP.translateColored(ChatFormatting.GRAY));
 		tooltip.accept(Lang.Blocks.RELAY_BONUS.translateColored(ChatFormatting.GRAY, EMCFormat.getComponent(getMatter().getRelayBonusForTicks(Config.server.tickDelay.get())).setStyle(ColorStyle.GREEN)));
 		tooltip.accept(Lang.Blocks.RELAY_TRANSFER.translateColored(ChatFormatting.GRAY, getMatter().getRelayTransferComponent().setStyle(ColorStyle.GREEN)));
-		tooltip.accept(Lang.SEE_WIKI.translateColored(ChatFormatting.AQUA));
 	}
 
 	@Nullable

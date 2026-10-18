@@ -1,0 +1,40 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "projecte:item/false_philosophers_stone_nigredo"
+        },
+        "when": "nigredo"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "projecte:item/false_philosophers_stone_albedo"
+        },
+        "when": "albedo"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "projecte:item/false_philosophers_stone_citrinitas"
+        },
+        "when": "citrinitas"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "projecte:item/false_philosophers_stone_rubedo"
+        },
+        "when": "rubedo"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "projecte:item/false_philosophers_stone"
+    },
+    "property": "minecraft:custom_model_data"
+  }
+}

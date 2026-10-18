@@ -8,6 +8,9 @@ import moze_intel.projecte.gameObjs.EnumCollectorTier;
 import moze_intel.projecte.gameObjs.EnumMatterType;
 import moze_intel.projecte.gameObjs.EnumRelayTier;
 import moze_intel.projecte.gameObjs.blocks.AlchemicalBarrel;
+import moze_intel.projecte.gameObjs.blocks.CrucibleArch;
+import moze_intel.projecte.gameObjs.blocks.CruciblePart;
+import moze_intel.projecte.gameObjs.blocks.AlchemicalCrucible;
 import moze_intel.projecte.gameObjs.blocks.AlchemicalChest;
 import moze_intel.projecte.gameObjs.blocks.Collector;
 import moze_intel.projecte.gameObjs.blocks.Condenser;
@@ -38,6 +41,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PEBlocks {
 
@@ -52,6 +56,14 @@ public class PEBlocks {
 	public static final BlockRegistryObject<Collector, BlockItem> COLLECTOR_MK3 = registerCollector("collector_mk3", EnumCollectorTier.MK3, state -> 15);
 	public static final BlockRegistryObject<Condenser, BlockItem> CONDENSER = registerCondenser("condenser_mk1", Condenser::new, (block, properties) -> PEBlockItem.of(block, properties));
 	public static final BlockRegistryObject<CondenserMK2, BlockItem> CONDENSER_MK2 = registerCondenser("condenser_mk2", CondenserMK2::new, (block, properties) -> PEBlockItem.of(block, properties.fireResistant()));
+	//The Alchemical Crucible, the multiblock of the Magnum Opus
+	public static final BlockRegistryObject<AlchemicalCrucible, BlockItem> ALCHEMICAL_CRUCIBLE = BLOCKS.register("alchemical_crucible", properties -> new AlchemicalCrucible(crucibleProperties(properties)), (block, properties) -> PEBlockItem.of(block, properties.fireResistant()));
+	public static final BlockRegistryObject<CruciblePart, BlockItem> CRUCIBLE_STEP = registerCruciblePart("crucible_step", Block.box(0, 0, 0, 16, 13, 16));
+	public static final BlockRegistryObject<CruciblePart, BlockItem> CRUCIBLE_PLINTH = registerCruciblePart("crucible_plinth", Block.box(0, 0, 0, 16, 16, 16));
+	public static final BlockRegistryObject<CruciblePart, BlockItem> CRUCIBLE_DAIS = registerCruciblePart("crucible_dais", Block.box(0, 0, 0, 16, 2, 16));
+	public static final BlockRegistryObject<CruciblePart, BlockItem> CRUCIBLE_PILLAR = registerCruciblePart("crucible_pillar", Block.box(2, 0, 2, 14, 16, 14));
+	public static final BlockRegistryObject<CrucibleArch, BlockItem> CRUCIBLE_ARCH = BLOCKS.register("crucible_arch", properties -> new CrucibleArch(crucibleProperties(properties), Block.box(3, 0, 3, 13, 13, 13)), (block, properties) -> PEBlockItem.of(block, properties));
+	public static final BlockRegistryObject<CruciblePart, BlockItem> CRUCIBLE_APEX = registerCruciblePart("crucible_apex", Block.box(3, 0, 3, 13, 16, 13));
 	public static final BlockRegistryObject<Pedestal, BlockItem> DARK_MATTER_PEDESTAL = BLOCKS.register("dm_pedestal", properties -> new Pedestal(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1_000_000, 3_000_000).lightLevel(state -> 12)), (block, properties) -> PEBlockItem.of(block, properties.fireResistant()));
 	public static final BlockRegistryObject<MatterFurnace, BlockItem> DARK_MATTER_FURNACE = registerFurnace("dm_furnace", EnumMatterType.DARK_MATTER, 1_000_000, 3_000_000);
 	public static final BlockRegistryObject<MatterFurnace, BlockItem> RED_MATTER_FURNACE = registerFurnace("rm_furnace", EnumMatterType.RED_MATTER, 2_000_000, 6_000_000);
@@ -83,6 +95,15 @@ public class PEBlocks {
 					.noOcclusion()
 					.pushReaction(PushReaction.DESTROY)
 			));
+
+	private static BlockBehaviour.Properties crucibleProperties(BlockBehaviour.Properties properties) {
+		return properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+				.strength(10, 1_200).noOcclusion().lightLevel(CruciblePart::getLight);
+	}
+
+	private static BlockRegistryObject<CruciblePart, BlockItem> registerCruciblePart(String name, VoxelShape shape) {
+		return BLOCKS.register(name, properties -> new CruciblePart(crucibleProperties(properties), shape), (block, properties) -> PEBlockItem.of(block, properties));
+	}
 
 	private static BlockRegistryObject<Block, BlockItem> registerFuelBlock(String name, MapColor mapColor) {
 		return BLOCKS.register(name, properties -> new Block(properties.mapColor(mapColor).instrument(NoteBlockInstrument.BASEDRUM)

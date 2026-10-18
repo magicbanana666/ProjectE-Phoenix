@@ -1,0 +1,26 @@
+{
+  "groups": {
+    "magnum_opus": {
+      "comment": "The Philosopher's Stone has no recipe, it is made from three False Philosopher's Stones and a Nether Star in the Transformation Array",
+      "conversions": [
+        {
+          "output": {
+            "type": "projecte:item",
+            "id": "projecte:philosophers_stone"
+          },
+          "ingredients": [
+            {
+              "type": "projecte:item",
+              "id": "projecte:false_philosophers_stone",
+              "amount": 3
+            },
+            {
+              "type": "projecte:item",
+              "id": "minecraft:nether_star"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -217,28 +217,18 @@ public class PERecipeProvider extends RecipeProvider {
 				.unlockedBy("has_matter", has(PEItems.RED_MATTER))
 				.save(recipeOutput);
 		//Red Matter
-		redMatterRecipe(recipeOutput, false);
-		redMatterRecipe(recipeOutput, true);
+		redMatterRecipe(recipeOutput);
 	}
 
-	private void redMatterRecipe(RecipeOutput recipeOutput, boolean alternate) {
-		String name = PEItems.RED_MATTER.getId().toString();
-		ShapedRecipeBuilder redMatter = shaped(RecipeCategory.MISC, PEItems.RED_MATTER)
-				.define('A', PEItems.AETERNALIS_FUEL)
-				.define('D', PEItems.DARK_MATTER)
-				.unlockedBy("has_matter", has(PEItems.DARK_MATTER))
-				.group(name);
-		if (alternate) {
-			redMatter.pattern("ADA")
-					.pattern("ADA")
-					.pattern("ADA")
-					.save(recipeOutput, name + "_alt");
-		} else {
-			redMatter.pattern("AAA")
-					.pattern("DDD")
-					.pattern("AAA")
-					.save(recipeOutput);
-		}
+	private void redMatterRecipe(RecipeOutput recipeOutput) {
+		//Red Matter needs the real Philosopher's Stone, which keeps the False Philosopher's Stone from reaching past Dark Matter.
+		//The stone takes the place of one Aeternalis Fuel, it stays in the grid
+		shapeless(RecipeCategory.MISC, PEItems.RED_MATTER)
+				.requires(PEItems.PHILOSOPHERS_STONE)
+				.requires(PEItems.DARK_MATTER, 3)
+				.requires(PEItems.AETERNALIS_FUEL, 5)
+				.unlockedBy("has_matter", hasItems(PEItems.PHILOSOPHERS_STONE, PEItems.DARK_MATTER))
+				.save(recipeOutput);
 	}
 
 	private void darkMatterGearRecipes(RecipeOutput recipeOutput) {
@@ -518,15 +508,16 @@ public class PERecipeProvider extends RecipeProvider {
 	private void fuelUpgradeRecipe(RecipeOutput recipeOutput, ItemLike input, ItemLike output) {
 		String inputName = getName(input);
 		String outputName = getName(output);
+		Ingredient stone = Ingredient.of(PEItems.PHILOSOPHERS_STONE, PEItems.FALSE_PHILOSOPHERS_STONE);
 		shapeless(RecipeCategory.MISC, output)
-				.requires(PEItems.PHILOSOPHERS_STONE)
+				.requires(stone)
 				.requires(input, 4)
-				.unlockedBy("has_" + inputName, hasItems(PEItems.PHILOSOPHERS_STONE, input))
+				.unlockedBy("has_" + inputName, hasItems(PEItems.PHILOSOPHERS_STONE, PEItems.FALSE_PHILOSOPHERS_STONE, input))
 				.save(recipeOutput);
 		shapeless(RecipeCategory.MISC, input, 4)
-				.requires(PEItems.PHILOSOPHERS_STONE)
+				.requires(stone)
 				.requires(output)
-				.unlockedBy("has_" + outputName, hasItems(PEItems.PHILOSOPHERS_STONE, output))
+				.unlockedBy("has_" + outputName, hasItems(PEItems.PHILOSOPHERS_STONE, PEItems.FALSE_PHILOSOPHERS_STONE, output))
 				.save(recipeOutput, PECore.rl("conversions/" + outputName + "_to_" + inputName).toString());
 	}
 
@@ -954,8 +945,9 @@ public class PERecipeProvider extends RecipeProvider {
 	}
 
 	private void philosopherStoneRecipe(RecipeOutput recipeOutput, boolean alternate) {
-		String name = PEItems.PHILOSOPHERS_STONE.getId().toString();
-		ShapedRecipeBuilder philoStone = shaped(RecipeCategory.TOOLS, PEItems.PHILOSOPHERS_STONE)
+		//The real stone is only made in the Alchemical Crucible, this recipe makes the imitation it starts from
+		String name = PEItems.FALSE_PHILOSOPHERS_STONE.getId().toString();
+		ShapedRecipeBuilder philoStone = shaped(RecipeCategory.TOOLS, PEItems.FALSE_PHILOSOPHERS_STONE)
 				.define('R', Tags.Items.DUSTS_REDSTONE)
 				.define('G', Tags.Items.DUSTS_GLOWSTONE)
 				.define('D', Tags.Items.GEMS_DIAMOND)
@@ -1044,9 +1036,11 @@ public class PERecipeProvider extends RecipeProvider {
 				.pattern("OSO")
 				.define('S', Tags.Items.STONES)
 				.define('O', Tags.Items.OBSIDIANS_NORMAL)
-				.define('P', PEItems.PHILOSOPHERS_STONE)
-				.unlockedBy("has_philo_stone", has(PEItems.PHILOSOPHERS_STONE))
+				//The False Philosopher's Stone makes the table too, the core of the Alchemical Crucible needs one
+				.define('P', Ingredient.of(PEItems.PHILOSOPHERS_STONE, PEItems.FALSE_PHILOSOPHERS_STONE))
+				.unlockedBy("has_philo_stone", hasItems(PEItems.PHILOSOPHERS_STONE, PEItems.FALSE_PHILOSOPHERS_STONE))
 				.save(recipeOutput);
+		addCrucibleRecipes(recipeOutput);
 		shaped(RecipeCategory.DECORATIONS, PEItems.TRANSMUTATION_TABLET)
 				.pattern("DSD")
 				.pattern("STS")
@@ -1054,6 +1048,74 @@ public class PERecipeProvider extends RecipeProvider {
 				.define('S', Tags.Items.STONES)
 				.define('D', PEBlocks.DARK_MATTER)
 				.define('T', PEBlocks.TRANSMUTATION_TABLE)
+				.unlockedBy("has_table", has(PEBlocks.TRANSMUTATION_TABLE))
+				.save(recipeOutput);
+	}
+
+	/**
+	 * The blocks of the Alchemical Crucible. None of them may need the real Philosopher's Stone, the crucible is where it is made.
+	 */
+	private void addCrucibleRecipes(RecipeOutput recipeOutput) {
+		shaped(RecipeCategory.DECORATIONS, PEBlocks.CRUCIBLE_STEP, 8)
+				.pattern("BBB")
+				.pattern("BGB")
+				.pattern("BBB")
+				.define('B', Items.POLISHED_BLACKSTONE_BRICKS)
+				.define('G', Tags.Items.INGOTS_GOLD)
+				.unlockedBy("has_table", has(PEBlocks.TRANSMUTATION_TABLE))
+				.save(recipeOutput);
+		shaped(RecipeCategory.DECORATIONS, PEBlocks.CRUCIBLE_PLINTH, 4)
+				.pattern("BRB")
+				.pattern("RCR")
+				.pattern("BRB")
+				.define('B', Items.POLISHED_BLACKSTONE)
+				.define('R', Tags.Items.DUSTS_REDSTONE)
+				.define('C', Items.CRYING_OBSIDIAN)
+				.unlockedBy("has_table", has(PEBlocks.TRANSMUTATION_TABLE))
+				.save(recipeOutput);
+		shaped(RecipeCategory.DECORATIONS, PEBlocks.CRUCIBLE_DAIS, 8)
+				.pattern("RGR")
+				.pattern("SSS")
+				.define('R', Tags.Items.DUSTS_REDSTONE)
+				.define('G', Tags.Items.INGOTS_GOLD)
+				.define('S', Items.POLISHED_BLACKSTONE_SLAB)
+				.unlockedBy("has_table", has(PEBlocks.TRANSMUTATION_TABLE))
+				.save(recipeOutput);
+		shaped(RecipeCategory.DECORATIONS, PEBlocks.CRUCIBLE_PILLAR, 4)
+				.pattern("GBG")
+				.pattern("BCB")
+				.pattern("GBG")
+				.define('G', Tags.Items.INGOTS_GOLD)
+				.define('B', Items.POLISHED_BLACKSTONE)
+				.define('C', Items.CRYING_OBSIDIAN)
+				.unlockedBy("has_table", has(PEBlocks.TRANSMUTATION_TABLE))
+				.save(recipeOutput);
+		shaped(RecipeCategory.DECORATIONS, PEBlocks.CRUCIBLE_ARCH, 4)
+				.pattern("BBB")
+				.pattern("G G")
+				.pattern("B B")
+				.define('B', Items.POLISHED_BLACKSTONE)
+				.define('G', Tags.Items.INGOTS_GOLD)
+				.unlockedBy("has_table", has(PEBlocks.TRANSMUTATION_TABLE))
+				.save(recipeOutput);
+		shaped(RecipeCategory.DECORATIONS, PEBlocks.CRUCIBLE_APEX)
+				.pattern("GAG")
+				.pattern("ADA")
+				.pattern("GBG")
+				.define('G', Tags.Items.INGOTS_GOLD)
+				.define('A', Tags.Items.GEMS_AMETHYST)
+				.define('D', PEItems.DARK_MATTER)
+				.define('B', Items.POLISHED_BLACKSTONE)
+				.unlockedBy("has_matter", has(PEItems.DARK_MATTER))
+				.save(recipeOutput);
+		shaped(RecipeCategory.DECORATIONS, PEBlocks.ALCHEMICAL_CRUCIBLE)
+				.pattern("GCG")
+				.pattern("OTO")
+				.pattern("OOO")
+				.define('G', Tags.Items.STORAGE_BLOCKS_GOLD)
+				.define('C', Items.CAULDRON)
+				.define('T', PEBlocks.TRANSMUTATION_TABLE)
+				.define('O', Items.POLISHED_BLACKSTONE)
 				.unlockedBy("has_table", has(PEBlocks.TRANSMUTATION_TABLE))
 				.save(recipeOutput);
 	}

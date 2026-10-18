@@ -162,6 +162,13 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PEBlocks.ALCHEMICAL_CHEST, "Alchemical Chest");
 		add(PEBlocks.INTERDICTION_TORCH, "Interdiction Torch");
 		add(PEBlocks.TRANSMUTATION_TABLE, "Transmutation Table");
+		add(PEBlocks.ALCHEMICAL_CRUCIBLE, "Alchemical Crucible");
+		add(PEBlocks.CRUCIBLE_STEP, "Crucible Step");
+		add(PEBlocks.CRUCIBLE_PLINTH, "Crucible Plinth");
+		add(PEBlocks.CRUCIBLE_DAIS, "Crucible Dais");
+		add(PEBlocks.CRUCIBLE_PILLAR, "Crucible Pillar");
+		add(PEBlocks.CRUCIBLE_ARCH, "Crucible Arch");
+		add(PEBlocks.CRUCIBLE_APEX, "Crucible Apex");
 		add(PEBlocks.CONDENSER, "Energy Condenser");
 		add(PEBlocks.CONDENSER_MK2, "Energy Condenser MK2");
 		add(PEBlocks.DARK_MATTER_FURNACE, "Dark Matter Furnace");
@@ -319,6 +326,7 @@ public class PELangProvider extends BaseLanguageProvider {
 
 	private void addItems() {
 		add(PEItems.PHILOSOPHERS_STONE, "Philosopher's Stone");
+		add(PEItems.FALSE_PHILOSOPHERS_STONE, "False Philosopher's Stone");
 		add(PEItems.REPAIR_TALISMAN, "Repair Talisman");
 		add(PEItems.WHITE_ALCHEMICAL_BAG, "Alchemical Bag (White)");
 		add(PEItems.ORANGE_ALCHEMICAL_BAG, "Alchemical Bag (Orange)");
@@ -523,6 +531,29 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PELang.TOOLTIP_GEM_DENSITY_4, "Interact (%1$s) to set up blacklist/whitelist");
 		add(PELang.TOOLTIP_GEM_DENSITY_5, "Hold %1$s and interact (%2$s) with the air to toggle");
 		add(PELang.TOOLTIP_PHILOSTONE, "Press %1$s to open a crafting grid");
+		add(PELang.TOOLTIP_PHILOSTONE_OPUS_1, "The Magnum Opus made complete.");
+		add(PELang.TOOLTIP_PHILOSTONE_OPUS_2, "Matter yields to its perfected will.");
+		add(PELang.TOOLTIP_FALSE_PHILOSTONE_1, "An imitation containing only a fragment of true alchemical power.");
+		add(PELang.TOOLTIP_FALSE_PHILOSTONE_2, "It must survive the four stages of the Magnum Opus.");
+		add(PELang.TOOLTIP_CRUCIBLE_1, "The centre of a 5 by 5 ritual structure, see the Alchemist's Codex. Three False Philosopher's Stones and a catalyst become the true stone.");
+		add(PELang.TOOLTIP_CRUCIBLE_2, "The ritual draws on the personal EMC of whoever starts it.");
+		add(PELang.TOOLTIP_CRUCIBLE_PART, "Part of the Alchemical Crucible, see the Alchemist's Codex.");
+		add(PELang.RITUAL_NIGREDO, "Nigredo");
+		add(PELang.RITUAL_ALBEDO, "Albedo");
+		add(PELang.RITUAL_CITRINITAS, "Citrinitas");
+		add(PELang.RITUAL_RUBEDO, "Rubedo");
+		add(PELang.RITUAL_READY, "Ready");
+		add(PELang.RITUAL_PROGRESS, "%1$s: %2$s%%");
+		add(PELang.RITUAL_INGREDIENTS, "The crucible needs 3 False Philosopher's Stones (%1$s/%2$s) and a %3$s.");
+		add(PELang.RITUAL_INCOMPLETE, "The crucible is incomplete: %1$s blocks missing, for example a %2$s at %3$s %4$s %5$s.");
+		add(PELang.RITUAL_STARTED, "The Magnum Opus has begun.");
+		add(PELang.RITUAL_CANCELLED, "The ritual was stopped. The ingredients are safe.");
+		add(PELang.RITUAL_COMPLETE, "The Magnum Opus is complete.");
+		add(PELang.RITUAL_NOT_OWNER, "Only the one who started the ritual can stop it.");
+		add(PELang.RITUAL_STALLED_EMC, "Waiting for EMC.");
+		add(PELang.RITUAL_STALLED_OFFLINE, "Waiting for its owner.");
+		add(PELang.RITUAL_STALLED_SKY, "Citrinitas needs to see the sky.");
+		add(PELang.RITUAL_STALLED_STRUCTURE, "The crucible is broken.");
 		add(PELang.TOOLTIP_STORED_XP, "Stored XP: %1$s");
 		add(PELang.TOOLTIP_TIME_WATCH_1, "Become the master of time");
 		add(PELang.TOOLTIP_TIME_WATCH_2, "Interact (%1$s) to change mode");

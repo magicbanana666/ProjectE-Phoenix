@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": "projecte:transmutation_table"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "projecte:crucible_plinth"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_table"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "projecte:crucible_plinth"
+    ]
+  }
+}

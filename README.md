@@ -69,7 +69,7 @@ You can also change EMC values with datapacks, see `example_custom_conversion.js
 - `/projecte showbag <player>`: open a player's Alchemical Bag
 
 `/px` (also `/pex` and `/projectexpansion`) holds the Project Expansion commands: `book`, `emc`, `knowledge`,
-`dumpfuelmap`, `reloademc`, `setowner` and `wiki`.
+`dumpfuelmap`, `reloademc` and `setowner`.
 
 ## Building
 

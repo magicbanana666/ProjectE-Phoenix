@@ -1,0 +1,135 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "projecte:block/crucible/rune_formed",
+    "rune": "projecte:block/crucible/rune_formed",
+    "crystal": "projecte:block/crucible/crystal_formed"
+  },
+  "elements": [
+    {
+      "from": [
+        5.5,
+        5,
+        3.9
+      ],
+      "to": [
+        10.5,
+        9.5,
+        4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5.5,
+            6.5,
+            10.5,
+            11.0
+          ],
+          "texture": "#rune"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        5.5,
+        5,
+        12
+      ],
+      "to": [
+        10.5,
+        9.5,
+        12.1
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            5.5,
+            6.5,
+            10.5,
+            11.0
+          ],
+          "texture": "#rune"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        3.9,
+        5,
+        5.5
+      ],
+      "to": [
+        4,
+        9.5,
+        10.5
+      ],
+      "faces": {
+        "west": {
+          "uv": [
+            5.5,
+            6.5,
+            10.5,
+            11.0
+          ],
+          "texture": "#rune"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        12,
+        5,
+        5.5
+      ],
+      "to": [
+        12.1,
+        9.5,
+        10.5
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5.5,
+            6.5,
+            10.5,
+            11.0
+          ],
+          "texture": "#rune"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        5,
+        13,
+        5
+      ],
+      "to": [
+        11,
+        13.25,
+        11
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            5,
+            5,
+            11,
+            11
+          ],
+          "texture": "#crystal"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    }
+  ]
+}

@@ -29,6 +29,7 @@ public class ExpansionCreativeTabs {
 				output.accept(ExpansionItems.INFINITE_FUEL);
 				output.accept(ExpansionItems.INFINITE_STEAK);
 				output.accept(ExpansionBlocks.TRANSMUTATION_INTERFACE);
+				output.accept(ExpansionItems.ALCHEMISTS_CODEX);
 				output.accept(ExpansionItems.KNOWLEDGE_SHARING_BOOK);
 				output.accept(ExpansionItems.BASIC_ALCHEMICAL_BOOK);
 				output.accept(ExpansionItems.ADVANCED_ALCHEMICAL_BOOK);

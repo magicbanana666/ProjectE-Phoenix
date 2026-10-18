@@ -3,7 +3,10 @@
   "category": "misc",
   "key": {
     "O": "#c:obsidians/normal",
-    "P": "projecte:philosophers_stone",
+    "P": [
+      "projecte:philosophers_stone",
+      "projecte:false_philosophers_stone"
+    ],
     "S": "#c:stones"
   },
   "pattern": [

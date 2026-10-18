@@ -1,0 +1,57 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "projecte:block/crucible_plinth"
+      }
+    },
+    {
+      "when": {
+        "glow": "1"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_plinth_glow"
+      }
+    },
+    {
+      "when": {
+        "glow": "2"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_plinth_glow_nigredo"
+      }
+    },
+    {
+      "when": {
+        "glow": "3"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_plinth_glow_albedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "4"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_plinth_glow_citrinitas"
+      }
+    },
+    {
+      "when": {
+        "glow": "5"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_plinth_glow_rubedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "6"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_plinth_glow_complete"
+      }
+    }
+  ]
+}

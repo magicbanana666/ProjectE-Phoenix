@@ -8,10 +8,13 @@ import moze_intel.projecte.expansion.util.Lang;
 import moze_intel.projecte.expansion.util.Util;
 import moze_intel.projecte.api.capabilities.IKnowledgeProvider;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.ItemStackTemplate;
@@ -27,9 +30,15 @@ import java.util.UUID;
 public class ItemInfiniteFuel extends Item {
 
 	public ItemInfiniteFuel(Properties properties) {
-		//Since 26.3 the properties handed in by ItemDeferredRegister already carry the registry id, and since 26.1
-		//the crafting remainder is a fixed ItemStackTemplate, so the item hands back a plain copy of itself
+		//Since 26.3 the properties handed in by ItemDeferredRegister already carry the registry id
 		super(properties.stacksTo(1).rarity(Rarity.RARE));
+	}
+
+	//The furnace hands the fuel back, the price is paid in getBurnTime. Since 26.1 the remainder is an ItemStackTemplate
+	@Override
+	public ItemStackTemplate getCraftingRemainder(ItemInstance instance) {
+		DataComponentPatch patch = instance instanceof ItemStack stack ? stack.getComponentsPatch() : DataComponentPatch.EMPTY;
+		return new ItemStackTemplate(instance.typeHolder(), instance.count(), patch);
 	}
 
 	@Override

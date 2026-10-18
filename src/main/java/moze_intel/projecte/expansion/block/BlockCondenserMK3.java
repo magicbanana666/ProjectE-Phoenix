@@ -75,7 +75,6 @@ public class BlockCondenserMK3 extends BaseEntityBlock implements SimpleWaterlog
 	@Override
 	public void appendBlockTooltip(ItemStack stack, Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag tooltipFlag) {
 		tooltip.accept(Lang.Blocks.CONDENSER_MK3_TOOLTIP2.translateColored(ChatFormatting.GRAY));
-		tooltip.accept(Lang.SEE_WIKI.translateColored(ChatFormatting.AQUA));
 	}
 
 	@Override

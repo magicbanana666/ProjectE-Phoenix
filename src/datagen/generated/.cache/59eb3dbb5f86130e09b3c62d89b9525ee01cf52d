@@ -1,13 +1,20 @@
-// 26.1.2	2026-09-27T09:04:35.373005495	Loot Tables
+// 26.1.2	2026-10-18T22:06:51.5715404	Loot Tables
 4f93d02c262072a182bcf0339861ab876f73f0ad data/projecte/loot_table/blocks/aeternalis_fuel_block.json
 779870836435449286fa0744c3c350ec3e5da232 data/projecte/loot_table/blocks/alchemical_barrel.json
 0b25b9c3bc5b7e352a998420cf2195b33a61789c data/projecte/loot_table/blocks/alchemical_chest.json
 2c781fb4d073fb0a8c6b9a625f7940cadc3c09f4 data/projecte/loot_table/blocks/alchemical_coal_block.json
+c36653245932a6fb467ef7cf2b0b2d0202dbeb38 data/projecte/loot_table/blocks/alchemical_crucible.json
 d8b97c65c39fcafa54000544569b4ccf595ba23d data/projecte/loot_table/blocks/collector_mk1.json
 3fb14365c3022ced97f83f04e92d7e60c1244117 data/projecte/loot_table/blocks/collector_mk2.json
 bc4fa77c767b0a8ac9cd24f4fd2cf911c85df8a0 data/projecte/loot_table/blocks/collector_mk3.json
 b16421b04f42620efd1587212adec46e2b2d6a5d data/projecte/loot_table/blocks/condenser_mk1.json
 de26037927ca178b8f7813f086d1515ec9c7a8cc data/projecte/loot_table/blocks/condenser_mk2.json
+a533657f4c581bbb70535bd2320cfa4a2939354b data/projecte/loot_table/blocks/crucible_apex.json
+f12df66bb1f9838f983f28c220d09649c4b27132 data/projecte/loot_table/blocks/crucible_arch.json
+d886f0f0579f6237f073e8b5982d463fc0889116 data/projecte/loot_table/blocks/crucible_dais.json
+6c51eef2d82f8371fe932cfb243387f1b0c84624 data/projecte/loot_table/blocks/crucible_pillar.json
+fac53709e5d31c8150bf416f9156accbc5b71c97 data/projecte/loot_table/blocks/crucible_plinth.json
+0d7753263b681fcf36da62894de4a82c6b0727b1 data/projecte/loot_table/blocks/crucible_step.json
 dd7069e82438ebe7da5aa733687f670b693892dd data/projecte/loot_table/blocks/dark_matter_block.json
 8d754c1400bb880f4149aabd6dfc0f5321705c09 data/projecte/loot_table/blocks/dm_furnace.json
 0a24fa826ba80e12845659fe6648ba014c83c581 data/projecte/loot_table/blocks/dm_pedestal.json

@@ -1,6 +1,6 @@
-// 26.1.2	2026-09-28T17:05:13.186893374	ProjectE Block Models
+// 26.1.2	2026-10-18T20:27:42.8681295	ProjectE Block Models
 9856188d04dacdca3f11ccc503b4bcbca6aa1dc4 assets/projecte/blockstates/aeternalis_fuel_block.json
-34be2679acce3f5121de8f929fd97e7bf85dbc3e assets/projecte/blockstates/alchemical_barrel.json
+b126acd08ef7f47e841339efd8d79766dba4ff33 assets/projecte/blockstates/alchemical_barrel.json
 3020df6885e467689fd0277bf1fa83390f340eca assets/projecte/blockstates/alchemical_chest.json
 6942162349a8399cbaa2fa90036772a56f3a7137 assets/projecte/blockstates/alchemical_coal_block.json
 cbf619ecda0859e6d016a39c66bc7dc7e69f355b assets/projecte/blockstates/collector_mk1.json
@@ -21,7 +21,7 @@ feffbbe65a04405264fbd4793aa79355667d5f54 assets/projecte/blockstates/relay_mk1.j
 f795557af3d3ecb34da319fb75e4624004704d93 assets/projecte/blockstates/relay_mk2.json
 a404eda183a3595436c71b73b8c5b90da6cf46f3 assets/projecte/blockstates/relay_mk3.json
 c87cccf83c8cde302e05be539fbf3c4324529c8b assets/projecte/blockstates/rm_furnace.json
-06d273a48809f260b4da4e30e5c7535e8076841d assets/projecte/blockstates/transmutation_table.json
+47cac2fff599f84f80bd4e2975114d3d1bfd75a3 assets/projecte/blockstates/transmutation_table.json
 18f9af80f4e93d798f7ff94c70454e67340b8cce assets/projecte/blockstates/wall_interdiction_torch.json
 0d0ed92d76c7354a4b13332d121637c3f19e96c0 assets/projecte/models/block/aeternalis_fuel_block.json
 df94663f370ba2129f797f0bac07e6c4c23878fd assets/projecte/models/block/alchemical_barrel.json

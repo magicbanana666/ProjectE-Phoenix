@@ -14,7 +14,7 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent;
  * The {@code /px} command tree, plus the {@code /projectexpansion} and {@code /pex} aliases.
  * <p>
  * Deliberately a separate root literal from ProjectE's {@code /projecte} so the two trees never merge. The subcommand
- * names ({@code book}, {@code emc}, {@code knowledge}, {@code dumpfuelmap}, {@code devtest}, {@code wiki},
+ * names ({@code book}, {@code emc}, {@code knowledge}, {@code dumpfuelmap}, {@code devtest},
  * {@code setowner}, {@code reloademc}) do not overlap with ProjectE's ({@code remove_emc}, {@code reset_emc},
  * {@code set_emc}, {@code show_bag}, {@code emc}, {@code knowledge}) at the same level either.
  * <p>
@@ -43,7 +43,6 @@ public class CommandRegistry {
 				.then(CommandKnowledge.getArguments(buildContext))
 				.then(CommandDumpFuelMap.getArguments())
 				.then(CommandDevTest.getArguments())
-				.then(CommandWiki.getArguments())
 				.then(CommandSetOwner.getArguments())
 				.then(CommandReloadEMC.getArguments())
 		);

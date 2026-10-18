@@ -26,8 +26,10 @@ import moze_intel.projecte.utils.WorldHelper;
 import moze_intel.projecte.utils.text.IHasTranslationKey;
 import moze_intel.projecte.utils.text.PELang;
 import moze_intel.projecte.world_transmutation.WorldTransmutationManager;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -46,7 +48,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
@@ -63,6 +67,13 @@ public class PhilosophersStone extends ItemMode<PhilosophersStoneMode> implement
 
 	public PhilosophersStone(Properties props) {
 		super(props.component(PEDataComponentTypes.PHILOSOPHERS_STONE_MODE, PhilosophersStoneMode.CUBE), 4);
+	}
+
+	//The stone stays in the crafting grid. Since 26.1 the remainder is an ItemStackTemplate instead of an ItemStack
+	@Override
+	public ItemStackTemplate getCraftingRemainder(@NotNull ItemInstance instance) {
+		DataComponentPatch patch = instance instanceof ItemStack stack ? stack.getComponentsPatch() : DataComponentPatch.EMPTY;
+		return new ItemStackTemplate(instance.typeHolder(), instance.count(), patch);
 	}
 
 	public BlockHitResult getHitBlock(Level level, Player player, boolean isSneaking) {
@@ -155,6 +166,8 @@ public class PhilosophersStone extends ItemMode<PhilosophersStoneMode> implement
 	public void appendHoverText(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull TooltipDisplay display, @NotNull Consumer<Component> tooltip, @NotNull TooltipFlag flags) {
 		super.appendHoverText(stack, context, display, tooltip, flags);
 		tooltip.accept(PELang.TOOLTIP_PHILOSTONE.translate(ClientKeyHelper.getKeyName(PEKeybind.EXTRA_FUNCTION)));
+		tooltip.accept(PELang.TOOLTIP_PHILOSTONE_OPUS_1.translateColored(ChatFormatting.GOLD));
+		tooltip.accept(PELang.TOOLTIP_PHILOSTONE_OPUS_2.translateColored(ChatFormatting.DARK_RED));
 	}
 
 	public static Object2ReferenceMap<BlockPos, BlockState> getChanges(Level level, BlockPos pos, Direction sideHit, Direction horizontalDirection, boolean isSneaking,

@@ -1,0 +1,598 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible_arch"
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow"
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_nigredo"
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_albedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_citrinitas"
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_rubedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_complete"
+      }
+    },
+    {
+      "when": {
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible_arch_upper"
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow"
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_nigredo"
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_albedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_citrinitas"
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_rubedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_complete"
+      }
+    },
+    {
+      "when": {
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible_arch",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_nigredo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_albedo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_citrinitas",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_rubedo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_complete",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible_arch_upper",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_nigredo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_albedo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_citrinitas",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_rubedo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_complete",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible_arch",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_nigredo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_albedo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_citrinitas",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_rubedo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_complete",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible_arch_upper",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_nigredo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_albedo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_citrinitas",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_rubedo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_complete",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible_arch",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_nigredo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_albedo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_citrinitas",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_rubedo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_complete",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible_arch_upper",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_nigredo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_albedo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_citrinitas",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_rubedo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_complete",
+        "y": 270
+      }
+    }
+  ]
+}

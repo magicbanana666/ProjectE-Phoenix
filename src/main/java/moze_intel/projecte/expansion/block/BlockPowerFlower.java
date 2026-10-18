@@ -105,7 +105,6 @@ public class BlockPowerFlower extends Block implements IHasMatter, EntityBlock, 
 		if(stack.getCount() > 1) {
 			tooltip.accept(Lang.Blocks.POWER_FLOWER_STACK_EMC.translateColored(ChatFormatting.GRAY, EMCFormat.getComponent(getMatter().getPowerFlowerOutput().multiply(BigInteger.valueOf(stack.getCount()))).setStyle(ColorStyle.GREEN)));
 		}
-		tooltip.accept(Lang.SEE_WIKI.translateColored(ChatFormatting.AQUA));
 	}
 
 	@Override

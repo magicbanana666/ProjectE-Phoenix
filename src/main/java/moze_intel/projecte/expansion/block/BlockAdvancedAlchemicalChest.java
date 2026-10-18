@@ -92,7 +92,6 @@ public class BlockAdvancedAlchemicalChest extends HorizontalDirectionalBlock imp
 	@Override
 	public void appendBlockTooltip(ItemStack stack, Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag tooltipFlag) {
 		tooltip.accept(Lang.Blocks.ADVANCED_ALCHEMICAL_CHEST_TOOLTIP.translateColored(ChatFormatting.GRAY));
-		tooltip.accept(Lang.SEE_WIKI.translateColored(ChatFormatting.AQUA));
 	}
 
 	@Override

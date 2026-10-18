@@ -42,7 +42,6 @@ public class BlockCompactSun extends Block implements IMatterBlock, IBlockToolti
 	public void appendBlockTooltip(ItemStack stack, Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag tooltipFlag) {
 		tooltip.accept(Lang.Blocks.COMPACT_SUN_TOOLTIP.translateColored(ChatFormatting.GRAY));
 		tooltip.accept(Lang.Blocks.COMPACT_SUN_TOOLTIP2.translateColored(ChatFormatting.GRAY, Util.getSunBonus()));
-		tooltip.accept(Lang.SEE_WIKI.translateColored(ChatFormatting.AQUA));
 	}
 
 	@Override

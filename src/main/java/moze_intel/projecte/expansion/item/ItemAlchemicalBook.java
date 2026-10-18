@@ -60,7 +60,6 @@ public class ItemAlchemicalBook extends Item {
 			Player player = getPlayer(stack);
 			tooltip.accept(Lang.Items.ALCHEMICAL_BOOK_BOUND_TO.translateColored(ChatFormatting.RED, player == null ? Component.literal(Util.getOwner(stack).name()).withStyle(ChatFormatting.DARK_AQUA) : player.getDisplayName().copy().withStyle(ChatFormatting.DARK_AQUA)));
 		}
-		tooltip.accept(Lang.SEE_WIKI.translateColored(ChatFormatting.AQUA));
 	}
 
 	public @Nullable ServerPlayer getPlayer(ItemStack stack) {

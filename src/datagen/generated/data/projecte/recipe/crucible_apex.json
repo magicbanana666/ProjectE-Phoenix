@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "#c:gems/amethyst",
+    "B": "minecraft:polished_blackstone",
+    "D": "projecte:dark_matter",
+    "G": "#c:ingots/gold"
+  },
+  "pattern": [
+    "GAG",
+    "ADA",
+    "GBG"
+  ],
+  "result": {
+    "id": "projecte:crucible_apex"
+  }
+}

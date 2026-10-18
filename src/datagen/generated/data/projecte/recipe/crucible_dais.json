@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "#c:ingots/gold",
+    "R": "#c:dusts/redstone",
+    "S": "minecraft:polished_blackstone_slab"
+  },
+  "pattern": [
+    "RGR",
+    "SSS"
+  ],
+  "result": {
+    "count": 8,
+    "id": "projecte:crucible_dais"
+  }
+}

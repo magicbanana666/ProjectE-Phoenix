@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "group": "projecte:philosophers_stone",
+  "group": "projecte:false_philosophers_stone",
   "key": {
     "D": "#c:gems/diamond",
     "G": "#c:dusts/glowstone",
     "R": "#c:dusts/redstone"
   },
   "pattern": [
-    "RGR",
-    "GDG",
-    "RGR"
+    "GRG",
+    "RDR",
+    "GRG"
   ],
   "result": {
-    "id": "projecte:philosophers_stone"
+    "id": "projecte:false_philosophers_stone"
   }
 }

@@ -19,7 +19,15 @@ public class PECreativeTabs {
 
 	public static final PEDeferredHolder<CreativeModeTab, CreativeModeTab> PROJECTE = CREATIVE_TABS.registerMain(PELang.PROJECTE, PEItems.PHILOSOPHERS_STONE, builder ->
 			builder.displayItems((displayParameters, output) -> {
+				output.accept(PEItems.FALSE_PHILOSOPHERS_STONE);
 				output.accept(PEItems.PHILOSOPHERS_STONE);
+				output.accept(PEBlocks.ALCHEMICAL_CRUCIBLE);
+				output.accept(PEBlocks.CRUCIBLE_STEP);
+				output.accept(PEBlocks.CRUCIBLE_PLINTH);
+				output.accept(PEBlocks.CRUCIBLE_DAIS);
+				output.accept(PEBlocks.CRUCIBLE_PILLAR);
+				output.accept(PEBlocks.CRUCIBLE_ARCH);
+				output.accept(PEBlocks.CRUCIBLE_APEX);
 				output.accept(PEItems.REPAIR_TALISMAN);
 				output.accept(PEItems.TOME_OF_KNOWLEDGE);
 				output.accept(PEItems.TRANSMUTATION_TABLET);

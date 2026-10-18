@@ -1,0 +1,8 @@
+{
+  "parent": "projecte:block/crucible/crucible_plinth_glow",
+  "textures": {
+    "particle": "projecte:block/crucible/rune_citrinitas",
+    "rune": "projecte:block/crucible/rune_citrinitas",
+    "crystal": "projecte:block/crucible/crystal_citrinitas"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:polished_blackstone",
+    "C": "minecraft:crying_obsidian",
+    "R": "#c:dusts/redstone"
+  },
+  "pattern": [
+    "BRB",
+    "RCR",
+    "BRB"
+  ],
+  "result": {
+    "count": 4,
+    "id": "projecte:crucible_plinth"
+  }
+}

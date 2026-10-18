@@ -79,7 +79,6 @@ public class Util {
 	public static final Codec<Player> PLAYER_CODEC = UUIDUtil.CODEC.xmap(Util::getPlayer, Player::getUUID);
 	public static final StreamCodec<ByteBuf, Player> PLAYER_STREAM_CODEC = UUIDUtil.STREAM_CODEC.map(Util::getPlayer, Player::getUUID);
 	public static final Function<String, Identifier> SUN_EXPOSURE_PROTECTION = slot -> PECore.rl(String.format("sun_exposure_protection_%s", slot));
-	public static final String WIKI = "https://github.com/DonovanDMC/ProjectExpansion/wiki";
 
 	public static @Nullable ServerPlayer getPlayer(UUID uuid) {
 		return ServerLifecycleHooks.getCurrentServer() == null ? null : ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayer(uuid);

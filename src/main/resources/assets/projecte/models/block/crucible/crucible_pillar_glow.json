@@ -1,0 +1,110 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "projecte:block/crucible/rune_formed",
+    "rune": "projecte:block/crucible/rune_formed",
+    "crystal": "projecte:block/crucible/crystal_formed"
+  },
+  "elements": [
+    {
+      "from": [
+        5,
+        4,
+        2.9
+      ],
+      "to": [
+        11,
+        12.5,
+        3
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            3.5,
+            11,
+            12.0
+          ],
+          "texture": "#rune"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        5,
+        4,
+        13
+      ],
+      "to": [
+        11,
+        12.5,
+        13.1
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            5,
+            3.5,
+            11,
+            12.0
+          ],
+          "texture": "#rune"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        2.9,
+        4,
+        5
+      ],
+      "to": [
+        3,
+        12.5,
+        11
+      ],
+      "faces": {
+        "west": {
+          "uv": [
+            5,
+            3.5,
+            11,
+            12.0
+          ],
+          "texture": "#rune"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        13,
+        4,
+        5
+      ],
+      "to": [
+        13.1,
+        12.5,
+        11
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5,
+            3.5,
+            11,
+            12.0
+          ],
+          "texture": "#rune"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "projecte:block/crucible/crucible_apex_glow",
+  "textures": {
+    "particle": "projecte:block/crucible/rune_nigredo",
+    "rune": "projecte:block/crucible/rune_nigredo",
+    "crystal": "projecte:block/crucible/crystal_nigredo"
+  }
+}

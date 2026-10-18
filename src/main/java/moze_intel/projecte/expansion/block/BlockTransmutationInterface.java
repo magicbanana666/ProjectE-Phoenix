@@ -62,7 +62,6 @@ public class BlockTransmutationInterface extends Block implements EntityBlock, I
 	@Override
 	public void appendBlockTooltip(ItemStack stack, Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag tooltipFlag) {
 		tooltip.accept(Lang.Blocks.TRANSMUTATION_INTERFACE_TOOLTIP.translateColored(ChatFormatting.GRAY));
-		tooltip.accept(Lang.SEE_WIKI.translateColored(ChatFormatting.AQUA));
 	}
 
 	@Override

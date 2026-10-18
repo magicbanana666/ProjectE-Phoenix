@@ -39,6 +39,7 @@ import moze_intel.projecte.rendering.ChestRenderer;
 import moze_intel.projecte.rendering.EntitySpriteRenderer;
 import moze_intel.projecte.rendering.LayerYue;
 import moze_intel.projecte.rendering.PedestalRenderer;
+import moze_intel.projecte.rendering.AlchemicalCrucibleRenderer;
 import moze_intel.projecte.rendering.TransmutationRenderingOverlay;
 import moze_intel.projecte.utils.ClientKeyHelper;
 import moze_intel.projecte.utils.PEKeybind;
@@ -168,6 +169,7 @@ public class PEClient {
 		event.registerBlockEntityRenderer(PEBlockEntityTypes.CONDENSER.get(), context -> new ChestRenderer(context, PECore.rl("textures/block/condenser_mk1.png"), PEBlocks.CONDENSER));
 		event.registerBlockEntityRenderer(PEBlockEntityTypes.CONDENSER_MK2.get(), context -> new ChestRenderer(context, PECore.rl("textures/block/condenser_mk2.png"),PEBlocks.CONDENSER_MK2));
 		event.registerBlockEntityRenderer(PEBlockEntityTypes.DARK_MATTER_PEDESTAL.get(), PedestalRenderer::new);
+		event.registerBlockEntityRenderer(PEBlockEntityTypes.ALCHEMICAL_CRUCIBLE.get(), AlchemicalCrucibleRenderer::new);
 
 		//Entities
 		event.registerEntityRenderer(PEEntityTypes.WATER_PROJECTILE.get(), context -> new EntitySpriteRenderer<>(context, PECore.rl("textures/entity/water_orb.png")));

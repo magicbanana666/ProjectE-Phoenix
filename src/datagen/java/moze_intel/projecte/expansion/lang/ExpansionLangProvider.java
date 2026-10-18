@@ -1,9 +1,16 @@
 package moze_intel.projecte.expansion.lang;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import moze_intel.projecte.client.lang.PELangProvider;
+import moze_intel.projecte.expansion.codex.Codex;
 import moze_intel.projecte.expansion.registries.ExpansionSoundEvents;
 import moze_intel.projecte.gameObjs.items.ExpansionItemDescriptions;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.Identifier;
 
 /**
  * Adds every ProjectExpansion translation to ProjectE's {@code en_us.json}.
@@ -32,6 +39,44 @@ public class ExpansionLangProvider extends PELangProvider {
 		addItemDescriptions();
 		addSoundEvents();
 		addJadeConfig();
+		addCodex();
+	}
+
+	/**
+	 * The text of the Alchemist's Codex. Fails data generation when a chapter or entry has no text, or shows an item
+	 * that does not exist, so that the book never shows a raw translation key or an empty icon.
+	 */
+	private void addCodex() {
+		add("item.projecte.alchemists_codex", "Alchemist's Codex");
+		add("item.projecte.alchemists_codex.tooltip", "Everything there is to know about alchemy.");
+		Set<String> keys = new HashSet<>();
+		CodexLang.add((key, value) -> {
+			keys.add(key);
+			add(key, value);
+		});
+		List<String> problems = new ArrayList<>();
+		for (Codex.Chapter chapter : Codex.CHAPTERS) {
+			checkCodex(problems, keys, chapter.titleKey(), chapter.iconId());
+			checkCodex(problems, keys, chapter.introKey(), chapter.iconId());
+			for (Codex.Entry entry : chapter.entries()) {
+				checkCodex(problems, keys, entry.textKey(), entry.iconId());
+				if (!entry.itemTitle()) {
+					checkCodex(problems, keys, entry.titleKey(), entry.iconId());
+				}
+			}
+		}
+		if (!problems.isEmpty()) {
+			throw new IllegalStateException("Problems in the Alchemist's Codex: " + String.join(", ", problems));
+		}
+	}
+
+	private static void checkCodex(List<String> problems, Set<String> keys, String key, Identifier icon) {
+		if (!keys.contains(key)) {
+			problems.add("missing text " + key);
+		}
+		if (!BuiltInRegistries.ITEM.containsKey(icon)) {
+			problems.add("unknown item " + icon + " for " + key);
+		}
 	}
 
 	/**
@@ -1281,8 +1326,6 @@ public class ExpansionLangProvider extends PELangProvider {
 				"Failed to fetch ProjectE provider.");
 		add("text.projecte.relay_bonus",
 				"Bonus: %s");
-		add("text.projecte.see_wiki",
-				"See the wiki on github for more information.");
 		add("text.projecte.sun_bonus",
 				"Sun Bonus: %s");
 		add("text.projecte.sun_level",

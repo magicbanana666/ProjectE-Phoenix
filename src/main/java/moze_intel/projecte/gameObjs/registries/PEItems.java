@@ -12,6 +12,7 @@ import moze_intel.projecte.gameObjs.items.HyperkineticLens;
 import moze_intel.projecte.gameObjs.items.KleinStar;
 import moze_intel.projecte.gameObjs.items.KleinStar.KleinTier;
 import moze_intel.projecte.gameObjs.items.MercurialEye;
+import moze_intel.projecte.gameObjs.items.FalsePhilosophersStone;
 import moze_intel.projecte.gameObjs.items.PhilosophersStone;
 import moze_intel.projecte.gameObjs.items.RepairTalisman;
 import moze_intel.projecte.gameObjs.items.Tome;
@@ -60,6 +61,7 @@ public class PEItems {
 	public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(PECore.MODID);
 
 	public static final ItemRegistryObject<PhilosophersStone> PHILOSOPHERS_STONE = ITEMS.registerNoStack("philosophers_stone", PhilosophersStone::new);
+	public static final ItemRegistryObject<FalsePhilosophersStone> FALSE_PHILOSOPHERS_STONE = ITEMS.register("false_philosophers_stone", FalsePhilosophersStone::new, properties -> properties.stacksTo(16));
 	public static final ItemRegistryObject<RepairTalisman> REPAIR_TALISMAN = ITEMS.registerNoStack("repair_talisman", RepairTalisman::new);
 	public static final ItemRegistryObject<Item> LOW_COVALENCE_DUST = ITEMS.register("low_covalence_dust");
 	public static final ItemRegistryObject<Item> MEDIUM_COVALENCE_DUST = ITEMS.register("medium_covalence_dust");

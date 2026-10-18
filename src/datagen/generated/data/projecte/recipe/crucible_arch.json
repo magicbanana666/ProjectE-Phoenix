@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:polished_blackstone",
+    "G": "#c:ingots/gold"
+  },
+  "pattern": [
+    "BBB",
+    "G G",
+    "B B"
+  ],
+  "result": {
+    "count": 4,
+    "id": "projecte:crucible_arch"
+  }
+}

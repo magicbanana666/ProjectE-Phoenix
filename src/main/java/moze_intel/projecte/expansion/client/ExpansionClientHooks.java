@@ -3,6 +3,7 @@ package moze_intel.projecte.expansion.client;
 import java.util.List;
 import moze_intel.projecte.expansion.capability.CapabilityAlchemicalBookLocations.TeleportLocation;
 import moze_intel.projecte.expansion.gui.GUIAlchemicalBook;
+import moze_intel.projecte.expansion.gui.GUIAlchemistsCodex;
 import moze_intel.projecte.expansion.util.ClientSideHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -30,6 +31,7 @@ public final class ExpansionClientHooks {
 	public static void install() {
 		HitDirectionSource.setSource(ExpansionClientHooks::lookDirection);
 		ClientSideHandler.setScreen(new ExpansionClientHooks.ExpansionAlchemicalBookScreen());
+		ClientSideHandler.setCodexScreen(() -> Minecraft.getInstance().setScreen(new GUIAlchemistsCodex()));
 	}
 
 	@Nullable

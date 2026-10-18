@@ -34,7 +34,6 @@ public class ItemArcaneTransmutationTablet extends Item implements ITransmutatio
 	public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag tooltipFlag) {
 		super.appendHoverText(stack, context, display, tooltip, tooltipFlag);
 		tooltip.accept(Lang.Items.ARCANE_TRANSMUTATION_TABLET_TOOLTIP.translateColored(ChatFormatting.GRAY));
-		tooltip.accept(Lang.SEE_WIKI.translateColored(ChatFormatting.AQUA));
 	}
 
 	//26.3 Item#use returns an InteractionResult instead of an InteractionResultHolder<ItemStack>

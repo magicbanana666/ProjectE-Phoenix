@@ -1,15 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "projecte:red_matter",
-  "key": {
-    "A": "projecte:aeternalis_fuel",
-    "D": "projecte:dark_matter"
-  },
-  "pattern": [
-    "AAA",
-    "DDD",
-    "AAA"
+  "ingredients": [
+    "projecte:philosophers_stone",
+    "projecte:dark_matter",
+    "projecte:dark_matter",
+    "projecte:dark_matter",
+    "projecte:aeternalis_fuel",
+    "projecte:aeternalis_fuel",
+    "projecte:aeternalis_fuel",
+    "projecte:aeternalis_fuel",
+    "projecte:aeternalis_fuel"
   ],
   "result": {
     "id": "projecte:red_matter"

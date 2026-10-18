@@ -25,6 +25,7 @@ import net.minecraft.client.renderer.item.ClientItem;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperty;
+import net.minecraft.client.renderer.item.properties.select.CustomModelDataProperty;
 import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Holder;
@@ -57,7 +58,7 @@ public class PEItemModelProvider extends ModelProvider {
 
 	@Override
 	protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-		registerBlockParentModels(itemModels, PEBlocks.ALCHEMICAL_BARREL, PEBlocks.ALCHEMICAL_COAL, PEBlocks.MOBIUS_FUEL,
+		registerBlockParentModels(itemModels, PEBlocks.ALCHEMICAL_CRUCIBLE, PEBlocks.CRUCIBLE_STEP, PEBlocks.CRUCIBLE_PLINTH, PEBlocks.CRUCIBLE_DAIS, PEBlocks.CRUCIBLE_PILLAR, PEBlocks.CRUCIBLE_ARCH, PEBlocks.CRUCIBLE_APEX, PEBlocks.ALCHEMICAL_BARREL, PEBlocks.ALCHEMICAL_COAL, PEBlocks.MOBIUS_FUEL,
 				PEBlocks.AETERNALIS_FUEL, PEBlocks.DARK_MATTER, PEBlocks.RED_MATTER, PEBlocks.DARK_MATTER_PEDESTAL,
 				PEBlocks.DARK_MATTER_FURNACE, PEBlocks.RED_MATTER_FURNACE, PEBlocks.COLLECTOR,
 				PEBlocks.COLLECTOR_MK2, PEBlocks.COLLECTOR_MK3, PEBlocks.NOVA_CATALYST, PEBlocks.NOVA_CATACLYSM,
@@ -76,6 +77,7 @@ public class PEItemModelProvider extends ModelProvider {
 		generated(itemModels, PEItems.HIGH_COVALENCE_DUST, material("item/covalence_dust/high"));
 		generated(itemModels, PEBlocks.INTERDICTION_TORCH, material("block/interdiction_torch"));
 		generated(itemModels, PEBlocks.INTERDICTION_LANTERN, material("item/interdiction_lantern"));
+		generateFalsePhilosophersStone(itemModels);
 		generateAlchemicalBags(itemModels);
 		generateChests(itemModels);
 		generateRings(itemModels);
@@ -329,6 +331,20 @@ public class PEItemModelProvider extends ModelProvider {
 		}
 		return ItemModelUtils.rangeSelect(MODE_PROPERTY, offModel,
 				ItemModelUtils.override(offModel, 0), ItemModelUtils.override(onModel, mode));
+	}
+
+	/**
+	 * the Alchemical Crucible shows the stones in its ritual with a custom model data string naming the stage, which
+	 * picks the texture of that stage.
+	 */
+	private void generateFalsePhilosophersStone(ItemModelGenerators models) {
+		ItemModel.Unbaked base = ItemModelUtils.plainModel(generatedModel(models, PEItems.FALSE_PHILOSOPHERS_STONE, material("item/false_philosophers_stone"), ModelTemplates.FLAT_ITEM));
+		List<SelectItemModel.SwitchCase<String>> stages = new ArrayList<>();
+		for (String stage : List.of("nigredo", "albedo", "citrinitas", "rubedo")) {
+			String name = "false_philosophers_stone_" + stage;
+			stages.add(ItemModelUtils.when(stage, generatedUnbakedModel(models, name, material("item/" + name), ModelTemplates.FLAT_ITEM)));
+		}
+		models.itemModelOutput.accept(PEItems.FALSE_PHILOSOPHERS_STONE.asItem(), ItemModelUtils.select(new CustomModelDataProperty(0), base, stages));
 	}
 
 	private static Identifier generatedModel(ItemModelGenerators models, ItemLike item, Material texture, ModelTemplate template) {

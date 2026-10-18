@@ -8,6 +8,9 @@
             "items": "projecte:philosophers_stone"
           },
           {
+            "items": "projecte:false_philosophers_stone"
+          },
+          {
             "items": "projecte:alchemical_coal"
           }
         ]

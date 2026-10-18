@@ -2,7 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "projecte:philosophers_stone",
+    [
+      "projecte:philosophers_stone",
+      "projecte:false_philosophers_stone"
+    ],
     "minecraft:coal",
     "minecraft:coal",
     "minecraft:coal",

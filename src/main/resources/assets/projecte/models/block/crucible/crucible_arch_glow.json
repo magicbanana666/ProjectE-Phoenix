@@ -1,0 +1,160 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "projecte:block/crucible/rune_formed",
+    "rune": "projecte:block/crucible/rune_formed",
+    "crystal": "projecte:block/crucible/crystal_formed"
+  },
+  "elements": [
+    {
+      "from": [
+        6.106,
+        5.638,
+        11.034
+      ],
+      "to": [
+        8.922,
+        9.158,
+        11.134
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            6.106,
+            6.842,
+            8.922,
+            10.362
+          ],
+          "texture": "#crystal"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        11.034,
+        5.638,
+        6.106
+      ],
+      "to": [
+        11.134,
+        9.158,
+        8.922
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            7.078,
+            6.842,
+            9.894,
+            10.362
+          ],
+          "texture": "#crystal"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        2.332,
+        14.578,
+        7.26
+      ],
+      "to": [
+        5.148,
+        18.098,
+        7.36
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            2.332,
+            0.0,
+            5.148,
+            3.52
+          ],
+          "texture": "#crystal"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        7.26,
+        14.578,
+        2.332
+      ],
+      "to": [
+        7.36,
+        18.098,
+        5.148
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            10.852,
+            0.0,
+            13.668,
+            3.52
+          ],
+          "texture": "#crystal"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        -4.643,
+        21.42,
+        0.285
+      ],
+      "to": [
+        -1.827,
+        24.94,
+        0.385
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            0.0,
+            0.0,
+            2.816,
+            3.52
+          ],
+          "texture": "#crystal"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    },
+    {
+      "from": [
+        0.285,
+        21.42,
+        -4.643
+      ],
+      "to": [
+        0.385,
+        24.94,
+        -1.827
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            13.184,
+            0.0,
+            16.0,
+            3.52
+          ],
+          "texture": "#crystal"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    }
+  ]
+}

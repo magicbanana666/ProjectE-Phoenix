@@ -18,6 +18,8 @@ public class ClientSideHandler {
 
 	@Nullable
 	private static volatile AlchemicalBookScreen screen;
+	@Nullable
+	private static volatile Runnable codexScreen;
 
 	private ClientSideHandler() {
 	}
@@ -27,6 +29,20 @@ public class ClientSideHandler {
 	 */
 	public static void setScreen(@Nullable AlchemicalBookScreen newScreen) {
 		screen = newScreen;
+	}
+
+	/**
+	 * Installs what opens the Alchemist's Codex. Only ever called from client code.
+	 */
+	public static void setCodexScreen(@Nullable Runnable newCodexScreen) {
+		codexScreen = newCodexScreen;
+	}
+
+	public static void openCodex() {
+		Runnable current = codexScreen;
+		if (current != null) {
+			current.run();
+		}
 	}
 
 	public static void handleAlchemicalBookOpen(PacketOpenAlchemicalBookGUI packet) {

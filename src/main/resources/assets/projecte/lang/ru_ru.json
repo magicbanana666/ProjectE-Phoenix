@@ -1603,7 +1603,6 @@
   "text.projecte.owner": "Владелец: %s",
   "text.projecte.provider_error": "Не удалось получить провайдер ProjectE.",
   "text.projecte.relay_bonus": "Бонус: %s",
-  "text.projecte.see_wiki": "Подробнее смотрите вики на github.",
   "text.projecte.sun_bonus": "Бонус солнца: %s",
   "text.projecte.sun_level": "Уровень солнца: %s",
   "text.projecte.wip": "В работе!",

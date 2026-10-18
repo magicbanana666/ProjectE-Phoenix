@@ -12,7 +12,7 @@ import net.minecraft.resources.Identifier;
  * {@code util/Matter} and {@code util/Fuel} (tier grouping and level numbers),
  * {@code util/TagNames} (the string keys of the emc storage / emc link components),
  * {@code util/TableGenerator} (the glyph width buckets used to draw aligned chat tables),
- * {@code util/Util} (the wiki url) and the hard coded texture paths of the collector GUI.
+ * and the hard coded texture paths of the collector GUI.
  * They are collected in one place so the ported code has a single, dependency free place to read
  * them from instead of duplicating literals.</p>
  *
@@ -235,11 +235,4 @@ public final class ExpansionTextConstants {
 	public static final Identifier GUI_ARCANE_TABLET = PECore.rl("textures/gui/arcane_transmutation_tablet.png");
 	/** Slot layout overlay of the arcane transmutation tablet. */
 	public static final Identifier GUI_ARCANE_TABLET_LAYOUT = PECore.rl("textures/gui/arcane_transmutation_tablet_layout.png");
-
-	// ------------------------------------------------------------------
-	// Misc
-	// ------------------------------------------------------------------
-
-	/** Target of the {@code px wiki} sub command. */
-	public static final String WIKI_URL = "https://github.com/DonovanDMC/ProjectExpansion/wiki";
 }

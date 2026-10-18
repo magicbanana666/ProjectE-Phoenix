@@ -1,6 +1,7 @@
 package moze_intel.projecte.config;
 
 import moze_intel.projecte.config.value.CachedBooleanValue;
+import moze_intel.projecte.config.value.CachedDoubleValue;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
@@ -19,6 +20,7 @@ public class ClientConfig extends BasePEConfig {
 	public final CachedBooleanValue tagToolTips;
 
 	public final CachedBooleanValue pulsatingOverlay;
+	public final CachedDoubleValue ritualParticles;
 
 	public final Expansion expansion;
 
@@ -26,6 +28,8 @@ public class ClientConfig extends BasePEConfig {
 		ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
 		pulsatingOverlay = CachedBooleanValue.wrap(this, PEConfigTranslations.CLIENT_PHILO_OVERLAY.applyToBuilder(builder).define("pulsatingOverlay", false));
+		ritualParticles = CachedDoubleValue.wrap(this, PEConfigTranslations.CLIENT_RITUAL_PARTICLES.applyToBuilder(builder)
+				.defineInRange("ritualParticles", 1.0, 0.0, 4.0));
 
 		PEConfigTranslations.CLIENT_TOOLTIPS.applyToBuilder(builder).push("tooltips");
 		emcToolTips = CachedBooleanValue.wrap(this, PEConfigTranslations.CLIENT_TOOLTIPS_EMC.applyToBuilder(builder).define("emc", true));
