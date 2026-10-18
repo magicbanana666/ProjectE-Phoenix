@@ -120,6 +120,8 @@ public class BlockAdvancedAlchemicalChest extends HorizontalDirectionalBlock imp
 
 		BlockEntityAdvancedAlchemicalChest blockEntity = WorldHelper.getBlockEntity(BlockEntityAdvancedAlchemicalChest.class, level, pos);
 		if (blockEntity == null) return InteractionResult.FAIL;
+		// a chest placed without an owner (commands, block placers, structures) has no bag to show
+		if (blockEntity.getBag() == null) return InteractionResult.FAIL;
 
 		InteractionHand hand = player.getUsedItemHand();
 		player.openMenu(new ContainerProvider(blockEntity, hand), (buf) -> {
