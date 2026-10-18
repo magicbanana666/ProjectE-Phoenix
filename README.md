@@ -1,4 +1,4 @@
-![](/src/main/resources/logo.png?raw=true)
+![ProjectE Phoenix](/banner.png?raw=true)
 
 # ProjectE Phoenix
 
