@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "projecte:red_matter",
   "key": {
     "A": "projecte:aeternalis_fuel",

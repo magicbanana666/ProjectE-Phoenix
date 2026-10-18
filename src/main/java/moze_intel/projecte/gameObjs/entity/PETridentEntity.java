@@ -21,6 +21,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.projectile.arrow.ThrownTrident;
@@ -197,7 +198,7 @@ public class PETridentEntity extends ThrownTrident {
                     //If we failed to consume EMC but needed EMC just break out early as we won't have the required EMC for any of the future bolts
                     return;
                 }
-                EntityType.LIGHTNING_BOLT.spawn(level, lightning -> {
+                EntityTypes.LIGHTNING_BOLT.spawn(level, lightning -> {
                     //Note: Unlike vanilla in SummonEntityEffect, we do this in the consumer,
                     // so that it has the proper values set before adding it to the level
                     lightning.setPos(hitTarget);

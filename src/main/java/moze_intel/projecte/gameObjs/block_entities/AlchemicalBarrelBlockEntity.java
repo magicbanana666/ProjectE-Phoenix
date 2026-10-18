@@ -45,7 +45,7 @@ public class AlchemicalBarrelBlockEntity extends EmcBlockEntity implements MenuP
 		}
 
 		private void playSound(@NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState state, SoundEvent sound) {
-			Vec3 soundPos = pos.getCenter().relative(state.getValue(BarrelBlock.FACING), 0.5);
+			Vec3 soundPos = Vec3.atCenterOf(pos).relative(state.getValue(BarrelBlock.FACING), 0.5);
 			level.playSound(null, soundPos.x(), soundPos.y(), soundPos.z(), sound, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
 		}
 

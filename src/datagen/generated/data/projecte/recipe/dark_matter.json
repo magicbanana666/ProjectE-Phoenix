@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "A": "projecte:aeternalis_fuel",
     "D": "#c:storage_blocks/diamond"

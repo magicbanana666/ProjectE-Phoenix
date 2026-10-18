@@ -12,7 +12,7 @@ plugins {
     id('maven-publish')
     id('com.gradleup.shadow') version('9.4.3')
     // https://projects.neoforged.net/neoforged/ModDevGradle
-    id('net.neoforged.moddev') version('2.0.147')
+    id('net.neoforged.moddev') version('2.0.148')
 }
 
 tasks.named('wrapper', Wrapper) {
@@ -302,7 +302,7 @@ dependencies {
     //Jade is fetched from Modrinth as it does not publish its API as a separate tracked dependency version
     compileOnly("maven.modrinth:jade:${jade_version}")
     localRuntime("maven.modrinth:jade:${jade_version}")
-    compileOnly("mcp.mobius.waila:wthit-api:neo-${wthit_version}")
+    compileOnly("mcp.mobius.waila:wthit-api:mojmap-${wthit_version}")
 
     //Minecraft 26.x no longer pulls in the JSR-305 annotations transitively, but we still use them
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")

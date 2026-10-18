@@ -16,7 +16,6 @@ import net.minecraft.core.registries.Registries;
 import java.util.Objects;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
@@ -36,6 +35,11 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 
 	public PEItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
 		super(output, lookupProvider, PECore.MODID);
+	}
+
+	@Override
+	protected ElementTagAppender<Item> tag(TagKey<Item> tag) {
+		return new ElementTagAppender<>(super.tag(tag), item -> item.builtInRegistryHolder().key());
 	}
 
 	@Override
@@ -91,7 +95,7 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 				projecteItem(PEBlocks.DARK_MATTER_FURNACE),
 				projecteItem(PEBlocks.RED_MATTER_FURNACE)
 		);
-		TagAppender<Item, Item> kleinStars = tag(PETags.Items.KLEIN_STARS);
+		ElementTagAppender<Item> kleinStars = tag(PETags.Items.KLEIN_STARS);
 		for (KleinTier tier : KleinTier.values()) {
 			kleinStars.add(projecteItem(PEItems.getStar(tier)));
 		}
@@ -138,7 +142,7 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 	}
 
 	private void addIgnoreMissing() {
-		TagAppender<Item, Item> ignoreMissingEMC = tag(PETags.Items.IGNORE_MISSING_EMC).add(
+		ElementTagAppender<Item> ignoreMissingEMC = tag(PETags.Items.IGNORE_MISSING_EMC).add(
 				Items.DEBUG_STICK, Items.KNOWLEDGE_BOOK, Items.STRUCTURE_VOID, Items.FROGSPAWN,
 				Items.PETRIFIED_OAK_SLAB, Items.REINFORCED_DEEPSLATE, Items.SPAWNER, Items.TRIAL_SPAWNER,
 				Items.VAULT, Items.TRIAL_KEY, Items.OMINOUS_TRIAL_KEY, Items.ELYTRA,
@@ -149,8 +153,8 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 				//Blocks that have no emc because it is less than one:
 				Items.STONE_SLAB, Items.COBBLESTONE_SLAB, Items.SMOOTH_STONE_SLAB,
 				Items.STONE_BRICK_SLAB, Items.END_STONE_BRICK_SLAB, Items.GLASS_PANE,
-				Items.CYAN_STAINED_GLASS_PANE, Items.GREEN_STAINED_GLASS_PANE, Items.LIME_STAINED_GLASS_PANE,
-				Items.MAGENTA_STAINED_GLASS_PANE, Items.PINK_STAINED_GLASS_PANE
+				Items.STAINED_GLASS_PANE.cyan(), Items.STAINED_GLASS_PANE.green(), Items.STAINED_GLASS_PANE.lime(),
+				Items.STAINED_GLASS_PANE.magenta(), Items.STAINED_GLASS_PANE.pink()
 		);
 		addTags(ignoreMissingEMC, Tags.Items.CLUSTERS, Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS);
 		for (Item item : BuiltInRegistries.ITEM) {
@@ -166,7 +170,7 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 	}
 
 	private void addBags() {
-		TagAppender<Item, Item> alchemicalBags = tag(PETags.Items.ALCHEMICAL_BAGS);
+		ElementTagAppender<Item> alchemicalBags = tag(PETags.Items.ALCHEMICAL_BAGS);
 		for (DyeColor color : Constants.COLORS) {
 			ItemRegistryObject<AlchemicalBag> bag = PEItems.getBagReference(color);
 			alchemicalBags.add(projecteItem(bag));
@@ -250,7 +254,7 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 		return item.asItem();
 	}
 
-	private static TagAppender<Item, Item> addTags(TagAppender<Item, Item> appender, TagKey<Item>... tags) {
+	private static ElementTagAppender<Item> addTags(ElementTagAppender<Item> appender, TagKey<Item>... tags) {
 		for (TagKey<Item> tag : tags) {
 			appender.addTag(tag);
 		}
@@ -272,8 +276,7 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 				projecteItem("arcane_transmutation_tablet"));
 	}
 
-	//26.1: the tag appenders still take the registry objects themselves, so the ids of the addon items have to be
-	// resolved through the registry. Resolving them is done hard so a typo fails datagen instead of writing a bad tag.
+	//The ids of the addon items are resolved through the registry. Resolving them is done hard so a typo fails datagen instead of writing a bad tag.
 	private static Item projecteItem(String name) {
 		return Objects.requireNonNull(BuiltInRegistries.ITEM.getValue(PECore.rl(name)), "Unknown item " + name);
 	}

@@ -105,31 +105,31 @@ public class PEWorldTransmutationProvider extends WorldTransmutationProvider {
 
 		createTransmutationBuilder(PECore.rl("colors"))
 				.comment("Default world transmutations for various colored vanilla blocks.")
-				.registerConsecutivePairs(Blocks.WHITE_CONCRETE, Blocks.ORANGE_CONCRETE, Blocks.MAGENTA_CONCRETE, Blocks.LIGHT_BLUE_CONCRETE, Blocks.YELLOW_CONCRETE,
-						Blocks.LIME_CONCRETE, Blocks.PINK_CONCRETE, Blocks.GRAY_CONCRETE, Blocks.LIGHT_GRAY_CONCRETE, Blocks.CYAN_CONCRETE, Blocks.PURPLE_CONCRETE,
-						Blocks.BLUE_CONCRETE, Blocks.BROWN_CONCRETE, Blocks.GREEN_CONCRETE, Blocks.RED_CONCRETE, Blocks.BLACK_CONCRETE)
-				.registerConsecutivePairs(Blocks.WHITE_CONCRETE_POWDER, Blocks.ORANGE_CONCRETE_POWDER, Blocks.MAGENTA_CONCRETE_POWDER, Blocks.LIGHT_BLUE_CONCRETE_POWDER,
-						Blocks.YELLOW_CONCRETE_POWDER, Blocks.LIME_CONCRETE_POWDER, Blocks.PINK_CONCRETE_POWDER, Blocks.GRAY_CONCRETE_POWDER, Blocks.LIGHT_GRAY_CONCRETE_POWDER,
-						Blocks.CYAN_CONCRETE_POWDER, Blocks.PURPLE_CONCRETE_POWDER, Blocks.BLUE_CONCRETE_POWDER, Blocks.BROWN_CONCRETE_POWDER, Blocks.GREEN_CONCRETE_POWDER,
-						Blocks.RED_CONCRETE_POWDER, Blocks.BLACK_CONCRETE_POWDER)
-				.registerConsecutivePairs(Blocks.WHITE_CARPET, Blocks.ORANGE_CARPET, Blocks.MAGENTA_CARPET, Blocks.LIGHT_BLUE_CARPET, Blocks.YELLOW_CARPET,
-						Blocks.LIME_CARPET, Blocks.PINK_CARPET, Blocks.GRAY_CARPET, Blocks.LIGHT_GRAY_CARPET, Blocks.CYAN_CARPET, Blocks.PURPLE_CARPET, Blocks.BLUE_CARPET,
-						Blocks.BROWN_CARPET, Blocks.GREEN_CARPET, Blocks.RED_CARPET, Blocks.BLACK_CARPET)
-				.registerConsecutivePairs(Blocks.WHITE_WOOL, Blocks.ORANGE_WOOL, Blocks.MAGENTA_WOOL, Blocks.LIGHT_BLUE_WOOL, Blocks.YELLOW_WOOL, Blocks.LIME_WOOL,
-						Blocks.PINK_WOOL, Blocks.GRAY_WOOL, Blocks.LIGHT_GRAY_WOOL, Blocks.CYAN_WOOL, Blocks.PURPLE_WOOL, Blocks.BLUE_WOOL, Blocks.BROWN_WOOL, Blocks.GREEN_WOOL,
-						Blocks.RED_WOOL, Blocks.BLACK_WOOL)
-				.registerConsecutivePairs(Blocks.WHITE_TERRACOTTA, Blocks.ORANGE_TERRACOTTA, Blocks.MAGENTA_TERRACOTTA, Blocks.LIGHT_BLUE_TERRACOTTA, Blocks.YELLOW_TERRACOTTA,
-						Blocks.LIME_TERRACOTTA, Blocks.PINK_TERRACOTTA, Blocks.GRAY_TERRACOTTA, Blocks.LIGHT_GRAY_TERRACOTTA, Blocks.CYAN_TERRACOTTA,
-						Blocks.PURPLE_TERRACOTTA, Blocks.BLUE_TERRACOTTA, Blocks.BROWN_TERRACOTTA, Blocks.GREEN_TERRACOTTA, Blocks.RED_TERRACOTTA, Blocks.BLACK_TERRACOTTA)
-				.registerConsecutivePairs(Blocks.WHITE_STAINED_GLASS, Blocks.ORANGE_STAINED_GLASS, Blocks.MAGENTA_STAINED_GLASS, Blocks.LIGHT_BLUE_STAINED_GLASS,
-						Blocks.YELLOW_STAINED_GLASS, Blocks.LIME_STAINED_GLASS, Blocks.PINK_STAINED_GLASS, Blocks.GRAY_STAINED_GLASS, Blocks.LIGHT_GRAY_STAINED_GLASS,
-						Blocks.CYAN_STAINED_GLASS, Blocks.PURPLE_STAINED_GLASS, Blocks.BLUE_STAINED_GLASS, Blocks.BROWN_STAINED_GLASS, Blocks.GREEN_STAINED_GLASS,
-						Blocks.RED_STAINED_GLASS, Blocks.BLACK_STAINED_GLASS)
-				.registerConsecutivePairs(Blocks.WHITE_STAINED_GLASS_PANE, Blocks.ORANGE_STAINED_GLASS_PANE, Blocks.MAGENTA_STAINED_GLASS_PANE,
-						Blocks.LIGHT_BLUE_STAINED_GLASS_PANE, Blocks.YELLOW_STAINED_GLASS_PANE, Blocks.LIME_STAINED_GLASS_PANE, Blocks.PINK_STAINED_GLASS_PANE,
-						Blocks.GRAY_STAINED_GLASS_PANE, Blocks.LIGHT_GRAY_STAINED_GLASS_PANE, Blocks.CYAN_STAINED_GLASS_PANE, Blocks.PURPLE_STAINED_GLASS_PANE,
-						Blocks.BLUE_STAINED_GLASS_PANE, Blocks.BROWN_STAINED_GLASS_PANE, Blocks.GREEN_STAINED_GLASS_PANE, Blocks.RED_STAINED_GLASS_PANE,
-						Blocks.BLACK_STAINED_GLASS_PANE)
+				.registerConsecutivePairs(Blocks.CONCRETE.white(), Blocks.CONCRETE.orange(), Blocks.CONCRETE.magenta(), Blocks.CONCRETE.lightBlue(), Blocks.CONCRETE.yellow(),
+						Blocks.CONCRETE.lime(), Blocks.CONCRETE.pink(), Blocks.CONCRETE.gray(), Blocks.CONCRETE.lightGray(), Blocks.CONCRETE.cyan(), Blocks.CONCRETE.purple(),
+						Blocks.CONCRETE.blue(), Blocks.CONCRETE.brown(), Blocks.CONCRETE.green(), Blocks.CONCRETE.red(), Blocks.CONCRETE.black())
+				.registerConsecutivePairs(Blocks.CONCRETE_POWDER.white(), Blocks.CONCRETE_POWDER.orange(), Blocks.CONCRETE_POWDER.magenta(), Blocks.CONCRETE_POWDER.lightBlue(),
+						Blocks.CONCRETE_POWDER.yellow(), Blocks.CONCRETE_POWDER.lime(), Blocks.CONCRETE_POWDER.pink(), Blocks.CONCRETE_POWDER.gray(), Blocks.CONCRETE_POWDER.lightGray(),
+						Blocks.CONCRETE_POWDER.cyan(), Blocks.CONCRETE_POWDER.purple(), Blocks.CONCRETE_POWDER.blue(), Blocks.CONCRETE_POWDER.brown(), Blocks.CONCRETE_POWDER.green(),
+						Blocks.CONCRETE_POWDER.red(), Blocks.CONCRETE_POWDER.black())
+				.registerConsecutivePairs(Blocks.CARPET.white(), Blocks.CARPET.orange(), Blocks.CARPET.magenta(), Blocks.CARPET.lightBlue(), Blocks.CARPET.yellow(),
+						Blocks.CARPET.lime(), Blocks.CARPET.pink(), Blocks.CARPET.gray(), Blocks.CARPET.lightGray(), Blocks.CARPET.cyan(), Blocks.CARPET.purple(), Blocks.CARPET.blue(),
+						Blocks.CARPET.brown(), Blocks.CARPET.green(), Blocks.CARPET.red(), Blocks.CARPET.black())
+				.registerConsecutivePairs(Blocks.WOOL.white(), Blocks.WOOL.orange(), Blocks.WOOL.magenta(), Blocks.WOOL.lightBlue(), Blocks.WOOL.yellow(), Blocks.WOOL.lime(),
+						Blocks.WOOL.pink(), Blocks.WOOL.gray(), Blocks.WOOL.lightGray(), Blocks.WOOL.cyan(), Blocks.WOOL.purple(), Blocks.WOOL.blue(), Blocks.WOOL.brown(), Blocks.WOOL.green(),
+						Blocks.WOOL.red(), Blocks.WOOL.black())
+				.registerConsecutivePairs(Blocks.DYED_TERRACOTTA.white(), Blocks.DYED_TERRACOTTA.orange(), Blocks.DYED_TERRACOTTA.magenta(), Blocks.DYED_TERRACOTTA.lightBlue(), Blocks.DYED_TERRACOTTA.yellow(),
+						Blocks.DYED_TERRACOTTA.lime(), Blocks.DYED_TERRACOTTA.pink(), Blocks.DYED_TERRACOTTA.gray(), Blocks.DYED_TERRACOTTA.lightGray(), Blocks.DYED_TERRACOTTA.cyan(),
+						Blocks.DYED_TERRACOTTA.purple(), Blocks.DYED_TERRACOTTA.blue(), Blocks.DYED_TERRACOTTA.brown(), Blocks.DYED_TERRACOTTA.green(), Blocks.DYED_TERRACOTTA.red(), Blocks.DYED_TERRACOTTA.black())
+				.registerConsecutivePairs(Blocks.STAINED_GLASS.white(), Blocks.STAINED_GLASS.orange(), Blocks.STAINED_GLASS.magenta(), Blocks.STAINED_GLASS.lightBlue(),
+						Blocks.STAINED_GLASS.yellow(), Blocks.STAINED_GLASS.lime(), Blocks.STAINED_GLASS.pink(), Blocks.STAINED_GLASS.gray(), Blocks.STAINED_GLASS.lightGray(),
+						Blocks.STAINED_GLASS.cyan(), Blocks.STAINED_GLASS.purple(), Blocks.STAINED_GLASS.blue(), Blocks.STAINED_GLASS.brown(), Blocks.STAINED_GLASS.green(),
+						Blocks.STAINED_GLASS.red(), Blocks.STAINED_GLASS.black())
+				.registerConsecutivePairs(Blocks.STAINED_GLASS_PANE.white(), Blocks.STAINED_GLASS_PANE.orange(), Blocks.STAINED_GLASS_PANE.magenta(),
+						Blocks.STAINED_GLASS_PANE.lightBlue(), Blocks.STAINED_GLASS_PANE.yellow(), Blocks.STAINED_GLASS_PANE.lime(), Blocks.STAINED_GLASS_PANE.pink(),
+						Blocks.STAINED_GLASS_PANE.gray(), Blocks.STAINED_GLASS_PANE.lightGray(), Blocks.STAINED_GLASS_PANE.cyan(), Blocks.STAINED_GLASS_PANE.purple(),
+						Blocks.STAINED_GLASS_PANE.blue(), Blocks.STAINED_GLASS_PANE.brown(), Blocks.STAINED_GLASS_PANE.green(), Blocks.STAINED_GLASS_PANE.red(),
+						Blocks.STAINED_GLASS_PANE.black())
 		;
 
 		WorldTransmutationBuilder oxidizationBuilder = createTransmutationBuilder(PECore.rl("oxidization"))

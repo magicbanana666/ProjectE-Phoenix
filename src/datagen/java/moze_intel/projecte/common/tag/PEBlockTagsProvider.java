@@ -12,7 +12,6 @@ import net.minecraft.core.registries.Registries;
 import java.util.Objects;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -27,9 +26,14 @@ public class PEBlockTagsProvider extends BlockTagsProvider {
 	}
 
 	@Override
+	protected ElementTagAppender<Block> tag(TagKey<Block> tag) {
+		return new ElementTagAppender<>(super.tag(tag), block -> block.builtInRegistryHolder().key());
+	}
+
+	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		tag(PETags.Blocks.FARMING_OVERRIDE).add(Blocks.PINK_PETALS);
-		TagAppender<Block, Block> blacklistHarvest = tag(PETags.Blocks.BLACKLIST_HARVEST);
+		ElementTagAppender<Block> blacklistHarvest = tag(PETags.Blocks.BLACKLIST_HARVEST);
 		//Add blocks that sometimes return false from isValidBonemealTarget, but that we don't actually want to be broken
 		blacklistHarvest.add(
 				//If there is no neighboring nylium we don't want to cause the netherrack to be broken
@@ -45,7 +49,7 @@ public class PEBlockTagsProvider extends BlockTagsProvider {
 				Blocks.BIG_DRIPLEAF,
 				Blocks.BIG_DRIPLEAF_STEM
 		);
-		TagAppender<Block, Block> overridePlantable = tag(PETags.Blocks.OVERRIDE_PLANTABLE);
+		ElementTagAppender<Block> overridePlantable = tag(PETags.Blocks.OVERRIDE_PLANTABLE);
 		addTags(overridePlantable,
 				BlockTags.LEAVES,
 				//Note: All vanilla tall flowers are bonemealable, so will get handled before being used by this tag
@@ -157,8 +161,7 @@ public class PEBlockTagsProvider extends BlockTagsProvider {
 				projecteBlock("fading_emc_link"), projecteBlock("final_emc_link"));
 	}
 
-	//26.1: the tag appenders still take the registry objects themselves, so the ids of the addon blocks have to be
-	// resolved through the registry. Resolving them is done hard so a typo fails datagen instead of writing a bad tag.
+	//The ids of the addon blocks are resolved through the registry. Resolving them is done hard so a typo fails datagen instead of writing a bad tag.
 	private static Block projecteBlock(String name) {
 		return Objects.requireNonNull(BuiltInRegistries.BLOCK.getValue(PECore.rl(name)), "Unknown block " + name);
 	}
@@ -174,7 +177,7 @@ public class PEBlockTagsProvider extends BlockTagsProvider {
 		return block.getBlock();
 	}
 
-	private static TagAppender<Block, Block> addTags(TagAppender<Block, Block> appender, TagKey<Block>... tags) {
+	private static ElementTagAppender<Block> addTags(ElementTagAppender<Block> appender, TagKey<Block>... tags) {
 		for (TagKey<Block> tag : tags) {
 			appender.addTag(tag);
 		}

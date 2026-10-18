@@ -35,6 +35,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.SpecialPlantable;
 import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.event.entity.player.BonemealEvent;
@@ -171,7 +172,7 @@ public class HarvestGoddess extends PEToggleItem implements IPedestalItem {
 				} else if (stack.is(PETags.Items.PLANTABLE_SEEDS) && stack.getItem() instanceof BlockItem blockItem) {
 					if (placeContext == null) {
 						placeContext = new BlockPlaceContext(level, player, InteractionHand.MAIN_HAND, stack, new BlockHitResult(
-								currentPos.getCenter().relative(Direction.UP, 0.5), Direction.UP, currentPos, false
+								Vec3.atCenterOf(currentPos).relative(Direction.UP, 0.5), Direction.UP, currentPos, false
 						));
 						//Note: We don't want to replace the block we are trying to place against
 						placeContext.replaceClicked = false;

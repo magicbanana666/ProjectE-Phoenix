@@ -51,7 +51,7 @@ public class DecoratedShieldProcessor implements IDataComponentProcessor {
 			if (baseColor != null) {
 				ItemStack banner = BuiltInRegistries.ITEM.get(Identifier.withDefaultNamespace(baseColor.getName() + "_banner"))
 				.map(ItemStack::new)
-				.orElseGet(() -> new ItemStack(Items.WHITE_BANNER));
+				.orElseGet(() -> new ItemStack(Items.BANNER.white()));
 				BannerPatternLayers patternLayers = info.getOrNull(DataComponents.BANNER_PATTERNS);
 				if (patternLayers != null && !patternLayers.equals(BannerPatternLayers.EMPTY)) {
 					//If there is any pattern stored, set it so that we can get the value of the banner when it has that pattern stored

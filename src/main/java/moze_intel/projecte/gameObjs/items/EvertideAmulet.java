@@ -45,6 +45,7 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.transfer.InfiniteResourceHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import org.jetbrains.annotations.NotNull;
 
@@ -71,8 +72,9 @@ public class EvertideAmulet extends ItemPE implements IProjectileShooter, IPedes
 		BlockPos pos = ctx.getClickedPos();
 		if (!level.isClientSide() && PlayerHelper.hasEditPermission(player, level, pos)) {
 			Direction sideHit = ctx.getClickedFace();
-			IFluidHandler fluidHandler = IFluidHandler.of(WorldHelper.getCapability(level, Capabilities.Fluid.BLOCK, pos, sideHit));
-			if (fluidHandler != null) {
+			ResourceHandler<FluidResource> fluidResourceHandler = WorldHelper.getCapability(level, Capabilities.Fluid.BLOCK, pos, sideHit);
+			if (fluidResourceHandler != null) {
+				IFluidHandler fluidHandler = IFluidHandler.of(fluidResourceHandler);
 				fluidHandler.fill(new FluidStack(Fluids.WATER, FluidType.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
 				return InteractionResult.CONSUME;
 			}

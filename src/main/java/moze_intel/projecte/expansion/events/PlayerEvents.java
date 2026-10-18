@@ -5,7 +5,7 @@ import moze_intel.projecte.expansion.capability.IAlchemicalBookLocationsProvider
 import moze_intel.projecte.expansion.registries.ExpansionAttributes;
 import moze_intel.projecte.expansion.registries.ExpansionCapabilities;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
@@ -50,7 +50,7 @@ public class PlayerEvents {
 		@SubscribeEvent
 		public static void entityAttributeModification(EntityAttributeModificationEvent event) {
 			//26.3: the vanilla entity types moved off of the EntityType class onto EntityTypes
-			event.add(EntityType.PLAYER, ExpansionAttributes.SUN_EXPOSURE_PROTECTION);
+			event.add(EntityTypes.PLAYER, ExpansionAttributes.SUN_EXPOSURE_PROTECTION);
 		}
 	}
 }

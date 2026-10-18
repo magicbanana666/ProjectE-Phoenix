@@ -22,6 +22,7 @@
 
 package com.tagnumelite.projecteintegration.api.recipe.nss;
 
+import com.mojang.datafixers.util.Pair;
 import com.tagnumelite.projecteintegration.PEIntegration;
 import com.tagnumelite.projecteintegration.api.Utils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -34,7 +35,6 @@ import moze_intel.projecte.api.nss.NormalizedSimpleStack;
 import moze_intel.projecte.utils.Constants;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -55,7 +55,7 @@ import java.util.List;
  * @param successful    A boolean stating all conversions where successful
  */
 public record NSSInput(Object2IntMap<NormalizedSimpleStack> ingredientMap,
-                       List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap,
+                       List<Pair<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap,
                        boolean successful) {
     public NSSInput(Object2IntMap<NormalizedSimpleStack> ingredientMap, boolean successful) {
         this(ingredientMap, new ArrayList<>(), successful);
@@ -104,7 +104,7 @@ public record NSSInput(Object2IntMap<NormalizedSimpleStack> ingredientMap,
      */
     public static class Builder {
         private final Object2IntMap<NormalizedSimpleStack> ingredientMap = new Object2IntOpenHashMap<>();
-        private final List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap = new ArrayList<>();
+        private final List<Pair<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap = new ArrayList<>();
         private final IMappingCollector<NormalizedSimpleStack, Long> mapper;
         private final INSSFakeGroupManager fakeGroupManager;
         private final Identifier recipeID;

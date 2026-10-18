@@ -7,8 +7,10 @@ import moze_intel.projecte.utils.PlayerHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -18,6 +20,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 public class EntitySWRGProjectile extends NoGravityThrowableProjectile {
@@ -54,15 +57,15 @@ public class EntitySWRGProjectile extends NoGravityThrowableProjectile {
 			ItemStack found = PlayerHelper.findFirstItem(player, fromArcana ? PEItems.ARCANA_RING : PEItems.SWIFTWOLF_RENDING_GALE);
 			if (!found.isEmpty() && ItemPE.consumeFuel(player, found, 768, true)) {
 				BlockPos pos = result.getBlockPos();
-				LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level(), EntitySpawnReason.TRIGGERED);
+				LightningBolt lightning = EntityTypes.LIGHTNING_BOLT.create(level(), EntitySpawnReason.TRIGGERED);
 				if (lightning != null) {
-					lightning.setPos(pos.getCenter());
+					lightning.setPos(Vec3.atCenterOf(pos));
 					lightning.setCause(player);
 					level().addFreshEntity(lightning);
 				}
 				if (level().isThundering()) {
 					for (int i = 0; i < 3; i++) {
-						LightningBolt bonus = EntityType.LIGHTNING_BOLT.create(level(), EntitySpawnReason.TRIGGERED);
+						LightningBolt bonus = EntityTypes.LIGHTNING_BOLT.create(level(), EntitySpawnReason.TRIGGERED);
 						if (bonus != null) {
 							bonus.setPos(pos.getX() + 0.5 + level().getRandom().nextGaussian(), pos.getY() + 0.5 + level().getRandom().nextGaussian(),
 									pos.getZ() + 0.5 + level().getRandom().nextGaussian());
@@ -82,12 +85,13 @@ public class EntitySWRGProjectile extends NoGravityThrowableProjectile {
 			ItemStack found = PlayerHelper.findFirstItem(player, fromArcana ? PEItems.ARCANA_RING : PEItems.SWIFTWOLF_RENDING_GALE);
 			if (!found.isEmpty() && ItemPE.consumeFuel(player, found, 64, true)) {
 				// Minor damage, so we count as the attacker for launching the mob
-				e.hurt(level().damageSources().playerAttack(player), 1F);
+				DamageSource source = level().damageSources().playerAttack(player);
+				e.hurt(source, 1F);
 
 				// Fake onGround before knockBack, so you can re-launch mobs that have already been launched
 				boolean oldOnGround = e.onGround();
 				e.setOnGround(true);
-				e.knockback(5F, -getDeltaMovement().x() * 0.25, -getDeltaMovement().z() * 0.25);
+				e.knockback(5F, -getDeltaMovement().x() * 0.25, -getDeltaMovement().z() * 0.25, source, 1F);
 				e.setOnGround(oldOnGround);
 				e.setDeltaMovement(e.getDeltaMovement().multiply(1, 3, 1));
 			}

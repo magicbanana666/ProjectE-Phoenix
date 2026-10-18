@@ -22,7 +22,7 @@ class SpecialRecipeMarkHandledMapperTest {
 		SpecialRecipeMarkHandledMapper mapper = new SpecialRecipeMarkHandledMapper();
 		RecipeHolder<?> bannerRecipe = new RecipeHolder<>(ResourceKey.create(Registries.RECIPE,
 				Identifier.fromNamespaceAndPath("projecte", "banner_duplicate_test")),
-				new BannerDuplicateRecipe(Ingredient.of(Items.WHITE_BANNER), new ItemStackTemplate(Items.WHITE_BANNER)));
+				new BannerDuplicateRecipe(Ingredient.of(Items.BANNER.white()), new ItemStackTemplate(Items.BANNER.white())));
 		RecipeHolder<?> bookRecipe = new RecipeHolder<>(ResourceKey.create(Registries.RECIPE,
 				Identifier.fromNamespaceAndPath("projecte", "book_clone_test")),
 				new BookCloningRecipe(Ingredient.of(Items.WRITABLE_BOOK), Ingredient.of(Items.PAPER),

@@ -96,7 +96,7 @@ public class BlackHoleBand extends PEToggleItem implements IAlchBagItem, IAlchCh
 	@Override
 	public <PEDESTAL extends BlockEntity & IDMPedestal> boolean updateInPedestal(@NotNull ItemStack stack, @NotNull Level level, @NotNull BlockPos pos,
 			@NotNull PEDESTAL pedestal) {
-		Vec3 target = pos.getCenter();
+		Vec3 target = Vec3.atCenterOf(pos);
 		//Cache the item handlers for neighboring positions in a fixed-size array (6 directions) to avoid EnumMap allocation each tick
 		IItemHandler[] nearbyHandlers = new IItemHandler[6];
 		for (ItemEntity item : level.getEntitiesOfClass(ItemEntity.class, pedestal.getEffectBounds(), ent -> !ent.isSpectator() && ent.isAlive())) {

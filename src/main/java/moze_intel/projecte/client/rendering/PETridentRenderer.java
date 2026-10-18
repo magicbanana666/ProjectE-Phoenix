@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ThrownTridentRenderer;
 import net.minecraft.client.renderer.entity.state.ThrownTridentRenderState;
-import net.minecraft.client.renderer.feature.ItemFeatureRenderer;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
@@ -51,7 +51,7 @@ public class PETridentRenderer extends ThrownTridentRenderer {
 				.submitModel(model, Unit.INSTANCE, poseStack, texture, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
 		if (state.isFoil) {
 			submitNodeCollector.order(1)
-					.submitModel(model, Unit.INSTANCE, poseStack, ItemFeatureRenderer.getFoilRenderType(model.renderType(texture), false),
+					.submitModel(model, Unit.INSTANCE, poseStack, RenderTypes.entityGlint(),
 							state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
 		}
 		poseStack.popPose();

@@ -1,4 +1,9 @@
-// 26.1.2	2026-09-27T11:48:17.605698831	Tags for minecraft:item mod id projecte
+// 26.2	2026-10-18T14:53:00.8293856	Tags for minecraft:item mod id projecte
+b3907f1aa02b78471363a02cc94dc9569664a81d data/curios/tags/item/belt.json
+e0550afba044e192d36f29fc351d42de699d7219 data/curios/tags/item/klein_star.json
+58753d63ef9f09a75ea529395bb7c6d282310f2b data/curios/tags/item/necklace.json
+0d7912a5e8d1f8651e741cd6d82efa0d3b1797e6 data/curios/tags/item/ring.json
+54f22fe5ac48f3fd39d8e5c623b5609dda7ae71b data/curios/tags/item/transmutation_tablet.json
 852bf3ba785fe482e8e546bebaa0dd5685ce44b8 data/c/tags/item/barrels.json
 b1526b0ba3ea9a6445822180462b59f848cbf363 data/c/tags/item/chests.json
 5b8d3c0c22e0ab7ef50ec16c29036f1c7d9f1b37 data/c/tags/item/dyed/black.json
@@ -27,11 +32,6 @@ ec6a1dc7708c13de8c2671ec5e92eb11f0de1cea data/c/tags/item/tools/hammers.json
 2ff38db078df853e1f8ab20a3d40f89887c203b5 data/c/tags/item/tools/ranged_weapon.json
 23bba3c6ab8a4ee4fe3dfcf867543820950ed620 data/c/tags/item/tools/shear.json
 0e6e9e2d6e73cca3e09e799c92600f220fc58a15 data/c/tags/item/tools/shield.json
-b3907f1aa02b78471363a02cc94dc9569664a81d data/curios/tags/item/belt.json
-e0550afba044e192d36f29fc351d42de699d7219 data/curios/tags/item/klein_star.json
-58753d63ef9f09a75ea529395bb7c6d282310f2b data/curios/tags/item/necklace.json
-0d7912a5e8d1f8651e741cd6d82efa0d3b1797e6 data/curios/tags/item/ring.json
-54f22fe5ac48f3fd39d8e5c623b5609dda7ae71b data/curios/tags/item/transmutation_tablet.json
 767321206bcf54d8be1d7b31272821abc34aea83 data/minecraft/tags/item/axes.json
 e2750619a3147db38539ae8ccecab0b32bb6be23 data/minecraft/tags/item/beacon_payment_items.json
 67b55adfd8d09381b6113fc0dcfe76d53a5eebda data/minecraft/tags/item/bookshelf_books.json
@@ -58,13 +58,13 @@ ef5522fcafe54247070253f636dc82439aefb8dd data/minecraft/tags/item/swords.json
 823df3f383ec8da9f84db57523a1d8ee863903b7 data/projecte/tags/item/alchemical_bags.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/projecte/tags/item/blacklist_condenser.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/projecte/tags/item/blacklist_learning.json
-e4725bb8b1976c0a55fd0ced5bb9741612220299 data/projecte/tags/item/collector_fuel.json
 a4365b08d9870277b9f477c6e6b1ca58906552e6 data/projecte/tags/item/collectors.json
+e4725bb8b1976c0a55fd0ced5bb9741612220299 data/projecte/tags/item/collector_fuel.json
 fd5806da7a4775edf3b8f6520ee2bdd6d4068164 data/projecte/tags/item/covalence_dust.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/projecte/tags/item/data_component_whitelist.json
 f2cf216ed0f2309c6a8725727ed2f50e7eb6e71c data/projecte/tags/item/expansion_collector_fuel.json
 13b2076b6c71c6e5a25846cf9cdf943b2d258bb1 data/projecte/tags/item/expansion_transmutation_tablets.json
-55b5e862a227e1433dadd24f7f51dcd34077eb77 data/projecte/tags/item/ignore_missing_emc.json
+2401e221a9e763482874ac69f82ca5f35fb8cff5 data/projecte/tags/item/ignore_missing_emc.json
 9090bbbb09865a842a67d6a0c05eaf72df3720f7 data/projecte/tags/item/klein_stars.json
 484813f35095aea461e7bfeb89ac684052131339 data/projecte/tags/item/matter_furnaces.json
 dcb57d5c2edd0a5e97816f10cb6d362b20439433 data/projecte/tags/item/plantable_seeds.json

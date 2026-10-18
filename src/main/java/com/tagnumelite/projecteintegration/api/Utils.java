@@ -22,6 +22,7 @@
 
 package com.tagnumelite.projecteintegration.api;
 
+import com.mojang.datafixers.util.Pair;
 import com.tagnumelite.projecteintegration.PEIntegration;
 import com.tagnumelite.projecteintegration.api.recipe.ACustomRecipeMapper;
 import com.tagnumelite.projecteintegration.api.recipe.CustomRecipeMapper;
@@ -36,7 +37,6 @@ import moze_intel.projecte.api.nss.NormalizedSimpleStack;
 import moze_intel.projecte.utils.Constants;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -121,7 +121,7 @@ public class Utils {
      */
     public static boolean convertFluidIngredient(int amount, List<FluidStack> fluidIngredient,
                                                  Object2IntMap<NormalizedSimpleStack> ingredientMap,
-                                                 List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap,
+                                                 List<Pair<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap,
                                                  INSSFakeGroupManager fakeGroupManager, String recipeID) {
         if (fluidIngredient == null || fluidIngredient.isEmpty()) {
             return false;
@@ -162,7 +162,7 @@ public class Utils {
                         }
                         groupIngredientMaps.add(groupIngredientMap);
                     }
-                    fakeGroupMap.add(new Tuple<>(dummy, groupIngredientMaps));
+                    fakeGroupMap.add(new Pair<>(dummy, groupIngredientMaps));
                 }
             }
         }
@@ -171,7 +171,7 @@ public class Utils {
 
     public static boolean convertIngredient(int amount, Ingredient ingredient,
                                             Object2IntMap<NormalizedSimpleStack> ingredientMap,
-                                            List<Tuple<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap,
+                                            List<Pair<NormalizedSimpleStack, List<Object2IntMap<NormalizedSimpleStack>>>> fakeGroupMap,
                                             INSSFakeGroupManager fakeGroupManager, String recipeID) {
         ItemStack[] matches = getMatchingStacks(ingredient, recipeID);
         if (matches == null) {
@@ -213,7 +213,7 @@ public class Utils {
                         }
                         groupIngredientMaps.add(groupIngredientMap);
                     }
-                    fakeGroupMap.add(new Tuple<>(dummy, groupIngredientMaps));
+                    fakeGroupMap.add(new Pair<>(dummy, groupIngredientMaps));
                 }
             }
         }

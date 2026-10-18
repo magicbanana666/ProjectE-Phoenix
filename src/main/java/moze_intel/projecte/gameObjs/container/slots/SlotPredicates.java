@@ -55,12 +55,21 @@ public final class SlotPredicates {
 			return server.overworld().fuelValues();
 		}
 		if (FMLEnvironment.getDist().isClient()) {
-			Level level = Minecraft.getInstance().level;
+			Level level = ClientLevelHelper.getLevel();
 			if (level != null) {
 				return level.fuelValues();
 			}
 		}
 		return null;
+	}
+
+	//Note: Kept in a separate class so that loading SlotPredicates on a dedicated server does not try to load ClientLevel
+	private static class ClientLevelHelper {
+
+		@Nullable
+		public static Level getLevel() {
+			return Minecraft.getInstance().level;
+		}
 	}
 
 	private SlotPredicates() {

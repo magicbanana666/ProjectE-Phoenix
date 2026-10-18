@@ -70,7 +70,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ItemLike;
@@ -83,6 +83,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -203,8 +204,8 @@ public class PECore {
 	}
 
 	public void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerEntity(PECapabilities.ALCH_BAG_CAPABILITY, EntityType.PLAYER, (player, context) -> new AlchBagImpl(player));
-		event.registerEntity(PECapabilities.KNOWLEDGE_CAPABILITY, EntityType.PLAYER, (player, context) -> new KnowledgeImpl(player));
+		event.registerEntity(PECapabilities.ALCH_BAG_CAPABILITY, EntityTypes.PLAYER, (player, context) -> new AlchBagImpl(player));
+		event.registerEntity(PECapabilities.KNOWLEDGE_CAPABILITY, EntityTypes.PLAYER, (player, context) -> new KnowledgeImpl(player));
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
@@ -238,7 +239,7 @@ public class PECore {
 						level.gameEvent(null, GameEvent.BLOCK_PLACE, pos);
 					} else {
 						Direction opposite = direction.getOpposite();
-						BlockHitResult hitResult = new BlockHitResult(pos.getCenter(), opposite, pos, false);
+						BlockHitResult hitResult = new BlockHitResult(Vec3.atCenterOf(pos), opposite, pos, false);
 						UseOnContext context = new UseOnContext(level, null, InteractionHand.MAIN_HAND, stack, hitResult);
 						BlockState modifiedState = state.getToolModifiedState(context, ItemAbilities.FIRESTARTER_LIGHT, false);
 						if (modifiedState != null) {

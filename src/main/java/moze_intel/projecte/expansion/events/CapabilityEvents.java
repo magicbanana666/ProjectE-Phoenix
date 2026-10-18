@@ -14,7 +14,7 @@ import moze_intel.projecte.expansion.registries.ExpansionItems;
 import moze_intel.projecte.expansion.util.IHasCapability;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -35,7 +35,7 @@ public class CapabilityEvents {
 		event.registerEntity(
 				ExpansionCapabilities.ALCHEMICAL_BOOK_LOCATIONS_ENTITY,
 				//26.3: the vanilla entity types moved off of the EntityType class onto EntityTypes
-				EntityType.PLAYER,
+				EntityTypes.PLAYER,
 				(player, dir) -> new CapabilityAlchemicalBookLocations(ItemAlchemicalBook.Mode.PLAYER, (ServerPlayer) player, null)
 		);
 		event.registerItem(
