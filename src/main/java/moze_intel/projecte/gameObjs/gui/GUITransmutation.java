@@ -85,35 +85,35 @@ public class GUITransmutation extends PEContainerScreen<TransmutationContainer> 
 
 	@Override
 	protected void extractLabels(@NotNull GuiGraphicsExtractor graphics, int x, int y) {
-		graphics.text(font, title, titleLabelX, titleLabelY, 0x404040, false);
+		graphics.text(font, title, titleLabelX, titleLabelY, 0xFF404040, false);
 		//Don't render inventory as we don't have space
-		graphics.text(font, PELang.EMC_TOOLTIP.translate(""), 6, this.imageHeight - 104, 0x404040, false);
+		graphics.text(font, PELang.EMC_TOOLTIP.translate(""), 6, this.imageHeight - 104, 0xFF404040, false);
 		Component emc = TransmutationEMCFormatter.formatEMC(inv.getAvailableEmc());
-		graphics.text(font, emc, 6, this.imageHeight - 94, 0x404040, false);
+		graphics.text(font, emc, 6, this.imageHeight - 94, 0xFF404040, false);
 
 		if (inv.learnFlag > 0) {
-			graphics.text(font, PELang.TRANSMUTATION_LEARNED_1.translate(), 98, 30, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_LEARNED_2.translate(), 99, 38, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_LEARNED_3.translate(), 100, 46, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_LEARNED_4.translate(), 101, 54, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_LEARNED_5.translate(), 102, 62, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_LEARNED_6.translate(), 103, 70, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_LEARNED_7.translate(), 104, 78, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_LEARNED_8.translate(), 107, 86, 0x404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_LEARNED_1.translate(), 98, 30, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_LEARNED_2.translate(), 99, 38, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_LEARNED_3.translate(), 100, 46, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_LEARNED_4.translate(), 101, 54, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_LEARNED_5.translate(), 102, 62, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_LEARNED_6.translate(), 103, 70, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_LEARNED_7.translate(), 104, 78, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_LEARNED_8.translate(), 107, 86, 0xFF404040, false);
 
 			inv.learnFlag--;
 		}
 
 		if (inv.unlearnFlag > 0) {
-			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_1.translate(), 97, 22, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_2.translate(), 98, 30, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_3.translate(), 99, 38, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_4.translate(), 100, 46, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_5.translate(), 101, 54, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_6.translate(), 102, 62, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_7.translate(), 103, 70, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_8.translate(), 104, 78, 0x404040, false);
-			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_9.translate(), 107, 86, 0x404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_1.translate(), 97, 22, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_2.translate(), 98, 30, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_3.translate(), 99, 38, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_4.translate(), 100, 46, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_5.translate(), 101, 54, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_6.translate(), 102, 62, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_7.translate(), 103, 70, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_8.translate(), 104, 78, 0xFF404040, false);
+			graphics.text(font, PELang.TRANSMUTATION_UNLEARNED_9.translate(), 107, 86, 0xFF404040, false);
 
 			inv.unlearnFlag--;
 		}

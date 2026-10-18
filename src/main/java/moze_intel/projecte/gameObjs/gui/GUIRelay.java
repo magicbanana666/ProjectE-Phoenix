@@ -37,9 +37,9 @@ public class GUIRelay<CONTAINER extends RelayMK1Container> extends PEContainerSc
 
 	@Override
 	protected void extractLabels(@NotNull GuiGraphicsExtractor graphics, int x, int y) {
-		graphics.text(font, title, titleLabelX, titleLabelY, 0x404040, false);
+		graphics.text(font, title, titleLabelX, titleLabelY, 0xFF404040, false);
 		//Don't render inventory as we don't have space
-		graphics.text(font, EMCHelper.formatEmc(menu.emc.get()), emcX, emcY, 0x404040, false);
+		graphics.text(font, EMCHelper.formatEmc(menu.emc.get()), emcX, emcY, 0xFF404040, false);
 	}
 
 	@Override

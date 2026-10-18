@@ -35,10 +35,10 @@ public abstract class AbstractCollectorScreen<T extends CollectorMK1Container> e
 	@Override
 	protected void extractLabels(@NotNull GuiGraphicsExtractor graphics, int x, int y) {
 		//Don't render title or inventory as we don't have space
-		graphics.text(font, Long.toString(menu.emc.get()), 60 + getBonusXShift(), 32, 0x404040, false);
+		graphics.text(font, Long.toString(menu.emc.get()), 60 + getBonusXShift(), 32, 0xFF404040, false);
 		long kleinCharge = menu.kleinEmc.get();
 		if (kleinCharge > 0) {
-			graphics.text(font, EMCHelper.formatEmc(kleinCharge), 60 + getBonusXShift(), 44, 0x404040, false);
+			graphics.text(font, EMCHelper.formatEmc(kleinCharge), 60 + getBonusXShift(), 44, 0xFF404040, false);
 		}
 	}
 

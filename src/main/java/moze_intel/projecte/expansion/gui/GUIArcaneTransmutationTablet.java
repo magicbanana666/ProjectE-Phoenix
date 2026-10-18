@@ -184,7 +184,7 @@ public class GUIArcaneTransmutationTablet extends PEContainerScreen<ContainerArc
 			pose.pushMatrix();
 			pose.translate(slot.x + 17, slot.y + 12);
 			pose.scale(0.5F, 0.5F);
-			graphics.text(font, countFmt, -font.width(countFmt), 0, 0xFFFFFF, true);
+			graphics.text(font, countFmt, -font.width(countFmt), 0, 0xFFFFFFFF, true);
 			pose.popMatrix();
 		}
 	}

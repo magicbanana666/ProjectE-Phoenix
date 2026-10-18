@@ -34,7 +34,7 @@ public abstract class AbstractCondenserScreen<T extends CondenserContainer> exte
 		//Don't render title or inventory as we don't have space
 		long toDisplay = Math.min(menu.displayEmc.get(), menu.requiredEmc.get());
 		Component emc = TransmutationEMCFormatter.formatEMC(toDisplay);
-		graphics.text(font, emc, 140, 10, 0x404040, false);
+		graphics.text(font, emc, 140, 10, 0xFF404040, false);
 	}
 
 	@Override
