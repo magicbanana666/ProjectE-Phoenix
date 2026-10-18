@@ -19,11 +19,11 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Проверяет, что у каждого предмета и блока есть картинка и название.
+ * Checks that every item and block has a texture and a name.
  * <p>
- * Обе проверки ловят ошибки, которые не видны в логе: предмет с моделью без текстур выглядит как
- * пустая иконка, а предмет без ключа {@code item.projecte.*} показывает в тултипе сырой ключ
- * (в 26.x тултип блочного предмета берёт имя именно по ключу {@code item.*}).
+ * Both checks catch mistakes that do not show up in the log: an item with a model without textures looks like
+ * an empty icon, and an item without an {@code item.projecte.*} key shows the raw key in its tooltip
+ * (since 26.x the tooltip of a block item takes its name from the {@code item.*} key).
  */
 @DisplayName("Check that every item has a texture and a name")
 class ResourceCompletenessTest {
@@ -53,15 +53,15 @@ class ResourceCompletenessTest {
 			}
 			dir = dir.getParent();
 		}
-		throw new IllegalStateException("Не найден корень проекта: в " + Path.of("").toAbsolutePath()
-				+ " нет каталога src/main/resources/assets/" + MODID);
+		throw new IllegalStateException("Could not find the project root: " + Path.of("").toAbsolutePath()
+				+ " has no src/main/resources/assets/" + MODID);
 	}
 
 	@Test
 	@DisplayName("Every item model has at least one texture, and every referenced texture exists")
 	void everyItemModelHasATexture() throws IOException {
 		List<String> problems = new ArrayList<>();
-		assertTrue(Files.isDirectory(ASSETS.resolve("models/item")), "Похоже, ассеты не найдены: " + ROOT);
+		assertTrue(Files.isDirectory(ASSETS.resolve("models/item")), "The assets were not found: " + ROOT);
 		//Since 26.x every item also has a definition in assets/<ns>/items, which points at the model that is used
 		for (Path definition : definitions("items")) {
 			checkModel(definition.getFileName() + ":", modelOf(definition), problems);
@@ -73,7 +73,7 @@ class ResourceCompletenessTest {
 				checkModel(model.getFileName() + ":", parse(model), problems);
 			}
 		}
-		assertTrue(problems.isEmpty(), () -> "Предметы без текстур:\n" + String.join("\n", problems));
+		assertTrue(problems.isEmpty(), () -> "Items without textures:\n" + String.join("\n", problems));
 	}
 
 	/**
@@ -97,18 +97,18 @@ class ResourceCompletenessTest {
 			String[] parts = split(texture);
 			if (parts[0].equals(MODID) && !exists(ASSETS.resolve("textures").resolve(parts[1] + ".png"))
 					&& !exists(ROOT.resolve("src/datagen/generated-client/assets").resolve(MODID).resolve("textures").resolve(parts[1] + ".png"))) {
-				problems.add(what + " нет текстуры " + texture);
+				problems.add(what + " missing texture " + texture);
 			}
 		}
 		if (textures.isEmpty() && slots.isEmpty()) {
-			problems.add(what + " модель без текстур");
+			problems.add(what + " model without textures");
 		}
 	}
 
 	@Test
 	@DisplayName("Every hand written item model has an item.projecte.* name")
 	void everyItemHasAName() throws IOException {
-		assertTrue(Files.isDirectory(ASSETS.resolve("models/item")), "Похоже, ассеты не найдены: " + ROOT);
+		assertTrue(Files.isDirectory(ASSETS.resolve("models/item")), "The assets were not found: " + ROOT);
 		JsonObject en = readLang();
 		if (en == null) {
 			//The language file is generated, so there is nothing to check before data generation has run
@@ -126,10 +126,10 @@ class ResourceCompletenessTest {
 				}
 			}
 		}
-		assertTrue(problems.isEmpty(), () -> "Предметы без названия:\n" + String.join("\n", problems));
+		assertTrue(problems.isEmpty(), () -> "Items without a name:\n" + String.join("\n", problems));
 	}
 
-	//Хелперы
+	//Helpers
 
 	private static List<Path> definitions(String folder) throws IOException {
 		List<Path> result = new ArrayList<>();
@@ -160,7 +160,7 @@ class ResourceCompletenessTest {
 	}
 
 	/**
-	 * Достаёт из определения предмета ту модель, на которую оно ссылается, идя по {@code select}/{@code range_dispatch}.
+	 * Gets the model an item definition points at, following {@code select}/{@code range_dispatch}.
 	 */
 	private static JsonObject modelOf(Path definition) throws IOException {
 		JsonElement root = parse(definition);
