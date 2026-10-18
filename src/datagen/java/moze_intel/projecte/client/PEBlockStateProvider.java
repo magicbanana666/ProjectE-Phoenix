@@ -91,9 +91,9 @@ public class PEBlockStateProvider extends ModelProvider {
 		models.blockStateOutput.accept(MultiVariantGenerator.dispatch(PEBlocks.ALCHEMICAL_BARREL.getBlock(),
 				BlockModelGenerators.plainVariant(open))
 				.with(modelDispatch(BlockStateProperties.OPEN, false, closed, true, open))
-				//The barrel is a DirectionalBlock, so its FACING has all six directions and the horizontal rotation
-				//variant, which only knows four, does not apply to it
-				.with(BlockModelGenerators.ROTATION_FACING));
+				//The barrel is a DirectionalBlock whose model has its top facing up (like the vanilla barrel), so it
+				//needs the column rotations rather than ROTATION_FACING (which assumes a north facing model)
+				.with(BlockModelGenerators.ROTATIONS_COLUMN_WITH_FACING));
 	}
 
 	private void registerInterdictionLantern(BlockModelGenerators models) {
@@ -209,7 +209,7 @@ public class PEBlockStateProvider extends ModelProvider {
 								.put(TextureSlot.SIDE, material("block/transmutation_stone/side"))
 								.put(TextureSlot.PARTICLE, top), models.modelOutput);
 		models.blockStateOutput.accept(MultiVariantGenerator.dispatch(PEBlocks.TRANSMUTATION_TABLE.getBlock(),
-				BlockModelGenerators.plainVariant(model)).with(BlockModelGenerators.ROTATION_FACING));
+				BlockModelGenerators.plainVariant(model)).with(BlockModelGenerators.ROTATIONS_COLUMN_WITH_FACING));
 	}
 
 	private void registerExplosives(BlockModelGenerators models) {
