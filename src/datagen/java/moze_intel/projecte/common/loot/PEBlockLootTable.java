@@ -4,8 +4,8 @@ import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import java.util.Set;
 import moze_intel.projecte.gameObjs.registries.PEBlocks;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -13,13 +13,13 @@ import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import org.jetbrains.annotations.NotNull;
 
 public class PEBlockLootTable extends BlockLootSubProvider {
 
-	public PEBlockLootTable(HolderLookup.Provider registries) {
+	public PEBlockLootTable(LootTableSubProvider.Context output) {
 		super(Set.of(
 				PEBlocks.COLLECTOR.getSecondary(),
 				PEBlocks.COLLECTOR_MK2.getSecondary(),
@@ -34,7 +34,7 @@ public class PEBlockLootTable extends BlockLootSubProvider {
 				PEBlocks.RELAY.getSecondary(),
 				PEBlocks.RELAY_MK2.getSecondary(),
 				PEBlocks.RELAY_MK3.getSecondary()
-		), FeatureFlags.VANILLA_SET, registries);
+		), FeatureFlags.VANILLA_SET, output);
 	}
 
 	@Override
@@ -72,17 +72,17 @@ public class PEBlockLootTable extends BlockLootSubProvider {
 	}
 
 	protected LootTable.Builder dropping(ItemLike item) {
-		return LootTable.lootTable().withPool(applyExplosionCondition(item, LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+		return LootTable.lootTable().withPool(applyExplosionCondition(item, LootPool.lootPool().setRolls(ContextIntProviders.exactly(1))
 				.name("main")
 				.add(LootItem.lootTableItem(item))
 		));
 	}
 
 	private void registerCustomTNT(Block tnt) {
-		add(tnt, LootTable.lootTable().withPool(applyExplosionCondition(tnt, LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+		add(tnt, LootTable.lootTable().withPool(applyExplosionCondition(tnt, LootPool.lootPool().setRolls(ContextIntProviders.exactly(1))
 				.name("main")
-				.add(LootItem.lootTableItem(tnt).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(tnt)
-						.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(TntBlock.UNSTABLE, false)))))));
+				.add(LootItem.lootTableItem(tnt).when(MatchBlock.blockMatches(blocks, tnt,
+						StatePropertiesPredicate.Builder.properties().hasProperty(TntBlock.UNSTABLE, false)))))));
 	}
 	/**
 	 * The vanilla blocks carry their loot table reference directly, so without this override the provider would demand

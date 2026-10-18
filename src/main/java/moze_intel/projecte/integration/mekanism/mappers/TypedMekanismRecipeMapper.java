@@ -109,7 +109,7 @@ public abstract class TypedMekanismRecipeMapper<RECIPE extends MekanismRecipe<?>
         if (typedRecipe.isIncomplete()) {
             return false;
         }
-        ContextMap contextMap = new ContextMap.Builder().withParameter(SlotDisplayContext.REGISTRIES, registryAccess).create(SlotDisplayContext.CONTEXT);
+        ContextMap contextMap = ContextMap.builder().set(SlotDisplayContext.REGISTRIES, registryAccess).buildAndValidate(SlotDisplayContext.CONTEXT);
         return handleRecipe(mapper, typedRecipe, new MekFakeGroupHelper(fakeGroupManager), contextMap);
     }
 

@@ -2,6 +2,7 @@ package moze_intel.projecte.expansion.block.entity;
 
 import moze_intel.projecte.expansion.util.Util;
 import moze_intel.projecte.utils.ItemHelper;
+import moze_intel.projecte.utils.inventory.ItemStackHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -11,7 +12,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
-import net.neoforged.neoforge.items.ItemStackHandler;
 
 public class BlockEntityBase extends BlockEntity {
 	private boolean updateComparators;

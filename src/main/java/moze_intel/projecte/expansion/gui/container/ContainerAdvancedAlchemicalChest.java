@@ -1,11 +1,11 @@
 package moze_intel.projecte.expansion.gui.container;
 
+import moze_intel.projecte.api.inventory.IItemHandlerModifiable;
 import moze_intel.projecte.expansion.block.entity.BlockEntityAdvancedAlchemicalChest;
 import moze_intel.projecte.gameObjs.container.AlchBagContainer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 
 // yet again more "inspiration" from ProjectE

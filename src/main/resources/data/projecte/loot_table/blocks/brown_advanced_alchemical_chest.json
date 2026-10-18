@@ -9,11 +9,9 @@
           "name": "projecte:brown_advanced_alchemical_chest"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ]
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      }
     }
   ]
 }

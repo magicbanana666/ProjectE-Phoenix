@@ -1,9 +1,9 @@
 package moze_intel.projecte.expansion.integrations.curios;
 
 import java.util.Optional;
+import moze_intel.projecte.api.inventory.IItemHandlerModifiable;
 import moze_intel.projecte.integration.curios.TransmutationTableCurios;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
 
 
 /**

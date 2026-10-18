@@ -108,7 +108,7 @@ public class BlockCollector extends BlockDirection implements IHasMatter, Entity
 
 	@Override
 	public PushReaction getPistonPushReaction(BlockState state) {
-		return PushReaction.BLOCK;
+		return PushReaction.IMMOVEABLE;
 	}
 
 	@Override

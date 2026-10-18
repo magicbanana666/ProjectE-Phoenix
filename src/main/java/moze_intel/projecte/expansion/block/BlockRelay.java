@@ -91,7 +91,7 @@ public class BlockRelay extends Block implements IHasMatter, EntityBlock, IMatte
 
 	@Override
 	public PushReaction getPistonPushReaction(BlockState state) {
-		return PushReaction.BLOCK;
+		return PushReaction.IMMOVEABLE;
 	}
 
 	@Override

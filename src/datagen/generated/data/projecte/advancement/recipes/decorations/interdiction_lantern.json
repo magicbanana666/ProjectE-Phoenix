@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projecte:interdiction_lantern"
+        "recipes": "projecte:interdiction_lantern"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

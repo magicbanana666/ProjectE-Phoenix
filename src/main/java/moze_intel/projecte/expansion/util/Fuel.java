@@ -8,10 +8,7 @@ import moze_intel.projecte.gameObjs.registration.impl.BlockRegistryObject;
 import moze_intel.projecte.gameObjs.registration.impl.ItemRegistryObject;
 import moze_intel.projecte.gameObjs.registries.PEItems;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.FuelValues;
-import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
 import javax.annotation.Nullable;
 import java.math.BigInteger;
@@ -69,14 +66,6 @@ public enum Fuel {
 		if (RARE_ITEMS.contains(this)) return Rarity.RARE;
 		if (EPIC_ITEMS.contains(this)) return Rarity.EPIC;
 		return Rarity.COMMON;
-	}
-
-	public int getBurnTime() {
-		return getBurnTime(null, ServerLifecycleHooks.getCurrentServer() == null ? null : ServerLifecycleHooks.getCurrentServer().overworld().fuelValues());
-	}
-
-	public int getBurnTime(@Nullable RecipeType<?> type, FuelValues fuelValues) {
-		return item == null ? -1 : new ItemStack(PEItems.AETERNALIS_FUEL.get()).getBurnTime(type, fuelValues);
 	}
 
 	public long getCollectorEMCLimit() {

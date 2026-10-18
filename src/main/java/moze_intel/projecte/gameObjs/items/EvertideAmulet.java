@@ -41,9 +41,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.saveddata.WeatherData;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.transfer.InfiniteResourceHandler;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;
@@ -74,8 +72,7 @@ public class EvertideAmulet extends ItemPE implements IProjectileShooter, IPedes
 			Direction sideHit = ctx.getClickedFace();
 			ResourceHandler<FluidResource> fluidResourceHandler = WorldHelper.getCapability(level, Capabilities.Fluid.BLOCK, pos, sideHit);
 			if (fluidResourceHandler != null) {
-				IFluidHandler fluidHandler = IFluidHandler.of(fluidResourceHandler);
-				fluidHandler.fill(new FluidStack(Fluids.WATER, FluidType.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+				WorldHelper.fillFluidHandler(fluidResourceHandler, Fluids.WATER, FluidType.BUCKET_VOLUME);
 				return InteractionResult.CONSUME;
 			}
 			WorldHelper.placeFluid(player, level, pos, sideHit, Fluids.WATER, !ProjectEConfig.server.items.opEvertide.get());

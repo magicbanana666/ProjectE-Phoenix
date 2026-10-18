@@ -94,9 +94,9 @@ public class PEItems {
 	public static final ItemRegistryObject<KleinStar> KLEIN_STAR_SPHERE = registerKleinStar(KleinTier.SPHERE);
 	public static final ItemRegistryObject<KleinStar> KLEIN_STAR_OMEGA = registerKleinStar(KleinTier.OMEGA);
 
-	public static final ItemRegistryObject<Item> ALCHEMICAL_COAL = ITEMS.register("alchemical_coal");
-	public static final ItemRegistryObject<Item> MOBIUS_FUEL = ITEMS.register("mobius_fuel");
-	public static final ItemRegistryObject<Item> AETERNALIS_FUEL = ITEMS.registerSimple("aeternalis_fuel", properties -> new Item(properties.rarity(Rarity.RARE)));
+	public static final ItemRegistryObject<Item> ALCHEMICAL_COAL = ITEMS.registerSimple("alchemical_coal", properties -> new Item(properties.cookingFuel(PEContextIntProviders.COOKING_TIME_ALCHEMICAL_COAL)));
+	public static final ItemRegistryObject<Item> MOBIUS_FUEL = ITEMS.registerSimple("mobius_fuel", properties -> new Item(properties.cookingFuel(PEContextIntProviders.COOKING_TIME_MOBIUS_FUEL)));
+	public static final ItemRegistryObject<Item> AETERNALIS_FUEL = ITEMS.registerSimple("aeternalis_fuel", properties -> new Item(properties.rarity(Rarity.RARE).cookingFuel(PEContextIntProviders.COOKING_TIME_AETERNALIS_FUEL)));
 	public static final ItemRegistryObject<Item> DARK_MATTER = ITEMS.registerFireImmune("dark_matter");
 	public static final ItemRegistryObject<Item> RED_MATTER = ITEMS.registerFireImmune("red_matter");
 

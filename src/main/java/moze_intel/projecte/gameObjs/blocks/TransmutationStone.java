@@ -1,8 +1,6 @@
 package moze_intel.projecte.gameObjs.blocks;
 
-import com.mojang.serialization.MapCodec;
 import moze_intel.projecte.gameObjs.container.TransmutationContainer;
-import moze_intel.projecte.gameObjs.registries.PEBlockTypes;
 import moze_intel.projecte.utils.text.PELang;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -49,11 +47,6 @@ public class TransmutationStone extends DirectionalBlock implements SimpleWaterl
 		this.registerDefaultState(getStateDefinition().any().setValue(FACING, Direction.UP).setValue(BlockStateProperties.WATERLOGGED, false));
 	}
 
-	@NotNull
-	@Override
-	protected MapCodec<? extends DirectionalBlock> codec() {
-		return PEBlockTypes.TRANSMUTATION_TABLE.value();
-	}
 
 	@Override
 	protected void createBlockStateDefinition(@NotNull StateDefinition.Builder<Block, BlockState> props) {

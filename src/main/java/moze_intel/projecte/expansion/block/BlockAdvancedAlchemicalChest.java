@@ -1,8 +1,10 @@
 package moze_intel.projecte.expansion.block;
 
-import com.mojang.serialization.MapCodec;
-import org.jetbrains.annotations.NotNull;
-import moze_intel.projecte.expansion.registries.ExpansionBlockTypes;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import moze_intel.projecte.api.inventory.IItemHandler;
+import moze_intel.projecte.api.inventory.IItemHandlerModifiable;
 import moze_intel.projecte.expansion.block.entity.BlockEntityAdvancedAlchemicalChest;
 import moze_intel.projecte.expansion.gui.container.ContainerAdvancedAlchemicalChest;
 import moze_intel.projecte.expansion.registries.ExpansionBlockEntityTypes;
@@ -55,15 +57,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.ResourceHandlerUtil;
-
-import javax.annotation.Nullable;
-import java.util.Objects;
-import java.util.function.Consumer;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import org.jetbrains.annotations.NotNull;
 
 // Many methods lovingly borrowed (stolen) from ProjectE
 // https://github.com/sinkillerj/ProjectE/blob/mc1.18.x/src/main/java/moze_intel/projecte/gameObjs/blocks/AlchemicalChest.java
@@ -244,11 +241,5 @@ public class BlockAdvancedAlchemicalChest extends HorizontalDirectionalBlock imp
 		public Component getDisplayName() {
 			return Lang.ADVANCED_ALCHEMICAL_CHEST_TITLE.translate();
 		}
-	}
-
-	@NotNull
-	@Override
-	protected MapCodec<BlockAdvancedAlchemicalChest> codec() {
-		return ExpansionBlockTypes.ADVANCED_ALCHEMICAL_CHEST.value();
 	}
 }

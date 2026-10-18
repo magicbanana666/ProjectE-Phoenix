@@ -78,7 +78,7 @@ public class ChestRenderer<BE extends BlockEntity & IChestLike> implements Block
 		}
 		poseStack.pushPose();
 		poseStack.translate(0.5D, 0.5D, 0.5D);
-		poseStack.mulPose(Axis.YP.rotationDegrees(state.yRot));
+		poseStack.rotate(Axis.YP.rotationDegrees(state.yRot));
 		poseStack.translate(-0.5D, -0.5D, -0.5D);
 		RenderType renderType = RenderTypes.entityCutout(state.texture);
 		lid.xRot = state.lidRot;

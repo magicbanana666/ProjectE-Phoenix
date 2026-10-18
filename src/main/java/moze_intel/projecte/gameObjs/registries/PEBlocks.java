@@ -28,6 +28,7 @@ import moze_intel.projecte.gameObjs.items.PEBlockItem;
 import moze_intel.projecte.gameObjs.registration.impl.BlockDeferredRegister;
 import moze_intel.projecte.gameObjs.registration.impl.BlockRegistryObject;
 import moze_intel.projecte.gameObjs.registration.impl.BlockRegistryObject.WallOrFloorBlockRegistryObject;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.StandingAndWallBlockItem;
@@ -38,15 +39,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
 
 public class PEBlocks {
 
 	public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(PECore.MODID);
 
 	public static final BlockRegistryObject<AlchemicalChest, BlockItem> ALCHEMICAL_CHEST = BLOCKS.register("alchemical_chest", properties -> new AlchemicalChest(properties.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(10, 3_600_000)));
-	public static final BlockRegistryObject<Block, BlockItem> ALCHEMICAL_COAL = registerFuelBlock("alchemical_coal_block", MapColor.COLOR_RED);
-	public static final BlockRegistryObject<Block, BlockItem> MOBIUS_FUEL = registerFuelBlock("mobius_fuel_block", MapColor.COLOR_RED);
-	public static final BlockRegistryObject<Block, BlockItem> AETERNALIS_FUEL = registerFuelBlock("aeternalis_fuel_block", MapColor.COLOR_LIGHT_GRAY);
+	public static final BlockRegistryObject<Block, BlockItem> ALCHEMICAL_COAL = registerFuelBlock("alchemical_coal_block", MapColor.COLOR_RED, PEContextIntProviders.COOKING_TIME_ALCHEMICAL_COAL_BLOCK);
+	public static final BlockRegistryObject<Block, BlockItem> MOBIUS_FUEL = registerFuelBlock("mobius_fuel_block", MapColor.COLOR_RED, PEContextIntProviders.COOKING_TIME_MOBIUS_FUEL_BLOCK);
+	public static final BlockRegistryObject<Block, BlockItem> AETERNALIS_FUEL = registerFuelBlock("aeternalis_fuel_block", MapColor.COLOR_LIGHT_GRAY, PEContextIntProviders.COOKING_TIME_AETERNALIS_FUEL_BLOCK);
 	public static final BlockRegistryObject<Collector, BlockItem> COLLECTOR = registerCollector("collector_mk1", EnumCollectorTier.MK1, state -> 7);
 	public static final BlockRegistryObject<Collector, BlockItem> COLLECTOR_MK2 = registerCollector("collector_mk2", EnumCollectorTier.MK2, state -> 11);
 	public static final BlockRegistryObject<Collector, BlockItem> COLLECTOR_MK3 = registerCollector("collector_mk3", EnumCollectorTier.MK3, state -> 15);
@@ -57,7 +59,7 @@ public class PEBlocks {
 	public static final BlockRegistryObject<MatterFurnace, BlockItem> RED_MATTER_FURNACE = registerFurnace("rm_furnace", EnumMatterType.RED_MATTER, 2_000_000, 6_000_000);
 	public static final BlockRegistryObject<MatterBlock, BlockItem> DARK_MATTER = registerMatterBlock("dark_matter_block", EnumMatterType.DARK_MATTER, 1_000_000, 3_000_000);
 	public static final BlockRegistryObject<MatterBlock, BlockItem> RED_MATTER = registerMatterBlock("red_matter_block", EnumMatterType.RED_MATTER, 2_000_000, 6_000_000);
-	public static final WallOrFloorBlockRegistryObject<InterdictionTorch, InterdictionTorchWall, StandingAndWallBlockItem> INTERDICTION_TORCH = BLOCKS.registerWallOrFloorItem("interdiction_torch", InterdictionTorch::new, InterdictionTorchWall::new, () -> BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noCollision().instabreak().strength(0).lightLevel(state -> 14).randomTicks());
+	public static final WallOrFloorBlockRegistryObject<InterdictionTorch, InterdictionTorchWall, StandingAndWallBlockItem> INTERDICTION_TORCH = BLOCKS.registerWallOrFloorItem("interdiction_torch", InterdictionTorch::new, InterdictionTorchWall::new, () -> BlockBehaviour.Properties.of().pushReaction(PushReaction.POPPED).noCollision().instabreak().strength(0).lightLevel(state -> 14).randomTicks());
 	public static final BlockRegistryObject<ProjectETNT, BlockItem> NOVA_CATALYST = registerExplosive("nova_catalyst", EntityNovaCatalystPrimed::new);
 	public static final BlockRegistryObject<ProjectETNT, BlockItem> NOVA_CATACLYSM = registerExplosive("nova_cataclysm", EntityNovaCataclysmPrimed::new);
 	public static final BlockRegistryObject<TransmutationStone, BlockItem> TRANSMUTATION_TABLE = BLOCKS.register("transmutation_table", properties -> new TransmutationStone(properties.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(10, 30)));
@@ -81,12 +83,13 @@ public class PEBlocks {
 					.sound(SoundType.LANTERN)
 					.lightLevel(state -> 15)
 					.noOcclusion()
-					.pushReaction(PushReaction.DESTROY)
+					.pushReaction(PushReaction.POPPED)
 			));
 
-	private static BlockRegistryObject<Block, BlockItem> registerFuelBlock(String name, MapColor mapColor) {
+	private static BlockRegistryObject<Block, BlockItem> registerFuelBlock(String name, MapColor mapColor, ResourceKey<ContextIntProvider> burnTime) {
 		return BLOCKS.register(name, properties -> new Block(properties.mapColor(mapColor).instrument(NoteBlockInstrument.BASEDRUM)
-				.requiresCorrectToolForDrops().strength(0.5F, 1.5F)));
+				.requiresCorrectToolForDrops().strength(0.5F, 1.5F)),
+				(block, properties) -> PEBlockItem.of(block, properties.cookingFuel(burnTime)));
 	}
 
 	private static BlockRegistryObject<Collector, BlockItem> registerCollector(String name, EnumCollectorTier collectorTier, ToIntFunction<BlockState> lightLevel) {

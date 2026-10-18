@@ -50,7 +50,8 @@ public class PEMorningStar extends PETool implements IItemMode<PickaxeMode>, IHa
 
 	@Override
 	public boolean canPerformAction(@NotNull ItemInstance stack, @NotNull ItemAbility toolAction) {
-		return ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(toolAction) ||
+		//Note: Flattening is no longer an item ability, it is handled through the vanilla block transformer in useOn
+		return toolAction == ItemAbilities.SHOVEL_DOUSE ||
 			   ToolHelper.DEFAULT_PE_HAMMER_ACTIONS.contains(toolAction) || ToolHelper.DEFAULT_PE_MORNING_STAR_ACTIONS.contains(toolAction);
 	}
 

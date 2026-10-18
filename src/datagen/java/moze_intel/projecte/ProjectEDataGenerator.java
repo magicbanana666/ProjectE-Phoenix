@@ -1,15 +1,11 @@
 package moze_intel.projecte;
 
-import java.util.List;
-import java.util.Set;
 import moze_intel.projecte.client.PEBlockStateProvider;
 import moze_intel.projecte.client.PEItemModelProvider;
 import moze_intel.projecte.client.PESpriteSourceProvider;
-import moze_intel.projecte.client.lang.PELangProvider;
 import moze_intel.projecte.client.sound.PESoundProvider;
 import moze_intel.projecte.common.PEAdvancementsGenerator;
 import moze_intel.projecte.common.PECustomConversionProvider;
-import moze_intel.projecte.common.PEDataMapsProvider;
 import moze_intel.projecte.common.PEPackMetadataGenerator;
 import moze_intel.projecte.common.PEWorldTransmutationProvider;
 import moze_intel.projecte.common.loot.PEBlockLootTable;
@@ -23,21 +19,41 @@ import moze_intel.projecte.common.tag.PEPotionsTagsProvider;
 import moze_intel.projecte.emc.EMCMappingHandler;
 import moze_intel.projecte.gameObjs.registries.PEDamageTypes;
 import moze_intel.projecte.utils.text.PELang;
-import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.advancements.AdvancementProvider;
-import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableProvider.SubProviderEntry;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.data.event.GatherDataRegistryEntriesEvent;
+
+import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = PECore.MODID)
 public class ProjectEDataGenerator {
+
+	@SubscribeEvent
+	public static void gatherRegistryEntries(GatherDataRegistryEntriesEvent event) {
+		//26.3: Datapack registry entries (including recipes, advancements and loot tables, which are reloadable registries now) are gathered for both
+		// data runs, they belong to the server data run's output
+		if (FMLEnvironment.getDist().isClient()) {
+			return;
+		}
+		event.gatherFor(PECore.MODID)
+				.add(Registries.DAMAGE_TYPE, context -> {
+					for (PEDamageTypes.PEDamageType damageType : PEDamageTypes.DAMAGE_TYPES.values()) {
+						context.register(damageType.key(), new DamageType(damageType.msgId(), damageType.exhaustion()));
+					}
+				})
+				.recipe(PERecipeProvider::new)
+				.advancement(PEAdvancementsGenerator::new)
+				.lootTable(new SubProviderEntry(PEBlockLootTable::new, LootContextParamSets.BLOCK));
+	}
 
 	@SubscribeEvent
 	public static void gatherServerData(GatherDataEvent.Server event) {
@@ -46,30 +62,19 @@ public class ProjectEDataGenerator {
 
 		DataGenerator gen = event.getGenerator();
 		PackOutput output = gen.getPackOutput();
-		RegistrySetBuilder registryEntries = new RegistrySetBuilder()
-				.add(Registries.DAMAGE_TYPE, context -> {
-					for (PEDamageTypes.PEDamageType damageType : PEDamageTypes.DAMAGE_TYPES.values()) {
-						context.register(damageType.key(), new DamageType(damageType.msgId(), damageType.exhaustion()));
-					}
-				});
-		event.createDatapackRegistryObjects(registryEntries);
-
+		CompletableFuture<HolderLookup.Provider> lookupProvider = event.getWorldLookupProvider();
 		event.addProvider(new PEPackMetadataGenerator(output, PELang.PACK_DESCRIPTION));
-		event.addProvider(new PERecipeProvider.Runner(output, event.getLookupProvider()));
-		event.addProvider(new AdvancementProvider(output, event.getLookupProvider(), List.of(new PEAdvancementsGenerator())));
-		event.addProvider(new LootTableProvider(output, Set.of(), List.of(
-				new SubProviderEntry(PEBlockLootTable::new, LootContextParamSets.BLOCK)), event.getLookupProvider()));
 		//Tag data generators
-		event.addProvider(new PEBlockTagsProvider(output, event.getLookupProvider()));
-		event.addProvider(new PEItemTagsProvider(output, event.getLookupProvider()));
-		event.addProvider(new PEEntityTypeTagsProvider(output, event.getLookupProvider()));
-		event.addProvider(new PEBlockEntityTypeTagsProvider(output, event.getLookupProvider()));
-		event.addProvider(new PEDamageTypeTagsProvider(output, event.getLookupProvider()));
-		event.addProvider(new PEPotionsTagsProvider(output, event.getLookupProvider()));
+		event.addProvider(new PEBlockTagsProvider(output, lookupProvider));
+		event.addProvider(new PEItemTagsProvider(output, lookupProvider));
+		event.addProvider(new PEEntityTypeTagsProvider(output, lookupProvider));
+		event.addProvider(new PEBlockEntityTypeTagsProvider(output, lookupProvider));
+		event.addProvider(new PEDamageTypeTagsProvider(output, lookupProvider));
+		event.addProvider(new PEPotionsTagsProvider(output, lookupProvider));
 		//Other generators (after tags in case we need them to exist)
-		event.addProvider(new PEDataMapsProvider(output, event.getLookupProvider()));
-		event.addProvider(new PECustomConversionProvider(output, event.getLookupProvider()));
-		event.addProvider(new PEWorldTransmutationProvider(output, event.getLookupProvider()));
+		//Note: Since 26.3 furnace burn times are no longer a data map, they are the cooking fuel component of the items
+		event.addProvider(new PECustomConversionProvider(output, lookupProvider));
+		event.addProvider(new PEWorldTransmutationProvider(output, lookupProvider));
 	}
 
 	@SubscribeEvent
@@ -80,6 +85,6 @@ public class ProjectEDataGenerator {
 		event.addProvider(new PESoundProvider(output));
 		event.addProvider(new PEBlockStateProvider(output));
 		event.addProvider(new PEItemModelProvider(output));
-		event.addProvider(new PESpriteSourceProvider(output, event.getLookupProvider()));
+		event.addProvider(new PESpriteSourceProvider(output, event.getWorldLookupProvider()));
 	}
 }

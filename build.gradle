@@ -296,9 +296,7 @@ dependencies {
     compileOnly("mcjty.theoneprobe:theoneprobe:${top_version}:api") {
         transitive = false
     }
-    localRuntime("mcjty.theoneprobe:theoneprobe:${top_version}") {
-        transitive = false
-    }
+    //Note: The One Probe has no 26.3 build yet, so it is only compiled against (its 26.2 API) and not added to the dev runtime
     //Jade is fetched from Modrinth as it does not publish its API as a separate tracked dependency version
     compileOnly("maven.modrinth:jade:${jade_version}")
     localRuntime("maven.modrinth:jade:${jade_version}")

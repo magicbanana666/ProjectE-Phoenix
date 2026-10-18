@@ -1,9 +1,9 @@
 package moze_intel.projecte.api.capabilities.item;
 
+import moze_intel.projecte.api.inventory.IItemHandler;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.ItemCapability;
-import net.neoforged.neoforge.items.IItemHandler;
 import org.jetbrains.annotations.NotNull;
 
 /**

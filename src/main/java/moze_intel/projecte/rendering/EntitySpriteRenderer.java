@@ -41,7 +41,7 @@ public class EntitySpriteRenderer<ENTITY extends Entity> extends EntityRenderer<
 			@NotNull CameraRenderState camera) {
 		poseStack.pushPose();
 		poseStack.scale(0.5F, 0.5F, 0.5F);
-		poseStack.mulPose(camera.orientation);
+		poseStack.rotate(camera.orientation);
 		submitNodeCollector.submitCustomGeometry(poseStack, renderType, (pose, builder) -> {
 			vertex(builder, pose, state.lightCoords, 0, 0, 0, 1);
 			vertex(builder, pose, state.lightCoords, 1, 0, 1, 1);

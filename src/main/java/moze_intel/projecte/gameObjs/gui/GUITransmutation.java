@@ -1,5 +1,6 @@
 package moze_intel.projecte.gameObjs.gui;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import java.math.BigInteger;
 import moze_intel.projecte.PECore;
 import moze_intel.projecte.gameObjs.container.TransmutationContainer;
@@ -17,7 +18,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import org.jetbrains.annotations.NotNull;
-import org.lwjgl.glfw.GLFW;
 
 public class GUITransmutation extends PEContainerScreen<TransmutationContainer> {
 
@@ -138,7 +138,7 @@ public class GUITransmutation extends PEContainerScreen<TransmutationContainer> 
 	@Override
 	public boolean mouseClicked(@NotNull MouseButtonEvent event, boolean doubleClick) {
 		if (textBoxFilter.isMouseOver(event.x(), event.y())) {
-			if (event.button() == GLFW.GLFW_MOUSE_BUTTON_RIGHT) {
+			if (event.button() == InputConstants.MOUSE_BUTTON_RIGHT) {
 				//Note: Clearing filter will be handled by the text box's responder
 				this.textBoxFilter.setValue("");
 			}

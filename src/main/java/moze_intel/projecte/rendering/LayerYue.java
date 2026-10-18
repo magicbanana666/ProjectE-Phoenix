@@ -49,10 +49,10 @@ public class LayerYue extends RenderLayer<AvatarRenderState, PlayerModel> {
 		double yShift = -0.498;
 		if (state.isCrouching) {
 			//Only modify where it renders if the player's pose is crouching
-			poseStack.mulPose(Axis.XN.rotation(0.5F));
+			poseStack.rotate(Axis.XN.rotation(0.5F));
 			yShift = -0.44;
 		}
-		poseStack.mulPose(Axis.ZP.rotation(Mth.PI));
+		poseStack.rotate(Axis.ZP.rotation(Mth.PI));
 		poseStack.scale(3, 3, 3);
 		poseStack.translate(-0.5, yShift, -0.5);
 		Identifier texture = CLAR_UUID.equals(uuid) ? HEART_LOC : YUE_LOC;

@@ -51,7 +51,7 @@ public class EntityHomingArrow extends Arrow {
 	protected void doPostHurtEffects(@NotNull LivingEntity living) {
 		super.doPostHurtEffects(living);
 		// Strip damage vulnerability
-		living.invulnerableTime = 0;
+		living.setInvulnerableTime(0);
 	}
 
 	@Override

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projecte:red_matter_trident"
+        "recipes": "projecte:red_matter_trident"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

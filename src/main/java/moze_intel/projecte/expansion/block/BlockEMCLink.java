@@ -122,7 +122,7 @@ public class BlockEMCLink extends Block implements IHasMatter, EntityBlock, IMat
 
 	@Override
 	public PushReaction getPistonPushReaction(BlockState state) {
-		return PushReaction.BLOCK;
+		return PushReaction.IMMOVEABLE;
 	}
 
 	@Override

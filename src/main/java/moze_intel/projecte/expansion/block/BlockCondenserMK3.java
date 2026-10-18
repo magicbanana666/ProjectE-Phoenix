@@ -1,8 +1,6 @@
 package moze_intel.projecte.expansion.block;
 
-import com.mojang.serialization.MapCodec;
 import org.jetbrains.annotations.NotNull;
-import moze_intel.projecte.expansion.registries.ExpansionBlockTypes;
 import moze_intel.projecte.expansion.block.entity.BlockEntityCondenserMK3;
 import moze_intel.projecte.expansion.registries.ExpansionBlockEntityTypes;
 import moze_intel.projecte.expansion.util.Lang;
@@ -189,11 +187,5 @@ public class BlockCondenserMK3 extends BaseEntityBlock implements SimpleWaterlog
 			else return BlockEntityCondenserMK3::tickServer;
 		}
 		return null;
-	}
-
-	@NotNull
-	@Override
-	protected MapCodec<BlockCondenserMK3> codec() {
-		return ExpansionBlockTypes.CONDENSER_MK3.value();
 	}
 }

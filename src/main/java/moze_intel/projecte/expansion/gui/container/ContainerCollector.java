@@ -1,6 +1,7 @@
 package moze_intel.projecte.expansion.gui.container;
 
 import java.util.Objects;
+import moze_intel.projecte.api.inventory.IItemHandler;
 import moze_intel.projecte.expansion.block.entity.BlockEntityCollector;
 import moze_intel.projecte.expansion.registries.ExpansionMenus;
 import moze_intel.projecte.gameObjs.container.PEContainer.BoxedLong;
@@ -15,7 +16,6 @@ import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.items.IItemHandler;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class ContainerCollector extends ContainerBase {

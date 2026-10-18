@@ -67,9 +67,8 @@ public class PEKatar extends PETool implements IItemMode<KatarMode>, IExtraFunct
 
 	@Override
 	public boolean canPerformAction(@NotNull ItemInstance stack, @NotNull ItemAbility toolAction) {
-		return ItemAbilities.DEFAULT_AXE_ACTIONS.contains(toolAction) || ItemAbilities.DEFAULT_SHEARS_ACTIONS.contains(toolAction) ||
-			   ItemAbilities.DEFAULT_HOE_ACTIONS.contains(toolAction) ||
-			   ToolHelper.DEFAULT_PE_KATAR_ACTIONS.contains(toolAction);
+		//Note: Stripping and tilling are no longer item abilities, they are handled through the vanilla block transformers in useOn
+		return ItemAbilities.DEFAULT_SHEARS_ACTIONS.contains(toolAction) || ToolHelper.DEFAULT_PE_KATAR_ACTIONS.contains(toolAction);
 	}
 
 	@NotNull
@@ -104,9 +103,7 @@ public class PEKatar extends PETool implements IItemMode<KatarMode>, IExtraFunct
 		BlockState blockState = level.getBlockState(context.getClickedPos());
 		//Order that it attempts to use the item:
 		// Strip logs, hoe ground, carve pumpkin, shear beehive, AOE remove logs, AOE remove leaves
-		return ToolHelper.performActions(context, blockState, ToolHelper.stripLogsAOE(context, blockState, 0),
-				(ctx, state) -> ToolHelper.scrapeAOE(ctx, state, 0),
-				(ctx, state) -> ToolHelper.waxOffAOE(ctx, state, 0),
+		return ToolHelper.performActions(context, blockState, ToolHelper.axeAOE(context, blockState, 0),
 				(ctx, state) -> ToolHelper.tillAOE(ctx, state, 0),
 				(ctx, state) -> {
 					if (state.is(BlockTags.LOGS)) {

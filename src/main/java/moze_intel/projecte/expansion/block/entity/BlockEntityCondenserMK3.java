@@ -1,9 +1,11 @@
 package moze_intel.projecte.expansion.block.entity;
 
+import java.util.HashMap;
 import moze_intel.projecte.api.ItemInfo;
 import moze_intel.projecte.api.capabilities.PECapabilities;
 import moze_intel.projecte.api.capabilities.block_entity.IEmcStorage;
 import moze_intel.projecte.api.event.PlayerAttemptCondenserSetEvent;
+import moze_intel.projecte.api.inventory.IItemHandler;
 import moze_intel.projecte.api.proxy.IEMCProxy;
 import moze_intel.projecte.emc.EMCMappingHandler;
 import moze_intel.projecte.expansion.client.HitDirectionSource;
@@ -18,6 +20,7 @@ import moze_intel.projecte.gameObjs.block_entities.WrappedItemHandler;
 import moze_intel.projecte.gameObjs.container.slots.SlotPredicates;
 import moze_intel.projecte.gameObjs.registries.PEBlocks;
 import moze_intel.projecte.utils.WorldHelper;
+import moze_intel.projecte.utils.inventory.ItemHandlerHelper;
 import moze_intel.projecte.utils.text.TextComponentUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -40,13 +43,9 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.ICapabilityProvider;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.HashMap;
 
 public class BlockEntityCondenserMK3 extends BlockEntityBase implements IChestLike, MenuProvider {
 	//26.1 slots and the exposed automation views stay on the legacy IItemHandler, the capability itself is a

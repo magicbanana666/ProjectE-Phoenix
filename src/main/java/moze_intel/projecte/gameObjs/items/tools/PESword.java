@@ -54,7 +54,7 @@ public class PESword extends Item implements IExtraFunction, IItemCharge, IBarHe
 	}
 
 	@Override
-	public <T extends LivingEntity> int damageItem(@NotNull ItemStack stack, int amount, T entity, @NotNull Consumer<Item> onBroken) {
+	public <T extends LivingEntity> int damageItem(@NotNull ItemStack stack, int amount, T entity, @NotNull Consumer<ItemStack> onBroken) {
 		return 0;
 	}
 

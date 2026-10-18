@@ -44,16 +44,23 @@ public class ShieldISTER implements SpecialModelRenderer<ShieldISTER.ShieldData>
 			return;
 		}
 		SpriteId spriteId = new SpriteId(Sheets.SHIELD_SHEET, data.texture());
-		submitNodeCollector.submitModel(model, Unit.INSTANCE, poseStack, lightCoords, overlayCoords, -1, spriteId, sprites, outlineColor, null);
 		BannerPatternLayers patterns = data.patterns();
 		DyeColor baseColor = data.baseColor();
-		if (!patterns.layers().isEmpty() || baseColor != null) {
-			BannerRenderer.submitPatterns(sprites, poseStack, submitNodeCollector, lightCoords, overlayCoords, model, Unit.INSTANCE, false,
-					Objects.requireNonNullElse(baseColor, DyeColor.WHITE), patterns, null);
+		boolean hasPatterns = !patterns.layers().isEmpty() || baseColor != null;
+		//[VanillaCopy] ShieldSpecialRenderer#submit but with our texture
+		if (hasFoil && !hasPatterns) {
+			submitNodeCollector.submitModel(model, Unit.INSTANCE, poseStack, RenderTypes.entitySolidGlint(spriteId.atlasLocation()), lightCoords, overlayCoords, -1,
+					sprites.get(spriteId), outlineColor);
+		} else {
+			submitNodeCollector.submitModel(model, Unit.INSTANCE, poseStack, lightCoords, overlayCoords, -1, spriteId, sprites, outlineColor);
 		}
-		if (hasFoil) {
-			submitNodeCollector.submitModel(model, Unit.INSTANCE, poseStack, RenderTypes.entityGlint(), lightCoords, overlayCoords, -1, sprites.get(spriteId),
-					0, null);
+		if (hasPatterns) {
+			BannerRenderer.submitPatterns(sprites, poseStack, submitNodeCollector, lightCoords, overlayCoords, model, Unit.INSTANCE, false,
+					Objects.requireNonNullElse(baseColor, DyeColor.WHITE), patterns);
+			if (hasFoil) {
+				submitNodeCollector.order(patterns.layers().size() + 2)
+						.submitModel(model, Unit.INSTANCE, poseStack, RenderTypes.patternedShieldGlint(), lightCoords, overlayCoords, -1, sprites.get(spriteId), 0);
+			}
 		}
 	}
 

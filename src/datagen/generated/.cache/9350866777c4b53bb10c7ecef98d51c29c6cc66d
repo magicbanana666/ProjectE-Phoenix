@@ -1,4 +1,4 @@
-// 26.2	2026-10-18T14:53:00.8283857	Tags for minecraft:block mod id projecte
+// 26.3	2026-10-18T18:05:03.5900551	projecte-global/Tags for minecraft:block mod id projecte
 852bf3ba785fe482e8e546bebaa0dd5685ce44b8 data/c/tags/block/barrels.json
 b1526b0ba3ea9a6445822180462b59f848cbf363 data/c/tags/block/chests.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/block/mineable/hammer.json
@@ -33,5 +33,5 @@ e7a8c631b3ba3bd9a98d2bb83f927b25fe348d37 data/projecte/tags/block/mineable/shear
 e7a8c631b3ba3bd9a98d2bb83f927b25fe348d37 data/projecte/tags/block/mineable/sword.json
 866f37f7c4ca015faff07198e2e6c3fe26ffdfef data/projecte/tags/block/needs_dark_matter_tool.json
 2240e4f44620cf01ce95d83768100f2089af876e data/projecte/tags/block/needs_red_matter_tool.json
-fb05968f502c9aece28aba287b09c77b32000cdd data/projecte/tags/block/override/plantable.json
+2603de8c5b52f749f9547e5edbe27efd29a60f33 data/projecte/tags/block/override/plantable.json
 15d64095cea0760ac17d42598e7ac2e64214b6d4 data/projecte/tags/block/vein/shovel.json

@@ -23,6 +23,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.DecoratedPotRecipe;
 import net.minecraft.world.level.block.entity.PotDecorations;
@@ -45,19 +46,20 @@ public class DecoratedPotMapper extends SpecialRecipeMapper<DecoratedPotRecipe> 
 		}
 		int recipeCount = 0;
 		int uniqueInputs = 0;
-		record IngredientData(Item item, NSSItem nss) {
+		record IngredientData(Optional<ItemStackTemplate> template, NSSItem nss) {
 		}
 		Named<Item> ingredients = tag.get();
 		int size = ingredients.size();
 		List<IngredientData> ingredientData = new ArrayList<>(size);
 		for (Holder<Item> ingredient : ingredients) {
-			ingredientData.add(new IngredientData(ingredient.value(), NSSItem.createItem(ingredient)));
+			ingredientData.add(new IngredientData(Optional.of(new ItemStackTemplate(ingredient)), NSSItem.createItem(ingredient)));
 		}
 		for (IngredientData back : ingredientData) {
 			for (IngredientData left : ingredientData) {
 				for (IngredientData right : ingredientData) {
 					for (IngredientData front : ingredientData) {
-						PotDecorations decorations = new PotDecorations(back.item(), left.item(), right.item(), front.item());
+						//26.3: Like vanilla's DecoratedPotRecipe every side is stored as a template, bricks included
+						PotDecorations decorations = new PotDecorations(back.template(), left.template(), right.template(), front.template());
 						NSSItem nssDecorated = createDecoratedPotItem(decorations);
 						//Batch known inputs into a single calculation pass by using a fake group
 						Object2IntMap<NormalizedSimpleStack> nssIngredients = getIngredients(back.nss(), left.nss(), right.nss(), front.nss());

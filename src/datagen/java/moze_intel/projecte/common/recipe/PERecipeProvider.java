@@ -1,6 +1,5 @@
 package moze_intel.projecte.common.recipe;
 
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 import moze_intel.projecte.PECore;
 import moze_intel.projecte.gameObjs.PETags;
@@ -17,19 +16,19 @@ import moze_intel.projecte.gameObjs.registries.PEDataComponentTypes;
 import moze_intel.projecte.gameObjs.registries.PEItems;
 import moze_intel.projecte.gameObjs.registries.PERecipeSerializers;
 import moze_intel.projecte.utils.Constants;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.triggers.Criterion;
 import net.minecraft.advancements.triggers.InventoryChangeTrigger;
 import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SpecialRecipeBuilder;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStackTemplate;
@@ -40,6 +39,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.NotCondition;
@@ -48,25 +48,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class PERecipeProvider extends RecipeProvider {
 
-	public PERecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
-		super(registries, output);
-	}
-
-	public static class Runner extends RecipeProvider.Runner {
-
-		public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-			super(output, lookupProvider);
-		}
-
-		@Override
-		protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
-			return new PERecipeProvider(lookupProvider, output);
-		}
-
-		@Override
-		public String getName() {
-			return "ProjectE Recipes";
-		}
+	//26.3: Recipes and their advancements are datapack registry entries, RecipeProvider.Runner was removed
+	public PERecipeProvider(BootstrapContext<Recipe<?>> recipeOutput, BootstrapContext<Advancement> advancementOutput) {
+		super(recipeOutput, advancementOutput);
 	}
 
 	@Override
@@ -1182,10 +1166,10 @@ public class PERecipeProvider extends RecipeProvider {
 	protected final Criterion<InventoryChangeTrigger.TriggerInstance> hasItems(ItemLike[] items, TagKey<Item>... tags) {
 		ItemPredicate[] predicates = new ItemPredicate[items.length + tags.length];
 		for (int i = 0; i < items.length; ++i) {
-			predicates[i] = ItemPredicate.Builder.item().of(registries.lookupOrThrow(Registries.ITEM), items[i]).build();
+			predicates[i] = ItemPredicate.Builder.item().of(this.items, items[i]).build();
 		}
 		for (int i = 0; i < tags.length; ++i) {
-			predicates[items.length + i] = ItemPredicate.Builder.item().of(registries.lookupOrThrow(Registries.ITEM), tags[i]).build();
+			predicates[items.length + i] = ItemPredicate.Builder.item().of(this.items, tags[i]).build();
 		}
 		return inventoryTrigger(predicates);
 	}

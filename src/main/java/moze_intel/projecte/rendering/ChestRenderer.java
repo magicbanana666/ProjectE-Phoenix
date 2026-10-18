@@ -69,7 +69,7 @@ public class ChestRenderer implements BlockEntityRenderer<EmcChestBlockEntity, C
 		poseStack.pushPose();
 		if (!Float.isNaN(state.yRot)) {
 			poseStack.translate(0.5D, 0.5D, 0.5D);
-			poseStack.mulPose(Axis.YP.rotationDegrees(state.yRot));
+			poseStack.rotate(Axis.YP.rotationDegrees(state.yRot));
 			poseStack.translate(-0.5D, -0.5D, -0.5D);
 		}
 		RenderType renderType = RenderTypes.entityCutout(texture);

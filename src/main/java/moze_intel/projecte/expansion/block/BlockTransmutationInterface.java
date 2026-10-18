@@ -97,7 +97,7 @@ public class BlockTransmutationInterface extends Block implements EntityBlock, I
 
 	@Override
 	public PushReaction getPistonPushReaction(BlockState state) {
-		return PushReaction.BLOCK;
+		return PushReaction.IMMOVEABLE;
 	}
 
 	@Override

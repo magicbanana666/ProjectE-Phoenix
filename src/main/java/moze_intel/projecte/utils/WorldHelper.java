@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 import moze_intel.projecte.PECore;
+import moze_intel.projecte.api.inventory.IItemHandler;
 import moze_intel.projecte.config.ProjectEConfig;
 import moze_intel.projecte.gameObjs.PETags;
 import moze_intel.projecte.gameObjs.registries.PESoundEvents;
@@ -41,7 +42,6 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -51,6 +51,7 @@ import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.BucketPickup;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.CactusBlock;
@@ -60,6 +61,7 @@ import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.GrowingPlantBlock;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.LevelEvent;
+import net.minecraft.world.level.block.LilyPadBlock;
 import net.minecraft.world.level.block.LiquidBlockContainer;
 import net.minecraft.world.level.block.NyliumBlock;
 import net.minecraft.world.level.block.SnowLayerBlock;
@@ -67,14 +69,15 @@ import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.SugarCaneBlock;
 import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.VineBlock;
-import net.minecraft.world.level.block.LilyPadBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.level.block.entity.SignTextSlot;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.AABB;
@@ -83,8 +86,10 @@ import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.util.ItemStackMap;
 import net.neoforged.neoforge.event.EventHooks;
-import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -297,10 +302,20 @@ public final class WorldHelper {
 		}
 	}
 
+	/**
+	 * Fills the given fluid handler with the given amount of a fluid, as much as it accepts.
+	 */
+	public static void fillFluidHandler(ResourceHandler<FluidResource> fluidHandler, Fluid fluid, int amount) {
+		try (Transaction transaction = Transaction.openRoot()) {
+			fluidHandler.insert(FluidResource.of(fluid), amount, transaction);
+			transaction.commit();
+		}
+	}
+
 	public static void copySignData(Level level, BlockPos pos, SignBlockEntity oldSign) {
 		if (oldSign != null && level.getBlockEntity(pos) instanceof SignBlockEntity newSign) {
-			newSign.setText(oldSign.getText(true), true);
-			newSign.setText(oldSign.getText(false), false);
+			newSign.setText(oldSign.getText(SignTextSlot.FRONT), SignTextSlot.FRONT);
+			newSign.setText(oldSign.getText(SignTextSlot.BACK), SignTextSlot.BACK);
 			newSign.setAllowedPlayerEditor(oldSign.getPlayerWhoMayEdit());
 			newSign.setWaxed(oldSign.isWaxed());
 		}
@@ -426,11 +441,11 @@ public final class WorldHelper {
 			BlockState state = level.getBlockState(currentPos);
 			if (state.getBlock() instanceof BonemealableBlock growable) {
 				//Note: We intentionally don't fire the bone meal used event, as we aren't actually applying bone meal to the target
-				if (growable.isValidBonemealTarget(level, currentPos, state)) {
+				if (growable.isValidBonemealTarget(level, currentPos, state, BonemealSource.INTERACTION)) {
 					if (ProjectEConfig.server.items.harvBandIndirect.get() || !onlyAffectsOtherBlocks(state.getBlock())) {
 						//Based on our chance, apply bonemeal if the subchance for that growable also passes
-						if (level.getRandom().nextInt(chance) == 0 && growable.isBonemealSuccess(level, level.getRandom(), currentPos, state)) {
-							growable.performBonemeal(serverLevel, level.getRandom(), currentPos, state);
+						if (level.getRandom().nextInt(chance) == 0 && growable.isBonemealSuccess(level, level.getRandom(), currentPos, state, BonemealSource.INTERACTION)) {
+							growable.performBonemeal(serverLevel, level.getRandom(), currentPos, state, BonemealSource.INTERACTION);
 							level.levelEvent(LevelEvent.PARTICLES_AND_SOUND_PLANT_GROWTH, currentPos, 0);
 						}
 					}
@@ -708,7 +723,7 @@ public final class WorldHelper {
 			} else if (state.isFlammable(level, pos, side)) {
 				if (!level.isClientSide() && PlayerHelper.hasBreakPermission((ServerPlayer) player, level, pos)) {
 					// Ignite the block
-					state.onCaughtFire(level, pos, side, player);
+					state.onCaughtFire(level, pos, side, player, ctx.getItemInHand());
 					if (state.getBlock() instanceof TntBlock) {
 						level.removeBlock(pos, false);
 					}

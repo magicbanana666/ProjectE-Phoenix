@@ -30,6 +30,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -104,7 +105,7 @@ public class HarvestGoddess extends PEToggleItem implements IPedestalItem {
 			boolean wasSuccessful = false;
 			BlockState state = level.getBlockState(currentPos);
 			//TODO: Do we want to fire this with a different stack if we have already used the four that we accounted?
-			BonemealEvent event = EventHooks.fireBonemealEvent(player, level, currentPos, state, stack);
+			BonemealEvent event = EventHooks.fireBonemealEvent(player, level, currentPos, state, BonemealSource.INTERACTION, stack);
 			if (event.isCanceled()) {
 				wasSuccessful = event.isSuccessful();
 			} else if (event.isValidBonemealTarget()) {
@@ -112,8 +113,8 @@ public class HarvestGoddess extends PEToggleItem implements IPedestalItem {
 				if (level instanceof ServerLevel serverLevel) {
 					//Note: We mirror vanilla only checking isBonemealSuccess on the server side
 					BonemealableBlock growable = (BonemealableBlock) state.getBlock();
-					if (growable.isBonemealSuccess(level, level.getRandom(), currentPos, state)) {
-						growable.performBonemeal(serverLevel, level.getRandom(), currentPos, state);
+					if (growable.isBonemealSuccess(level, level.getRandom(), currentPos, state, BonemealSource.INTERACTION)) {
+						growable.performBonemeal(serverLevel, level.getRandom(), currentPos, state, BonemealSource.INTERACTION);
 						player.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
 						level.levelEvent(LevelEvent.PARTICLES_AND_SOUND_PLANT_GROWTH, currentPos, 0);
 					}

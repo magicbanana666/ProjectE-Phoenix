@@ -1,10 +1,10 @@
 package moze_intel.projecte.api.capabilities;
 
 import java.util.Set;
+import moze_intel.projecte.api.inventory.IItemHandler;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.DyeColor;
 import net.neoforged.neoforge.capabilities.EntityCapability;
-import net.neoforged.neoforge.items.IItemHandler;
 import org.jetbrains.annotations.NotNull;
 
 /**

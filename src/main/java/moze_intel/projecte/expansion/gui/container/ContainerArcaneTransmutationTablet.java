@@ -8,6 +8,7 @@ import java.math.BigInteger;
 import java.util.*;
 import moze_intel.projecte.api.capabilities.IKnowledgeProvider;
 import moze_intel.projecte.api.capabilities.PECapabilities;
+import moze_intel.projecte.api.inventory.IItemHandler;
 import moze_intel.projecte.api.proxy.IEMCProxy;
 import moze_intel.projecte.config.ProjectEConfig;
 import moze_intel.projecte.expansion.gui.container.slots.PXCraftingSlot;
@@ -25,10 +26,12 @@ import moze_intel.projecte.gameObjs.items.Tome;
 import moze_intel.projecte.gameObjs.registration.impl.ContainerTypeRegistryObject;
 import moze_intel.projecte.network.packets.to_server.SearchUpdatePKT;
 import moze_intel.projecte.utils.ItemHelper;
+import moze_intel.projecte.utils.inventory.ItemHandlerHelper;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
@@ -43,8 +46,6 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -149,12 +150,12 @@ public class ContainerArcaneTransmutationTablet extends PEHandContainer {
 	public void removed(@NotNull Player player) {
 		super.removed(player);
 		if (!player.isAlive() || player instanceof ServerPlayer serverPlayer && serverPlayer.hasDisconnected()) {
-			player.drop(unlearn.getItem(), false);
+			player.drop(unlearn.getItem(), false, Prediction.SERVER_ONLY);
 			for (ItemStack stack : this.craftSlots.getItems()) {
-				player.drop(stack, false);
+				player.drop(stack, false, Prediction.SERVER_ONLY);
 			}
 			for (int i = 0; i < this.resultSlots.getContainerSize(); i++) {
-				player.drop(this.resultSlots.getItem(i), false);
+				player.drop(this.resultSlots.getItem(i), false, Prediction.SERVER_ONLY);
 			}
 		} else {
 			Util.returnToInventoryOrTransmutation(playerInv, player, provider, unlearn.getItem(), false, true);
@@ -200,7 +201,7 @@ public class ContainerArcaneTransmutationTablet extends PEHandContainer {
 
 				slot.onTake(player, itemStack1);
 				if (slotIndex == 0) {
-					player.drop(itemStack1, false);
+					player.drop(itemStack1, false, Prediction.PREDICTED);
 				}
 
 				return itemStack;

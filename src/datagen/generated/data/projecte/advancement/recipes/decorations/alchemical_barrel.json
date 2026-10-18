@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projecte:alchemical_barrel"
+        "recipes": "projecte:alchemical_barrel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

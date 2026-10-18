@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projecte:dark_matter_shield"
+        "recipes": "projecte:dark_matter_shield"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

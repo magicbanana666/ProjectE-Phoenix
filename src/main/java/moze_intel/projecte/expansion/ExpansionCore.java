@@ -5,7 +5,6 @@ import moze_intel.projecte.PECore;
 import moze_intel.projecte.expansion.registries.ExpansionAttachmentTypes;
 import moze_intel.projecte.expansion.registries.ExpansionAttributes;
 import moze_intel.projecte.expansion.registries.ExpansionBlockEntityTypes;
-import moze_intel.projecte.expansion.registries.ExpansionBlockTypes;
 import moze_intel.projecte.expansion.registries.ExpansionBlocks;
 import moze_intel.projecte.expansion.registries.ExpansionCreativeTabs;
 import moze_intel.projecte.expansion.registries.ExpansionDataComponentTypes;
@@ -51,8 +50,6 @@ public class ExpansionCore {
 		ExpansionAttributes.ATTRIBUTES.register(modEventBus);
 		ExpansionDataComponentTypes.DATA_COMPONENT_TYPES.register(modEventBus);
 		ExpansionBlocks.BLOCKS.register(modEventBus);
-		//26.1 still requires blocks to provide a codec, which BlockTypeDeferredRegister hands out
-		ExpansionBlockTypes.BLOCK_TYPES.register(modEventBus);
 		ExpansionItems.ITEMS.register(modEventBus);
 		ExpansionBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modEventBus);
 		ExpansionMenus.MENUS.register(modEventBus);

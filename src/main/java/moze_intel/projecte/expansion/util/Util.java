@@ -39,6 +39,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -434,7 +435,7 @@ public class Util {
 			}
 
 			if (force) {
-				player.drop(stack, false);
+				player.drop(stack, false, Prediction.SERVER_ONLY);
 				stack = ItemStack.EMPTY;
 				continue;
 			}

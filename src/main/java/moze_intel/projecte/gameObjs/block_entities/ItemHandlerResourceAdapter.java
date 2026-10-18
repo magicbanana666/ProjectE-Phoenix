@@ -1,8 +1,8 @@
 package moze_intel.projecte.gameObjs.block_entities;
 
 import java.util.Objects;
+import moze_intel.projecte.api.inventory.IItemHandler;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.TransferPreconditions;
 import net.neoforged.neoforge.transfer.item.ItemResource;

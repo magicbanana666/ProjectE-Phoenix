@@ -22,9 +22,9 @@ import moze_intel.projecte.gameObjs.items.IHasConditionalAttributes;
 import moze_intel.projecte.gameObjs.registries.PEArmorMaterials;
 import moze_intel.projecte.gameObjs.registries.PEAttachmentTypes;
 import moze_intel.projecte.gameObjs.registries.PEBlockEntityTypes;
-import moze_intel.projecte.gameObjs.registries.PEBlockTypes;
 import moze_intel.projecte.gameObjs.registries.PEBlocks;
 import moze_intel.projecte.gameObjs.registries.PEContainerTypes;
+import moze_intel.projecte.gameObjs.registries.PEContextIntProviders;
 import moze_intel.projecte.gameObjs.registries.PECreativeTabs;
 import moze_intel.projecte.gameObjs.registries.PEDataComponentTypes;
 import moze_intel.projecte.gameObjs.registries.PEEntityTypes;
@@ -101,9 +101,9 @@ import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
-import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.registries.ModifyRegistriesEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
@@ -155,7 +155,6 @@ public class PECore {
 		PEAttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);
 		PEBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modEventBus);
 		PEBlocks.BLOCKS.register(modEventBus);
-		PEBlockTypes.BLOCK_TYPES.register(modEventBus);
 		PEContainerTypes.CONTAINER_TYPES.register(modEventBus);
 		PECreativeTabs.CREATIVE_TABS.register(modEventBus);
 		PEDataComponentTypes.DATA_COMPONENT_TYPES.register(modEventBus);
@@ -167,6 +166,7 @@ public class PECore {
 			moze_intel.projecte.integration.mekanism.MekanismNormalizedSimpleStacks.NSS_SERIALIZERS.register(modEventBus);
 		}
 		PERecipeConditions.CONDITION_CODECS.register(modEventBus);
+		PEContextIntProviders.PROVIDER_TYPES.register(modEventBus);
 		PERecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
 		PESoundEvents.SOUND_EVENTS.register(modEventBus);
 		//Everything that used to live in the ProjectExpansion addon. It is a plain (non @Mod) part of ProjectE now,
@@ -246,7 +246,7 @@ public class PECore {
 							level.setBlockAndUpdate(pos, modifiedState);
 							level.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
 						} else if (state.isFlammable(level, pos, opposite)) {
-							state.onCaughtFire(level, pos, opposite, null);
+							state.onCaughtFire(level, pos, opposite, null, stack);
 							if (state.getBlock() instanceof TntBlock) {
 								level.removeBlock(pos, false);
 							}
@@ -266,9 +266,9 @@ public class PECore {
 					Level level = source.level();
 					Direction direction = source.state().getValue(DispenserBlock.FACING);
 					BlockPos pos = source.pos().relative(direction);
-					IFluidHandler fluidHandler = IFluidHandler.of(WorldHelper.getCapability(level, Capabilities.Fluid.BLOCK, pos, direction.getOpposite()));
+					ResourceHandler<FluidResource> fluidHandler = WorldHelper.getCapability(level, Capabilities.Fluid.BLOCK, pos, direction.getOpposite());
 					if (fluidHandler != null) {
-						fluidHandler.fill(new FluidStack(Fluids.WATER, FluidType.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+						WorldHelper.fillFluidHandler(fluidHandler, Fluids.WATER, FluidType.BUCKET_VOLUME);
 						return stack;
 					}
 					WorldHelper.placeFluid(null, level, pos, Fluids.WATER, !ProjectEConfig.server.items.opEvertide.get());
@@ -290,9 +290,11 @@ public class PECore {
 			long start = System.currentTimeMillis();
 			//Clear the cached created tags
 			AbstractNSSTag.clearCreatedTags();
-			CustomEMCParser.init(emcUpdateResourceManager.registryAccess());
+			//26.3: The reload event no longer exposes the registry access, the full reloaded registries are backed by it
+			RegistryAccess registryAccess = emcUpdateResourceManager.serverResources().fullRegistries().lookup() instanceof RegistryAccess access ? access : event.getPlayerList().getServer().registryAccess();
+			CustomEMCParser.init(registryAccess);
 			try {
-				EMCMappingHandler.map(emcUpdateResourceManager.serverResources(), emcUpdateResourceManager.registryAccess(), emcUpdateResourceManager.resourceManager());
+				EMCMappingHandler.map(emcUpdateResourceManager.serverResources(), registryAccess, emcUpdateResourceManager.resourceManager());
 				PECore.LOGGER.info("Registered {} EMC values. (took {} ms)", EMCMappingHandler.getEmcMapSize(), System.currentTimeMillis() - start);
 			} catch (Throwable t) {
 				PECore.LOGGER.error("Error calculating EMC values", t);
@@ -324,7 +326,7 @@ public class PECore {
 
 	private void addReloadListeners(AddServerReloadListenersEvent event) {
 		//26.1: addListener now requires a unique Identifier key for each mod-added listener
-		event.addListener(rl("emc_data"), (ResourceManagerReloadListener) manager -> emcUpdateResourceManager = new EmcUpdateData(event.getServerResources(), event.getRegistryAccess(), manager));
+		event.addListener(rl("emc_data"), (ResourceManagerReloadListener) manager -> emcUpdateResourceManager = new EmcUpdateData(event.getServerResources(), manager));
 		event.addListener(rl("world_transmutation"), WorldTransmutationManager.INSTANCE);
 	}
 
@@ -408,6 +410,6 @@ public class PECore {
 		BuiltInRegistries.BLOCK.addCallback((ClearCallback<Block>) (registry, full) -> WorldHelper.clearCachedAgeProperties());
 	}
 
-	private record EmcUpdateData(ReloadableServerResources serverResources, RegistryAccess registryAccess, ResourceManager resourceManager) {
+	private record EmcUpdateData(ReloadableServerResources serverResources, ResourceManager resourceManager) {
 	}
 }

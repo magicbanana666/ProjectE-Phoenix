@@ -1,11 +1,12 @@
 package moze_intel.projecte.expansion.block.entity;
 
+import moze_intel.projecte.api.capabilities.IAlchBagProvider;
+import moze_intel.projecte.api.capabilities.PECapabilities;
+import moze_intel.projecte.api.inventory.IItemHandler;
 import moze_intel.projecte.expansion.block.BlockAdvancedAlchemicalChest;
 import moze_intel.projecte.expansion.gui.container.ContainerAdvancedAlchemicalChest;
 import moze_intel.projecte.expansion.registries.ExpansionBlockEntityTypes;
 import moze_intel.projecte.expansion.util.*;
-import moze_intel.projecte.api.capabilities.IAlchBagProvider;
-import moze_intel.projecte.api.capabilities.PECapabilities;
 import moze_intel.projecte.gameObjs.block_entities.ItemHandlerResourceAdapter;
 import moze_intel.projecte.gameObjs.items.AlchemicalBag;
 import net.minecraft.core.BlockPos;
@@ -26,7 +27,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.ICapabilityProvider;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import org.jetbrains.annotations.Nullable;

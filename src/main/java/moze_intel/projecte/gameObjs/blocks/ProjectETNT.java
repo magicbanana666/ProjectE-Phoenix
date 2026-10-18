@@ -36,7 +36,7 @@ public class ProjectETNT extends TntBlock {
 	}
 
 	@Override
-	public boolean onCaughtFire(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @Nullable Direction side, @Nullable LivingEntity igniter) {
+	public boolean onCaughtFire(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @Nullable Direction side, @Nullable LivingEntity igniter, @NotNull ItemStack ignitionItem) {
 		if (!level.isClientSide()) {
 			createAndAddEntity(level, pos, igniter);
 			level.gameEvent(igniter, GameEvent.PRIME_FUSE, pos);

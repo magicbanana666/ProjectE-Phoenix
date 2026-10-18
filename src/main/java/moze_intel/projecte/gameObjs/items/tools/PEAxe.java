@@ -11,7 +11,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
@@ -20,14 +19,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-public class PEAxe extends AxeItem implements IItemCharge, IBarHelper {
+public class PEAxe extends Item implements IItemCharge, IBarHelper {
 
 	private final IMatterType matterType;
 	private final int numCharges;
 
 	public PEAxe(IMatterType matterType, int numCharges, Properties props) {
-		//AxeItem applies the attribute modifiers and Tool component itself via Item.Properties#axe
-		super(ToolHelper.createToolMaterial(matterType), 5, -3, props
+		//Item.Properties#axe applies the attribute modifiers, the Tool component and the axe block transformer
+		super(props.axe(ToolHelper.createToolMaterial(matterType), 5, -3)
 				.component(PEDataComponentTypes.CHARGE, 0)
 				.component(PEDataComponentTypes.STORED_EMC, 0L)
 		);
@@ -46,7 +45,7 @@ public class PEAxe extends AxeItem implements IItemCharge, IBarHelper {
 	}
 
 	@Override
-	public <T extends LivingEntity> int damageItem(@NotNull ItemStack stack, int amount, T entity, @NotNull Consumer<Item> onBroken) {
+	public <T extends LivingEntity> int damageItem(@NotNull ItemStack stack, int amount, T entity, @NotNull Consumer<ItemStack> onBroken) {
 		return 0;
 	}
 
@@ -91,9 +90,7 @@ public class PEAxe extends AxeItem implements IItemCharge, IBarHelper {
 		BlockState blockState = level.getBlockState(context.getClickedPos());
 		//Order that it attempts to use the item:
 		// Strip logs, AOE remove logs
-		return ToolHelper.performActions(context, blockState, ToolHelper.stripLogsAOE(context, blockState, 0),
-				(ctx, state) -> ToolHelper.scrapeAOE(ctx, state, 0),
-				(ctx, state) -> ToolHelper.waxOffAOE(ctx, state, 0),
+		return ToolHelper.performActions(context, blockState, ToolHelper.axeAOE(context, blockState, 0),
 				(ctx, state) -> {
 					if (state.is(BlockTags.LOGS)) {
 						//Mass clear

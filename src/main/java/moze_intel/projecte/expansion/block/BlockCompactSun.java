@@ -47,7 +47,7 @@ public class BlockCompactSun extends Block implements IMatterBlock, IBlockToolti
 
 	@Override
 	public PushReaction getPistonPushReaction(BlockState state) {
-		return PushReaction.BLOCK;
+		return PushReaction.IMMOVEABLE;
 	}
 
 	@Override

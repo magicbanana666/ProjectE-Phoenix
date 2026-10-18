@@ -1,5 +1,6 @@
 package moze_intel.projecte.expansion.gui.container;
 
+import moze_intel.projecte.api.inventory.IItemHandler;
 import moze_intel.projecte.expansion.block.entity.BlockEntityCondenserMK3;
 import moze_intel.projecte.expansion.registries.ExpansionMenus;
 import moze_intel.projecte.gameObjs.container.slots.SlotPredicates;
@@ -7,7 +8,6 @@ import moze_intel.projecte.gameObjs.container.slots.ValidatedSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.MenuType;
-import net.neoforged.neoforge.items.IItemHandler;
 import org.jetbrains.annotations.NotNull;
 
 public class ContainerCondenserMK3Output extends ContainerBase {
