@@ -17,19 +17,19 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * Проверяет, что файлы конверсий из датапака читаются кодеком ядра.
+ * Checks that the conversion files from the data pack are read by the core codec.
  * <p>
- * Файлы аддона пришли в его собственном формате, и ядро их молча отбрасывало: в логе оставалось только
- * «Failed to read conversions», из-за чего EMC считался исключительно по крафтам. Тест ломает сборку,
- * если файл не распарсился или в нём не осталось ни одной конверсии.
+ * The addon's files came in its own format, and the core silently dropped them: the log only showed
+ * "Failed to read conversions", so EMC was calculated from recipes only. The test fails the build
+ * if a file cannot be parsed or has no conversions left.
  */
 @ExtendWith(EphemeralTestServerProvider.class)
 @DisplayName("Check that the custom conversion files can be read")
 class CustomConversionFileTest {
 
 	/**
-	 * Каталог с файлами конверсий аддона. Путь ищется от корня проекта, так как тесты запускаются с рабочим
-	 * каталогом тест-раннера NeoForge.
+	 * Folder with the addon's conversion files. The path is looked up from the project root, as the tests run with the
+	 * working directory of the NeoForge test runner.
 	 */
 	private static final Path CONVERSIONS = findProjectRoot().resolve("src/main/resources/data/projecte/pe_custom_conversions");
 
@@ -38,33 +38,33 @@ class CustomConversionFileTest {
 		while (current != null && !Files.exists(current.resolve("gradlew"))) {
 			current = current.getParent();
 		}
-		Assertions.assertNotNull(current, "Не найден корень проекта");
+		Assertions.assertNotNull(current, "Could not find the project root");
 		return current;
 	}
 
 	@Test
-	@DisplayName("Файлы конверсий аддона читаются и содержат конверсии")
+	@DisplayName("The addon conversion files can be read and contain conversions")
 	void testExpansionConversionsAreReadable(MinecraftServer server) throws IOException {
 		HolderLookup.Provider registryAccess = server.registryAccess();
-		Assertions.assertTrue(Files.isDirectory(CONVERSIONS), "Нет каталога с конверсиями: " + CONVERSIONS);
+		Assertions.assertTrue(Files.isDirectory(CONVERSIONS), "Conversions folder is missing: " + CONVERSIONS);
 		List<Path> files;
 		try (Stream<Path> found = Files.list(CONVERSIONS)) {
 			files = found.filter(path -> path.toString().endsWith(".json")).sorted().toList();
 		}
-		Assertions.assertFalse(files.isEmpty(), "Ни одного файла конверсий не найдено");
+		Assertions.assertFalse(files.isEmpty(), "No conversion files were found");
 
 		int conversions = 0;
 		for (Path file : files) {
 			String rawJson = Files.readString(file);
 			CustomConversionFile parsed = CodecTestHelper.parseJson(registryAccess, CustomConversionFile.CODEC, file.getFileName().toString(), rawJson);
 			for (var group : parsed.groups().values()) {
-				Assertions.assertFalse(group.conversions().isEmpty(), "В файле есть группа без конверсий: " + file);
+				Assertions.assertFalse(group.conversions().isEmpty(), "The file has a group without conversions: " + file);
 				conversions += group.conversions().size();
 			}
 		}
-		//Конверсии аддона задают EMC для топлива, материи, коллекторов, реле, сундуков и звёзд. Если их не считали,
-		//у всех этих предметов остаётся только EMC по крафтам, поэтому число не должно быть пустым. Порог ниже
-		//фактических 248, чтобы добавление нескольких конверсий не требовало правки теста
-		Assertions.assertTrue(conversions >= 200, "Прочитано подозрительно мало конверсий: " + conversions);
+		//The addon conversions set the EMC of fuels, matter, collectors, relays, chests and stars. If they were not read,
+		//all those items only get EMC from recipes, so the count must not be empty. The threshold is below the
+		//actual 248, so adding a few conversions does not require changing the test
+		Assertions.assertTrue(conversions >= 200, "Suspiciously few conversions were read: " + conversions);
 	}
 }

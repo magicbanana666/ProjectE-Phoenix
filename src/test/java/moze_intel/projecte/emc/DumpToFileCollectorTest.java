@@ -46,11 +46,11 @@ class DumpToFileCollectorTest {
 		collector.setValueBefore(valued, 64L);
 		collector.finishCollection(server.registryAccess());
 
-		Assertions.assertTrue(Files.exists(dumpFile), "Дамп не был записан: " + dumpFile);
+		Assertions.assertTrue(Files.exists(dumpFile), "The dump was not written: " + dumpFile);
 		CustomConversionFile parsed = CodecTestHelper.parseJson(server.registryAccess(), CustomConversionFile.CODEC, dumpFile.toString(), Files.readString(dumpFile));
-		Assertions.assertEquals(64L, parsed.values().setValueBefore().getLong(valued), "Положительное значение должно попасть в дамп");
-		Assertions.assertEquals(-1L, parsed.values().setValueBefore().getLong(blacklisted), "Нулевое значение нельзя представить в дампе, оно должно быть пропущено");
-		Assertions.assertEquals(-1L, parsed.values().setValueAfter().getLong(blacklisted), "Нулевое значение нельзя представить в дампе, оно должно быть пропущено");
+		Assertions.assertEquals(64L, parsed.values().setValueBefore().getLong(valued), "A positive value must end up in the dump");
+		Assertions.assertEquals(-1L, parsed.values().setValueBefore().getLong(blacklisted), "A zero value cannot be represented in the dump, it must be skipped");
+		Assertions.assertEquals(-1L, parsed.values().setValueAfter().getLong(blacklisted), "A zero value cannot be represented in the dump, it must be skipped");
 	}
 
 	/**
@@ -72,11 +72,11 @@ class DumpToFileCollectorTest {
 		collector.addConversion(1, sugar, refunded, new HiddenBigFractionArithmetic());
 		collector.finishCollection(server.registryAccess());
 
-		Assertions.assertTrue(Files.exists(dumpFile), "Дамп не был записан: " + dumpFile);
+		Assertions.assertTrue(Files.exists(dumpFile), "The dump was not written: " + dumpFile);
 		CustomConversionFile parsed = CodecTestHelper.parseJson(server.registryAccess(), CustomConversionFile.CODEC, dumpFile.toString(), Files.readString(dumpFile));
 		CustomConversion conversion = parsed.getOrAddGroup("default").conversions().get(0);
-		Assertions.assertEquals(1, conversion.ingredients().getInt(milk), "Обычный ингредиент должен остаться");
-		Assertions.assertFalse(conversion.ingredients().containsKey(container), "Ингредиент с возвратом нельзя представить в дампе, он должен быть пропущен");
+		Assertions.assertEquals(1, conversion.ingredients().getInt(milk), "A normal ingredient must remain");
+		Assertions.assertFalse(conversion.ingredients().containsKey(container), "An ingredient with a container return cannot be represented in the dump, it must be skipped");
 	}
 
 	/**
@@ -94,10 +94,10 @@ class DumpToFileCollectorTest {
 		collector.addConversion(1, NSSItem.createItem(Items.MILK_BUCKET), refunded, new HiddenBigFractionArithmetic());
 		collector.finishCollection(server.registryAccess());
 
-		Assertions.assertTrue(Files.exists(dumpFile), "Дамп не был записан: " + dumpFile);
+		Assertions.assertTrue(Files.exists(dumpFile), "The dump was not written: " + dumpFile);
 		CustomConversionFile parsed = CodecTestHelper.parseJson(server.registryAccess(), CustomConversionFile.CODEC, dumpFile.toString(), Files.readString(dumpFile));
 		Assertions.assertTrue(parsed.groups().values().stream().allMatch(group -> group.conversions().isEmpty()),
-				"Конверсия без ингредиентов не должна попадать в дамп");
+				"A conversion without ingredients must not end up in the dump");
 	}
 
 	private static DumpToFileCollector<IValueArithmetic<BigFraction>> newCollector(Path dumpFile, MinecraftServer server) {
