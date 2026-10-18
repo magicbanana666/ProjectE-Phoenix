@@ -384,8 +384,6 @@ def shadowJar = tasks.named('shadowJar', ShadowJar) {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
     archiveClassifier.set('') // Replace the default JAR
     from([sourceSets.api.output, sourceSets.main.output])
-    //Ship the license of ProjectE and of every bundled project
-    from(fileTree(projectDir) { include 'LICENSE', 'LICENSE-*' })
 
     configurations = [project.configurations.shadow]
     exclude('assets/org/**')

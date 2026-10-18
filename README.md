@@ -81,16 +81,15 @@ You need JDK 25. Then run:
 
 `build.gradle` puts the build output outside the project, in `~/.gradle-builds/<project folder>/libs/`.
 
-## Credits and licenses
+## Credits
 
-All of the original work belongs to its authors. Their license texts are kept in this repository:
+All of the original work belongs to its authors:
 
 - **ProjectE**: SinKillerJ, pupnewfster, MaPePeR, MozeIntel, williewillus, Lilylicious, Kolatra and contributors
-  ([LICENSE](LICENSE), MIT)
-- **ProjectExtended**: pupnewfster ([LICENSE-ProjectExtended](LICENSE-ProjectExtended), MIT)
-- **Project Expansion**: DonovanDMC ([LICENSE-ProjectExpansion](LICENSE-ProjectExpansion), MIT)
-- **ProjectE Integration**: TagnumElite ([LICENSE-ProjectEIntegration](LICENSE-ProjectEIntegration), MIT)
-- **Mekanism ProjectE mappers**: Aidan C. Brady and the Mekanism team ([LICENSE-Mekanism](LICENSE-Mekanism), MIT)
+- **ProjectExtended**: pupnewfster
+- **Project Expansion**: DonovanDMC
+- **ProjectE Integration**: TagnumElite
+- **Mekanism ProjectE mappers**: Aidan C. Brady and the Mekanism team
 - **26.1 port**: UnQuis
 - **EE2**: x3n0ph0b3, the creator of Equivalent Exchange 2, allowed ProjectE to use EE2's assets.
   MidnightLightning made the EE2 GUI textures.
