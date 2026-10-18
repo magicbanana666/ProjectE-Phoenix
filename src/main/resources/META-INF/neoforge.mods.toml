@@ -1,19 +1,18 @@
 modLoader="javafml"
 loaderVersion="${loader_version}"
-issueTrackerURL="https://github.com/sinkillerj/ProjectE/issues"
+issueTrackerURL="https://github.com/magicbanana666/ProjectE-Phoenix/issues"
 license="MIT"
 
 [[mods]]
   modId="projecte"
   version="${version}"
   displayName="ProjectE Phoenix"
-  updateJSONURL="https://raw.githubusercontent.com/sinkillerj/ProjectE/mc1.21.1/update.json"
-  displayURL="https://github.com/sinkillerj/ProjectE"
+  displayURL="https://github.com/magicbanana666/ProjectE-Phoenix"
   logoFile="logo.png"
   authors="SinKillerJ, MaPePeR, williewillus, Lilylicious, pupnewfster"
-  credits="Project Expansion - Richard Freimer, ProjectE Integration - TagnumElite, 26.1 port - UnQuis, EE2 creator - x3n0ph0b3, EE2 GUI Textures - MidnightLightning, Former Texture Artist - Magic Banana"
+  credits="ProjectExtended - pupnewfster, Project Expansion - DonovanDMC, ProjectE Integration - TagnumElite, Mekanism ProjectE mappers - Aidan C. Brady and the Mekanism team, 26.1 port - UnQuis, EE2 creator - x3n0ph0b3, EE2 GUI Textures - MidnightLightning, Former Texture Artist - Magic Banana"
   description='''A complete rewrite of EE2 for modern Minecraft versions.
-Phoenix edition: ProjectE with Project Expansion and ProjectE Integration built in, for Minecraft 26.1.2.'''
+Phoenix edition: an unofficial port to Minecraft 26.1.2 with ProjectExtended, Project Expansion, ProjectE Integration and the Mekanism EMC mappers built in.'''
 
 [[dependencies.projecte]]
   modId="minecraft"

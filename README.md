@@ -88,7 +88,7 @@ All of the original work belongs to its authors. Their license texts are kept in
 - **ProjectE**: SinKillerJ, pupnewfster, MaPePeR, MozeIntel, williewillus, Lilylicious, Kolatra and contributors
   ([LICENSE](LICENSE), MIT)
 - **ProjectExtended**: pupnewfster ([LICENSE-ProjectExtended](LICENSE-ProjectExtended), MIT)
-- **Project Expansion**: DonovanDMC
+- **Project Expansion**: DonovanDMC ([LICENSE-ProjectExpansion](LICENSE-ProjectExpansion), MIT)
 - **ProjectE Integration**: TagnumElite ([LICENSE-ProjectEIntegration](LICENSE-ProjectEIntegration), MIT)
 - **Mekanism ProjectE mappers**: Aidan C. Brady and the Mekanism team ([LICENSE-Mekanism](LICENSE-Mekanism), MIT)
 - **26.1 port**: UnQuis
