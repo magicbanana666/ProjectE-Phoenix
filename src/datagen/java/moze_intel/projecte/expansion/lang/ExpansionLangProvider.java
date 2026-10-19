@@ -105,7 +105,7 @@ public class ExpansionLangProvider extends PELangProvider {
 	}
 
 	private void addJadeConfig() {
-		add("config.jade.plugin_projecte.expansion_provider", "Project Expansion Provider");
+		add("config.jade.plugin_projecte.expansion_provider", "ProjectE Phoenix Provider");
 	}
 
 	private void addItemDescriptions() {
@@ -1183,7 +1183,7 @@ public class ExpansionLangProvider extends PELangProvider {
 		add("item.projecte.yellow_matter",
 				"Yellow Matter");
 		add("itemGroup.projecte.expansion",
-				"Project Expansion");
+				"ProjectE Phoenix: Beyond Red Matter");
 		add("key.projecte.curios.open_transmutation_tablet",
 				"Open Transmutation Tablet");
 		add("projecte.configuration.alchemicalCollectionSound",
@@ -1323,7 +1323,7 @@ public class ExpansionLangProvider extends PELangProvider {
 		add("text.projecte.owner",
 				"Owner: %s");
 		add("text.projecte.provider_error",
-				"Failed to fetch ProjectE provider.");
+				"Failed to fetch the ProjectE Phoenix provider.");
 		add("text.projecte.relay_bonus",
 				"Bonus: %s");
 		add("text.projecte.sun_bonus",

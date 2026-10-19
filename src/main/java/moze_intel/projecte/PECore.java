@@ -2,7 +2,6 @@ package moze_intel.projecte;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import moze_intel.projecte.api.ProjectEAPI;
@@ -39,8 +38,6 @@ import moze_intel.projecte.impl.capability.AlchBagImpl;
 import moze_intel.projecte.impl.capability.KnowledgeImpl;
 import moze_intel.projecte.integration.IntegrationHelper;
 import moze_intel.projecte.network.PacketHandler;
-import moze_intel.projecte.network.ThreadCheckUUID;
-import moze_intel.projecte.network.ThreadCheckUpdate;
 import moze_intel.projecte.network.commands.EMCCMD;
 import moze_intel.projecte.network.commands.KnowledgeCMD;
 import moze_intel.projecte.network.commands.RemoveEmcCMD;
@@ -100,7 +97,6 @@ import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
@@ -117,11 +113,10 @@ import org.slf4j.Logger;
 public class PECore {
 
 	public static final String MODID = ProjectEAPI.PROJECTE_MODID;
-	public static final String MODNAME = "ProjectE";
+	public static final String MODNAME = "ProjectE Phoenix";
 	public static final GameProfile FAKEPLAYER_GAMEPROFILE = new GameProfile(UUID.fromString("590e39c7-9fb6-471b-a4c2-c0e539b2423d"), "[" + MODNAME + "]");
 	public static final Logger LOGGER = LogUtils.getLogger();
 
-	public static final List<String> uuids = new ArrayList<>();
 
 	public static ModContainer MOD_CONTAINER;
 
@@ -190,7 +185,6 @@ public class PECore {
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.items.FalsePhilosophersStone::onItemCrafted);
 		NeoForge.EVENT_BUS.addListener(this::dataPackSync);
 		NeoForge.EVENT_BUS.addListener(this::registerCommands);
-		NeoForge.EVENT_BUS.addListener(this::serverStarting);
 		NeoForge.EVENT_BUS.addListener(this::serverQuit);
 		NeoForge.EVENT_BUS.addListener(PEPermissions::registerPermissionNodes);
 		NeoForge.EVENT_BUS.addListener(this::onModifyItemAttributes);
@@ -223,7 +217,6 @@ public class PECore {
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
-		new ThreadCheckUpdate().start();
 		EMCMappingHandler.loadMappers();
 		moze_intel.projecte.expansion.ExpansionCore.init();
 		com.tagnumelite.projecteintegration.PEIntegration.commonSetup();
@@ -396,12 +389,6 @@ public class PECore {
 				.then(EMCCMD.register(context))
 				.then(KnowledgeCMD.register(context))
 		);
-	}
-
-	private void serverStarting(ServerStartingEvent event) {
-		if (!ThreadCheckUUID.hasRunServer()) {
-			new ThreadCheckUUID(true).start();
-		}
 	}
 
 	private void serverQuit(ServerStoppedEvent event) {

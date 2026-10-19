@@ -96,17 +96,6 @@ public class PlayerEvents {
 		}
 	}
 
-	@SubscribeEvent
-	public static void onHighAlchemistJoin(PlayerEvent.PlayerLoggedInEvent evt) {
-		if (PECore.uuids.contains(evt.getEntity().getUUID().toString())) {
-			MinecraftServer server = evt.getEntity().level().getServer();
-			if (server != null) {
-				Component joinMessage = PELang.HIGH_ALCHEMIST.translateColored(ChatFormatting.BLUE, ChatFormatting.GOLD, evt.getEntity().getDisplayName());
-				server.getPlayerList().broadcastSystemMessage(joinMessage, false);
-			}
-		}
-	}
-
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void pickupItem(ItemEntityPickupEvent.Pre event) {
 		ItemEntity itemEntity = event.getItemEntity();

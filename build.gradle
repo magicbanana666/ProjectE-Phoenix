@@ -347,9 +347,9 @@ def getManifestAttributes() {
             "Specification-Title"     : "ProjectE",
             "Specification-Vendor"    : "ProjectE",
             "Specification-Version"   : "${project.projecte_version}",
-            "Implementation-Title"    : "ProjectE",
+            "Implementation-Title"    : "ProjectE Phoenix",
             "Implementation-Version"  : "${project.projecte_version}",
-            "Implementation-Vendor"   : "ProjectE",
+            "Implementation-Vendor"   : "ProjectE Phoenix",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
             "Automatic-Module-Name"   : "projecte"
     ]
@@ -358,6 +358,8 @@ def getManifestAttributes() {
 tasks.named('jar', Jar) {
     duplicatesStrategy = DuplicatesStrategy.FAIL
     from([sourceSets.api.output, sourceSets.main.output])
+    //The licenses of the projects this one is built on, which they require to travel with every copy
+    from('licenses') { into 'META-INF/licenses' }
     manifest.attributes(getManifestAttributes())
     finalizedBy(shadowJar)
 }
@@ -384,6 +386,7 @@ def shadowJar = tasks.named('shadowJar', ShadowJar) {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
     archiveClassifier.set('') // Replace the default JAR
     from([sourceSets.api.output, sourceSets.main.output])
+    from('licenses') { into 'META-INF/licenses' }
 
     configurations = [project.configurations.shadow]
     exclude('assets/org/**')

@@ -5,7 +5,7 @@
       "modid": "enderio"
     }
   ],
-  "comment": "Default ProjectE conversions for enderio, from ProjectE Integration. Silicon: the sag mill gives 1 silicon from sand at 50% chance, so it costs 2 sand.",
+  "comment": "Default ProjectE Phoenix conversions for enderio. Silicon: the sag mill gives 1 silicon from sand at 50% chance, so it costs 2 sand.",
   "values": {
     "before": [
       {

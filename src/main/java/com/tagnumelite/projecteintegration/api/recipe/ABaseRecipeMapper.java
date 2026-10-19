@@ -54,7 +54,7 @@ public abstract class ABaseRecipeMapper<R> implements IRecipeMapper<R> {
 
     @Override
     public String getDescription() {
-        return "ProjectE-Integration Recipe Mapper for " + getName().replaceAll("(\\p{Ll})(\\p{Lu})", "$1 $2") +
+        return "Integration Recipe Mapper for " + getName().replaceAll("(\\p{Ll})(\\p{Lu})", "$1 $2") +
                 ". Required Mods: [" + String.join(",", getRequiredMods()) + ']';
     }
 

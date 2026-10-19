@@ -27,7 +27,7 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent;
 @EventBusSubscriber(modid = PECore.MODID)
 public class CommandRegistry {
 	public static final String COMMAND_BASE = "px";
-	public static final String ALIAS_LONG = "projectexpansion";
+	public static final String ALIAS_LONG = "phoenix";
 	public static final String ALIAS_SHORT = "pex";
 
 	private CommandRegistry() {}

@@ -12,7 +12,7 @@ public enum PEConfigTranslations implements IConfigTranslation {
 
 	CLIENT_RITUAL_PARTICLES("client.ritual_particles", "Ritual Particles",
 			"Multiplier for the amount of particles of the Alchemical Crucible. 0 turns them off."),
-	CLIENT_TOOLTIPS("client.tooltips", "Tooltip Settings", "Settings for configuring Tooltips provided by ProjectE.", true),
+	CLIENT_TOOLTIPS("client.tooltips", "Tooltip Settings", "Settings for configuring Tooltips provided by ProjectE Phoenix.", true),
 
 	CLIENT_TOOLTIPS_EMC("client.tooltips.emc", "EMC Tooltips", "Show the EMC value as a tooltip on items and blocks."),
 	CLIENT_TOOLTIPS_EMC_SHIFT("client.tooltips.emc.shift", "Shift EMC Tooltips",
@@ -20,12 +20,12 @@ public enum PEConfigTranslations implements IConfigTranslation {
 	CLIENT_TOOLTIPS_LEARNED_SHIFT("client.tooltips.learned.shift", "Shift Learned Tooltips",
 			"Requires holding shift to display the learned/unlearned text as a tooltip on items and blocks. Note: this does nothing if EMC Tooltips are disabled."),
 	CLIENT_TOOLTIPS_PEDESTAL("client.tooltips.pedestal", "DM Pedestal Tooltips", "Show Dark Matter Pedestal functions in item tooltips."),
-	CLIENT_TOOLTIPS_STATS("client.tooltips.stats", "Stat Tooltips", "Show stats as tooltips for various ProjectE blocks."),
+	CLIENT_TOOLTIPS_STATS("client.tooltips.stats", "Stat Tooltips", "Show stats as tooltips for various ProjectE Phoenix blocks."),
 	CLIENT_TOOLTIPS_TAGS("client.tooltips.tags", "Tag Tooltips", "Show item tags in tooltips (useful for custom EMC registration)."),
 
 	//Expansion (formerly the ProjectExpansion addon) - Client Config
-	CLIENT_EXPANSION("client.expansion", "Expansion Settings",
-			"Settings for the features that came from the ProjectExpansion addon.", true),
+	CLIENT_EXPANSION("client.expansion", "Higher Tier Settings",
+			"Settings for the higher tiers: collectors, relays, power flowers, EMC links and the like.", true),
 
 	CLIENT_EXPANSION_FORMAT_EMC("client.expansion.format_emc", "Shorten EMC Values",
 			"If EMC should be formatted as M/B/T/etc."),
@@ -36,15 +36,15 @@ public enum PEConfigTranslations implements IConfigTranslation {
 	CLIENT_EXPANSION_EMC_DISPLAY_POSITION("client.expansion.emc_display_position", "EMC Display Position",
 			"The position of the emc display."),
 	CLIENT_EXPANSION_LEARNED_TOOLTIP("client.expansion.learned_tooltip", "Learned Tooltip",
-			"If a tooltip should be shown on items which can be learned, denoting if the item has been learned or not. Note: ProjectE's client.shift_emc applies to this."),
+			"If a tooltip should be shown on items which can be learned, denoting if the item has been learned or not. Note: ProjectE Phoenix's client.shift_emc applies to this."),
 	CLIENT_EXPANSION_COLLECTION_SOUND("client.expansion.collection_sound", "Alchemical Collection Sound",
 			"If a sound should be played when something is collected with Alchemical Collection."),
 	CLIENT_EXPANSION_SEARCH_TYPE("client.expansion.search_type", "Search Type",
 			"How the transmutation search should behave."),
 
 	//Expansion (formerly the ProjectExpansion addon) - Server Config
-	SERVER_EXPANSION("server.expansion", "Expansion Settings",
-			"Settings for the features that came from the ProjectExpansion addon.", true),
+	SERVER_EXPANSION("server.expansion", "Higher Tier Settings",
+			"Settings for the higher tiers: collectors, relays, power flowers, EMC links and the like.", true),
 
 	SERVER_EXPANSION_TICK_DELAY("server.expansion.tick_delay", "Tick Delay",
 			"The delay between mod operations (in ticks, default 20) - this will slightly effect the amount of emc generated via rounding - increase if you're noticing lag."),
@@ -79,7 +79,7 @@ public enum PEConfigTranslations implements IConfigTranslation {
 	SERVER_EXPANSION_INFINITE_STEAK_COST("server.expansion.infinite_steak_cost", "Infinite Steak Cost",
 			"The cost of using the infinite steak item."),
 	SERVER_EXPANSION_PERSIST_ENCHANTED_BOOKS("server.expansion.persist_enchanted_books", "Persist Enchanted Books Only",
-			"If ProjectE's processors.EnchantmentProcessor.persistent option should only include enchanted books."),
+			"If ProjectE Phoenix's processors.EnchantmentProcessor.persistent option should only include enchanted books."),
 	SERVER_EXPANSION_EDIT_OTHERS_BOOKS("server.expansion.edit_others_books", "Edit Others Alchemical Books",
 			"If players should be allowed to edit books bound to other players. A player is considered to be \"OP\" when they have an op level of 2 or greater."),
 	SERVER_EXPANSION_ZERO_EMC_FLUIDS("server.expansion.zero_emc_fluids_are_free", "Zero EMC Fluids Are Free",
@@ -96,14 +96,14 @@ public enum PEConfigTranslations implements IConfigTranslation {
 	//Common Config
 	COMMON_DEBUG_LOGGING("common.debug_logging", "Debug Logging", "Enable more verbose debug logging."),
 
-	COMMON_CRAFTING("common.crafting", "Crafting Settings", "Settings for configuring crafting requirements of specific ProjectE recipes.", true),
+	COMMON_CRAFTING("common.crafting", "Crafting Settings", "Settings for configuring crafting requirements of specific ProjectE Phoenix recipes.", true),
 	COMMON_CRAFTING_TOME("common.crafting.tome", "Craftable Tome", "Enable crafting the Tome of Knowledge."),
 	COMMON_CRAFTING_FULL_KLEIN("common.crafting.full_klein", "Require Full Klein Stars",
-			"Require full omega klein stars in the tome of knowledge and gem armor recipes. This is the same behavior that EE2 had."),
+			"Require full omega klein stars in the tome of knowledge and gem armor recipes."),
 
 	//Server Config
 	SERVER_COOLDOWN("server.cooldown", "Cooldown Settings",
-			"Settings for configuring the Cooldown (in ticks) for various features in ProjectE. "
+			"Settings for configuring the Cooldown (in ticks) for various features in ProjectE Phoenix. "
 			+ "A cooldown of -1 will disable the functionality. A cooldown of 0 will allow the actions to happen every tick. "
 			+ "Use caution as a very low value on features that run automatically could cause TPS issues.", true),
 
@@ -144,7 +144,7 @@ public enum PEConfigTranslations implements IConfigTranslation {
 			"Delay between feed attempts while in a player's inventory. (Body Stone, Life Stone, Gem Helmet)."),
 
 
-	SERVER_DIFFICULTY("server.difficulty", "Difficulty Settings", "Settings for configuring Difficulty options provided by ProjectE.", true),
+	SERVER_DIFFICULTY("server.difficulty", "Difficulty Settings", "Settings for configuring Difficulty options provided by ProjectE Phoenix.", true),
 	SERVER_DIFFICULTY_OFFENSIVE_ABILITIES("server.difficulty.offensive_abilities", "Offensive Abilities",
 			"Set to false to disable Gem Armor offensive abilities (helmet zap and chestplate explosion)."),
 	SERVER_DIFFICULTY_KATAR_DEATH_AURA("server.difficulty.katar_death_aura", "Katar Death Aura", "Amount of damage the Katar's Extra Function deals."),
@@ -155,7 +155,7 @@ public enum PEConfigTranslations implements IConfigTranslation {
 			"How rounding occurs when Covalence Loss results in a burn value less than 1 EMC. If true the value will be rounded up to 1. "
 			+ "If false the value will be rounded down to 0."),
 
-	SERVER_EFFECTS("server.effects", "Effect Settings", "Settings for configuring Effect options provided by ProjectE.", true),
+	SERVER_EFFECTS("server.effects", "Effect Settings", "Settings for configuring Effect options provided by ProjectE Phoenix.", true),
 	SERVER_EFFECTS_TIME_PEDESTAL_BONUS("server.effects.time_pedestal.bonus", "Time Pedestal Bonus",
 			"Bonus ticks given by the Watch of Flowing Time while in the pedestal. 0 = effectively no bonus."),
 	SERVER_EFFECTS_TIME_PEDESTAL_MOB_SLOWNESS("server.effects.time_pedestal.mob_slowness", "Time Pedestal Mob Slowness",
@@ -163,10 +163,10 @@ public enum PEConfigTranslations implements IConfigTranslation {
 	SERVER_EFFECTS_INTERDICTION_MODE("server.effects.interdiction_mode", "Interdiction Mode",
 			"If true the Interdiction Torch only affects hostile mobs and projectiles. If false it affects all non blacklisted living entities."),
 
-	SERVER_ITEMS("server.items", "Item Settings", "Settings for configuring Item options provided by ProjectE.", true),
+	SERVER_ITEMS("server.items", "Item Settings", "Settings for configuring Item options provided by ProjectE Phoenix.", true),
 	SERVER_ITEMS_PICKAXE_AOE_VEIN_MINING("server.items.pickaxe_aoe_vein_mining", "Pickaxe AOE Vein Mining",
 			"Instead of vein mining the ore you right click with your Dark/Red Matter Pick/Star it vein mines all ores in an AOE around you "
-			+ "like it did in ProjectE before version 1.4.4."),
+			+ "like it used to."),
 	SERVER_ITEMS_HARVEST_BAND_INDIRECT("server.items.harvest_band_indirect", "Harvest Band Indirect",
 			"Allows the Harvest Goddess Band to passively grow things like tall grass, flowers, etc, on top of grass blocks and nylium. Also allows it to make moss spread."),
 	SERVER_ITEMS_DISABLE_ALL_RADIUS_MINING("server.items.disable_all_radius_mining", "Disable All Radius Mining",
@@ -175,7 +175,7 @@ public enum PEConfigTranslations implements IConfigTranslation {
 	SERVER_ITEMS_OP_EVERTIDE("server.items.op_evertide", "Overpowered Evertide Amulet",
 			"Allow the Evertide amulet to place water in dimensions that water evaporates. For example: The Nether."),
 
-	SERVER_MISC("server.misc", "Misc Settings", "Settings for configuring misc options provided by ProjectE.", true),
+	SERVER_MISC("server.misc", "Misc Settings", "Settings for configuring misc options provided by ProjectE Phoenix.", true),
 	SERVER_MISC_UNSAFE_KEY_BINDS("server.misc.unsafe_key_binds", "Unsafe Key Binds",
 			"False requires your hand be empty for Gem Armor Offensive Abilities to be readied or triggered."),
 	SERVER_MISC_LOOKING_AT_DISPLAY("server.misc.looking_at_display", "Looking At Display",
@@ -184,7 +184,7 @@ public enum PEConfigTranslations implements IConfigTranslation {
 			"If enabled, warnings will tell you which Game Stages you are missing to use blacklisted items."),
 
 	SERVER_COMPREHENSION("server.comprehension", "Comprehension", "Valuable items have to be burned several times before they are learned.", true),
-	SERVER_COMPREHENSION_ENABLED("server.comprehension.enabled", "Enabled", "If false, every item is learned on the first burn, as in ProjectE."),
+	SERVER_COMPREHENSION_ENABLED("server.comprehension.enabled", "Enabled", "If false, every item is learned on the first burn."),
 	SERVER_COMPREHENSION_INSTANT_BELOW("server.comprehension.instant_below", "Instant Below",
 			"Items worth up to this much EMC are learned on the first burn. A diamond is worth 8,192, an iron ingot 256."),
 	SERVER_COMPREHENSION_BURNS("server.comprehension.burns_needed", "Burns Needed", "How many of a more valuable item have to be burned before it is learned."),
@@ -208,7 +208,7 @@ public enum PEConfigTranslations implements IConfigTranslation {
 			+ "Disable pregenerated EMC to recalculate after changing this setting."),
 	MAPPING_LOG_EXPLOITS("mapping.log_exploits", "Log Profitable EMC Conversion Mismatches",
 			"Logs known profitable EMC conversion mismatches where a recipe costs less than the total EMC value of its outputs and the output value "
-			+ "is retained because it is fixed/custom or comes from a forced conversion. This cannot find conversions that are unknown to ProjectE."),
+			+ "is retained because it is fixed/custom or comes from a forced conversion. This cannot find conversions that are unknown to ProjectE Phoenix."),
 
 	MAPPING_MAPPERS("mapping.mapper", "EMC Mappers", "Used to configure settings for the various EMC Mappers.", true),
 

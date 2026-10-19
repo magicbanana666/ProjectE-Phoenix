@@ -9,10 +9,8 @@ license="MIT"
   displayName="ProjectE Phoenix"
   displayURL="https://github.com/magicbanana666/ProjectE-Phoenix"
   logoFile="logo.png"
-  authors="SinKillerJ, MaPePeR, williewillus, Lilylicious, pupnewfster"
-  credits="ProjectExtended - pupnewfster, Project Expansion - DonovanDMC, ProjectE Integration - TagnumElite, Mekanism ProjectE mappers - Aidan C. Brady and the Mekanism team, 26.1 port - UnQuis, EE2 creator - x3n0ph0b3, EE2 GUI Textures - MidnightLightning, Former Texture Artist - Magic Banana"
-  description='''A complete rewrite of EE2 for modern Minecraft versions.
-Phoenix edition: an unofficial port to Minecraft 26.1.2 with ProjectExtended, Project Expansion, ProjectE Integration and the Mekanism EMC mappers built in.'''
+  authors="Magic Banana"
+  description='''Alchemy for Minecraft: break things down into EMC, build them up again, and climb the Magnum Opus from the first false stone to the Phoenix.'''
 
 [[dependencies.projecte]]
   modId="minecraft"

@@ -73,7 +73,7 @@ final class CodexLang {
 				+ "R fires what the held item can fire.\n"
 				+ "X and Shift+X work the Gem boots and helmet.\n"
 				+ "K opens a tablet worn in a Curios slot.\n\n"
-				+ "All of them are in the controls, under ProjectE.");
+				+ "All of them are in the controls, under ProjectE Phoenix.");
 		item(lang, "philosophers_stone",
 				"The true stone. It can not be crafted: three false stones and a Nether Star are fused into it in the Athanor.\n\n"
 				+ "Use it on a block to transmute it, sneak to get the other result. G sets the shape, V the size.\n\n"
