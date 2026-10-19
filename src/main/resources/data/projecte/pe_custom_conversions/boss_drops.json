@@ -1,0 +1,27 @@
+{
+  "comment": "What the great beasts leave behind is worth about what they guard",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "emc_value": 139264,
+        "id": "projecte:warden_heart"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 262144,
+        "id": "projecte:dragon_heart"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 69632,
+        "id": "projecte:blighted_soul"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 32768,
+        "id": "projecte:elder_eye"
+      }
+    ]
+  }
+}

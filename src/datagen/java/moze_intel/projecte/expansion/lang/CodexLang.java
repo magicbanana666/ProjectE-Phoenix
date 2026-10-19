@@ -273,6 +273,10 @@ final class CodexLang {
 				+ "Relays move 16 times and Power Flowers about 25 times what the collector of their tier makes.");
 
 		//Alchemical Artifacts
+		topic(lang, "boss_drops", "Hearts of the Great Beasts",
+				"Some things can not be bought, burned or brewed. They have to be taken.\n\n"
+				+ "The Warden leaves its heart, and it still listens. The Wither leaves a Blighted Soul beside its star. The Elder Guardian leaves an eye. The Ender Dragon's heart falls onto the exit portal, every time it dies.\n\n"
+				+ "The greatest works of the Athanor will ask for them. Keep them.");
 		topic(lang, "big_stars", "Magnum, Colossal and Gargantuan Stars",
 				"Stars that keep growing. Four Klein Star Omegas make a Magnum Star Ein of 204.8 million EMC, and every star holds four times the one before.\n\n"
 				+ "After the Magnum Omega come the Colossal stars, then the Gargantuan. The Gargantuan Omega holds some 3.5 quintillion.");

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_diamond": {
+    "has_sulphur": {
       "conditions": {
         "items": [
           {
-            "items": "#c:storage_blocks/diamond"
+            "items": "projecte:alchemical_sulphur"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_diamond"
+      "has_sulphur"
     ]
   ],
   "rewards": {

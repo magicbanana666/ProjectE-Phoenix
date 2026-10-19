@@ -74,6 +74,10 @@ public class PEItemModelProvider extends ModelProvider {
 		generated(itemModels, PEItems.RED_MATTER, material("item/matter/red"));
 		generated(itemModels, PEItems.LOW_COVALENCE_DUST, material("item/covalence_dust/low"));
 		generated(itemModels, PEItems.ALCHEMICAL_SALT, material("item/tria_prima/alchemical_salt"));
+		generated(itemModels, PEItems.WARDEN_HEART, material("item/boss/warden_heart"));
+		generated(itemModels, PEItems.DRAGON_HEART, material("item/boss/dragon_heart"));
+		generated(itemModels, PEItems.BLIGHTED_SOUL, material("item/boss/blighted_soul"));
+		generated(itemModels, PEItems.ELDER_EYE, material("item/boss/elder_eye"));
 		generated(itemModels, PEItems.ALCHEMICAL_SULPHUR, material("item/tria_prima/alchemical_sulphur"));
 		generated(itemModels, PEItems.QUICKSILVER, material("item/tria_prima/quicksilver"));
 		generated(itemModels, PEItems.SALT_CHALK, material("item/chalk/salt_chalk"));

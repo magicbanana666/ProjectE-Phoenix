@@ -3,13 +3,14 @@
   "group": "projecte:matter/basic",
   "pattern": [
     "OSO",
-    "OAO",
+    "QAQ",
     "OOO"
   ],
   "key": {
     "O": "#c:obsidians",
     "A": "projecte:aeternalis_fuel_block",
-    "S": "#c:glass_blocks"
+    "S": "#c:glass_blocks",
+    "Q": "projecte:quicksilver"
   },
   "result": {
     "id": "projecte:basic_relay"

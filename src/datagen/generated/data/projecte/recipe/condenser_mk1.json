@@ -3,13 +3,13 @@
   "category": "misc",
   "key": {
     "C": "projecte:alchemical_chest",
-    "D": "#c:gems/diamond",
-    "O": "#c:obsidians/normal"
+    "O": "#c:obsidians/normal",
+    "S": "projecte:alchemical_salt"
   },
   "pattern": [
-    "ODO",
-    "DCD",
-    "ODO"
+    "OSO",
+    "SCS",
+    "OSO"
   ],
   "result": {
     "id": "projecte:condenser_mk1"

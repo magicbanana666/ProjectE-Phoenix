@@ -1,4 +1,4 @@
-// 26.1.2	2026-10-19T22:46:45.6564732	ProjectE Item Models
+// 26.1.2	2026-10-19T22:58:43.0455701	ProjectE Item Models
 c7dea018dfc5c9ff72f86071f5e60d95cd3e881f assets/projecte/items/advanced_alchemical_book.json
 47543cc40f0158c5ed9bc11f266a1b0d0f5fae57 assets/projecte/items/aeternalis_fuel.json
 c4caed748e6bcf7e20f3fc60fa4292f6adabe643 assets/projecte/items/aeternalis_fuel_block.json
@@ -24,6 +24,7 @@ e5ff526286fb78ea8ab2e306f5f8af2cbef9e7e1 assets/projecte/items/basic_relay.json
 e18b1c71c8e88052698f8b0c0fe05d6758fc8f58 assets/projecte/items/black_advanced_alchemical_chest.json
 cc1002fa7ed7ea07e598ecf34c871dcf18bdfd80 assets/projecte/items/black_alchemical_bag.json
 d3356f7d366a14fb165a43116af1faa82b1837bf assets/projecte/items/black_hole_band.json
+5f7968ce9c63c3588b839a65e78b405136d4b881 assets/projecte/items/blighted_soul.json
 2ee303f666c4826798e84f7d2a4070e15c6d0309 assets/projecte/items/blue_advanced_alchemical_chest.json
 1a33b15e3f4c841d256117e28ac1ca74614f3eea assets/projecte/items/blue_alchemical_bag.json
 10295298cc71ea77452010603a8fc9dd4d7d34b6 assets/projecte/items/blue_collector.json
@@ -95,6 +96,8 @@ f0da4ae376111046f20a3a1c83ff6167ed3c3b04 assets/projecte/items/dm_pedestal.json
 dd7c66269abd41a521debc60f64a9c9bd0d83391 assets/projecte/items/dm_shears.json
 e95a4bc71a723dc5f50af04b83e6a9084f51e8da assets/projecte/items/dm_shovel.json
 671ece3cdc2f9a690c821cefdd5c25b14070848c assets/projecte/items/dm_sword.json
+5bb45b8527e61f1c1a7ec263f4871fc6c0049b89 assets/projecte/items/dragon_heart.json
+22edc865e21bb09e3ed41b68782a9e8f063e7277 assets/projecte/items/elder_eye.json
 245ac8d75dcf2d66e54d017caefef665128a015d assets/projecte/items/evertide_amulet.json
 c10c54959cbeeee275d36460dbc5642d70ccfb5b assets/projecte/items/fading_collector.json
 6dea442af1ff5e281d46164c7a4b25d1d31d2f74 assets/projecte/items/fading_compressed_collector.json
@@ -279,6 +282,7 @@ e16348a98a1aca2e45b71ff9697e46a40249cd17 assets/projecte/items/violet_power_flow
 f11c01e5d5cb3815fd01639a1359a61f261b458d assets/projecte/items/violet_relay.json
 0e2ca2505769414f19e8aa59010f0c72cf7c2aeb assets/projecte/items/void_ring.json
 eeff865878a099e077cf5e3ab7cb94f2af66c540 assets/projecte/items/volcanite_amulet.json
+64503e92d620e673d91fe6b85a40f20b3bd046bd assets/projecte/items/warden_heart.json
 c454877be59c3758248569f6ca7daba06bae3868 assets/projecte/items/watch_of_flowing_time.json
 dc36b0bb0145f12b96b29ba066498eb87634a705 assets/projecte/items/white_advanced_alchemical_chest.json
 794504dfe3ebcf1cf0e6c2d8c99c214c1a60d9f5 assets/projecte/items/white_alchemical_bag.json
@@ -320,6 +324,7 @@ c5af02b945ce8e05e9f8a64f3c8b173849b05658 assets/projecte/models/item/archangel_s
 50816f77d5ff7aaf32adfdff530ad2fc457ebe22 assets/projecte/models/item/black_alchemical_bag.json
 cd4ed1763059dfa660121676d6210fe91f49df35 assets/projecte/models/item/black_hole_band.json
 a2be67bac499fccb2fa26819a07d3bc7ccffe663 assets/projecte/models/item/black_hole_band_on.json
+c20a01f9dda74b34079c18b466471e5ccdb5a221 assets/projecte/models/item/blighted_soul.json
 3b46126a761a068e26dde6064822fdb1cdaa38bb assets/projecte/models/item/blue_alchemical_bag.json
 6461200e6525a126d342f9013eb0bf305a32f28a assets/projecte/models/item/body_stone.json
 0cb1d61d40266e3f694b31267edceb3c5642b703 assets/projecte/models/item/body_stone_on.json
@@ -390,6 +395,8 @@ ffa1266419f35a4090c6a33ebbb62600c8975b7e assets/projecte/models/item/dm_pick.jso
 3f72833a38890f19aa44e3ea342eabf596862341 assets/projecte/models/item/dm_shears.json
 2e84cc6656e32a6e5c9d060ed9fd962ce286ce91 assets/projecte/models/item/dm_shovel.json
 37954977992691f39d0c270828bce54635f9e9dd assets/projecte/models/item/dm_sword.json
+0224c82f67f69abc1af17739ed0b027efb67278d assets/projecte/models/item/dragon_heart.json
+b1e36b16d9a34254b2a86d7852e89da99eb0fbf7 assets/projecte/models/item/elder_eye.json
 06898c5d77576b9c930f124cd0529eebea027ecd assets/projecte/models/item/evertide_amulet.json
 47ddce927257ed784766fad4be91e5d77aeaa745 assets/projecte/models/item/false_philosophers_stone.json
 49f2462fd5a13c331f221698e2bdc6233d5eb443 assets/projecte/models/item/false_philosophers_stone_albedo.json
@@ -556,6 +563,7 @@ c89134ce00470f77bab5fc9bc0f5b2c2272fc6d2 assets/projecte/models/item/transmutati
 2f4954ead919c6e9d73ceabf76bc7f014327ff4b assets/projecte/models/item/void_ring.json
 af67a1765169896fc0713dca323e75d0c48726e7 assets/projecte/models/item/void_ring_on.json
 dc38f8ac3d892513179f2b8b52eae8a3502d8838 assets/projecte/models/item/volcanite_amulet.json
+c6638ca5a03f980276d7b5f934934008c3b103b8 assets/projecte/models/item/warden_heart.json
 b31d0cdb63157b2cdf83f80dd629f8baab9bc349 assets/projecte/models/item/watch_of_flowing_time.json
 ceeac996affc98f7c7e66270f8590b9b7fff6f13 assets/projecte/models/item/watch_of_flowing_time_on.json
 2a4745f8936cb0ed10a5b34181db1b2f6c2c11ff assets/projecte/models/item/white_alchemical_bag.json

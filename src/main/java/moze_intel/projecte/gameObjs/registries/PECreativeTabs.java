@@ -27,6 +27,10 @@ public class PECreativeTabs {
 				output.accept(PEItems.SULPHUR_CHALK);
 				output.accept(PEItems.MERCURY_CHALK);
 				output.accept(PEItems.FALSE_PHILOSOPHERS_STONE);
+				output.accept(PEItems.WARDEN_HEART);
+				output.accept(PEItems.DRAGON_HEART);
+				output.accept(PEItems.BLIGHTED_SOUL);
+				output.accept(PEItems.ELDER_EYE);
 				output.accept(PEItems.PHILOSOPHERS_STONE);
 				output.accept(PEBlocks.ALCHEMICAL_CRUCIBLE);
 				output.accept(PEBlocks.CRUCIBLE_STEP);

@@ -128,6 +128,7 @@ public final class Codex {
 					Entry.topic("tier_table", "final_collector")
 			)),
 			new Chapter("artifacts", "final_star", List.of(
+					Entry.topic("boss_drops", "warden_heart"),
 					Entry.topic("big_stars", "magnum_star_ein").withRecipes("magnum_star_ein"),
 					Entry.item("final_star_shard"),
 					Entry.item("final_star"),

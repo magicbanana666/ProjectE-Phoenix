@@ -2,14 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "D": "#c:storage_blocks/diamond",
+    "D": "#c:gems/diamond",
     "F": "minecraft:furnace",
     "G": "minecraft:glowstone",
+    "S": "projecte:alchemical_sulphur",
     "T": "minecraft:glass"
   },
   "pattern": [
     "GTG",
-    "GDG",
+    "SDS",
     "GFG"
   ],
   "result": {

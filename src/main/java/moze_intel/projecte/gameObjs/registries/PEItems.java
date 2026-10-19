@@ -13,6 +13,7 @@ import moze_intel.projecte.gameObjs.items.KleinStar;
 import moze_intel.projecte.gameObjs.items.KleinStar.KleinTier;
 import moze_intel.projecte.gameObjs.items.MercurialEye;
 import moze_intel.projecte.gameObjs.items.ChalkItem;
+import moze_intel.projecte.gameObjs.items.LoreItem;
 import moze_intel.projecte.gameObjs.items.FalsePhilosophersStone;
 import moze_intel.projecte.gameObjs.items.PhilosophersStone;
 import moze_intel.projecte.gameObjs.items.RepairTalisman;
@@ -73,6 +74,11 @@ public class PEItems {
 	public static final ItemRegistryObject<Item> QUICKSILVER = ITEMS.register("quicksilver");
 	public static final ItemRegistryObject<ChalkItem> SALT_CHALK = ITEMS.register("salt_chalk", properties -> new ChalkItem(properties, 1), properties -> properties.durability(4 * ChalkItem.USES_PER_CIRCLE));
 	public static final ItemRegistryObject<ChalkItem> SULPHUR_CHALK = ITEMS.register("sulphur_chalk", properties -> new ChalkItem(properties, 2), properties -> properties.durability(4 * ChalkItem.USES_PER_CIRCLE));
+	//What the great beasts leave behind
+	public static final ItemRegistryObject<LoreItem> WARDEN_HEART = ITEMS.register("warden_heart", LoreItem::new, properties -> properties.rarity(Rarity.EPIC).fireResistant());
+	public static final ItemRegistryObject<LoreItem> DRAGON_HEART = ITEMS.register("dragon_heart", LoreItem::new, properties -> properties.rarity(Rarity.EPIC).fireResistant());
+	public static final ItemRegistryObject<LoreItem> BLIGHTED_SOUL = ITEMS.register("blighted_soul", LoreItem::new, properties -> properties.rarity(Rarity.RARE).fireResistant());
+	public static final ItemRegistryObject<LoreItem> ELDER_EYE = ITEMS.register("elder_eye", LoreItem::new, properties -> properties.rarity(Rarity.RARE));
 	public static final ItemRegistryObject<ChalkItem> MERCURY_CHALK = ITEMS.register("mercury_chalk", properties -> new ChalkItem(properties, 3), properties -> properties.durability(4 * ChalkItem.USES_PER_CIRCLE));
 
 	public static final ItemRegistryObject<PETrident> DARK_MATTER_TRIDENT = ITEMS.registerNoStackFireImmune("dark_matter_trident", properties -> new PETrident(EnumMatterType.DARK_MATTER, 2, 11, properties));

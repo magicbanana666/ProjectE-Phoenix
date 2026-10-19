@@ -548,15 +548,17 @@ public class PERecipeProvider extends RecipeProvider {
 	}
 
 	private void addCollectorRecipes(RecipeOutput recipeOutput) {
+		//Sulphur, the fiery principle, catches the light
 		shaped(RecipeCategory.DECORATIONS, PEBlocks.COLLECTOR)
 				.pattern("GTG")
-				.pattern("GDG")
+				.pattern("SDS")
 				.pattern("GFG")
 				.define('G', Items.GLOWSTONE)
 				.define('F', Items.FURNACE)
-				.define('D', Tags.Items.STORAGE_BLOCKS_DIAMOND)
+				.define('D', Tags.Items.GEMS_DIAMOND)
+				.define('S', PEItems.ALCHEMICAL_SULPHUR)
 				.define('T', Items.GLASS)
-				.unlockedBy("has_diamond", has(Tags.Items.STORAGE_BLOCKS_DIAMOND))
+				.unlockedBy("has_sulphur", has(PEItems.ALCHEMICAL_SULPHUR))
 				.save(recipeOutput);
 		addCollectorUpgradeRecipes(recipeOutput, PEBlocks.COLLECTOR_MK2, PEBlocks.COLLECTOR, PEItems.DARK_MATTER);
 		addCollectorUpgradeRecipes(recipeOutput, PEBlocks.COLLECTOR_MK3, PEBlocks.COLLECTOR_MK2, PEItems.RED_MATTER);
@@ -575,14 +577,16 @@ public class PERecipeProvider extends RecipeProvider {
 	}
 
 	private void addRelayRecipes(RecipeOutput recipeOutput) {
+		//Quicksilver, the flowing principle, carries the EMC
 		shaped(RecipeCategory.DECORATIONS, PEBlocks.RELAY)
 				.pattern("OSO")
-				.pattern("ODO")
+				.pattern("QDQ")
 				.pattern("OOO")
 				.define('S', Items.GLASS)
 				.define('O', Tags.Items.OBSIDIANS_NORMAL)
-				.define('D', Tags.Items.STORAGE_BLOCKS_DIAMOND)
-				.unlockedBy("has_diamond", has(Tags.Items.STORAGE_BLOCKS_DIAMOND))
+				.define('D', Tags.Items.GEMS_DIAMOND)
+				.define('Q', PEItems.QUICKSILVER)
+				.unlockedBy("has_quicksilver", has(PEItems.QUICKSILVER))
 				.save(recipeOutput);
 		addRelayUpgradeRecipes(recipeOutput, PEBlocks.RELAY_MK2, PEBlocks.RELAY, PEItems.DARK_MATTER);
 		addRelayUpgradeRecipes(recipeOutput, PEBlocks.RELAY_MK3, PEBlocks.RELAY_MK2, PEItems.RED_MATTER);
@@ -602,12 +606,13 @@ public class PERecipeProvider extends RecipeProvider {
 
 	private void addCondenserRecipes(RecipeOutput recipeOutput) {
 		shaped(RecipeCategory.DECORATIONS, PEBlocks.CONDENSER)
-				.pattern("ODO")
-				.pattern("DCD")
-				.pattern("ODO")
+				.pattern("OSO")
+				.pattern("SCS")
+				.pattern("OSO")
 				.define('C', PEBlocks.ALCHEMICAL_CHEST)
 				.define('O', Tags.Items.OBSIDIANS_NORMAL)
-				.define('D', Tags.Items.GEMS_DIAMOND)
+				//Salt, the principle of the body, holds the form the condenser copies
+				.define('S', PEItems.ALCHEMICAL_SALT)
 				.unlockedBy("has_alchemical_chest", has(PEBlocks.ALCHEMICAL_CHEST))
 				.save(recipeOutput);
 		shaped(RecipeCategory.DECORATIONS, PEBlocks.CONDENSER_MK2)

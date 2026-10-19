@@ -2,13 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "D": "#c:storage_blocks/diamond",
+    "D": "#c:gems/diamond",
     "O": "#c:obsidians/normal",
+    "Q": "projecte:quicksilver",
     "S": "minecraft:glass"
   },
   "pattern": [
     "OSO",
-    "ODO",
+    "QDQ",
     "OOO"
   ],
   "result": {

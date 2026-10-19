@@ -334,6 +334,14 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PEItems.PHILOSOPHERS_STONE, "Philosopher's Stone");
 		add(PEItems.FALSE_PHILOSOPHERS_STONE, "False Philosopher's Stone");
 		add(PEItems.ALCHEMICAL_SALT, "Alchemical Salt");
+		add(PEItems.WARDEN_HEART, "Warden's Heart");
+		add(PEItems.WARDEN_HEART.getTranslationKey() + ".lore", "It still listens.");
+		add(PEItems.DRAGON_HEART, "Dragon Heart");
+		add(PEItems.DRAGON_HEART.getTranslationKey() + ".lore", "Warm, after all this time. The End remembers its queen.");
+		add(PEItems.BLIGHTED_SOUL, "Blighted Soul");
+		add(PEItems.BLIGHTED_SOUL.getTranslationKey() + ".lore", "Three heads, one hunger.");
+		add(PEItems.ELDER_EYE, "Elder Eye");
+		add(PEItems.ELDER_EYE.getTranslationKey() + ".lore", "It saw the ocean before there were monuments.");
 		add(PEItems.ALCHEMICAL_SULPHUR, "Alchemical Sulphur");
 		add(PEItems.QUICKSILVER, "Quicksilver");
 		add(PEItems.SALT_CHALK, "Salt Chalk");
