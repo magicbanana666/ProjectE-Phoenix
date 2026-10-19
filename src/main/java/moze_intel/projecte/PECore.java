@@ -98,6 +98,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
@@ -287,6 +288,8 @@ public class PECore {
 	}
 
 	private void dataPackSync(OnDatapackSyncEvent event) {
+		//The Alchemist's Codex shows these recipes, and since 26.1 the client only gets the recipe types that are asked for
+		event.sendRecipes(RecipeType.CRAFTING, PERecipeTypes.ATHANOR.get());
 		if (emcUpdateResourceManager != null) {
 			long start = System.currentTimeMillis();
 			//Clear the cached created tags

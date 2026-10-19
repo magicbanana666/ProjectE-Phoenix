@@ -13,8 +13,24 @@ final class CodexLang {
 	static void add(BiConsumer<String, String> lang) {
 		lang.accept("codex.projecte.title", "Alchemist's Codex");
 		lang.accept("codex.projecte.contents", "Contents");
+		lang.accept("codex.projecte.home", "Home");
+		lang.accept("codex.projecte.back", "Back");
+		lang.accept("codex.projecte.chapters", "Chapters");
+		lang.accept("codex.projecte.page.crafting", "Crafting");
+		lang.accept("codex.projecte.page.shapeless", "Any arrangement");
+		lang.accept("codex.projecte.page.ritual", "Athanor Ritual");
+		lang.accept("codex.projecte.page.structure", "The Athanor");
+		lang.accept("codex.projecte.structure.layer", "Layer %1$s of %2$s");
+		lang.accept("codex.projecte.ritual.keeps_catalyst", "The catalyst stays");
+		lang.accept("codex.projecte.ritual.stage", "%1$s seconds, %2$s EMC");
+		lang.accept("codex.projecte.ritual.total", "Total: %1$s EMC over %2$s seconds");
+		lang.accept("codex.projecte.ritual.needs", "Needs %1$s");
+		lang.accept("codex.projecte.ritual.needs.sky", "to see the sky");
+		lang.accept("codex.projecte.ritual.needs.day", "daylight");
+		lang.accept("codex.projecte.ritual.needs.night", "the night");
+		lang.accept("codex.projecte.ritual.needs.thunder", "a thunderstorm overhead");
 		lang.accept("codex.projecte.intro", "Everything there is to know about Equivalent Exchange, written down by those who traded their way to the stars.\n\n"
-				+ "Pick a chapter on the contents page, then an entry. Click the blue names to jump to them, scroll or use the arrows to turn pages.\n\n"
+				+ "Pick a chapter from the icons on the right, then an entry. Entries show how to make their items: click an item in a recipe to read about it. Home brings you back here, Back to where you were. Scroll, the arrow keys or the arrows turn the pages.\n\n"
 				+ "All numbers are the defaults, a server may have changed them.");
 
 		chapter(lang, "basics", "The Basics", "What EMC is, how to learn items and the first things to craft.");

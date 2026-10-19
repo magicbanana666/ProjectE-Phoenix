@@ -18,6 +18,19 @@ public final class Codex {
 	public static final String TITLE = "codex.projecte.title";
 	public static final String INTRO = "codex.projecte.intro";
 	public static final String CONTENTS = "codex.projecte.contents";
+	public static final String HOME = "codex.projecte.home";
+	public static final String BACK = "codex.projecte.back";
+	public static final String CHAPTERS_TITLE = "codex.projecte.chapters";
+	public static final String PAGE_CRAFTING = "codex.projecte.page.crafting";
+	public static final String PAGE_SHAPELESS = "codex.projecte.page.shapeless";
+	public static final String PAGE_RITUAL = "codex.projecte.page.ritual";
+	public static final String PAGE_STRUCTURE = "codex.projecte.page.structure";
+	public static final String RITUAL_CATALYST = "codex.projecte.ritual.catalyst";
+	public static final String RITUAL_STAGE = "codex.projecte.ritual.stage";
+	public static final String RITUAL_TOTAL = "codex.projecte.ritual.total";
+	public static final String RITUAL_NEEDS = "codex.projecte.ritual.needs";
+	public static final String RITUAL_KEEPS_CATALYST = "codex.projecte.ritual.keeps_catalyst";
+	public static final String STRUCTURE_LAYER = "codex.projecte.structure.layer";
 
 	public static final List<Chapter> CHAPTERS = List.of(
 			new Chapter("basics", "philosophers_stone", List.of(
@@ -26,8 +39,8 @@ public final class Codex {
 					Entry.topic("keybinds", "minecraft:compass"),
 					Entry.item("false_philosophers_stone"),
 					Entry.item("transmutation_table"),
-					Entry.item("alchemical_crucible"),
-					Entry.topic("magnum_opus", "minecraft:nether_star"),
+					Entry.item("alchemical_crucible").withStructure(),
+					Entry.topic("magnum_opus", "minecraft:nether_star").withRecipes("philosophers_stone"),
 					Entry.item("philosophers_stone"),
 					Entry.item("transmutation_tablet"),
 					Entry.item("tome"),
@@ -36,6 +49,7 @@ public final class Codex {
 					Entry.item("dark_matter"),
 					Entry.item("red_matter"),
 					Entry.topic("klein_stars", "klein_star_ein")
+							.withRecipes("klein_star_ein", "klein_star_zwei", "klein_star_drei", "klein_star_vier", "klein_star_sphere", "klein_star_omega")
 			)),
 			new Chapter("machines", "condenser_mk1", List.of(
 					Entry.item("alchemical_chest"),
@@ -89,7 +103,9 @@ public final class Codex {
 					Entry.item("repair_talisman")
 			)),
 			new Chapter("beyond", "magenta_matter", List.of(
-					Entry.topic("matter_tiers", "magenta_matter"),
+					Entry.topic("matter_tiers", "magenta_matter")
+							.withRecipes("magenta_matter", "pink_matter", "purple_matter", "violet_matter", "blue_matter", "cyan_matter", "green_matter",
+									"lime_matter", "yellow_matter", "orange_matter", "white_matter", "fading_matter"),
 					Entry.topic("tier_fuels", "magenta_fuel"),
 					Entry.topic("tier_collectors", "basic_collector"),
 					Entry.topic("compressed_collectors", "basic_compressed_collector"),
@@ -163,16 +179,26 @@ public final class Codex {
 	}
 
 	/**
-	 * @param itemTitle whether the entry is about a single item and is titled by its name, rather than by a title of its own
+	 * @param itemTitle   whether the entry is about a single item and is titled by its name, rather than by a title of its own
+	 * @param recipeItems the items whose recipes the entry shows after its text
+	 * @param structure   whether the entry shows the layers of the Athanor
 	 */
-	public record Entry(String id, Identifier iconId, boolean itemTitle) {
+	public record Entry(String id, Identifier iconId, boolean itemTitle, List<Identifier> recipeItems, boolean structure) {
 
 		public static Entry item(String id) {
-			return new Entry(id, Codex.id(id), true);
+			return new Entry(id, Codex.id(id), true, List.of(Codex.id(id)), false);
 		}
 
 		public static Entry topic(String id, String icon) {
-			return new Entry(id, Codex.id(icon), false);
+			return new Entry(id, Codex.id(icon), false, List.of(Codex.id(icon)), false);
+		}
+
+		public Entry withRecipes(String... items) {
+			return new Entry(id, iconId, itemTitle, java.util.Arrays.stream(items).map(Codex::id).toList(), structure);
+		}
+
+		public Entry withStructure() {
+			return new Entry(id, iconId, itemTitle, recipeItems, true);
 		}
 
 		public String titleKey() {
