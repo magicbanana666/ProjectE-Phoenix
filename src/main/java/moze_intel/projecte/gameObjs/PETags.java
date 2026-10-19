@@ -64,6 +64,10 @@ public class PETags {
 		 * Items in this tag will be blacklisted from being learned in a transmutation table.
 		 */
 		public static final TagKey<Item> BLACKLIST_LEARNING = tag("blacklist_learning");
+		/**
+		 * Items only a ritual of the Athanor makes. They keep their EMC, but are in both blacklists, so the Athanor can not be skipped.
+		 */
+		public static final TagKey<Item> RITUAL_ONLY = tag("ritual_only");
 
 		//Curios tags
 		public static final TagKey<Item> CURIOS_BELT = curiosTag("belt");

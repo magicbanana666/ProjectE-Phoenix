@@ -1,5 +1,6 @@
 package moze_intel.projecte.common.tag;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import moze_intel.projecte.PECore;
 import moze_intel.projecte.gameObjs.PETags;
@@ -44,8 +45,9 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 		addGear();
 		addIgnoreMissing();
 		addExpansionTags();
+		addRitualOnly();
 		for (BlacklistType blacklistType : BlacklistType.values()) {
-			tag(blacklistType.getBlacklist());
+			tag(blacklistType.getBlacklist()).addTag(PETags.Items.RITUAL_ONLY);
 		}
 		tag(ItemTags.BOOKSHELF_BOOKS).add(projecteItem(PEItems.TOME_OF_KNOWLEDGE));
 		tag(ItemTags.FREEZE_IMMUNE_WEARABLES).add(projecteItem(PEItems.GEM_CHESTPLATE));
@@ -244,6 +246,24 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 	private void addArmor(TagKey<Item> armorTag, TagKey<Item> armorTagEnchantable, Item... items) {
 		tag(armorTag).add(items);
 		tag(armorTagEnchantable).add(items);
+	}
+
+	/**
+	 * Everything the rituals in data/projecte/recipe/athanor make, and the blocks that would give the matter back.
+	 */
+	private void addRitualOnly() {
+		TagAppender<Item, Item> ritualOnly = tag(PETags.Items.RITUAL_ONLY).add(
+				projecteItem(PEItems.PHILOSOPHERS_STONE),
+				projecteItem(PEItems.KLEIN_STAR_EIN),
+				projecteItem(PEItems.KLEIN_STAR_ZWEI),
+				projecteItem(PEItems.KLEIN_STAR_DREI),
+				projecteItem(PEItems.KLEIN_STAR_VIER),
+				projecteItem("infinite_fuel"),
+				projecteItem("infinite_steak")
+		);
+		for (String color : List.of("magenta", "pink", "purple", "violet", "blue", "cyan", "green", "lime", "yellow", "orange")) {
+			ritualOnly.add(projecteItem(color + "_matter"), projecteItem(color + "_matter_block"));
+		}
 	}
 
 	private static Item projecteItem(ItemLike item) {

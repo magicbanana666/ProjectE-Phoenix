@@ -103,7 +103,12 @@ final class CodexLang {
 		topic(lang, "klein_stars", "Klein Stars",
 				"Batteries for EMC. Tools and rings take the EMC they need from stars in your inventory, and a Transmutation Table can store EMC in them.\n\n"
 				+ "Ein 50,000, Zwei 200,000, Drei 800,000, Vier 3.2 million, Sphere 12.8 million, Omega 51.2 million.\n\n"
-				+ "Charge them in a collector or relay. Ein: a diamond surrounded by Mobius Fuel, each next star takes four of the previous one.");
+				+ "Charge them in a collector or relay. The first four are made in the Athanor, and the star you upgrade keeps the EMC it holds. All of them end in Citrinitas, which needs the sky:\n\n"
+				+ "Ein: a Diamond, Mobius Fuel and High Covalence Dust, with an Ender Pearl in the centre.\n"
+				+ "Zwei: a Ghast Tear, a Blaze Rod and Aeternalis Fuel, with a Klein Star Ein in the centre.\n"
+				+ "Drei: Dragon's Breath, a Shulker Shell and Dark Matter, with a Klein Star Zwei in the centre.\n"
+				+ "Vier: a Heavy Core, a Wither Skeleton Skull and Red Matter, with a Klein Star Drei in the centre.\n\n"
+				+ "Sphere and Omega still take four of the previous star in a crafting grid. Stars made in the Athanor can not be learned in a Transmutation Table.");
 
 		//Machines
 		item(lang, "alchemical_chest",
@@ -222,7 +227,12 @@ final class CodexLang {
 		//Beyond Red Matter
 		topic(lang, "matter_tiers", "Matter Tiers",
 				"After Red Matter come Magenta, Pink, Purple, Violet, Blue, Cyan, Green, Lime, Yellow, Orange, White and Fading Matter. The Final Star Shard is the last tier.\n\n"
-				+ "Each matter is made from the matter and fuel of the tier before it: three matter between six fuel. Four matter make a block.");
+				+ "Between the black of Nigredo and the white of Albedo the alchemists saw the peacock's tail, every colour at once. The coloured matters are that stage, the Cauda Pavonis.\n\n"
+				+ "Magenta to Orange Matter are made in the Athanor: three of the matter before it on the dais, and a catalyst in the centre that you have to go out and find:\n\n"
+				+ "Magenta: Chorus Fruit. Pink: Pink Petals. Purple: a Shulker Shell. Violet: an Amethyst Cluster. Blue: a Heart of the Sea. "
+				+ "Cyan: an Echo Shard. Green: a Turtle Scute. Lime: a Sculk Catalyst. Yellow: a Breeze Rod. Orange: Magma Cream.\n\n"
+				+ "Each ritual costs as much EMC as six fuels of the tier before it. White and Fading Matter are still made from the matter and fuel of the tier before it: three matter between six fuel. Four matter make a block.\n\n"
+				+ "Matter made in the Athanor can not be learned in a Transmutation Table, and neither can its blocks.");
 		topic(lang, "tier_fuels", "Coloured Fuels",
 				"Every new tier has a fuel, from Magenta to White. A Philosopher's Stone and four of the previous fuel make one, Magenta Fuel starts from Aeternalis Fuel. Nine make a block.");
 		topic(lang, "tier_collectors", "Collectors",
@@ -279,9 +289,9 @@ final class CodexLang {
 		item(lang, "knowledge_sharing_book",
 				"Sneak right click to write your knowledge into the book. Another player who uses it learns every item you know.");
 		item(lang, "infinite_fuel",
-				"Fuel that never runs out: each time it lights a furnace it costs its owner 128 EMC instead.");
+				"Fuel that never runs out: each time it lights a furnace it costs its owner 128 EMC instead. Made in the Athanor from an Aeternalis Fuel block, a Blaze Rod and a Magma Block, with a Klein Star Ein in the centre.");
 		item(lang, "infinite_steak",
-				"Food that never runs out. Every bite costs 64 EMC.");
+				"Food that never runs out. Every bite costs 64 EMC. Made in the Athanor from an Enchanted Golden Apple, a Cake and Cooked Beef, with a Klein Star Ein in the centre.");
 
 		//Commands and Settings
 		topic(lang, "commands", "Commands",

@@ -1,0 +1,22 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "minecraft:enchanted_golden_apple",
+    "minecraft:cake",
+    "minecraft:cooked_beef"
+  ],
+  "catalyst": "projecte:klein_star_ein",
+  "stages": [
+    {
+      "stage": "albedo",
+      "ticks": 200,
+      "emc": 32768
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 300,
+      "emc": 65536
+    }
+  ],
+  "result": "projecte:infinite_steak"
+}

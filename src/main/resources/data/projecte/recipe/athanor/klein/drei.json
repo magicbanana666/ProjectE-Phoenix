@@ -1,0 +1,29 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "minecraft:dragon_breath",
+    "minecraft:shulker_shell",
+    "projecte:dark_matter"
+  ],
+  "catalyst": "projecte:klein_star_zwei",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 180,
+      "emc": 16384
+    },
+    {
+      "stage": "albedo",
+      "ticks": 240,
+      "emc": 16384
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 280,
+      "emc": 32768,
+      "needs": "sky"
+    }
+  ],
+  "result": "projecte:klein_star_drei"
+}

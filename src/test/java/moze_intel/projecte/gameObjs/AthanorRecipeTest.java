@@ -7,6 +7,7 @@ import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorInput;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorRecipe;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.OpusStage;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.RuneColor;
+import moze_intel.projecte.gameObjs.registries.PEDataComponentTypes;
 import moze_intel.projecte.gameObjs.registries.PEItems;
 import moze_intel.projecte.gameObjs.registries.PERecipeTypes;
 import moze_intel.projecte.impl.codec.CodecTestHelper;
@@ -63,6 +64,35 @@ class AthanorRecipeTest {
 		Assertions.assertFalse(recipe.matches(new AthanorInput(List.of(falseStone(), falseStone(), falseStone(), falseStone()), star), server.overworld()));
 		Assertions.assertFalse(recipe.matches(new AthanorInput(List.of(falseStone(), falseStone(), new ItemStack(Items.DIAMOND)), star), server.overworld()));
 		Assertions.assertFalse(recipe.matches(new AthanorInput(List.of(falseStone(), falseStone(), falseStone()), new ItemStack(Items.DIAMOND)), server.overworld()));
+	}
+
+	@Test
+	@DisplayName("Every ritual in the datapack loads, fits the Athanor and makes something only a ritual makes")
+	void testAllRitualsLoad(MinecraftServer server) {
+		List<AthanorRecipe> recipes = server.getRecipeManager().recipeMap().byType(PERecipeTypes.ATHANOR.get()).stream()
+				.map(RecipeHolder::value)
+				.toList();
+		//The Philosopher's Stone, ten coloured matters, four Klein Stars, Infinite Fuel and Infinite Steak
+		Assertions.assertEquals(17, recipes.size());
+		for (AthanorRecipe recipe : recipes) {
+			Assertions.assertEquals(1, recipe.tier());
+			Assertions.assertTrue(recipe.inputs().size() <= AthanorRecipe.TIER_ONE_INPUTS);
+			Assertions.assertTrue(recipe.result().create().is(PETags.Items.RITUAL_ONLY), () -> recipe.result() + " is not in projecte:ritual_only");
+		}
+	}
+
+	@Test
+	@DisplayName("Upgrading a Klein Star keeps the EMC that is stored in it")
+	void testKleinStarKeepsEmc(MinecraftServer server) {
+		ResourceKey<Recipe<?>> key = ResourceKey.create(Registries.RECIPE, PECore.rl("athanor/klein/zwei"));
+		AthanorRecipe recipe = (AthanorRecipe) server.getRecipeManager().byKey(key).orElseThrow().value();
+		ItemStack ein = new ItemStack(PEItems.KLEIN_STAR_EIN.get());
+		ein.set(PEDataComponentTypes.STORED_EMC, 1234L);
+		AthanorInput input = new AthanorInput(List.of(new ItemStack(Items.GHAST_TEAR), new ItemStack(PEItems.AETERNALIS_FUEL.get()), new ItemStack(Items.BLAZE_ROD)), ein);
+		Assertions.assertTrue(recipe.matches(input, server.overworld()));
+		ItemStack zwei = recipe.assemble(input);
+		Assertions.assertTrue(zwei.is(PEItems.KLEIN_STAR_ZWEI.get()));
+		Assertions.assertEquals(1234L, zwei.get(PEDataComponentTypes.STORED_EMC));
 	}
 
 	@Test

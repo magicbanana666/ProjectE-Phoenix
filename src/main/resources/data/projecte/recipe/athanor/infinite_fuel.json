@@ -1,0 +1,22 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:aeternalis_fuel_block",
+    "minecraft:blaze_rod",
+    "minecraft:magma_block"
+  ],
+  "catalyst": "projecte:klein_star_ein",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 200,
+      "emc": 32768
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 300,
+      "emc": 65536
+    }
+  ],
+  "result": "projecte:infinite_fuel"
+}

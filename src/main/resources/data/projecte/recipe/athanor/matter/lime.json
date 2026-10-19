@@ -1,0 +1,28 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:green_matter",
+    "projecte:green_matter",
+    "projecte:green_matter"
+  ],
+  "catalyst": "minecraft:sculk_catalyst",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 240,
+      "emc": 201326592
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 580,
+      "emc": 402653184,
+      "rune": "lime"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 340,
+      "emc": 201326592
+    }
+  ],
+  "result": "projecte:lime_matter"
+}

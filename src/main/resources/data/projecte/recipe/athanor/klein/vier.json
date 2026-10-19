@@ -1,0 +1,29 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "minecraft:heavy_core",
+    "minecraft:wither_skeleton_skull",
+    "projecte:red_matter"
+  ],
+  "catalyst": "projecte:klein_star_drei",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 220,
+      "emc": 65536
+    },
+    {
+      "stage": "albedo",
+      "ticks": 280,
+      "emc": 65536
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 320,
+      "emc": 131072,
+      "needs": "sky"
+    }
+  ],
+  "result": "projecte:klein_star_vier"
+}

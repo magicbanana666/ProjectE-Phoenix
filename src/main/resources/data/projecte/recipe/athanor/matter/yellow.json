@@ -1,0 +1,28 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:lime_matter",
+    "projecte:lime_matter",
+    "projecte:lime_matter"
+  ],
+  "catalyst": "minecraft:breeze_rod",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 260,
+      "emc": 805306368
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 620,
+      "emc": 1610612736,
+      "rune": "citrinitas"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 360,
+      "emc": 805306368
+    }
+  ],
+  "result": "projecte:yellow_matter"
+}

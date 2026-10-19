@@ -1,0 +1,28 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "minecraft:diamond",
+    "projecte:mobius_fuel",
+    "projecte:high_covalence_dust"
+  ],
+  "catalyst": "minecraft:ender_pearl",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 100,
+      "emc": 1024
+    },
+    {
+      "stage": "albedo",
+      "ticks": 160,
+      "emc": 1024
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 200,
+      "emc": 2048,
+      "needs": "sky"
+    }
+  ],
+  "result": "projecte:klein_star_ein"
+}

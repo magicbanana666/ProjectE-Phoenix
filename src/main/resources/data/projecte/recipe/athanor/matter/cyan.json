@@ -1,0 +1,28 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:blue_matter",
+    "projecte:blue_matter",
+    "projecte:blue_matter"
+  ],
+  "catalyst": "minecraft:echo_shard",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 200,
+      "emc": 12582912
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 500,
+      "emc": 25165824,
+      "rune": "cyan"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 300,
+      "emc": 12582912
+    }
+  ],
+  "result": "projecte:cyan_matter"
+}

@@ -1,0 +1,28 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:pink_matter",
+    "projecte:pink_matter",
+    "projecte:pink_matter"
+  ],
+  "catalyst": "minecraft:shulker_shell",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 140,
+      "emc": 196608
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 380,
+      "emc": 393216,
+      "rune": "purple"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 240,
+      "emc": 196608
+    }
+  ],
+  "result": "projecte:purple_matter"
+}

@@ -1,0 +1,28 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:violet_matter",
+    "projecte:violet_matter",
+    "projecte:violet_matter"
+  ],
+  "catalyst": "minecraft:heart_of_the_sea",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 180,
+      "emc": 3145728
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 460,
+      "emc": 6291456,
+      "rune": "blue"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 280,
+      "emc": 3145728
+    }
+  ],
+  "result": "projecte:blue_matter"
+}

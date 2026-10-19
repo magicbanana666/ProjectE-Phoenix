@@ -1,0 +1,28 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:red_matter",
+    "projecte:red_matter",
+    "projecte:red_matter"
+  ],
+  "catalyst": "minecraft:chorus_fruit",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 100,
+      "emc": 12288
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 300,
+      "emc": 24576,
+      "rune": "magenta"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 200,
+      "emc": 12288
+    }
+  ],
+  "result": "projecte:magenta_matter"
+}

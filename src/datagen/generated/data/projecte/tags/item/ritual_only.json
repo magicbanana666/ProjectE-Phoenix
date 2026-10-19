@@ -1,0 +1,31 @@
+{
+  "values": [
+    "projecte:philosophers_stone",
+    "projecte:klein_star_ein",
+    "projecte:klein_star_zwei",
+    "projecte:klein_star_drei",
+    "projecte:klein_star_vier",
+    "projecte:infinite_fuel",
+    "projecte:infinite_steak",
+    "projecte:magenta_matter",
+    "projecte:magenta_matter_block",
+    "projecte:pink_matter",
+    "projecte:pink_matter_block",
+    "projecte:purple_matter",
+    "projecte:purple_matter_block",
+    "projecte:violet_matter",
+    "projecte:violet_matter_block",
+    "projecte:blue_matter",
+    "projecte:blue_matter_block",
+    "projecte:cyan_matter",
+    "projecte:cyan_matter_block",
+    "projecte:green_matter",
+    "projecte:green_matter_block",
+    "projecte:lime_matter",
+    "projecte:lime_matter_block",
+    "projecte:yellow_matter",
+    "projecte:yellow_matter_block",
+    "projecte:orange_matter",
+    "projecte:orange_matter_block"
+  ]
+}

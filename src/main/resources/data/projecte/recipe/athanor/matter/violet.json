@@ -1,0 +1,28 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:purple_matter",
+    "projecte:purple_matter",
+    "projecte:purple_matter"
+  ],
+  "catalyst": "minecraft:amethyst_cluster",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 160,
+      "emc": 786432
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 420,
+      "emc": 1572864,
+      "rune": "violet"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 260,
+      "emc": 786432
+    }
+  ],
+  "result": "projecte:violet_matter"
+}

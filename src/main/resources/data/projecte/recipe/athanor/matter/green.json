@@ -1,0 +1,28 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:cyan_matter",
+    "projecte:cyan_matter",
+    "projecte:cyan_matter"
+  ],
+  "catalyst": "minecraft:turtle_scute",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 220,
+      "emc": 50331648
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 540,
+      "emc": 100663296,
+      "rune": "green"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 320,
+      "emc": 50331648
+    }
+  ],
+  "result": "projecte:green_matter"
+}

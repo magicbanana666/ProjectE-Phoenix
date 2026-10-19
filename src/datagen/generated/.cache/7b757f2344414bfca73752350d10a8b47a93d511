@@ -1,4 +1,4 @@
-// 26.1.2	2026-10-18T22:06:51.5730393	ProjectE Recipes
+// 26.1.2	2026-10-19T21:55:43.2372753	ProjectE Recipes
 05099afdf58687b82549dd70ee134a9615a02b44 data/projecte/advancement/recipes/building_blocks/aeternalis_fuel_block.json
 417ea0320f1af02e94e29ceba18460f654b608f6 data/projecte/advancement/recipes/building_blocks/alchemical_coal_block.json
 818c0ee04140558c4c4154e225cfeb5b9bd1b46f data/projecte/advancement/recipes/building_blocks/dark_matter_block.json
@@ -129,12 +129,8 @@ feba20bdf65e496fdfe1731bce2db4603f4facba data/projecte/advancement/recipes/tools
 72d27bf60f4d8cb11fad6b563b47eb2557f682ea data/projecte/advancement/recipes/tools/hyperkinetic_lens.json
 ef105a1688ae0a46a59bbf2fcf087d37e7ad4e86 data/projecte/advancement/recipes/tools/ignition_ring.json
 68c82b35d06efb940e9f528348b1d31f9d951a1a data/projecte/advancement/recipes/tools/iron_band.json
-4ce44419307e1ce77838533dbccc646c0f74877f data/projecte/advancement/recipes/tools/klein_star_drei.json
-6483dfca3555f37c0f8f47971f9c1645b9edb65d data/projecte/advancement/recipes/tools/klein_star_ein.json
 1d772e385fab885d463bb5ab3209be689a3ef352 data/projecte/advancement/recipes/tools/klein_star_omega.json
 9d99b3e3925694151edff2fefa8ee7e82ad58cc2 data/projecte/advancement/recipes/tools/klein_star_sphere.json
-9e98a96f002c76f9691af9c61da2e4ac536e58fe data/projecte/advancement/recipes/tools/klein_star_vier.json
-3d4746ebef77119b352c9d9bd85339e1837a3698 data/projecte/advancement/recipes/tools/klein_star_zwei.json
 1a024f2c0bf09d9dc25b859b2f901deb37447de8 data/projecte/advancement/recipes/tools/life_stone.json
 431664c4716faf3d619699a3c4ba4f556456141b data/projecte/advancement/recipes/tools/light_blue_alchemical_bag.json
 7ecb22b8e40977ffad119ba11dcd37ae8b204785 data/projecte/advancement/recipes/tools/light_gray_alchemical_bag.json
@@ -274,12 +270,8 @@ c727662912862934e33940857f029892eae0d3ae data/projecte/recipe/ignition_ring.json
 24fc6923a136e22a57dab4eeea13218c2cb831f6 data/projecte/recipe/interdiction_lantern.json
 d57a7d35bd583cba7b05397c787723ef74eb2751 data/projecte/recipe/interdiction_torch.json
 2ad8c3084d2b141ba0db4af639aa2178d56b89f4 data/projecte/recipe/iron_band.json
-2751586ab6bbf5a2343cfd9f739563a0be873f3b data/projecte/recipe/klein_star_drei.json
-6b4fb1601edf255fc76dc65ba36b2220c359d747 data/projecte/recipe/klein_star_ein.json
 c04262f76c83867abaec4ae0aa2b607198c5edba data/projecte/recipe/klein_star_omega.json
 62548b2e7b7e9a5379af8c8f81683b6f817858f2 data/projecte/recipe/klein_star_sphere.json
-f6dc2bbce8715efb6afba3b6ee7afd5fdf3036c8 data/projecte/recipe/klein_star_vier.json
-b598c9a5003e4ca7a2a81ec66deeb66ddc3a25ad data/projecte/recipe/klein_star_zwei.json
 7188f4c8dc208f6bacace6235c0a55b8e5cf1816 data/projecte/recipe/life_stone.json
 2f05194693e0c124d00be45fd52d2f2cbb65c428 data/projecte/recipe/light_blue_alchemical_bag.json
 f9c71a9da2c75f28134deea4c35463cb36e8a898 data/projecte/recipe/light_gray_alchemical_bag.json

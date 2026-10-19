@@ -1,0 +1,29 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "minecraft:ghast_tear",
+    "minecraft:blaze_rod",
+    "projecte:aeternalis_fuel"
+  ],
+  "catalyst": "projecte:klein_star_ein",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 140,
+      "emc": 4096
+    },
+    {
+      "stage": "albedo",
+      "ticks": 200,
+      "emc": 4096
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 240,
+      "emc": 8192,
+      "needs": "sky"
+    }
+  ],
+  "result": "projecte:klein_star_zwei"
+}

@@ -640,16 +640,10 @@ public class PERecipeProvider extends RecipeProvider {
 	}
 
 	private void addKleinRecipes(RecipeOutput recipeOutput) {
-		shaped(RecipeCategory.TOOLS, PEItems.KLEIN_STAR_EIN)
-				.pattern("MMM")
-				.pattern("MDM")
-				.pattern("MMM")
-				.define('M', PEItems.MOBIUS_FUEL)
-				.define('D', Tags.Items.GEMS_DIAMOND)
-				.unlockedBy("has_components", hasItems(PEItems.MOBIUS_FUEL, Tags.Items.GEMS_DIAMOND))
-				.save(recipeOutput);
+		//Ein to Vier are rituals of the Athanor (data/projecte/recipe/athanor/klein). Sphere and Omega stay crafted until the
+		// Grand Athanor exists
 		KleinTier[] tiers = KleinTier.values();
-		for (int tier = 1; tier < tiers.length; tier++) {
+		for (int tier = KleinTier.SPHERE.ordinal(); tier < tiers.length; tier++) {
 			kleinStarUpgrade(recipeOutput, PEItems.getStar(tiers[tier]), PEItems.getStar(tiers[tier - 1]));
 		}
 	}
