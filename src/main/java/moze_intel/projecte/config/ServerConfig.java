@@ -215,46 +215,25 @@ public final class ServerConfig extends BasePEConfig {
 		}
 	}
 	/**
-	 * Settings of the Magnum Opus, the ritual in the Alchemical Crucible that turns False Philosopher's Stones into the real one.
+	 * Settings of the rituals in the Athanor.
 	 */
 	public static class Ritual {
 
-		public final ModConfigSpec.ConfigValue<String> catalyst;
-		public final CachedIntValue nigredoEmc;
-		public final CachedIntValue albedoEmc;
-		public final CachedIntValue citrinitasEmc;
-		public final CachedIntValue rubedoEmc;
-		public final CachedIntValue nigredoDuration;
-		public final CachedIntValue albedoDuration;
-		public final CachedIntValue citrinitasDuration;
-		public final CachedIntValue rubedoDuration;
-		public final CachedBooleanValue citrinitasNeedsSky;
-		public final CachedBooleanValue rubedoResetsWhenStalled;
+		public final CachedDoubleValue emcMultiplier;
+		public final CachedDoubleValue durationMultiplier;
+		public final CachedBooleanValue rebound;
+		public final CachedBooleanValue reboundBreaksBlocks;
 
 		private Ritual(IPEConfig config, ModConfigSpec.Builder builder) {
 			PEConfigTranslations.SERVER_RITUAL.applyToBuilder(builder).push("ritual");
-			catalyst = PEConfigTranslations.SERVER_RITUAL_CATALYST.applyToBuilder(builder)
-					.define("catalyst", "minecraft:nether_star", value -> value instanceof String s && net.minecraft.resources.Identifier.tryParse(s) != null);
-			nigredoEmc = CachedIntValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_NIGREDO_EMC.applyToBuilder(builder)
-					.defineInRange("nigredoEmc", 16_384, 0, Integer.MAX_VALUE));
-			albedoEmc = CachedIntValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_ALBEDO_EMC.applyToBuilder(builder)
-					.defineInRange("albedoEmc", 32_768, 0, Integer.MAX_VALUE));
-			citrinitasEmc = CachedIntValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_CITRINITAS_EMC.applyToBuilder(builder)
-					.defineInRange("citrinitasEmc", 65_536, 0, Integer.MAX_VALUE));
-			rubedoEmc = CachedIntValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_RUBEDO_EMC.applyToBuilder(builder)
-					.defineInRange("rubedoEmc", 131_072, 0, Integer.MAX_VALUE));
-			nigredoDuration = CachedIntValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_NIGREDO_DURATION.applyToBuilder(builder)
-					.defineInRange("nigredoDuration", 10 * SharedConstants.TICKS_PER_SECOND, 1, 72_000));
-			albedoDuration = CachedIntValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_ALBEDO_DURATION.applyToBuilder(builder)
-					.defineInRange("albedoDuration", 15 * SharedConstants.TICKS_PER_SECOND, 1, 72_000));
-			citrinitasDuration = CachedIntValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_CITRINITAS_DURATION.applyToBuilder(builder)
-					.defineInRange("citrinitasDuration", 20 * SharedConstants.TICKS_PER_SECOND, 1, 72_000));
-			rubedoDuration = CachedIntValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_RUBEDO_DURATION.applyToBuilder(builder)
-					.defineInRange("rubedoDuration", 30 * SharedConstants.TICKS_PER_SECOND, 1, 72_000));
-			citrinitasNeedsSky = CachedBooleanValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_CITRINITAS_SKY.applyToBuilder(builder)
-					.define("citrinitasNeedsSky", true));
-			rubedoResetsWhenStalled = CachedBooleanValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_RUBEDO_RESETS.applyToBuilder(builder)
-					.define("rubedoResetsWhenStalled", false));
+			emcMultiplier = CachedDoubleValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_EMC_MULTIPLIER.applyToBuilder(builder)
+					.defineInRange("emcMultiplier", 1.0, 0, 1_000));
+			durationMultiplier = CachedDoubleValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_DURATION_MULTIPLIER.applyToBuilder(builder)
+					.defineInRange("durationMultiplier", 1.0, 0.01, 100));
+			rebound = CachedBooleanValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_REBOUND.applyToBuilder(builder)
+					.define("rebound", true));
+			reboundBreaksBlocks = CachedBooleanValue.wrap(config, PEConfigTranslations.SERVER_RITUAL_REBOUND_BREAKS_BLOCKS.applyToBuilder(builder)
+					.define("reboundBreaksBlocks", false));
 			builder.pop();
 		}
 	}

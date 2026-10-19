@@ -183,21 +183,13 @@ public enum PEConfigTranslations implements IConfigTranslation {
 	SERVER_MISC_SHOW_MISSING_STAGES("server.misc.show_missing_game_stages", "Show Missing Game Stages",
 			"If enabled, warnings will tell you which Game Stages you are missing to use blacklisted items."),
 
-	SERVER_RITUAL("server.ritual", "Magnum Opus", "Settings of the ritual in the Alchemical Crucible that creates the Philosopher's Stone.", true),
-	SERVER_RITUAL_CATALYST("server.ritual.catalyst", "Catalyst",
-			"The item that sits in the centre of the Alchemical Crucible, next to the three False Philosopher's Stones. A Nether Star by default."),
-	SERVER_RITUAL_NIGREDO_EMC("server.ritual.nigredo_emc", "Nigredo EMC", "Personal EMC the owner pays during the Nigredo stage."),
-	SERVER_RITUAL_ALBEDO_EMC("server.ritual.albedo_emc", "Albedo EMC", "Personal EMC the owner pays during the Albedo stage."),
-	SERVER_RITUAL_CITRINITAS_EMC("server.ritual.citrinitas_emc", "Citrinitas EMC", "Personal EMC the owner pays during the Citrinitas stage."),
-	SERVER_RITUAL_RUBEDO_EMC("server.ritual.rubedo_emc", "Rubedo EMC", "Personal EMC the owner pays during the Rubedo stage."),
-	SERVER_RITUAL_NIGREDO_DURATION("server.ritual.nigredo_duration", "Nigredo Duration", "Length of the Nigredo stage, in ticks."),
-	SERVER_RITUAL_ALBEDO_DURATION("server.ritual.albedo_duration", "Albedo Duration", "Length of the Albedo stage, in ticks."),
-	SERVER_RITUAL_CITRINITAS_DURATION("server.ritual.citrinitas_duration", "Citrinitas Duration", "Length of the Citrinitas stage, in ticks."),
-	SERVER_RITUAL_RUBEDO_DURATION("server.ritual.rubedo_duration", "Rubedo Duration", "Length of the Rubedo stage, in ticks."),
-	SERVER_RITUAL_CITRINITAS_SKY("server.ritual.citrinitas_needs_sky", "Citrinitas Needs Sky",
-			"If true, the Citrinitas stage only progresses while the Alchemical Crucible can see the sky."),
-	SERVER_RITUAL_RUBEDO_RESETS("server.ritual.rubedo_resets_when_stalled", "Rubedo Resets When Stalled",
-			"If true, the Rubedo stage starts over when it stalls, for example because the owner ran out of EMC. Earlier stages are kept."),
+	SERVER_RITUAL("server.ritual", "Athanor", "Settings of the rituals in the Athanor. The rituals themselves are recipes of the type projecte:athanor.", true),
+	SERVER_RITUAL_EMC_MULTIPLIER("server.ritual.emc_multiplier", "EMC Multiplier", "Multiplies the personal EMC every stage of every ritual costs."),
+	SERVER_RITUAL_DURATION_MULTIPLIER("server.ritual.duration_multiplier", "Duration Multiplier", "Multiplies how long every stage of every ritual takes."),
+	SERVER_RITUAL_REBOUND("server.ritual.rebound", "Rebound",
+			"If true, a ritual rebounds when the Athanor stays broken for 5 seconds, or its owner stays out of EMC for 10 seconds in Citrinitas or Rubedo. "
+			+ "A rebound destroys some or all of the ingredients. If false, the ritual only waits."),
+	SERVER_RITUAL_REBOUND_BREAKS_BLOCKS("server.ritual.rebound_breaks_blocks", "Rebound Breaks Blocks", "If true, the explosion of a rebound in Rubedo breaks blocks."),
 
 	//EMC Mapping
 	MAPPING_DUMP_TO_FILE("mapping.dump_to_file", "Dump Everything To File",
@@ -241,6 +233,8 @@ public enum PEConfigTranslations implements IConfigTranslation {
 			"Add Conversions for Crafting Recipes gathered from net.minecraft.world.item.crafting.RecipeManager", true),
 	MAPPING_CRAFTING_MAPPER_VANILLA("mapping.mapper.crafting.vanilla", "Vanilla Recipe Types", "Maps the different vanilla recipe types.", true),
 	MAPPING_CRAFTING_MAPPER_SMITHING("mapping.mapper.crafting.smithing", "Smithing", "Maps smithing recipes.", true),
+	MAPPING_CRAFTING_MAPPER_ATHANOR("mapping.mapper.crafting.athanor", "Athanor",
+			"Maps the rituals of the Athanor. The result is worth its ingredients, the catalyst if it is used up, and the personal EMC the ritual costs."),
 	MAPPING_CRAFTING_MAPPER_FALLBACK("mapping.mapper.crafting.fallback", "Fallback",
 			"Fallback for default handling of recipes that extend ICraftingRecipe, AbstractCookingRecipe, SingleItemRecipe, or SmithingRecipe. "
 			+ "This will catch modded extensions of the vanilla recipe classes, and if the VanillaRecipeTypes mapper is disabled, "

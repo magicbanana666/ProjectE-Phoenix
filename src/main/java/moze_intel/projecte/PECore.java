@@ -32,6 +32,7 @@ import moze_intel.projecte.gameObjs.registries.PEItems;
 import moze_intel.projecte.gameObjs.registries.PENormalizedSimpleStacks;
 import moze_intel.projecte.gameObjs.registries.PERecipeConditions;
 import moze_intel.projecte.gameObjs.registries.PERecipeSerializers;
+import moze_intel.projecte.gameObjs.registries.PERecipeTypes;
 import moze_intel.projecte.gameObjs.registries.PESoundEvents;
 import moze_intel.projecte.impl.TransmutationOffline;
 import moze_intel.projecte.impl.capability.AlchBagImpl;
@@ -167,6 +168,7 @@ public class PECore {
 		}
 		PERecipeConditions.CONDITION_CODECS.register(modEventBus);
 		PERecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
+		PERecipeTypes.RECIPE_TYPES.register(modEventBus);
 		PESoundEvents.SOUND_EVENTS.register(modEventBus);
 		//Everything that used to live in the ProjectExpansion addon. It is a plain (non @Mod) part of ProjectE now,
 		//so its registries and packets are simply driven from here

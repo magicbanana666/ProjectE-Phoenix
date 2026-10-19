@@ -1,6 +1,7 @@
 package moze_intel.projecte.gameObjs.blocks;
 
 import java.util.function.Consumer;
+import moze_intel.projecte.gameObjs.customRecipes.athanor.RuneColor;
 import moze_intel.projecte.utils.text.PELang;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -25,10 +26,10 @@ import org.jetbrains.annotations.NotNull;
 public class CruciblePart extends Block implements IBlockTooltip {
 
 	/**
-	 * 0: not part of a complete array, 1: formed, 2 to 5: the four stages of the ritual, 6: the ritual is complete.
+	 * The {@link RuneColor} the runes show: 0 is off (not part of a complete Athanor), 1 formed, 2 to 5 the four stages of
+	 * the Magnum Opus, 6 a finished ritual, and 7 to 15 the colours of the Cauda Pavonis.
 	 */
-	public static final IntegerProperty GLOW = IntegerProperty.create("glow", 0, 6);
-	private static final int[] LIGHT = {0, 6, 4, 10, 13, 15, 12};
+	public static final IntegerProperty GLOW = IntegerProperty.create("glow", 0, RuneColor.values().length - 1);
 
 	private final VoxelShape shape;
 
@@ -39,7 +40,7 @@ public class CruciblePart extends Block implements IBlockTooltip {
 	}
 
 	public static int getLight(BlockState state) {
-		return LIGHT[state.getValue(GLOW)];
+		return RuneColor.byGlow(state.getValue(GLOW)).getLight();
 	}
 
 	@Override

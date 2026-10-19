@@ -1,0 +1,8 @@
+{
+  "parent": "projecte:block/crucible/crucible_arch_upper_glow",
+  "textures": {
+    "particle": "projecte:block/crucible/rune_violet",
+    "rune": "projecte:block/crucible/rune_violet",
+    "crystal": "projecte:block/crucible/crystal_violet"
+  }
+}

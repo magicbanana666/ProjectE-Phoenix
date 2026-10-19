@@ -47,7 +47,7 @@ final class CodexLang {
 				+ "Right click a block to transmute it, sneak right click for the other result. G changes the shape (cube, panel, line), V the size. JEI lists every world transmutation.\n\n"
 				+ "C opens a crafting grid. In crafting the stone converts materials: 4 coal into Alchemical Coal, 8 iron into gold, 4 gold into a diamond and back. It stays in the grid.\n\n"
 				+ "R fires a Mob Randomizer.\n\n"
-				+ "It can not be crafted: it is made from three False Philosopher's Stones and a Nether Star in the Alchemical Crucible.");
+				+ "It can not be crafted: it is made from three False Philosopher's Stones and a Nether Star in the Athanor.");
 		item(lang, "transmutation_table",
 				"The heart of alchemy.\n\n"
 				+ "Put an item into the burn slot to learn it and turn it into EMC. Learned items you can afford show in the ring around it, click one to take it out.\n\n"
@@ -56,22 +56,26 @@ final class CodexLang {
 		item(lang, "false_philosophers_stone",
 				"What the old recipe makes now: a diamond surrounded by redstone and glowstone dust. An imitation with only a fragment of the power of the real stone.\n\n"
 				+ "It can convert fuels: coal into Alchemical Coal, Mobius Fuel and Aeternalis Fuel and back, so Dark Matter is within reach. It also makes a Transmutation Table. Red Matter and everything else needs the real stone. Like the real one it stays in the crafting grid.\n\n"
-				+ "Three of them and a Nether Star become the true Philosopher's Stone in the Alchemical Crucible.");
+				+ "Three of them and a Nether Star become the true Philosopher's Stone in the Athanor.");
 		item(lang, "alchemical_crucible",
-				"The ritual site of the Magnum Opus: 55 blocks, 5 by 5 wide and 6 high, built around the Alchemical Crucible. The same in every direction.\n\n"
-				+ "Base: nine Crucible Plinths in a 3 by 3 square, sixteen Crucible Steps around them.\n\n"
-				+ "On top of the base: the Alchemical Crucible on the middle plinth, eight Crucible Dais around it, and a Crucible Pillar on each corner step.\n\n"
-				+ "Every pillar is three blocks high. On top of each pillar goes a Crucible Arch, a second arch goes one block in towards the centre and one block higher, and the Crucible Apex sits above the crucible, at the height of the second arches. The arches turn towards the centre on their own.\n\n"
+				"The Athanor is the alchemist's furnace, where the Magnum Opus takes place: 55 blocks, 5 by 5 wide and 6 high, built around the Alchemical Crucible. The same in every direction.\n\n"
+				+ "Base: nine Athanor Plinths in a 3 by 3 square, sixteen Athanor Steps around them.\n\n"
+				+ "On top of the base: the Alchemical Crucible on the middle plinth, eight Athanor Dais around it, and an Athanor Pillar on each corner step.\n\n"
+				+ "Every pillar is three blocks high. On top of each pillar goes an Athanor Arch, a second arch goes one block in towards the centre and one block higher, and the Athanor Apex sits above the crucible, at the height of the second arches. The arches turn towards the centre on their own.\n\n"
 				+ "When everything is in place the runes light up and a circle appears on the dais. Right click the crucible: it tells you which block is missing and where.");
 		topic(lang, "magnum_opus", "The Magnum Opus",
-				"Right click the Alchemical Crucible with three False Philosopher's Stones and a Nether Star to place them, sneak right click with an empty hand takes the last one back. Then right click with an empty hand to begin.\n\n"
-				+ "The ritual has four stages, each one drains personal EMC from whoever started it, bit by bit:\n\n"
-				+ "Nigredo: blackening, 16,384 EMC over 10 seconds.\n"
-				+ "Albedo: whitening, 32,768 EMC over 15 seconds.\n"
-				+ "Citrinitas: yellowing, 65,536 EMC over 20 seconds. The crucible has to see the sky.\n"
-				+ "Rubedo: reddening, 131,072 EMC over 30 seconds.\n\n"
-				+ "So you need about 250,000 EMC: burn items in your Transmutation Table first. When you run out, go offline, Citrinitas loses the sky or a block of the crucible is broken, the ritual waits. Sneak right click stops it: the ingredients stay, the EMC that was paid is lost. Breaking the crucible gives the ingredients back.\n\n"
-				+ "After Rubedo the stones and the star fuse into the Philosopher's Stone. Right click to take it.");
+				"Every ritual of the Athanor takes up to three items on the dais and one catalyst in the centre. Right click the crucible with an item to place it, sneak right click with an empty hand takes the last one back. Then right click with an empty hand to begin.\n\n"
+				+ "A ritual passes through stages, and every stage drains personal EMC from whoever started it, bit by bit. The runes show the stage:\n\n"
+				+ "Nigredo, the blackening: grey runes.\n"
+				+ "Cauda Pavonis, the peacock's tail: every colour, the stage of the coloured matters.\n"
+				+ "Albedo, the whitening: white runes.\n"
+				+ "Citrinitas, the yellowing: gold runes. Often needs the sky.\n"
+				+ "Rubedo, the reddening: red runes.\n\n"
+				+ "The first ritual turns three False Philosopher's Stones and a Nether Star into the Philosopher's Stone, for about 250,000 EMC. Burn items in your Transmutation Table first.\n\n"
+				+ "When you go offline, or a stage is missing the sky, the ritual waits. Sneak right click stops it: the ingredients stay, the EMC that was paid is lost.\n\n"
+				+ "Rebound: when the Athanor breaks during a ritual, the runes flicker red and orange. Repair it within 5 seconds. Running out of EMC in Citrinitas or Rubedo gives you 10 seconds. "
+				+ "If you are too late the work hits back, harder the further it had come: in Nigredo the catalyst burns up, in Albedo an ingredient is lost, in Citrinitas lightning strikes and half is lost, in Rubedo everything explodes.\n\n"
+				+ "When the last stage ends, the result floats above the crucible. Right click to take it.");
 		item(lang, "transmutation_tablet",
 				"A Transmutation Table to carry around. Right click it, or press K when it is in a Curios slot.\n\n"
 				+ "Recipe: Transmutation Table surrounded by stone and Dark Matter blocks.");

@@ -1,0 +1,8 @@
+{
+  "parent": "projecte:block/crucible/crucible_pillar_glow",
+  "textures": {
+    "particle": "projecte:block/crucible/rune_cyan",
+    "rune": "projecte:block/crucible/rune_cyan",
+    "crystal": "projecte:block/crucible/crystal_cyan"
+  }
+}

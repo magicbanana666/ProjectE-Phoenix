@@ -1,0 +1,16 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:false_philosophers_stone",
+    "projecte:false_philosophers_stone",
+    "projecte:false_philosophers_stone"
+  ],
+  "catalyst": "minecraft:nether_star",
+  "stages": [
+    { "stage": "nigredo", "ticks": 200, "emc": 16384 },
+    { "stage": "albedo", "ticks": 300, "emc": 32768 },
+    { "stage": "citrinitas", "ticks": 400, "emc": 65536, "needs": "sky" },
+    { "stage": "rubedo", "ticks": 600, "emc": 131072 }
+  ],
+  "result": "projecte:philosophers_stone"
+}

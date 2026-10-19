@@ -1,0 +1,8 @@
+{
+  "parent": "projecte:block/crucible/alchemical_crucible_glow",
+  "textures": {
+    "particle": "projecte:block/crucible/rune_pink",
+    "rune": "projecte:block/crucible/rune_pink",
+    "crystal": "projecte:block/crucible/crystal_pink"
+  }
+}

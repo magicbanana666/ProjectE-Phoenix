@@ -1,0 +1,8 @@
+{
+  "parent": "projecte:block/crucible/crucible_apex_glow",
+  "textures": {
+    "particle": "projecte:block/crucible/rune_magenta",
+    "rune": "projecte:block/crucible/rune_magenta",
+    "crystal": "projecte:block/crucible/crystal_magenta"
+  }
+}

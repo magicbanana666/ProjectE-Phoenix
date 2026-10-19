@@ -4,7 +4,6 @@ import java.util.function.Consumer;
 import moze_intel.projecte.gameObjs.block_entities.AlchemicalCrucibleBlockEntity;
 import moze_intel.projecte.gameObjs.registration.impl.BlockEntityTypeRegistryObject;
 import moze_intel.projecte.gameObjs.registries.PEBlockEntityTypes;
-import moze_intel.projecte.gameObjs.registries.PEItems;
 import moze_intel.projecte.utils.WorldHelper;
 import moze_intel.projecte.utils.text.PELang;
 import net.minecraft.ChatFormatting;
@@ -41,8 +40,8 @@ public class AlchemicalCrucible extends CruciblePart implements PEEntityBlock<Al
 			return InteractionResult.PASS;
 		}
 		if (level.isClientSide()) {
-			//The client does not know the configured catalyst, the server decides what happens with it
-			return stack.isEmpty() || stack.is(PEItems.FALSE_PHILOSOPHERS_STONE) ? InteractionResult.SUCCESS : InteractionResult.PASS;
+			//The client does not know the rituals, the server decides what happens with the item
+			return InteractionResult.SUCCESS;
 		}
 		AlchemicalCrucibleBlockEntity core = WorldHelper.getBlockEntity(AlchemicalCrucibleBlockEntity.class, level, pos, true);
 		if (core == null) {

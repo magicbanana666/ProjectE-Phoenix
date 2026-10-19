@@ -5,7 +5,10 @@ import com.mojang.math.Axis;
 import java.util.List;
 import moze_intel.projecte.PECore;
 import moze_intel.projecte.gameObjs.block_entities.AlchemicalCrucibleBlockEntity;
-import moze_intel.projecte.gameObjs.block_entities.AlchemicalCrucibleBlockEntity.Stage;
+import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorRecipe;
+import moze_intel.projecte.gameObjs.customRecipes.athanor.OpusStage;
+import moze_intel.projecte.gameObjs.customRecipes.athanor.RuneColor;
+import moze_intel.projecte.gameObjs.registries.PEItems;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -29,8 +32,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Draws the ritual of the Alchemical Crucible: the catalyst floats in the centre and the three False Philosopher's Stones
- * float around it in a triangle, above a glowing rune circle that covers the dais. During the ritual a beam of light runs
+ * Draws the ritual of the Athanor: the catalyst floats in the centre and the ingredients float around it in a regular shape, above a glowing rune circle that covers the dais. During the ritual a beam of light runs
  * from the apex down to the catalyst. How everything moves, its colour, and which variant of the stone model is shown,
  * depends on the stage of the ritual.
  */
@@ -71,30 +73,39 @@ public class AlchemicalCrucibleRenderer implements BlockEntityRenderer<Alchemica
 		BlockPos pos = core.getBlockPos();
 		int seed = (int) pos.asLong();
 		double time = level.getGameTime() + partialTicks;
-		Stage stage = core.getStage();
+		OpusStage stage = core.getStage();
 		state.stage = stage;
+		state.rune = core.getRune();
 		state.time = (float) time;
 		state.fraction = core.getProgressFraction();
 		state.radius = core.getOrbitRadius();
-		state.glowing = stage.isActive() && !core.isStalled() || stage == Stage.COMPLETE;
+		state.glowing = stage.isActive() && !core.isStalled() || stage == OpusStage.COMPLETE;
 		state.formed = core.isFormed();
 		String variant = stage.stoneModel();
-		for (int i = 0; i < AlchemicalCrucibleBlockEntity.STONES; i++) {
-			ItemStack stone = core.getStone(i);
+		int count = 0;
+		for (int i = 0; i < AthanorRecipe.MAX_INPUTS; i++) {
+			if (!core.getInput(i).isEmpty()) {
+				count++;
+			}
+		}
+		int index = 0;
+		for (int i = 0; i < AthanorRecipe.MAX_INPUTS; i++) {
+			ItemStack stone = core.getInput(i);
 			if (!stone.isEmpty()) {
-				if (variant != null) {
+				//False Philosopher's Stones show the stage they are in, other ingredients look the same throughout
+				if (variant != null && stone.is(PEItems.FALSE_PHILOSOPHERS_STONE)) {
 					stone = stone.copy();
 					stone.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(List.of(), List.of(), List.of(variant), List.of()));
 				}
 				context.itemModelResolver().updateForTopItem(state.stones[i], stone, ItemDisplayContext.GROUND, level, null, seed + i);
-				state.angles[i] = (float) core.getStoneAngle(i, time);
+				state.angles[i] = (float) core.getInputAngle(index++, count, time);
 			}
 		}
 		if (!core.getCatalystStack().isEmpty()) {
-			context.itemModelResolver().updateForTopItem(state.catalyst, core.getCatalystStack(), ItemDisplayContext.GROUND, level, null, seed + 3);
+			context.itemModelResolver().updateForTopItem(state.catalyst, core.getCatalystStack(), ItemDisplayContext.GROUND, level, null, seed + 5);
 		}
 		if (!core.getResult().isEmpty()) {
-			context.itemModelResolver().updateForTopItem(state.result, core.getResult(), ItemDisplayContext.GROUND, level, null, seed + 4);
+			context.itemModelResolver().updateForTopItem(state.result, core.getResult(), ItemDisplayContext.GROUND, level, null, seed + 6);
 		}
 	}
 
@@ -107,7 +118,7 @@ public class AlchemicalCrucibleRenderer implements BlockEntityRenderer<Alchemica
 			if (state.glowing) {
 				//The beam of the apex, from just above the pedestal up to the crystal of the apex four blocks higher
 				BeaconRenderer.submitBeaconBeam(poseStack, collector, BeaconRenderer.BEAM_LOCATION, 1.0F, time % 40F, 1, 3,
-						stageColor(state.stage), state.stage == Stage.RUBEDO ? 0.04F + 0.06F * state.fraction : 0.04F, 0.08F);
+						runeColor(state.rune), state.stage == OpusStage.RUBEDO ? 0.04F + 0.06F * state.fraction : 0.04F, 0.08F);
 			}
 		}
 		float bob = Mth.sin(time / 12F) * 0.05F;
@@ -116,19 +127,19 @@ public class AlchemicalCrucibleRenderer implements BlockEntityRenderer<Alchemica
 			float spin = switch (state.stage) {
 				case IDLE, COMPLETE -> time / 40F;
 				case NIGREDO -> time / 60F;
-				case ALBEDO -> time / 30F;
+				case CAUDA_PAVONIS, ALBEDO -> time / 30F;
 				case CITRINITAS -> time / 15F;
 				case RUBEDO -> time / Mth.lerp(state.fraction, 10F, 2F);
 			};
 			poseStack.pushPose();
 			poseStack.translate(0.5F, CENTRE_Y + bob, 0.5F);
-			float scale = state.stage == Stage.RUBEDO ? Mth.lerp(state.fraction, 0.6F, 0.3F) : 0.6F;
+			float scale = state.stage == OpusStage.RUBEDO ? Mth.lerp(state.fraction, 0.6F, 0.3F) : 0.6F;
 			poseStack.scale(scale, scale, scale);
 			poseStack.mulPose(Axis.YP.rotation(spin));
 			state.catalyst.submit(poseStack, collector, light, OverlayTexture.NO_OVERLAY, 0);
 			poseStack.popPose();
 		}
-		for (int i = 0; i < AlchemicalCrucibleBlockEntity.STONES; i++) {
+		for (int i = 0; i < AthanorRecipe.MAX_INPUTS; i++) {
 			ItemStackRenderState stone = state.stones[i];
 			if (stone.isEmpty()) {
 				continue;
@@ -137,11 +148,11 @@ public class AlchemicalCrucibleRenderer implements BlockEntityRenderer<Alchemica
 			float x = 0.5F + Mth.cos(angle) * state.radius;
 			float z = 0.5F + Mth.sin(angle) * state.radius;
 			float y = CENTRE_Y - 0.1F + Mth.sin(time / 10F + i * 2.1F) * 0.06F;
-			if (state.stage == Stage.NIGREDO) {
+			if (state.stage == OpusStage.NIGREDO) {
 				//The false nature of the stones is breaking apart
 				x += Mth.sin(time * 3.1F + i * 7) * 0.012F;
 				z += Mth.cos(time * 2.7F + i * 5) * 0.012F;
-			} else if (state.stage == Stage.RUBEDO) {
+			} else if (state.stage == OpusStage.RUBEDO) {
 				y = Mth.lerp(state.fraction, y, CENTRE_Y);
 			}
 			poseStack.pushPose();
@@ -165,11 +176,11 @@ public class AlchemicalCrucibleRenderer implements BlockEntityRenderer<Alchemica
 		float spin = switch (state.stage) {
 			case IDLE, COMPLETE -> state.time * 0.002F;
 			case NIGREDO -> state.time * 0.004F;
-			case ALBEDO -> state.time * 0.008F;
+			case CAUDA_PAVONIS, ALBEDO -> state.time * 0.008F;
 			case CITRINITAS -> state.time * 0.015F;
 			case RUBEDO -> state.time * (0.02F + 0.04F * state.fraction);
 		};
-		int color = (state.glowing ? 0xE0000000 : 0x90000000) | (stageColor(state.stage) & 0xFFFFFF);
+		int color = (state.glowing ? 0xE0000000 : 0x90000000) | (runeColor(state.rune) & 0xFFFFFF);
 		poseStack.pushPose();
 		//Just above the top of the dais, which is two pixels high
 		poseStack.translate(0.5F, 2.05F / 16F, 0.5F);
@@ -190,17 +201,10 @@ public class AlchemicalCrucibleRenderer implements BlockEntityRenderer<Alchemica
 	}
 
 	/**
-	 * @return the colour of the runes, the circle and the beam in the given stage, as in the concept art: red, then black, white, gold and red
+	 * @return the colour of the circle and the beam, the same as the runes. A formed but idle Athanor glows red, as in the concept art.
 	 */
-	private static int stageColor(Stage stage) {
-		return switch (stage) {
-			case IDLE -> 0xFFFF3040;
-			case NIGREDO -> 0xFF8C8C98;
-			case ALBEDO -> 0xFFFFFFFF;
-			case CITRINITAS -> 0xFFFFC83A;
-			case RUBEDO -> 0xFFFF2A3A;
-			case COMPLETE -> 0xFFFFD650;
-		};
+	private static int runeColor(RuneColor rune) {
+		return 0xFF000000 | (rune == RuneColor.OFF ? RuneColor.FORMED.getRgb() : rune.getRgb());
 	}
 
 	@NotNull
@@ -214,9 +218,11 @@ public class AlchemicalCrucibleRenderer implements BlockEntityRenderer<Alchemica
 
 		public final ItemStackRenderState catalyst = new ItemStackRenderState();
 		public final ItemStackRenderState result = new ItemStackRenderState();
-		public final ItemStackRenderState[] stones = {new ItemStackRenderState(), new ItemStackRenderState(), new ItemStackRenderState()};
-		public final float[] angles = new float[AlchemicalCrucibleBlockEntity.STONES];
-		public Stage stage = Stage.IDLE;
+		public final ItemStackRenderState[] stones = {new ItemStackRenderState(), new ItemStackRenderState(), new ItemStackRenderState(),
+				new ItemStackRenderState(), new ItemStackRenderState()};
+		public final float[] angles = new float[AthanorRecipe.MAX_INPUTS];
+		public OpusStage stage = OpusStage.IDLE;
+		public RuneColor rune = RuneColor.FORMED;
 		public float time;
 		public float fraction;
 		public float radius;
