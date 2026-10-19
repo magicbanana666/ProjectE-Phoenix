@@ -1,0 +1,36 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:colossal_star_omega",
+    "projecte:colossal_star_omega",
+    "projecte:colossal_star_omega",
+    "projecte:warden_heart",
+    "projecte:blighted_soul"
+  ],
+  "catalyst": "minecraft:nether_star",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 300,
+      "emc": 1099511627776
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 400,
+      "emc": 1099511627776,
+      "rune": "violet"
+    },
+    {
+      "stage": "albedo",
+      "ticks": 400,
+      "emc": 1099511627776
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 600,
+      "emc": 1099511627776
+    }
+  ],
+  "result": "projecte:final_star_shard"
+}

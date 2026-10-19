@@ -98,6 +98,16 @@ final class CodexLang {
 				"Whatever dies inside the outer circle leaves its soul in the cauldron. An animal gives one, a monster two, a great beast fifty.\n\n"
 				+ "A villager gives ten. The village notices. Every villager who hears of it remembers who keeps the cauldron: prices climb, and after a few the iron golems come for you.\n\n"
 				+ "Souls are spent by the works that need them, on soul heat. A Soul Vial draws sixteen out of the cauldron to carry them to the Athanor; sneak to pour a full one back.");
+		topic(lang, "dragons_pulse", "The Dragon's Pulse",
+				"The earth has a pulse, and it is not the same everywhere. It runs in long veins, stronger along rivers and under mountains. Any divining rod feels it: strike one into the ground and it names the strength, up to fifteen.\n\n"
+				+ "An Athanor built where the pulse beats ten or more does its work for three quarters of the EMC.");
+		item(lang, "pulse_stake",
+				"Five stakes within sixteen blocks of each other make an array, and an array lives on the pulse instead of on EMC. Give one stake a focus and it becomes the centre:\n\n"
+				+ "A Harvest Goddess Band makes crops grow. An Interdiction Torch drives monsters and arrows out. A Soul Stone heals. Alchemical Salt keeps the rain off the chalk of cauldrons.\n\n"
+				+ "The stronger the pulse under the centre, the further the array reaches and the faster it works. Where there is no pulse, it does nothing.");
+		item(lang, "alkahest",
+				"The universal solvent. Red Water and quicksilver, brewed cold on ice inside two circles with four souls, and kept in a bottle that it has not eaten yet.\n\n"
+				+ "A drop on a block dissolves it into three quarters of its worth, straight into your EMC. Blocks that hold something, and those that can not be broken, resist it. A flask lasts sixty-four drops.");
 		topic(lang, "alchemists_garb", "Alchemist's Garb",
 				"Leather soaked in salt and sulphur over soul fire. It stops a blow about as well as the leather it was.\n\n"
 				+ "Worn whole, it serves the work: every kill inside a circle leaves one more soul, chalk wears half as fast, and soul fire does not burn you.");
@@ -296,9 +306,9 @@ final class CodexLang {
 				"Stars that keep growing. Four Klein Star Omegas make a Magnum Star Ein of 204.8 million EMC, and every star holds four times the one before.\n\n"
 				+ "After the Magnum Omega come the Colossal stars, then the Gargantuan. The Gargantuan Omega holds some 3.5 quintillion.");
 		item(lang, "final_star_shard",
-				"The last tier of matter, and part of the finest things there are.");
+				"The last tier of matter, and part of the finest things there are. Three Colossal Star Omegas, a Warden's Heart and a Blighted Soul around a Nether Star, in the Grand Athanor.");
 		item(lang, "final_star",
-				"Eight Final Power Flowers around a dragon egg. It goes into the Compact Sun, and otherwise it is a statement.");
+				"Four Final Power Flowers and a Dragon Heart around a Final Star Shard, in the Grand Athanor. It goes into the Compact Sun, and otherwise it is a statement.");
 		topic(lang, "alchemical_books", "Alchemical Books",
 				"Books that remember places and take you back to them, for EMC by the block: 1,000 for the Basic book, 500 for the Advanced, 100 for the Master, nothing for the Arcane.\n\n"
 				+ "From the Advanced book on, sneaking binds a book to you, so every copy shares your places. Master and Arcane books cross between dimensions.");

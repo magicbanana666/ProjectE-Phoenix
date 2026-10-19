@@ -58,7 +58,7 @@ public class PEItemModelProvider extends ModelProvider {
 
 	@Override
 	protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-		registerBlockParentModels(itemModels, PEBlocks.ALCHEMICAL_CAULDRON, PEBlocks.ALCHEMICAL_CRUCIBLE, PEBlocks.CRUCIBLE_STEP, PEBlocks.CRUCIBLE_PLINTH, PEBlocks.CRUCIBLE_DAIS, PEBlocks.CRUCIBLE_PILLAR, PEBlocks.CRUCIBLE_ARCH, PEBlocks.CRUCIBLE_APEX, PEBlocks.GILDED_ARCH, PEBlocks.QUINTESSENCE_APEX, PEBlocks.ALCHEMICAL_BARREL, PEBlocks.ALCHEMICAL_COAL, PEBlocks.MOBIUS_FUEL,
+		registerBlockParentModels(itemModels, PEBlocks.PULSE_STAKE, PEBlocks.ALCHEMICAL_CAULDRON, PEBlocks.ALCHEMICAL_CRUCIBLE, PEBlocks.CRUCIBLE_STEP, PEBlocks.CRUCIBLE_PLINTH, PEBlocks.CRUCIBLE_DAIS, PEBlocks.CRUCIBLE_PILLAR, PEBlocks.CRUCIBLE_ARCH, PEBlocks.CRUCIBLE_APEX, PEBlocks.GILDED_ARCH, PEBlocks.QUINTESSENCE_APEX, PEBlocks.ALCHEMICAL_BARREL, PEBlocks.ALCHEMICAL_COAL, PEBlocks.MOBIUS_FUEL,
 				PEBlocks.AETERNALIS_FUEL, PEBlocks.DARK_MATTER, PEBlocks.RED_MATTER, PEBlocks.DARK_MATTER_PEDESTAL,
 				PEBlocks.DARK_MATTER_FURNACE, PEBlocks.RED_MATTER_FURNACE, PEBlocks.COLLECTOR,
 				PEBlocks.COLLECTOR_MK2, PEBlocks.COLLECTOR_MK3, PEBlocks.NOVA_CATALYST, PEBlocks.NOVA_CATACLYSM,
@@ -76,6 +76,7 @@ public class PEItemModelProvider extends ModelProvider {
 		generated(itemModels, PEItems.ALCHEMICAL_SALT, material("item/tria_prima/alchemical_salt"));
 		generated(itemModels, PEItems.WARDEN_HEART, material("item/boss/warden_heart"));
 		generated(itemModels, PEItems.SOUL_VIAL, material("item/soul_vial"));
+		generated(itemModels, PEItems.ALKAHEST, material("item/alkahest"));
 		generated(itemModels, PEItems.ALCHEMISTS_HOOD, material("item/alchemists_garb/head"));
 		generated(itemModels, PEItems.ALCHEMISTS_ROBE, material("item/alchemists_garb/chest"));
 		generated(itemModels, PEItems.ALCHEMISTS_TROUSERS, material("item/alchemists_garb/legs"));

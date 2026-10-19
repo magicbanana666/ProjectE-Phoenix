@@ -14,6 +14,7 @@ import moze_intel.projecte.gameObjs.registries.PEDataComponentTypes;
 import moze_intel.projecte.gameObjs.registries.PEItems;
 import moze_intel.projecte.utils.WorldHelper;
 import moze_intel.projecte.utils.text.IHasTranslationKey;
+import moze_intel.projecte.gameObjs.DragonsPulse;
 import moze_intel.projecte.utils.text.PELang;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentType;
@@ -108,6 +109,8 @@ public class DiviningRod extends ItemPE implements IItemMode<DiviningMode> {
 			return InteractionResult.FAIL;
 		}
 		player.sendSystemMessage(PELang.DIVINING_AVG_EMC.translate(numBlocks, totalEmc / numBlocks));
+		//Every rod also feels the Dragon's Pulse of the ground it was struck into
+		player.sendSystemMessage(DragonsPulse.describe(DragonsPulse.strength((ServerLevel) level, ctx.getClickedPos())));
 		if (this == PEItems.MEDIUM_DIVINING_ROD.get() || this == PEItems.HIGH_DIVINING_ROD.get()) {
 			emcValues.sort(LongComparators.OPPOSITE_COMPARATOR);
 			player.sendSystemMessage(PELang.DIVINING_SECOND_MAX.translate(getOrDefault(emcValues, 0)));

@@ -11,6 +11,7 @@ import moze_intel.projecte.api.capabilities.PECapabilities;
 import moze_intel.projecte.config.ProjectEConfig;
 import moze_intel.projecte.config.ServerConfig;
 import moze_intel.projecte.gameObjs.CrucibleStructure;
+import moze_intel.projecte.gameObjs.DragonsPulse;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorInput;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorRecipe;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorStage;
@@ -376,7 +377,15 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 
 	private long getCost() {
 		AthanorStage current = getCurrentStage();
-		return current == null ? 0 : (long) (current.emc() * ProjectEConfig.server.ritual.emcMultiplier.get());
+		if (current == null) {
+			return 0;
+		}
+		double multiplier = ProjectEConfig.server.ritual.emcMultiplier.get();
+		if (level instanceof ServerLevel serverLevel && DragonsPulse.isStrong(serverLevel, worldPosition)) {
+			//A strong Dragon's Pulse carries part of the work
+			multiplier *= 0.75;
+		}
+		return (long) (current.emc() * multiplier);
 	}
 
 	private void reset() {

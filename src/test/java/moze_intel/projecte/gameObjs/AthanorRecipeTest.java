@@ -72,9 +72,9 @@ class AthanorRecipeTest {
 		List<AthanorRecipe> recipes = server.getRecipeManager().recipeMap().byType(PERecipeTypes.ATHANOR.get()).stream()
 				.map(RecipeHolder::value)
 				.toList();
-		//The Philosopher's Stone, eleven coloured matters, six Klein Stars, Infinite Fuel and Infinite Steak
-		Assertions.assertEquals(20, recipes.size());
-		Assertions.assertEquals(3, recipes.stream().filter(recipe -> recipe.tier() == 2).count());
+		//The Philosopher's Stone, eleven coloured matters, six Klein Stars, Infinite Fuel, Infinite Steak and the two Final Stars
+		Assertions.assertEquals(22, recipes.size());
+		Assertions.assertEquals(5, recipes.stream().filter(recipe -> recipe.tier() == 2).count());
 		for (AthanorRecipe recipe : recipes) {
 			Assertions.assertTrue(recipe.inputs().size() <= (recipe.tier() == 1 ? AthanorRecipe.TIER_ONE_INPUTS : AthanorRecipe.MAX_INPUTS));
 			Assertions.assertTrue(recipe.result().create().is(PETags.Items.RITUAL_ONLY), () -> recipe.result() + " is not in projecte:ritual_only");

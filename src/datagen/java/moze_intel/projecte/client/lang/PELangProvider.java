@@ -170,6 +170,7 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PEBlocks.TRANSMUTATION_TABLE, "Transmutation Table");
 		add(PEBlocks.ALCHEMICAL_CRUCIBLE, "Alchemical Crucible");
 		add(PEBlocks.ALCHEMICAL_CAULDRON, "Alchemical Cauldron");
+		add(PEBlocks.PULSE_STAKE, "Pulse Stake");
 		add(PEBlocks.CRUCIBLE_STEP, "Athanor Step");
 		add(PEBlocks.CRUCIBLE_PLINTH, "Athanor Plinth");
 		add(PEBlocks.CRUCIBLE_DAIS, "Athanor Dais");
@@ -338,6 +339,7 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PEItems.FALSE_PHILOSOPHERS_STONE, "False Philosopher's Stone");
 		add(PEItems.ALCHEMICAL_SALT, "Alchemical Salt");
 		add(PEItems.SOUL_VIAL, "Soul Vial");
+		add(PEItems.ALKAHEST, "Alkahest");
 		add(PEItems.ALCHEMISTS_HOOD, "Alchemist's Hood");
 		add(PEItems.ALCHEMISTS_ROBE, "Alchemist's Robe");
 		add(PEItems.ALCHEMISTS_TROUSERS, "Alchemist's Trousers");
@@ -576,6 +578,11 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PELang.CAULDRON_TOO_FEW_SOULS, "A vial takes %1$s souls.");
 		add(PELang.TOOLTIP_CHALK, "Draws circle %1$s around an Alchemical Cauldron.");
 		add(PELang.COMPREHENSION_STUDYING, "Studying %1$s: %2$s of %3$s burned.");
+		add(PELang.DRAGONS_PULSE, "Dragon's Pulse: %1$s of %2$s");
+		add(PELang.PULSE_STAKE_STATUS, "Stakes: %1$s of %2$s. %3$s");
+		add(PELang.TOOLTIP_ALKAHEST, "Dissolves a block into three quarters of its worth in EMC.");
+		add(PELang.ALKAHEST_NOTHING, "It has no worth to dissolve into.");
+		add(PELang.TOOLTIP_PULSE_STAKE, "Five within 16 blocks make an array. Give one a focus: a Harvest Goddess Band, an Interdiction Torch, a Soul Stone or Alchemical Salt.");
 		add(PELang.CAULDRON_STATUS, "%1$s, %2$s, circles: %3$s, souls: %4$s");
 		add(PELang.CAULDRON_LIQUID, "%1$s");
 		add(PELang.CAULDRON_BREWING, "Brewing %1$s%%");

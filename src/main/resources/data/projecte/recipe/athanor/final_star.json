@@ -1,0 +1,36 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:final_power_flower",
+    "projecte:final_power_flower",
+    "projecte:final_power_flower",
+    "projecte:final_power_flower",
+    "projecte:dragon_heart"
+  ],
+  "catalyst": "projecte:final_star_shard",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 400,
+      "emc": 4398046511104
+    },
+    {
+      "stage": "albedo",
+      "ticks": 500,
+      "emc": 4398046511104
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 600,
+      "emc": 4398046511104,
+      "needs": "sky"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 800,
+      "emc": 4398046511104
+    }
+  ],
+  "result": "projecte:final_star"
+}

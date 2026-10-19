@@ -1,0 +1,20 @@
+{
+  "type": "projecte:cauldron",
+  "ingredients": [
+    {
+      "ingredient": "projecte:quicksilver",
+      "count": 2
+    },
+    {
+      "ingredient": "minecraft:glass_bottle",
+      "count": 1
+    }
+  ],
+  "liquid": "red_water",
+  "heat": "cold",
+  "circles": 2,
+  "souls": 4,
+  "ticks": 200,
+  "result": "projecte:alkahest",
+  "result_liquid": "empty"
+}

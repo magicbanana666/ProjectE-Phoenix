@@ -1,4 +1,4 @@
-// 26.1.2	2026-10-19T23:09:59.4778917	Loot Tables
+// 26.1.2	2026-10-19T23:30:15.2696688	Loot Tables
 4f93d02c262072a182bcf0339861ab876f73f0ad data/projecte/loot_table/blocks/aeternalis_fuel_block.json
 779870836435449286fa0744c3c350ec3e5da232 data/projecte/loot_table/blocks/alchemical_barrel.json
 adb3f56c8fad2b0d55fc33079521aa5acdd27a6e data/projecte/loot_table/blocks/alchemical_cauldron.json
@@ -25,6 +25,7 @@ cbdbbf14299b4db40884a643dec0c804841576f4 data/projecte/loot_table/blocks/gilded_
 0754b5a326efb786e29ba21c44417a19a673b9de data/projecte/loot_table/blocks/mobius_fuel_block.json
 9e6c23dc46a888fba35f791db03d6d756791ee7e data/projecte/loot_table/blocks/nova_cataclysm.json
 28958c9010c0a2dfd89b42d2fab6c171e5f7db39 data/projecte/loot_table/blocks/nova_catalyst.json
+a9a9e2f96459abeeb02da8c1c9fac071d0a8ee25 data/projecte/loot_table/blocks/pulse_stake.json
 63976d253ca8c46ea2d30dc4d3591747e28117b8 data/projecte/loot_table/blocks/quintessence_apex.json
 731857fb85bf99549a648e0ff0d2c672ba1590d1 data/projecte/loot_table/blocks/red_matter_block.json
 602d2adc4540a5f9fea1bd7bd104e97eed000cf6 data/projecte/loot_table/blocks/relay_mk1.json

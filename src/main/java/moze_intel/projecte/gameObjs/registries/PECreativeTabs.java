@@ -20,6 +20,7 @@ public class PECreativeTabs {
 	public static final PEDeferredHolder<CreativeModeTab, CreativeModeTab> PROJECTE = CREATIVE_TABS.registerMain(PELang.PROJECTE, PEItems.PHILOSOPHERS_STONE, builder ->
 			builder.displayItems((displayParameters, output) -> {
 				output.accept(PEBlocks.ALCHEMICAL_CAULDRON);
+				output.accept(PEBlocks.PULSE_STAKE);
 				output.accept(PEItems.ALCHEMICAL_SALT);
 				output.accept(PEItems.ALCHEMICAL_SULPHUR);
 				output.accept(PEItems.QUICKSILVER);
@@ -27,6 +28,7 @@ public class PECreativeTabs {
 				output.accept(PEItems.SULPHUR_CHALK);
 				output.accept(PEItems.MERCURY_CHALK);
 				output.accept(PEItems.SOUL_VIAL);
+				output.accept(PEItems.ALKAHEST);
 				output.accept(PEItems.ALCHEMISTS_HOOD);
 				output.accept(PEItems.ALCHEMISTS_ROBE);
 				output.accept(PEItems.ALCHEMISTS_TROUSERS);

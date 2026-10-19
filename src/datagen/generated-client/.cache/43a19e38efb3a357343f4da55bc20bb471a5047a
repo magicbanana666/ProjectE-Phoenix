@@ -1,4 +1,4 @@
-// 26.1.2	2026-10-19T23:15:17.9405903	ProjectE Item Models
+// 26.1.2	2026-10-19T23:30:30.7198051	ProjectE Item Models
 c7dea018dfc5c9ff72f86071f5e60d95cd3e881f assets/projecte/items/advanced_alchemical_book.json
 47543cc40f0158c5ed9bc11f266a1b0d0f5fae57 assets/projecte/items/aeternalis_fuel.json
 c4caed748e6bcf7e20f3fc60fa4292f6adabe643 assets/projecte/items/aeternalis_fuel_block.json
@@ -15,6 +15,7 @@ e2f6f677824ff1edae8164718301c546c7653dcc assets/projecte/items/alchemical_barrel
 f0f312322518ecacc19085bed927dea12938957b assets/projecte/items/alchemists_hood.json
 32ac2ab92e3fde15c9ff41ad2382a53ca3fb947d assets/projecte/items/alchemists_robe.json
 2750ff7952ec96bed184f8c3e09c2d21ba3f4112 assets/projecte/items/alchemists_trousers.json
+540191fb34122b0433696965a39ae7b523dc3db3 assets/projecte/items/alkahest.json
 2c1e48d79e19f7192fb5c2f5c405b01b81212697 assets/projecte/items/arcana_ring.json
 38dfe3fa79d2c0bbf401278cdef69aeccd1ec4f4 assets/projecte/items/arcane_alchemical_book.json
 288256ec43f5b13c2e4767b8f12aad41546bf3fe assets/projecte/items/arcane_transmutation_tablet.json
@@ -229,6 +230,7 @@ c8408c8c8c2ddbd80fe95d68b86714f6fb417849 assets/projecte/items/pink_advanced_alc
 11ea2c60cae6db87a5b05d6397a1e8b081242029 assets/projecte/items/pink_matter_block.json
 d4a9746770d1b1d5ec97b6b69c9921f5e701f069 assets/projecte/items/pink_power_flower.json
 b6c05cb2accbd5789b256ba8553f70e0320feeeb assets/projecte/items/pink_relay.json
+405449029d150cf81a4044ac716defd12c41ced2 assets/projecte/items/pulse_stake.json
 a29e480c8de27607d5a6e1f81dca0dda4ef58524 assets/projecte/items/purple_advanced_alchemical_chest.json
 e4f4fd05ef76f0405fec5b5d47241b8cec786ef1 assets/projecte/items/purple_alchemical_bag.json
 9f41560f23e9bc3f1dd43b28dab7792d57162f0f assets/projecte/items/purple_collector.json
@@ -325,6 +327,7 @@ a76cf1d0df9f2984ce5b82a15385f1b3fdd6b0d4 assets/projecte/models/item/alchemical_
 f6a2f91ed3d77d3eb3b6f8728e5be32a6f10ac8d assets/projecte/models/item/alchemists_hood.json
 bfa05a939bafc98b5d13ffd4adfb4c53bf37d9ef assets/projecte/models/item/alchemists_robe.json
 685606e4ec81a62af502b6c9096afb6229ff3d7a assets/projecte/models/item/alchemists_trousers.json
+3d91606cd38ee5e739bab23d6dc1521f0b6fde50 assets/projecte/models/item/alkahest.json
 8e9c2beb938b6787987af6be5d094ab50b6cf61c assets/projecte/models/item/arcana_harvest_off.json
 66c74b97a20afee2322aabd7fc49d1c57745df24 assets/projecte/models/item/arcana_harvest_on.json
 2abeffc1555cf441c84bdc2b0f7c52bbfe685b59 assets/projecte/models/item/arcana_ignition_off.json

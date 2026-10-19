@@ -12,6 +12,7 @@ import moze_intel.projecte.gameObjs.items.HyperkineticLens;
 import moze_intel.projecte.gameObjs.items.KleinStar;
 import moze_intel.projecte.gameObjs.items.KleinStar.KleinTier;
 import moze_intel.projecte.gameObjs.items.MercurialEye;
+import moze_intel.projecte.gameObjs.items.AlkahestFlask;
 import moze_intel.projecte.gameObjs.items.ChalkItem;
 import moze_intel.projecte.gameObjs.items.LoreItem;
 import moze_intel.projecte.gameObjs.items.MonocleOfComprehension;
@@ -81,6 +82,7 @@ public class PEItems {
 	public static final ItemRegistryObject<LoreItem> BLIGHTED_SOUL = ITEMS.register("blighted_soul", LoreItem::new, properties -> properties.rarity(Rarity.RARE).fireResistant());
 	public static final ItemRegistryObject<LoreItem> ELDER_EYE = ITEMS.register("elder_eye", LoreItem::new, properties -> properties.rarity(Rarity.RARE));
 	public static final ItemRegistryObject<Item> SOUL_VIAL = ITEMS.register("soul_vial");
+	public static final ItemRegistryObject<AlkahestFlask> ALKAHEST = ITEMS.register("alkahest", AlkahestFlask::new, properties -> properties.durability(64).rarity(Rarity.UNCOMMON));
 	public static final ItemRegistryObject<Item> ALCHEMISTS_HOOD = ITEMS.register("alchemists_hood", Item::new, properties -> properties.humanoidArmor(PEArmorMaterials.ALCHEMISTS_GARB, ArmorType.HELMET));
 	public static final ItemRegistryObject<Item> ALCHEMISTS_ROBE = ITEMS.register("alchemists_robe", Item::new, properties -> properties.humanoidArmor(PEArmorMaterials.ALCHEMISTS_GARB, ArmorType.CHESTPLATE));
 	public static final ItemRegistryObject<Item> ALCHEMISTS_TROUSERS = ITEMS.register("alchemists_trousers", Item::new, properties -> properties.humanoidArmor(PEArmorMaterials.ALCHEMISTS_GARB, ArmorType.LEGGINGS));

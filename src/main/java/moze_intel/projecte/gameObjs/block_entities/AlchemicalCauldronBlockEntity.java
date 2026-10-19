@@ -334,7 +334,7 @@ public class AlchemicalCauldronBlockEntity extends BlockEntity {
 			}
 		}
 		//Rain wipes the chalk away, the outer circle first
-		if (circles != 0 && level.isRainingAt(worldPosition.above()) && level.getRandom().nextInt(120) == 0) {
+		if (circles != 0 && level.isRainingAt(worldPosition.above()) && level.getRandom().nextInt(120) == 0 && !PulseStakeBlockEntity.keepsRainOff(level, worldPosition)) {
 			for (int circle = CauldronRecipe.MAX_CIRCLES; circle >= 1; circle--) {
 				if (hasCircle(circle)) {
 					eraseCircle(level, circle);
