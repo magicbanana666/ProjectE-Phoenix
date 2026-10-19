@@ -259,10 +259,12 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 				projecteItem(PEItems.KLEIN_STAR_ZWEI),
 				projecteItem(PEItems.KLEIN_STAR_DREI),
 				projecteItem(PEItems.KLEIN_STAR_VIER),
+				projecteItem(PEItems.KLEIN_STAR_SPHERE),
+				projecteItem(PEItems.KLEIN_STAR_OMEGA),
 				projecteItem("infinite_fuel"),
 				projecteItem("infinite_steak")
 		);
-		for (String color : List.of("magenta", "pink", "purple", "violet", "blue", "cyan", "green", "lime", "yellow", "orange")) {
+		for (String color : List.of("magenta", "pink", "purple", "violet", "blue", "cyan", "green", "lime", "yellow", "orange", "white")) {
 			ritualOnly.add(projecteItem(color + "_matter"), projecteItem(color + "_matter_block"));
 		}
 	}

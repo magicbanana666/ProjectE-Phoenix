@@ -596,7 +596,7 @@ public class GUIAlchemistsCodex extends Screen {
 
 		@Override
 		public void draw(GuiGraphicsExtractor graphics, int x, int y) {
-			drawCentredTitle(graphics, Component.translatable(Codex.PAGE_RITUAL), x, y);
+			drawCentredTitle(graphics, Component.translatable(recipe.tier() > 1 ? Codex.PAGE_RITUAL_GRAND : Codex.PAGE_RITUAL), x, y);
 			//The ingredients around the catalyst, as they float above the dais, and the result next to them
 			int centreX = x + 38;
 			int centreY = y + 44;
@@ -706,10 +706,15 @@ public class GUIAlchemistsCodex extends Screen {
 		private static final int BOTTOM = -1;
 		private static final int TOP = 4;
 		private int layer = BOTTOM;
+		private boolean grand;
 
 		@Override
 		public void draw(GuiGraphicsExtractor graphics, int x, int y) {
-			drawCentredTitle(graphics, Component.translatable(Codex.PAGE_STRUCTURE), x, y);
+			Component title = Component.translatable(grand ? Codex.PAGE_STRUCTURE_GRAND : Codex.PAGE_STRUCTURE);
+			drawCentredTitle(graphics, title, x, y);
+			//Clicking the title switches between the Athanor and the Grand Athanor
+			hotspots.add(new Hotspot(x, y - 1, PAGE_WIDTH, 11, ItemStack.EMPTY, List.of(Component.translatable(Codex.STRUCTURE_SWITCH).getVisualOrderText()),
+					() -> grand = !grand));
 			int labelY = y + 16;
 			drawCentred(graphics, Component.translatable(Codex.STRUCTURE_LAYER, layer - BOTTOM + 1, TOP - BOTTOM + 1), x, labelY, TEXT);
 			graphics.text(font, "<", x + 4, labelY, TITLE, false);
@@ -721,7 +726,8 @@ public class GUIAlchemistsCodex extends Screen {
 			ItemStack[][] grid = new ItemStack[5][5];
 			for (CrucibleStructure.Part part : CrucibleStructure.getParts()) {
 				if (part.offset().getY() == layer) {
-					grid[part.offset().getX() + 2][part.offset().getZ() + 2] = new ItemStack(part.block().getBlock());
+					var block = grand && part.grand() != null ? part.grand() : part.block();
+					grid[part.offset().getX() + 2][part.offset().getZ() + 2] = new ItemStack(block.getBlock());
 				}
 			}
 			for (int gx = 0; gx < 5; gx++) {

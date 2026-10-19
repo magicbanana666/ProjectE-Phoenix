@@ -39,6 +39,8 @@ public class PECreativeTabs {
 				output.accept(PEBlocks.CRUCIBLE_PILLAR);
 				output.accept(PEBlocks.CRUCIBLE_ARCH);
 				output.accept(PEBlocks.CRUCIBLE_APEX);
+				output.accept(PEBlocks.GILDED_ARCH);
+				output.accept(PEBlocks.QUINTESSENCE_APEX);
 				output.accept(PEItems.REPAIR_TALISMAN);
 				output.accept(PEItems.TOME_OF_KNOWLEDGE);
 				output.accept(PEItems.TRANSMUTATION_TABLET);

@@ -1,4 +1,4 @@
-// 26.1.2	2026-10-19T22:46:45.7261295	Tags for minecraft:item mod id projecte
+// 26.1.2	2026-10-19T23:09:59.4829209	Tags for minecraft:item mod id projecte
 b3907f1aa02b78471363a02cc94dc9569664a81d data/curios/tags/item/belt.json
 e0550afba044e192d36f29fc351d42de699d7219 data/curios/tags/item/klein_star.json
 58753d63ef9f09a75ea529395bb7c6d282310f2b data/curios/tags/item/necklace.json
@@ -69,5 +69,5 @@ f2cf216ed0f2309c6a8725727ed2f50e7eb6e71c data/projecte/tags/item/expansion_colle
 484813f35095aea461e7bfeb89ac684052131339 data/projecte/tags/item/matter_furnaces.json
 dcb57d5c2edd0a5e97816f10cb6d362b20439433 data/projecte/tags/item/plantable_seeds.json
 441a38e41d07edb43dfdc1ab0ad1c2a00732a28a data/projecte/tags/item/relays.json
-0fc9fdfcbe17e3f0ac2d60867d81a30aabdd425f data/projecte/tags/item/ritual_only.json
+f24ee78fc97f487c8a459fc26eca57ade6f46987 data/projecte/tags/item/ritual_only.json
 9a05458e426c171d3b1a76a1610064b92bd3c454 data/projecte/tags/item/transmutation_tablets.json

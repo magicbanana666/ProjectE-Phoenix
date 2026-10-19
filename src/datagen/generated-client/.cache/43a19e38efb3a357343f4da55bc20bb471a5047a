@@ -1,4 +1,4 @@
-// 26.1.2	2026-10-19T22:58:43.0455701	ProjectE Item Models
+// 26.1.2	2026-10-19T23:10:14.9065062	ProjectE Item Models
 c7dea018dfc5c9ff72f86071f5e60d95cd3e881f assets/projecte/items/advanced_alchemical_book.json
 47543cc40f0158c5ed9bc11f266a1b0d0f5fae57 assets/projecte/items/aeternalis_fuel.json
 c4caed748e6bcf7e20f3fc60fa4292f6adabe643 assets/projecte/items/aeternalis_fuel_block.json
@@ -125,6 +125,7 @@ c7a63ac9fb087ca7c60ec43659542293987d3694 assets/projecte/items/gem_chestplate.js
 9fce186c95631badb181cb3b03c27b0904013650 assets/projecte/items/gem_helmet.json
 c2eca32fc147396f673cb76deea9d26eae948d1a assets/projecte/items/gem_leggings.json
 2a5f8b13198f056e055c8804a56d0e2020231910 assets/projecte/items/gem_of_eternal_density.json
+fe0efaaebaf098e225cabf6923ff4755a2008e62 assets/projecte/items/gilded_arch.json
 d14c8622c8d3fd82c243a1756b1ed9b15fd63274 assets/projecte/items/gray_advanced_alchemical_chest.json
 0ade647932302a1b66ce5043edf056a6206823cb assets/projecte/items/gray_alchemical_bag.json
 ee69e9034d467d4e36bb729ef89deb189578c977 assets/projecte/items/green_advanced_alchemical_chest.json
@@ -234,6 +235,7 @@ a9f9ccfa55687c5045945fcb11270e362a950a76 assets/projecte/items/purple_matter.jso
 abb6ea3c8c4201b74bccfe57a95a7bcaacd9bfa1 assets/projecte/items/purple_power_flower.json
 66c3b12978e2f8f7f21b99c730a77cb598d7c984 assets/projecte/items/purple_relay.json
 4bf76ce20a57c4c6bb3e5c41dcb20ff5a77b06bc assets/projecte/items/quicksilver.json
+900838553252635663a64d143006f034130bc339 assets/projecte/items/quintessence_apex.json
 5da7def4357c08de38c26cd51b692cc47f8fcf71 assets/projecte/items/red_advanced_alchemical_chest.json
 7ea7c82c090ddc13bf64798dc1d5c69fa5efaa7d assets/projecte/items/red_alchemical_bag.json
 1307a6621354a06258022898113ec83195dc2627 assets/projecte/items/red_collector.json

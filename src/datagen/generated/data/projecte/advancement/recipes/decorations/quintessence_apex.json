@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_components": {
+    "has_apex": {
       "conditions": {
         "items": [
           {
-            "items": "projecte:klein_star_vier"
+            "items": "projecte:crucible_apex"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projecte:klein_star_sphere"
+        "recipe": "projecte:quintessence_apex"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_components"
+      "has_apex"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projecte:klein_star_sphere"
+      "projecte:quintessence_apex"
     ]
   }
 }

@@ -53,6 +53,8 @@ public class PEBlockLootTable extends BlockLootSubProvider {
 		dropSelf(PEBlocks.CRUCIBLE_PILLAR.getBlock());
 		dropSelf(PEBlocks.CRUCIBLE_ARCH.getBlock());
 		dropSelf(PEBlocks.CRUCIBLE_APEX.getBlock());
+		dropSelf(PEBlocks.GILDED_ARCH.getBlock());
+		dropSelf(PEBlocks.QUINTESSENCE_APEX.getBlock());
 		dropSelf(PEBlocks.COLLECTOR.getBlock());
 		dropSelf(PEBlocks.COLLECTOR_MK2.getBlock());
 		dropSelf(PEBlocks.COLLECTOR_MK3.getBlock());

@@ -1,0 +1,1372 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/gilded_arch"
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow"
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_nigredo"
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_albedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_citrinitas"
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_rubedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_complete"
+      }
+    },
+    {
+      "when": {
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/gilded_arch_upper"
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow"
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_nigredo"
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_albedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_citrinitas"
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_rubedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_complete"
+      }
+    },
+    {
+      "when": {
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/gilded_arch",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_nigredo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_albedo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_citrinitas",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_rubedo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_complete",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/gilded_arch_upper",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_nigredo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_albedo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_citrinitas",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_rubedo",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_complete",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/gilded_arch",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_nigredo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_albedo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_citrinitas",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_rubedo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_complete",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/gilded_arch_upper",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_nigredo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_albedo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_citrinitas",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_rubedo",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_complete",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/gilded_arch",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_nigredo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_albedo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_citrinitas",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_rubedo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_complete",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/gilded_arch_upper",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "1",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "2",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_nigredo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "3",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_albedo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "4",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_citrinitas",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "5",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_rubedo",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "6",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_complete",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "7",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_magenta"
+      }
+    },
+    {
+      "when": {
+        "glow": "8",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_pink"
+      }
+    },
+    {
+      "when": {
+        "glow": "9",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_purple"
+      }
+    },
+    {
+      "when": {
+        "glow": "10",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_violet"
+      }
+    },
+    {
+      "when": {
+        "glow": "11",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_blue"
+      }
+    },
+    {
+      "when": {
+        "glow": "12",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_cyan"
+      }
+    },
+    {
+      "when": {
+        "glow": "13",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_green"
+      }
+    },
+    {
+      "when": {
+        "glow": "14",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_lime"
+      }
+    },
+    {
+      "when": {
+        "glow": "15",
+        "corner": "0",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_orange"
+      }
+    },
+    {
+      "when": {
+        "glow": "7",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_magenta"
+      }
+    },
+    {
+      "when": {
+        "glow": "8",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_pink"
+      }
+    },
+    {
+      "when": {
+        "glow": "9",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_purple"
+      }
+    },
+    {
+      "when": {
+        "glow": "10",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_violet"
+      }
+    },
+    {
+      "when": {
+        "glow": "11",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_blue"
+      }
+    },
+    {
+      "when": {
+        "glow": "12",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_cyan"
+      }
+    },
+    {
+      "when": {
+        "glow": "13",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_green"
+      }
+    },
+    {
+      "when": {
+        "glow": "14",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_lime"
+      }
+    },
+    {
+      "when": {
+        "glow": "15",
+        "corner": "0",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_orange"
+      }
+    },
+    {
+      "when": {
+        "glow": "7",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_magenta",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "8",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_pink",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "9",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_purple",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "10",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_violet",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "11",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_blue",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "12",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_cyan",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "13",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_green",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "14",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_lime",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "15",
+        "corner": "1",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_orange",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "7",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_magenta",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "8",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_pink",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "9",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_purple",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "10",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_violet",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "11",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_blue",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "12",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_cyan",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "13",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_green",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "14",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_lime",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "15",
+        "corner": "1",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_orange",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "glow": "7",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_magenta",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "8",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_pink",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "9",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_purple",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "10",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_violet",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "11",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_blue",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "12",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_cyan",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "13",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_green",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "14",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_lime",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "15",
+        "corner": "2",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_orange",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "7",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_magenta",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "8",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_pink",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "9",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_purple",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "10",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_violet",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "11",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_blue",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "12",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_cyan",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "13",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_green",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "14",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_lime",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "15",
+        "corner": "2",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_orange",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glow": "7",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_magenta",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "8",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_pink",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "9",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_purple",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "10",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_violet",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "11",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_blue",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "12",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_cyan",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "13",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_green",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "14",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_lime",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "15",
+        "corner": "3",
+        "upper": "false"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_glow_orange",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "7",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_magenta",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "8",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_pink",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "9",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_purple",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "10",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_violet",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "11",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_blue",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "12",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_cyan",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "13",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_green",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "14",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_lime",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glow": "15",
+        "corner": "3",
+        "upper": "true"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_arch_upper_glow_orange",
+        "y": 270
+      }
+    }
+  ]
+}

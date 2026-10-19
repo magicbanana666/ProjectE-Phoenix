@@ -6,6 +6,8 @@
     "projecte:klein_star_zwei",
     "projecte:klein_star_drei",
     "projecte:klein_star_vier",
+    "projecte:klein_star_sphere",
+    "projecte:klein_star_omega",
     "projecte:infinite_fuel",
     "projecte:infinite_steak",
     "projecte:magenta_matter",
@@ -27,6 +29,8 @@
     "projecte:yellow_matter",
     "projecte:yellow_matter_block",
     "projecte:orange_matter",
-    "projecte:orange_matter_block"
+    "projecte:orange_matter_block",
+    "projecte:white_matter",
+    "projecte:white_matter_block"
   ]
 }

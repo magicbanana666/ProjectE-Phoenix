@@ -22,11 +22,14 @@ final class CodexLang {
 		lang.accept("codex.projecte.page.crafting", "Crafting");
 		lang.accept("codex.projecte.page.shapeless", "Any arrangement");
 		lang.accept("codex.projecte.page.ritual", "Athanor Ritual");
+		lang.accept("codex.projecte.page.ritual.grand", "Grand Athanor Ritual");
 		lang.accept("codex.projecte.page.cauldron", "Alchemical Cauldron");
 		lang.accept("codex.projecte.cauldron.conditions", "In %1$s, on %2$s, inside %3$s circles. %4$s seconds.");
 		lang.accept("codex.projecte.cauldron.souls", "Takes %1$s souls.");
 		lang.accept("codex.projecte.cauldron.becomes", "The cauldron is left with: %1$s.");
 		lang.accept("codex.projecte.page.structure", "The Athanor");
+		lang.accept("codex.projecte.page.structure.grand", "The Grand Athanor");
+		lang.accept("codex.projecte.structure.switch", "Click to switch between the Athanor and the Grand Athanor");
 		lang.accept("codex.projecte.structure.layer", "Layer %1$s of %2$s");
 		lang.accept("codex.projecte.ritual.keeps_catalyst", "The catalyst stays");
 		lang.accept("codex.projecte.ritual.stage", "%1$s seconds, %2$s EMC");
@@ -98,7 +101,8 @@ final class CodexLang {
 				"The Athanor is the alchemist's furnace, built around the Alchemical Crucible: 5 by 5 wide and 6 high, the same from every side.\n\n"
 				+ "The base is a square of nine Plinths inside a ring of sixteen Steps. On it stand the Crucible in the middle, eight Dais around it, and a Pillar three blocks high on each corner.\n\n"
 				+ "An Arch caps every pillar. A second ring of arches sits one block in and one higher, with the Apex over the crucible.\n\n"
-				+ "When it is whole the runes wake and a circle burns on the dais. If a block is missing, the crucible says which and where.");
+				+ "When it is whole the runes wake and a circle burns on the dais. If a block is missing, the crucible says which and where.\n\n"
+				+ "Gild the four inner arches and crown it with a Quintessence Apex, and it becomes the Grand Athanor: the fifth element joins the four, and the dais holds five ingredients. The greatest works need it.");
 		topic(lang, "magnum_opus", "The Magnum Opus",
 				"A ritual takes up to three items on the dais and one catalyst in the centre. Place them on the crucible one by one, sneak with an empty hand to take the last one back, and use the crucible with an empty hand to begin.\n\n"
 				+ "The work passes through stages, and each one draws on the EMC of the alchemist who began it. The runes show where it is:\n\n"
@@ -125,7 +129,7 @@ final class CodexLang {
 		topic(lang, "klein_stars", "Klein Stars",
 				"Stars that hold EMC. Tools and rings draw from any star you carry, and a Transmutation Table can fill them.\n\n"
 				+ "Ein holds 50,000, Zwei 200,000, Drei 800,000, Vier 3.2 million, Sphere 12.8 million, Omega 51.2 million.\n\n"
-				+ "The first four are made in the Athanor. The star you upgrade goes in the centre and keeps what it holds, and every one of these rituals ends under open sky. Sphere and Omega are still four of the star before them.\n\n"
+				+ "The first four are made in the Athanor. The star you upgrade goes in the centre and keeps what it holds, and every one of these rituals ends under open sky. Sphere and Omega need the Grand Athanor and the hearts of the great beasts.\n\n"
 				+ "A star made in the Athanor can not be learned.");
 
 		//Machines
@@ -236,7 +240,7 @@ final class CodexLang {
 				"Between the black of Nigredo and the white of Albedo the old alchemists saw the peacock's tail, every colour at once. The coloured matters are that stage.\n\n"
 				+ "After Red come Magenta, Pink, Purple, Violet, Blue, Cyan, Green, Lime, Yellow, Orange, White and Fading. The Final Star Shard stands above them all.\n\n"
 				+ "Magenta to Orange are made in the Athanor, three of the matter before on the dais and a catalyst from the world in the centre: Chorus Fruit, Pink Petals, a Shulker Shell, an Amethyst Cluster, a Heart of the Sea, an Echo Shard, a Turtle Scute, a Sculk Catalyst, a Breeze Rod, Magma Cream. Each ritual costs what six fuels of the tier before were worth.\n\n"
-				+ "White and Fading are still three matter between six fuel. Matter from the Athanor, and its blocks, can not be learned.");
+				+ "White Matter, the end of the peacock's tail, needs the Grand Athanor. Fading is still three matter between six fuel. Matter from the Athanor, and its blocks, can not be learned.");
 		topic(lang, "tier_fuels", "Coloured Fuels",
 				"Every coloured tier has its fuel, from Magenta to White: four of the fuel before it and a true stone. Magenta starts from Aeternalis. Nine make a block.");
 		topic(lang, "tier_collectors", "Collectors",

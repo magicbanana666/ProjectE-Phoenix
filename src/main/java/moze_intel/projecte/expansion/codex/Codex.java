@@ -29,6 +29,9 @@ public final class Codex {
 	public static final String CAULDRON_SOULS = "codex.projecte.cauldron.souls";
 	public static final String CAULDRON_BECOMES = "codex.projecte.cauldron.becomes";
 	public static final String PAGE_STRUCTURE = "codex.projecte.page.structure";
+	public static final String PAGE_STRUCTURE_GRAND = "codex.projecte.page.structure.grand";
+	public static final String STRUCTURE_SWITCH = "codex.projecte.structure.switch";
+	public static final String PAGE_RITUAL_GRAND = "codex.projecte.page.ritual.grand";
 	public static final String RITUAL_CATALYST = "codex.projecte.ritual.catalyst";
 	public static final String RITUAL_STAGE = "codex.projecte.ritual.stage";
 	public static final String RITUAL_TOTAL = "codex.projecte.ritual.total";

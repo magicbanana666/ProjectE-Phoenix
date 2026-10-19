@@ -93,7 +93,7 @@ public class PERecipeProvider extends RecipeProvider {
 		addCondenserRecipes(recipeOutput);
 		addTransmutationTableRecipes(recipeOutput);
 		addNovaRecipes(recipeOutput);
-		addKleinRecipes(recipeOutput);
+		//Klein Stars are rituals of the Athanor and the Grand Athanor, see data/projecte/recipe/athanor/klein
 		addRingRecipes(recipeOutput);
 		addCovalenceDustRecipes(recipeOutput);
 		addDiviningRodRecipes(recipeOutput);
@@ -644,22 +644,6 @@ public class PERecipeProvider extends RecipeProvider {
 				.save(recipeOutput);
 	}
 
-	private void addKleinRecipes(RecipeOutput recipeOutput) {
-		//Ein to Vier are rituals of the Athanor (data/projecte/recipe/athanor/klein). Sphere and Omega stay crafted until the
-		// Grand Athanor exists
-		KleinTier[] tiers = KleinTier.values();
-		for (int tier = KleinTier.SPHERE.ordinal(); tier < tiers.length; tier++) {
-			kleinStarUpgrade(recipeOutput, PEItems.getStar(tiers[tier]), PEItems.getStar(tiers[tier - 1]));
-		}
-	}
-
-	private void kleinStarUpgrade(RecipeOutput recipeOutput, ItemLike star, ItemLike previous) {
-		shapeless(RecipeCategory.TOOLS, star)
-				.requires(previous, 4)
-				.unlockedBy("has_components", has(previous))
-				.save(recipeOutput);
-	}
-
 	private void addRingRecipes(RecipeOutput recipeOutput) {
 		//Arcana (Any ring or red matter)
 		shaped(RecipeCategory.TOOLS, PEItems.ARCANA_RING)
@@ -1082,6 +1066,26 @@ public class PERecipeProvider extends RecipeProvider {
 				.define('D', PEItems.DARK_MATTER)
 				.define('B', Items.POLISHED_BLACKSTONE)
 				.unlockedBy("has_matter", has(PEItems.DARK_MATTER))
+				.save(recipeOutput);
+		//The Grand Athanor: the inner arches gilded with sulphur, and an apex of quintessence
+		shaped(RecipeCategory.DECORATIONS, PEBlocks.GILDED_ARCH)
+				.pattern(" G ")
+				.pattern("GAG")
+				.pattern(" S ")
+				.define('G', Tags.Items.INGOTS_GOLD)
+				.define('A', PEBlocks.CRUCIBLE_ARCH)
+				.define('S', PEItems.ALCHEMICAL_SULPHUR)
+				.unlockedBy("has_arch", has(PEBlocks.CRUCIBLE_ARCH))
+				.save(recipeOutput);
+		shaped(RecipeCategory.DECORATIONS, PEBlocks.QUINTESSENCE_APEX)
+				.pattern("QNQ")
+				.pattern("RAR")
+				.pattern("QQQ")
+				.define('Q', PEItems.QUICKSILVER)
+				.define('N', Tags.Items.NETHER_STARS)
+				.define('R', PEItems.RED_MATTER)
+				.define('A', PEBlocks.CRUCIBLE_APEX)
+				.unlockedBy("has_apex", has(PEBlocks.CRUCIBLE_APEX))
 				.save(recipeOutput);
 		shaped(RecipeCategory.DECORATIONS, PEBlocks.ALCHEMICAL_CRUCIBLE)
 				.pattern("GCG")

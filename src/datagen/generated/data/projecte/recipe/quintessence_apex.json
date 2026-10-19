@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "projecte:crucible_apex",
+    "N": "#c:nether_stars",
+    "Q": "projecte:quicksilver",
+    "R": "projecte:red_matter"
+  },
+  "pattern": [
+    "QNQ",
+    "RAR",
+    "QQQ"
+  ],
+  "result": {
+    "id": "projecte:quintessence_apex"
+  }
+}

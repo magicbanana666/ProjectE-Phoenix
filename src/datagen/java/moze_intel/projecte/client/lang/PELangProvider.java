@@ -78,6 +78,7 @@ public class PELangProvider extends BaseLanguageProvider {
 		//JEI
 		add(PELang.JEI_COLLECTOR, "Collector Fuel Upgrades");
 		add(PELang.JEI_ATHANOR, "Athanor Ritual");
+		add(PELang.JEI_ATHANOR_GRAND, "Grand Athanor");
 		add(PELang.JEI_CAULDRON, "Alchemical Cauldron");
 		add(PELang.JEI_ATHANOR_STAGE, "%1$s seconds, %2$s EMC");
 		add(PELang.JEI_ATHANOR_TOTAL, "%1$s EMC, %2$s s");
@@ -175,6 +176,8 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PEBlocks.CRUCIBLE_PILLAR, "Athanor Pillar");
 		add(PEBlocks.CRUCIBLE_ARCH, "Athanor Arch");
 		add(PEBlocks.CRUCIBLE_APEX, "Athanor Apex");
+		add(PEBlocks.GILDED_ARCH, "Gilded Athanor Arch");
+		add(PEBlocks.QUINTESSENCE_APEX, "Quintessence Apex");
 		add(PEBlocks.CONDENSER, "Energy Condenser");
 		add(PEBlocks.CONDENSER_MK2, "Energy Condenser MK2");
 		add(PEBlocks.DARK_MATTER_FURNACE, "Dark Matter Furnace");
@@ -585,6 +588,7 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PELang.RITUAL_PROGRESS, "%1$s: %2$s%%");
 		add(PELang.RITUAL_INGREDIENTS, "The dais holds %1$s of %2$s items. In the centre: %3$s.");
 		add(PELang.RITUAL_NO_CATALYST, "no catalyst");
+		add(PELang.RITUAL_NEEDS_GRAND, "This work needs the Grand Athanor: gild the inner arches and set a Quintessence Apex.");
 		add(PELang.RITUAL_NO_RECIPE, "These items and this catalyst make nothing. The Alchemist's Codex lists the rituals.");
 		add(PELang.RITUAL_REBOUND, "The ritual rebounded in %1$s. Equivalent exchange takes its price.");
 		add(PELang.RITUAL_REBOUND_WARNING, "Rebound in %1$s s!");

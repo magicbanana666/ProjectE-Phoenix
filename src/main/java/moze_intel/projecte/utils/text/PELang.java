@@ -74,6 +74,7 @@ public enum PELang implements ILangEntry {
 	//JEI
 	JEI_COLLECTOR("jei", "collector"),
 	JEI_ATHANOR("jei", "athanor"),
+	JEI_ATHANOR_GRAND("jei", "athanor.grand"),
 	JEI_CAULDRON("jei", "cauldron"),
 	JEI_ATHANOR_STAGE("jei", "athanor.stage"),
 	JEI_ATHANOR_TOTAL("jei", "athanor.total"),
@@ -208,6 +209,7 @@ public enum PELang implements ILangEntry {
 	RITUAL_RUBEDO("ritual", "rubedo"),
 	RITUAL_CAUDA_PAVONIS("ritual", "cauda_pavonis"),
 	RITUAL_NO_RECIPE("ritual", "no_recipe"),
+	RITUAL_NEEDS_GRAND("ritual", "needs_grand"),
 	RITUAL_NO_CATALYST("ritual", "no_catalyst"),
 	RITUAL_REBOUND("ritual", "rebound"),
 	RITUAL_REBOUND_WARNING("ritual", "rebound_warning"),

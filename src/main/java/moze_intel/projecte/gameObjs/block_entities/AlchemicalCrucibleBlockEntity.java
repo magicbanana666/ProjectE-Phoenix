@@ -126,6 +126,10 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 	 * Whether every block of the Athanor is in place, checked once a second.
 	 */
 	private boolean formed;
+	/**
+	 * {@link CrucibleStructure#ATHANOR} or {@link CrucibleStructure#GRAND_ATHANOR} while formed, 0 otherwise.
+	 */
+	private int tier;
 
 	public AlchemicalCrucibleBlockEntity(BlockPos pos, BlockState state) {
 		super(PEBlockEntityTypes.ALCHEMICAL_CRUCIBLE.get(), pos, state);
@@ -133,14 +137,14 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 	}
 
 	/**
-	 * @return how many items the dais can hold. Only the Athanor exists so far, the Grand Athanor will hold five.
+	 * @return how many items the dais can hold: three on the Athanor, five on the Grand Athanor
 	 */
 	public int getCapacity() {
-		return AthanorRecipe.TIER_ONE_INPUTS;
+		return tier >= CrucibleStructure.GRAND_ATHANOR ? AthanorRecipe.MAX_INPUTS : AthanorRecipe.TIER_ONE_INPUTS;
 	}
 
-	private int getTier() {
-		return 1;
+	public int getTier() {
+		return tier;
 	}
 
 	private int inputCount() {
@@ -165,9 +169,13 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 	 * @return the ritual that the items in the crucible make, if there is one the Athanor can do
 	 */
 	private Optional<RecipeHolder<AthanorRecipe>> findRecipe(ServerLevel level) {
+		return findRecipe(level, getTier());
+	}
+
+	private Optional<RecipeHolder<AthanorRecipe>> findRecipe(ServerLevel level, int maxTier) {
 		AthanorInput input = new AthanorInput(inputList(), catalyst);
 		for (RecipeHolder<AthanorRecipe> holder : getRecipes(level)) {
-			if (holder.value().tier() <= getTier() && holder.value().matches(input, level)) {
+			if (holder.value().tier() <= maxTier && holder.value().matches(input, level)) {
 				return Optional.of(holder);
 			}
 		}
@@ -264,8 +272,13 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 		}
 		Optional<RecipeHolder<AthanorRecipe>> found = findRecipe(serverLevel);
 		if (found.isEmpty()) {
-			player.sendOverlayMessage(inputCount() == 0 && catalyst.isEmpty() ? getIngredientMessage()
-										: PELang.RITUAL_NO_RECIPE.translateColored(ChatFormatting.GRAY));
+			if (inputCount() == 0 && catalyst.isEmpty()) {
+				player.sendOverlayMessage(getIngredientMessage());
+			} else if (findRecipe(serverLevel, CrucibleStructure.GRAND_ATHANOR).isPresent()) {
+				player.sendOverlayMessage(PELang.RITUAL_NEEDS_GRAND.translateColored(ChatFormatting.GOLD));
+			} else {
+				player.sendOverlayMessage(PELang.RITUAL_NO_RECIPE.translateColored(ChatFormatting.GRAY));
+			}
 			return InteractionResult.SUCCESS;
 		}
 		checkStructure();
@@ -424,9 +437,10 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 		if (level == null || level.isClientSide()) {
 			return;
 		}
-		boolean nowFormed = CrucibleStructure.findMissing(level, worldPosition) == null;
-		if (nowFormed != formed) {
-			formed = nowFormed;
+		int nowTier = CrucibleStructure.getTier(level, worldPosition);
+		if (nowTier != tier) {
+			tier = nowTier;
+			formed = tier > 0;
 			changed();
 		}
 		//Also lights up parts that were replaced since the last check
@@ -501,7 +515,8 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 		Stall newStall = Stall.NONE;
 		ServerPlayer player = owner == null ? null : level.getServer().getPlayerList().getPlayer(owner);
 		IKnowledgeProvider provider = null;
-		if (!formed) {
+		if (tier < recipe.tier()) {
+			//Broken, or no longer grand enough for the ritual it is doing
 			newStall = Stall.STRUCTURE;
 		} else if (player == null) {
 			newStall = Stall.OFFLINE;
@@ -917,6 +932,7 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 		clientProgress = progress;
 		clientDuration = input.getIntOr("duration", 0);
 		formed = input.getBooleanOr("formed", false);
+		tier = input.getIntOr("tier", formed ? CrucibleStructure.ATHANOR : 0);
 	}
 
 	@Override
@@ -945,6 +961,7 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 		output.putLong("paid", paid);
 		output.putInt("duration", stage.isActive() ? getDuration() : 0);
 		output.putBoolean("formed", formed);
+		output.putInt("tier", tier);
 		if (owner != null) {
 			output.store("owner", UUIDUtil.CODEC, owner);
 		}

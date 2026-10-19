@@ -1,0 +1,37 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:warden_heart",
+    "minecraft:nether_star",
+    "minecraft:echo_shard",
+    "minecraft:breeze_rod",
+    "projecte:quicksilver"
+  ],
+  "catalyst": "projecte:klein_star_vier",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 200,
+      "emc": 262144
+    },
+    {
+      "stage": "albedo",
+      "ticks": 240,
+      "emc": 262144
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 300,
+      "emc": 524288,
+      "needs": "sky"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 400,
+      "emc": 1048576
+    }
+  ],
+  "result": "projecte:klein_star_sphere"
+}

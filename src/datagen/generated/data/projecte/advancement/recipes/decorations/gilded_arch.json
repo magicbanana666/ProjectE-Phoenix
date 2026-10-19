@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_components": {
+    "has_arch": {
       "conditions": {
         "items": [
           {
-            "items": "projecte:klein_star_sphere"
+            "items": "projecte:crucible_arch"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "projecte:klein_star_omega"
+        "recipe": "projecte:gilded_arch"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_components"
+      "has_arch"
     ]
   ],
   "rewards": {
     "recipes": [
-      "projecte:klein_star_omega"
+      "projecte:gilded_arch"
     ]
   }
 }

@@ -112,6 +112,10 @@ public class AthanorRecipeCategory implements IRecipeCategory<AthanorRecipe> {
 			graphics.text(font, emc, WIDTH - font.width(emc), y, TEXT, false);
 			y += STAGE_HEIGHT;
 		}
+		if (recipe.tier() > 1) {
+			Component grand = PELang.JEI_ATHANOR_GRAND.translate();
+			graphics.text(font, grand, WIDTH - font.width(grand), 0, 0xFFB08A3C, false);
+		}
 		Component total = PELang.JEI_ATHANOR_TOTAL.translate(String.format("%,d", recipe.totalEmc()), String.format("%.0f", recipe.totalTicks() / 20F));
 		graphics.text(font, total, 0, y + 1, 0xFF6B0F1A, false);
 	}

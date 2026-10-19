@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "projecte:crucible_arch",
+    "G": "#c:ingots/gold",
+    "S": "projecte:alchemical_sulphur"
+  },
+  "pattern": [
+    " G ",
+    "GAG",
+    " S "
+  ],
+  "result": {
+    "id": "projecte:gilded_arch"
+  }
+}

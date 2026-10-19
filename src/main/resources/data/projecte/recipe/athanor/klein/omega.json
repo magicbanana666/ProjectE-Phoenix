@@ -1,0 +1,37 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:dragon_heart",
+    "projecte:warden_heart",
+    "projecte:elder_eye",
+    "projecte:blighted_soul",
+    "minecraft:creaking_heart"
+  ],
+  "catalyst": "projecte:klein_star_sphere",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 240,
+      "emc": 1048576
+    },
+    {
+      "stage": "albedo",
+      "ticks": 300,
+      "emc": 1048576
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 400,
+      "emc": 2097152,
+      "needs": "sky"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 600,
+      "emc": 4194304
+    }
+  ],
+  "result": "projecte:klein_star_omega"
+}

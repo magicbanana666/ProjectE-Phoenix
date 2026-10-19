@@ -1,0 +1,31 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:orange_matter",
+    "projecte:orange_matter",
+    "projecte:orange_matter",
+    "projecte:alchemical_salt",
+    "projecte:quicksilver"
+  ],
+  "catalyst": "minecraft:nether_star",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 320,
+      "emc": 8589934592
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 500,
+      "emc": 17179869184,
+      "rune": "albedo"
+    },
+    {
+      "stage": "albedo",
+      "ticks": 400,
+      "emc": 25769803776
+    }
+  ],
+  "result": "projecte:white_matter"
+}

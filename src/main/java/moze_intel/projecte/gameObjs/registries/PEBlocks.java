@@ -66,6 +66,9 @@ public class PEBlocks {
 	public static final BlockRegistryObject<CruciblePart, BlockItem> CRUCIBLE_PILLAR = registerCruciblePart("crucible_pillar", Block.box(2, 0, 2, 14, 16, 14));
 	public static final BlockRegistryObject<CrucibleArch, BlockItem> CRUCIBLE_ARCH = BLOCKS.register("crucible_arch", properties -> new CrucibleArch(crucibleProperties(properties), Block.box(3, 0, 3, 13, 13, 13)), (block, properties) -> PEBlockItem.of(block, properties));
 	public static final BlockRegistryObject<CruciblePart, BlockItem> CRUCIBLE_APEX = registerCruciblePart("crucible_apex", Block.box(3, 0, 3, 13, 16, 13));
+	//What turns the Athanor into the Grand Athanor: the inner arches and the apex, gilded
+	public static final BlockRegistryObject<CrucibleArch, BlockItem> GILDED_ARCH = BLOCKS.register("gilded_arch", properties -> new CrucibleArch(crucibleProperties(properties), Block.box(3, 0, 3, 13, 13, 13)), (block, properties) -> PEBlockItem.of(block, properties));
+	public static final BlockRegistryObject<CruciblePart, BlockItem> QUINTESSENCE_APEX = registerCruciblePart("quintessence_apex", Block.box(3, 0, 3, 13, 16, 13));
 	public static final BlockRegistryObject<Pedestal, BlockItem> DARK_MATTER_PEDESTAL = BLOCKS.register("dm_pedestal", properties -> new Pedestal(properties.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1_000_000, 3_000_000).lightLevel(state -> 12)), (block, properties) -> PEBlockItem.of(block, properties.fireResistant()));
 	public static final BlockRegistryObject<MatterFurnace, BlockItem> DARK_MATTER_FURNACE = registerFurnace("dm_furnace", EnumMatterType.DARK_MATTER, 1_000_000, 3_000_000);
 	public static final BlockRegistryObject<MatterFurnace, BlockItem> RED_MATTER_FURNACE = registerFurnace("rm_furnace", EnumMatterType.RED_MATTER, 2_000_000, 6_000_000);

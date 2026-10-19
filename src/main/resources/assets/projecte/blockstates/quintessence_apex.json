@@ -1,0 +1,129 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "projecte:block/quintessence_apex"
+      }
+    },
+    {
+      "when": {
+        "glow": "1"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow"
+      }
+    },
+    {
+      "when": {
+        "glow": "2"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_nigredo"
+      }
+    },
+    {
+      "when": {
+        "glow": "3"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_albedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "4"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_citrinitas"
+      }
+    },
+    {
+      "when": {
+        "glow": "5"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_rubedo"
+      }
+    },
+    {
+      "when": {
+        "glow": "6"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_complete"
+      }
+    },
+    {
+      "when": {
+        "glow": "7"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_magenta"
+      }
+    },
+    {
+      "when": {
+        "glow": "8"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_pink"
+      }
+    },
+    {
+      "when": {
+        "glow": "9"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_purple"
+      }
+    },
+    {
+      "when": {
+        "glow": "10"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_violet"
+      }
+    },
+    {
+      "when": {
+        "glow": "11"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_blue"
+      }
+    },
+    {
+      "when": {
+        "glow": "12"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_cyan"
+      }
+    },
+    {
+      "when": {
+        "glow": "13"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_green"
+      }
+    },
+    {
+      "when": {
+        "glow": "14"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_lime"
+      }
+    },
+    {
+      "when": {
+        "glow": "15"
+      },
+      "apply": {
+        "model": "projecte:block/crucible/crucible_apex_glow_orange"
+      }
+    }
+  ]
+}

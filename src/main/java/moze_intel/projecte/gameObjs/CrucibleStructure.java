@@ -13,15 +13,21 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * The shape of the Alchemical Crucible, relative to the crucible block in its centre:
+ * The shape of the Athanor, relative to the crucible block in its centre:
  * <ul>
- *     <li>below it a 5 x 5 base: nine Crucible Plinths in the middle, sixteen Crucible Steps around them</li>
- *     <li>around it eight Crucible Dais, and a Crucible Pillar on each corner of the base, three blocks high</li>
- *     <li>on top of every pillar a Crucible Arch, a second arch one block in and up, and the Crucible Apex above the centre</li>
+ *     <li>below it a 5 x 5 base: nine Plinths in the middle, sixteen Steps around them</li>
+ *     <li>around it eight Dais, and a Pillar on each corner of the base, three blocks high</li>
+ *     <li>on top of every pillar an Arch, a second arch one block in and up, and the Apex above the centre</li>
  * </ul>
  * The shape is the same in every direction, so it does not have to be rotated.
+ * <p>
+ * Gilding the four inner arches and setting a Quintessence Apex on top makes it the Grand Athanor, which holds five
+ * ingredients instead of three.
  */
 public final class CrucibleStructure {
+
+	public static final int ATHANOR = 1;
+	public static final int GRAND_ATHANOR = 2;
 
 	@Nullable
 	private static List<Part> parts;
@@ -39,24 +45,24 @@ public final class CrucibleStructure {
 				for (int dz = -2; dz <= 2; dz++) {
 					boolean inner = Math.abs(dx) <= 1 && Math.abs(dz) <= 1;
 					boolean corner = Math.abs(dx) == 2 && Math.abs(dz) == 2;
-					list.add(new Part(new BlockPos(dx, -1, dz), inner ? PEBlocks.CRUCIBLE_PLINTH : PEBlocks.CRUCIBLE_STEP));
+					list.add(new Part(new BlockPos(dx, -1, dz), inner ? PEBlocks.CRUCIBLE_PLINTH : PEBlocks.CRUCIBLE_STEP, null));
 					if (dx == 0 && dz == 0) {
-						list.add(new Part(BlockPos.ZERO, PEBlocks.ALCHEMICAL_CRUCIBLE));
+						list.add(new Part(BlockPos.ZERO, PEBlocks.ALCHEMICAL_CRUCIBLE, null));
 					} else if (inner) {
-						list.add(new Part(new BlockPos(dx, 0, dz), PEBlocks.CRUCIBLE_DAIS));
+						list.add(new Part(new BlockPos(dx, 0, dz), PEBlocks.CRUCIBLE_DAIS, null));
 					}
 					if (corner) {
 						for (int y = 0; y < 3; y++) {
-							list.add(new Part(new BlockPos(dx, y, dz), PEBlocks.CRUCIBLE_PILLAR));
+							list.add(new Part(new BlockPos(dx, y, dz), PEBlocks.CRUCIBLE_PILLAR, null));
 						}
-						list.add(new Part(new BlockPos(dx, 3, dz), PEBlocks.CRUCIBLE_ARCH));
+						list.add(new Part(new BlockPos(dx, 3, dz), PEBlocks.CRUCIBLE_ARCH, null));
 					}
 					if (Math.abs(dx) == 1 && Math.abs(dz) == 1) {
-						list.add(new Part(new BlockPos(dx, 4, dz), PEBlocks.CRUCIBLE_ARCH));
+						list.add(new Part(new BlockPos(dx, 4, dz), PEBlocks.CRUCIBLE_ARCH, PEBlocks.GILDED_ARCH));
 					}
 				}
 			}
-			list.add(new Part(new BlockPos(0, 4, 0), PEBlocks.CRUCIBLE_APEX));
+			list.add(new Part(new BlockPos(0, 4, 0), PEBlocks.CRUCIBLE_APEX, PEBlocks.QUINTESSENCE_APEX));
 			parts = List.copyOf(list);
 		}
 		return parts;
@@ -68,7 +74,7 @@ public final class CrucibleStructure {
 	@Nullable
 	public static Part findMissing(Level level, BlockPos centre) {
 		for (Part part : getParts()) {
-			if (!level.getBlockState(centre.offset(part.offset())).is(part.block().getBlock())) {
+			if (!part.matches(level.getBlockState(centre.offset(part.offset())))) {
 				return part;
 			}
 		}
@@ -78,11 +84,29 @@ public final class CrucibleStructure {
 	public static int countMissing(Level level, BlockPos centre) {
 		int missing = 0;
 		for (Part part : getParts()) {
-			if (!level.getBlockState(centre.offset(part.offset())).is(part.block().getBlock())) {
+			if (!part.matches(level.getBlockState(centre.offset(part.offset())))) {
 				missing++;
 			}
 		}
 		return missing;
+	}
+
+	/**
+	 * @return 0 if the Athanor is incomplete, {@link #ATHANOR} if it is complete, {@link #GRAND_ATHANOR} if every block that
+	 * can be gilded is
+	 */
+	public static int getTier(Level level, BlockPos centre) {
+		boolean grand = true;
+		for (Part part : getParts()) {
+			BlockState state = level.getBlockState(centre.offset(part.offset()));
+			if (!part.matches(state)) {
+				return 0;
+			}
+			if (part.grand() != null && !state.is(part.grand().getBlock())) {
+				grand = false;
+			}
+		}
+		return grand ? GRAND_ATHANOR : ATHANOR;
 	}
 
 	/**
@@ -92,7 +116,7 @@ public final class CrucibleStructure {
 		for (Part part : getParts()) {
 			BlockPos pos = centre.offset(part.offset());
 			BlockState state = level.getBlockState(pos);
-			if (!state.is(part.block().getBlock())) {
+			if (!part.matches(state)) {
 				continue;
 			}
 			BlockState updated = state.setValue(CruciblePart.GLOW, glow);
@@ -106,6 +130,13 @@ public final class CrucibleStructure {
 		}
 	}
 
-	public record Part(BlockPos offset, BlockRegistryObject<? extends CruciblePart, ?> block) {
+	/**
+	 * @param grand the gilded block that may take the place of this one, and makes the Grand Athanor
+	 */
+	public record Part(BlockPos offset, BlockRegistryObject<? extends CruciblePart, ?> block, @Nullable BlockRegistryObject<? extends CruciblePart, ?> grand) {
+
+		public boolean matches(BlockState state) {
+			return state.is(block.getBlock()) || grand != null && state.is(grand.getBlock());
+		}
 	}
 }
