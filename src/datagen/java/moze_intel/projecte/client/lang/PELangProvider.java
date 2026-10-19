@@ -77,6 +77,10 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PEKeybind.TRANSMUTATION_TABLET, "Transmutation Tablet");
 		//JEI
 		add(PELang.JEI_COLLECTOR, "Collector Fuel Upgrades");
+		add(PELang.JEI_ATHANOR, "Athanor Ritual");
+		add(PELang.JEI_ATHANOR_STAGE, "%1$s seconds, %2$s EMC");
+		add(PELang.JEI_ATHANOR_TOTAL, "%1$s EMC, %2$s s");
+		add(PELang.JEI_ATHANOR_STRUCTURE, "The heart of the Athanor, a 5 by 5 structure of 55 blocks. The base is a square of nine Athanor Plinths inside a ring of sixteen Athanor Steps. On it stand this crucible in the middle, eight Athanor Dais around it, and an Athanor Pillar three blocks high on each corner. An Athanor Arch caps every pillar, a second ring of arches sits one block in and one higher, and the Athanor Apex hangs over the crucible. The Alchemist's Codex shows it layer by layer.");
 		add(PELang.WORLD_TRANSMUTE, "World Transmutation");
 		add(PELang.WORLD_TRANSMUTE_DESCRIPTION, "Use item (%1$s) in world, hold %2$s while interacting for alternate output");
 		//Curios

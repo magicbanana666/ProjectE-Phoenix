@@ -44,8 +44,8 @@ public final class Codex {
 					Entry.item("philosophers_stone"),
 					Entry.item("transmutation_tablet"),
 					Entry.item("tome"),
-					Entry.topic("covalence_dust", "low_covalence_dust"),
-					Entry.topic("fuels", "alchemical_coal"),
+					Entry.topic("covalence_dust", "low_covalence_dust").withRecipes("low_covalence_dust", "medium_covalence_dust", "high_covalence_dust"),
+					Entry.topic("fuels", "alchemical_coal").withRecipes("alchemical_coal", "mobius_fuel", "aeternalis_fuel"),
 					Entry.item("dark_matter"),
 					Entry.item("red_matter"),
 					Entry.topic("klein_stars", "klein_star_ein")
@@ -54,32 +54,32 @@ public final class Codex {
 			new Chapter("machines", "condenser_mk1", List.of(
 					Entry.item("alchemical_chest"),
 					Entry.item("alchemical_barrel"),
-					Entry.topic("alchemical_bags", "white_alchemical_bag"),
+					Entry.topic("alchemical_bags", "white_alchemical_bag").withRecipes("white_alchemical_bag"),
 					Entry.item("condenser_mk1"),
 					Entry.item("condenser_mk2"),
-					Entry.topic("collectors", "collector_mk1"),
-					Entry.topic("relays", "relay_mk1"),
+					Entry.topic("collectors", "collector_mk1").withRecipes("collector_mk1", "collector_mk2", "collector_mk3"),
+					Entry.topic("relays", "relay_mk1").withRecipes("relay_mk1", "relay_mk2", "relay_mk3"),
 					Entry.item("dm_furnace"),
 					Entry.item("rm_furnace"),
 					Entry.item("dm_pedestal"),
-					Entry.topic("interdiction", "interdiction_torch"),
-					Entry.topic("nova", "nova_catalyst")
+					Entry.topic("interdiction", "interdiction_torch").withRecipes("interdiction_torch", "interdiction_lantern"),
+					Entry.topic("nova", "nova_catalyst").withRecipes("nova_catalyst", "nova_cataclysm")
 			)),
 			new Chapter("tools", "dm_pick", List.of(
-					Entry.topic("dm_tools", "dm_pick"),
-					Entry.topic("rm_tools", "rm_pick"),
+					Entry.topic("dm_tools", "dm_pick").withRecipes("dm_pick", "dm_axe", "dm_shovel", "dm_sword", "dm_hoe", "dm_shears", "dm_hammer"),
+					Entry.topic("rm_tools", "rm_pick").withRecipes("rm_pick", "rm_axe", "rm_shovel", "rm_sword", "rm_hoe", "rm_shears", "rm_hammer"),
 					Entry.item("rm_katar"),
 					Entry.item("rm_morning_star"),
-					Entry.topic("tridents", "dark_matter_trident"),
-					Entry.topic("shields", "dark_matter_shield"),
-					Entry.topic("dm_armor", "dm_chestplate"),
-					Entry.topic("rm_armor", "rm_chestplate"),
-					Entry.topic("gem_armor", "gem_chestplate"),
+					Entry.topic("tridents", "dark_matter_trident").withRecipes("dark_matter_trident", "red_matter_trident"),
+					Entry.topic("shields", "dark_matter_shield").withRecipes("dark_matter_shield", "red_matter_shield"),
+					Entry.topic("dm_armor", "dm_chestplate").withRecipes("dm_helmet", "dm_chestplate", "dm_leggings", "dm_boots"),
+					Entry.topic("rm_armor", "rm_chestplate").withRecipes("rm_helmet", "rm_chestplate", "rm_leggings", "rm_boots"),
+					Entry.topic("gem_armor", "gem_chestplate").withRecipes("gem_helmet", "gem_chestplate", "gem_leggings", "gem_boots"),
 					Entry.item("destruction_catalyst"),
 					Entry.item("hyperkinetic_lens"),
 					Entry.item("catalytic_lens"),
 					Entry.item("mercurial_eye"),
-					Entry.topic("divining_rods", "divining_rod_1"),
+					Entry.topic("divining_rods", "divining_rod_1").withRecipes("divining_rod_1", "divining_rod_2", "divining_rod_3"),
 					Entry.topic("alchemical_collection", "minecraft:enchanted_book")
 			)),
 			new Chapter("trinkets", "arcana_ring", List.of(
@@ -106,24 +106,24 @@ public final class Codex {
 					Entry.topic("matter_tiers", "magenta_matter")
 							.withRecipes("magenta_matter", "pink_matter", "purple_matter", "violet_matter", "blue_matter", "cyan_matter", "green_matter",
 									"lime_matter", "yellow_matter", "orange_matter", "white_matter", "fading_matter"),
-					Entry.topic("tier_fuels", "magenta_fuel"),
-					Entry.topic("tier_collectors", "basic_collector"),
-					Entry.topic("compressed_collectors", "basic_compressed_collector"),
-					Entry.topic("tier_relays", "basic_relay"),
-					Entry.topic("power_flowers", "basic_power_flower"),
-					Entry.topic("emc_links", "basic_emc_link"),
+					Entry.topic("tier_fuels", "magenta_fuel").withRecipes("magenta_fuel"),
+					Entry.topic("tier_collectors", "basic_collector").withRecipes("basic_collector"),
+					Entry.topic("compressed_collectors", "basic_compressed_collector").withRecipes("basic_compressed_collector"),
+					Entry.topic("tier_relays", "basic_relay").withRecipes("basic_relay"),
+					Entry.topic("power_flowers", "basic_power_flower").withRecipes("basic_power_flower"),
+					Entry.topic("emc_links", "basic_emc_link").withRecipes("basic_emc_link"),
 					Entry.item("compact_sun"),
 					Entry.item("matter_upgrader"),
 					Entry.item("condenser_mk3"),
 					Entry.item("transmutation_interface"),
-					Entry.topic("advanced_alchemical_chests", "white_advanced_alchemical_chest"),
+					Entry.topic("advanced_alchemical_chests", "white_advanced_alchemical_chest").withRecipes("white_advanced_alchemical_chest"),
 					Entry.topic("tier_table", "final_collector")
 			)),
 			new Chapter("artifacts", "final_star", List.of(
-					Entry.topic("big_stars", "magnum_star_ein"),
+					Entry.topic("big_stars", "magnum_star_ein").withRecipes("magnum_star_ein"),
 					Entry.item("final_star_shard"),
 					Entry.item("final_star"),
-					Entry.topic("alchemical_books", "basic_alchemical_book"),
+					Entry.topic("alchemical_books", "basic_alchemical_book").withRecipes("basic_alchemical_book"),
 					Entry.item("arcane_transmutation_tablet"),
 					Entry.item("knowledge_sharing_book"),
 					Entry.item("infinite_fuel"),
@@ -189,8 +189,11 @@ public final class Codex {
 			return new Entry(id, Codex.id(id), true, List.of(Codex.id(id)), false);
 		}
 
+		/**
+		 * A topic shows no recipes, unless it lists the items with {@link #withRecipes(String...)}.
+		 */
 		public static Entry topic(String id, String icon) {
-			return new Entry(id, Codex.id(icon), false, List.of(Codex.id(icon)), false);
+			return new Entry(id, Codex.id(icon), false, List.of(), false);
 		}
 
 		public Entry withRecipes(String... items) {

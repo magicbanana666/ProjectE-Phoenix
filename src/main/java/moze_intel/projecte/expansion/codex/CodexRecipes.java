@@ -50,6 +50,10 @@ public final class CodexRecipes {
 		return found;
 	}
 
+	public static List<AthanorRecipe> rituals() {
+		return recipes.byType(PERecipeTypes.ATHANOR.get()).stream().map(RecipeHolder::value).toList();
+	}
+
 	public static List<AthanorRecipe> ritualsFor(Item item) {
 		List<AthanorRecipe> found = new ArrayList<>();
 		for (RecipeHolder<AthanorRecipe> holder : recipes.byType(PERecipeTypes.ATHANOR.get())) {

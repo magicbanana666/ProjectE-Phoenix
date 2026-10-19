@@ -191,8 +191,9 @@ public class GUIAlchemistsCodex extends Screen {
 	private List<Page> buildPages(View target) {
 		List<Page> built = new ArrayList<>();
 		if (target.isHome()) {
+			//The chapters always face the introduction, like the contents page of a real book
 			addText(built, new ItemStack(ExpansionItems.ALCHEMISTS_CODEX.get()), Component.translatable(Codex.TITLE), Component.translatable(Codex.INTRO));
-			built.add(new ChapterGrid());
+			built.add(1, new ChapterGrid());
 		} else if (target.isChapter()) {
 			Chapter chapter = Codex.CHAPTERS.get(target.chapter());
 			addText(built, chapter.icon(), chapter.title(), chapter.intro());
@@ -213,6 +214,10 @@ public class GUIAlchemistsCodex extends Screen {
 			}
 			Level level = Minecraft.getInstance().level;
 			for (Identifier id : entry.recipeItems()) {
+				if (id.getNamespace().equals("minecraft")) {
+					//How to craft a vanilla item is not what this book is for
+					continue;
+				}
 				Item recipeItem = item(id);
 				for (AthanorRecipe ritual : CodexRecipes.ritualsFor(recipeItem)) {
 					built.add(new RitualPage(ritual));

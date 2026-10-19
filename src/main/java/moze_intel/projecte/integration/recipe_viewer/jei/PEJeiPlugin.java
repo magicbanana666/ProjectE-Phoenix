@@ -1,5 +1,6 @@
 package moze_intel.projecte.integration.recipe_viewer.jei;
 
+import moze_intel.projecte.utils.text.PELang;
 import java.util.Collection;
 import java.util.List;
 import mezz.jei.api.IModPlugin;
@@ -91,6 +92,7 @@ public class PEJeiPlugin implements IModPlugin {
 		if (shouldLoad()) {
 			registry.addRecipeCategories(new WorldTransmuteRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
 			registry.addRecipeCategories(new CollectorRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
+			registry.addRecipeCategories(new AthanorRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
 		}
 	}
 
@@ -105,6 +107,7 @@ public class PEJeiPlugin implements IModPlugin {
 	public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registry) {
 		if (shouldLoad()) {
 			registry.addRecipeCatalyst(PEItems.PHILOSOPHERS_STONE.asStack(), WorldTransmuteRecipeCategory.RECIPE_TYPE);
+			registry.addRecipeCatalyst(new ItemStack(PEBlocks.ALCHEMICAL_CRUCIBLE), AthanorRecipeCategory.RECIPE_TYPE);
 			registry.addRecipeCatalyst(new ItemStack(PEBlocks.COLLECTOR), CollectorRecipeCategory.RECIPE_TYPE);
 			registry.addRecipeCatalyst(new ItemStack(PEBlocks.COLLECTOR_MK2), CollectorRecipeCategory.RECIPE_TYPE);
 			registry.addRecipeCatalyst(new ItemStack(PEBlocks.COLLECTOR_MK3), CollectorRecipeCategory.RECIPE_TYPE);
@@ -134,6 +137,8 @@ public class PEJeiPlugin implements IModPlugin {
 		if (shouldLoad()) {
 			registry.addRecipes(WorldTransmuteRecipeCategory.RECIPE_TYPE, List.copyOf(RecipeViewerHelper.getAllTransmutations()));
 			registry.addRecipes(CollectorRecipeCategory.RECIPE_TYPE, RecipeViewerHelper.getFuelUpgrades());
+			registry.addRecipes(AthanorRecipeCategory.RECIPE_TYPE, AthanorRecipeCategory.getRecipes());
+			registry.addItemStackInfo(new ItemStack(PEBlocks.ALCHEMICAL_CRUCIBLE), PELang.JEI_ATHANOR_STRUCTURE.translate());
 		}
 	}
 }

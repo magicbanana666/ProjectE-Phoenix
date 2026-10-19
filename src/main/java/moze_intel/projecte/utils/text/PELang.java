@@ -73,6 +73,10 @@ public enum PELang implements ILangEntry {
 	EMC_TOO_MUCH("emc", "too_much"),
 	//JEI
 	JEI_COLLECTOR("jei", "collector"),
+	JEI_ATHANOR("jei", "athanor"),
+	JEI_ATHANOR_STAGE("jei", "athanor.stage"),
+	JEI_ATHANOR_TOTAL("jei", "athanor.total"),
+	JEI_ATHANOR_STRUCTURE("jei", "athanor.structure"),
 	WORLD_TRANSMUTE("jei", "world_transmute"),
 	WORLD_TRANSMUTE_DESCRIPTION("jei", "world_transmute.description"),
 	//Curios

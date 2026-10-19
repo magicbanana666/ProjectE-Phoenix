@@ -100,7 +100,8 @@ public class PEClient {
 
 		NeoForge.EVENT_BUS.addListener(this::onEntityJoinWorld);
 		NeoForge.EVENT_BUS.addListener(this::registerClientCommands);
-		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.expansion.codex.CodexRecipes::onRecipesReceived);
+		//Before recipe viewers handle the same event, so JEI finds the rituals when it reloads
+		NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.HIGHEST, moze_intel.projecte.expansion.codex.CodexRecipes::onRecipesReceived);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.expansion.codex.CodexRecipes::onLoggingOut);
 		NeoForge.EVENT_BUS.addListener(this::onDisconnect);
 		NeoForge.EVENT_BUS.addListener(this::tooltipEvent);
