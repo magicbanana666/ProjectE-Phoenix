@@ -194,6 +194,7 @@ public enum PELang implements ILangEntry {
 	TOOLTIP_CAULDRON("tooltip", "alchemical_cauldron"),
 	TOOLTIP_CHALK("tooltip", "chalk"),
 	CAULDRON_STATUS("cauldron", "status"),
+	COMPREHENSION_STUDYING("comprehension", "studying"),
 	CAULDRON_LIQUID("cauldron", "liquid"),
 	CAULDRON_BREWING("cauldron", "brewing"),
 	CAULDRON_EMPTY("cauldron", "empty"),

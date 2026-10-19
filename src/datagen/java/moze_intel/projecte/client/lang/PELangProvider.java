@@ -560,6 +560,7 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PELang.TOOLTIP_CRUCIBLE_PART, "Part of the Athanor, see the Alchemist's Codex.");
 		add(PELang.TOOLTIP_CAULDRON, "Brews on the heat of the block below it. Chalk circles drawn around it catch the souls of what dies inside.");
 		add(PELang.TOOLTIP_CHALK, "Draws circle %1$s around an Alchemical Cauldron.");
+		add(PELang.COMPREHENSION_STUDYING, "Studying %1$s: %2$s of %3$s burned.");
 		add(PELang.CAULDRON_STATUS, "%1$s, %2$s, circles: %3$s, souls: %4$s");
 		add(PELang.CAULDRON_LIQUID, "%1$s");
 		add(PELang.CAULDRON_BREWING, "Brewing %1$s%%");

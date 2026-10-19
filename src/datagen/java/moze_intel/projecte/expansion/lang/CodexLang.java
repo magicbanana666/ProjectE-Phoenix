@@ -54,6 +54,7 @@ final class CodexLang {
 				+ "The worth of an item is in its tooltip.");
 		topic(lang, "knowledge", "Knowledge",
 				"To make a thing you must first understand it. Burn an item in a Transmutation Table and you learn it: from then on you can take it out again whenever you can pay its worth.\n\n"
+				+ "Cheap things are understood at a glance. Anything worth more than 2,048 has to be studied first: burn four of it, and only then do you know it. Locking an item in the table teaches nothing you do not already understand.\n\n"
 				+ "Your EMC and your knowledge belong to you, not to the table. Every table and tablet you touch shares them.\n\n"
 				+ "Some things can only be made, never learned. The Athanor guards those.");
 		topic(lang, "keybinds", "Keys",

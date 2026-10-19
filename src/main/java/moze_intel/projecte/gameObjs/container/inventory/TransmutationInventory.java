@@ -1,5 +1,6 @@
 package moze_intel.projecte.gameObjs.container.inventory;
 
+import moze_intel.projecte.gameObjs.Comprehension;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import java.math.BigInteger;
@@ -78,7 +79,19 @@ public class TransmutationInventory extends CombinedInvWrapper {
 	 */
 	public void handleKnowledge(ItemStack stack) {
 		if (!stack.isEmpty()) {
-			handleKnowledge(ItemInfo.fromStack(stack));
+			handleKnowledge(ItemInfo.fromStack(stack), stack.getCount());
+		}
+	}
+
+	/**
+	 * Teaches an item that was put in the table without burning it, such as into the lock slot. That only works for items that
+	 * need no study, or that are already understood, see {@link Comprehension}.
+	 *
+	 * @apiNote Call on server only
+	 */
+	public void handleKnowledgeWithoutBurning(ItemStack stack) {
+		if (!stack.isEmpty()) {
+			handleKnowledge(ItemInfo.fromStack(stack), 0);
 		}
 	}
 
@@ -86,9 +99,22 @@ public class TransmutationInventory extends CombinedInvWrapper {
 	 * @apiNote Call on server only
 	 */
 	public void handleKnowledge(ItemInfo info) {
+		handleKnowledge(info, 1);
+	}
+
+	/**
+	 * @param burned how many of the item were burned, they count towards understanding it
+	 *
+	 * @apiNote Call on server only
+	 */
+	public void handleKnowledge(ItemInfo info, int burned) {
 		ItemInfo cleanedInfo = IEMCProxy.INSTANCE.getPersistentInfo(info);
+		if (provider.hasKnowledge(cleanedInfo)) {
+			return;
+		}
+		boolean understood = burned > 0 ? Comprehension.study((ServerPlayer) player, cleanedInfo, burned) : Comprehension.isUnderstood(player, cleanedInfo);
 		//Pass both stacks to the Attempt Learn Event in case a mod cares about the data component/damage difference when comparing
-		if (!provider.hasKnowledge(cleanedInfo) && !NeoForge.EVENT_BUS.post(new PlayerAttemptLearnEvent(player, info, cleanedInfo)).isCanceled()) {
+		if (understood && !NeoForge.EVENT_BUS.post(new PlayerAttemptLearnEvent(player, info, cleanedInfo)).isCanceled()) {
 			if (provider.addKnowledge(cleanedInfo)) {
 				//Only sync the knowledge changed if the provider successfully added it
 				provider.syncKnowledgeChange((ServerPlayer) player, cleanedInfo, true);

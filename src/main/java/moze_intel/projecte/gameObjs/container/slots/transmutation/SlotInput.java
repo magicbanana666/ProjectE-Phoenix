@@ -54,7 +54,7 @@ public class SlotInput extends InventoryContainerSlot {
 				inv.syncChangedSlots(IntList.of(getSlotIndex()), TargetUpdateType.ALL);
 			} else {
 				if (IEMCProxy.INSTANCE.hasValue(stack)) {
-					inv.handleKnowledge(stack);
+					inv.handleKnowledgeWithoutBurning(stack);
 				}
 				IItemEmcHolder emcHolder = stack.getCapability(PECapabilities.EMC_HOLDER_ITEM_CAPABILITY);
 				if (emcHolder != null) {

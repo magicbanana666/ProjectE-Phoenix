@@ -42,7 +42,7 @@ public class PXResultSlot extends ResultSlot {
 
 	protected void learnResult(ItemStack stack) {
 		if (player instanceof ServerPlayer && IEMCProxy.INSTANCE.hasValue(stack)) {
-			tablet.transmutationInventory.handleKnowledge(stack);
+			tablet.transmutationInventory.handleKnowledgeWithoutBurning(stack);
 		}
 	}
 

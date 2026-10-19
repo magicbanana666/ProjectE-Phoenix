@@ -3,6 +3,7 @@ package moze_intel.projecte.gameObjs.registries;
 import com.mojang.serialization.MapCodec;
 import it.unimi.dsi.fastutil.ints.Int2ObjectFunction;
 import moze_intel.projecte.PECore;
+import moze_intel.projecte.gameObjs.Comprehension;
 import moze_intel.projecte.gameObjs.registration.PEDeferredHolder;
 import moze_intel.projecte.gameObjs.registration.PEDeferredRegister;
 import moze_intel.projecte.impl.capability.AlchBagImpl.AlchemicalBagAttachment;
@@ -36,6 +37,14 @@ public class PEAttachmentTypes {
 			() -> AttachmentType.builder(KnowledgeAttachment::new)
 					.serialize(MapCodec.assumeMapUnsafe(KnowledgeAttachment.CODEC))
 					.copyHandler(KnowledgeAttachment::copy)
+					.copyOnDeath()
+					.build()
+	);
+
+	public static final PEDeferredHolder<AttachmentType<?>, AttachmentType<Comprehension.Progress>> COMPREHENSION = ATTACHMENT_TYPES.register("comprehension",
+			() -> AttachmentType.builder(holder -> new Comprehension.Progress())
+					.serialize(MapCodec.assumeMapUnsafe(Comprehension.Progress.CODEC))
+					.copyHandler(Comprehension.Progress::copy)
 					.copyOnDeath()
 					.build()
 	);

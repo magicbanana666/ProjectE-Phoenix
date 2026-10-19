@@ -183,6 +183,11 @@ public enum PEConfigTranslations implements IConfigTranslation {
 	SERVER_MISC_SHOW_MISSING_STAGES("server.misc.show_missing_game_stages", "Show Missing Game Stages",
 			"If enabled, warnings will tell you which Game Stages you are missing to use blacklisted items."),
 
+	SERVER_COMPREHENSION("server.comprehension", "Comprehension", "Valuable items have to be burned several times before they are learned.", true),
+	SERVER_COMPREHENSION_ENABLED("server.comprehension.enabled", "Enabled", "If false, every item is learned on the first burn, as in ProjectE."),
+	SERVER_COMPREHENSION_INSTANT_BELOW("server.comprehension.instant_below", "Instant Below",
+			"Items worth up to this much EMC are learned on the first burn. A diamond is worth 8,192, an iron ingot 256."),
+	SERVER_COMPREHENSION_BURNS("server.comprehension.burns_needed", "Burns Needed", "How many of a more valuable item have to be burned before it is learned."),
 	SERVER_RITUAL("server.ritual", "Athanor", "Settings of the rituals in the Athanor. The rituals themselves are recipes of the type projecte:athanor.", true),
 	SERVER_RITUAL_EMC_MULTIPLIER("server.ritual.emc_multiplier", "EMC Multiplier", "Multiplies the personal EMC every stage of every ritual costs."),
 	SERVER_RITUAL_DURATION_MULTIPLIER("server.ritual.duration_multiplier", "Duration Multiplier", "Multiplies how long every stage of every ritual takes."),

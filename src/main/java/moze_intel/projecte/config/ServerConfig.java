@@ -22,6 +22,7 @@ public final class ServerConfig extends BasePEConfig {
 	public final Cooldown cooldown;
 	public final Expansion expansion;
 	public final Ritual ritual;
+	public final Comprehension comprehension;
 
 	ServerConfig() {
 		ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -32,6 +33,7 @@ public final class ServerConfig extends BasePEConfig {
 		items = new Items(this, builder);
 		misc = new Misc(this, builder);
 		ritual = new Ritual(this, builder);
+		comprehension = new Comprehension(this, builder);
 		configSpec = builder.build();
 	}
 
@@ -217,6 +219,24 @@ public final class ServerConfig extends BasePEConfig {
 	/**
 	 * Settings of the rituals in the Athanor.
 	 */
+	public static class Comprehension {
+
+		public final CachedBooleanValue enabled;
+		public final CachedIntValue instantBelow;
+		public final CachedIntValue burnsNeeded;
+
+		private Comprehension(IPEConfig config, ModConfigSpec.Builder builder) {
+			PEConfigTranslations.SERVER_COMPREHENSION.applyToBuilder(builder).push("comprehension");
+			enabled = CachedBooleanValue.wrap(config, PEConfigTranslations.SERVER_COMPREHENSION_ENABLED.applyToBuilder(builder)
+					.define("enabled", true));
+			instantBelow = CachedIntValue.wrap(config, PEConfigTranslations.SERVER_COMPREHENSION_INSTANT_BELOW.applyToBuilder(builder)
+					.defineInRange("instantBelow", 2_048, 0, Integer.MAX_VALUE));
+			burnsNeeded = CachedIntValue.wrap(config, PEConfigTranslations.SERVER_COMPREHENSION_BURNS.applyToBuilder(builder)
+					.defineInRange("burnsNeeded", 4, 1, 64));
+			builder.pop();
+		}
+	}
+
 	public static class Ritual {
 
 		public final CachedDoubleValue emcMultiplier;
