@@ -3,7 +3,7 @@
   "inputs": [
     "minecraft:enchanted_golden_apple",
     "minecraft:cake",
-    "minecraft:cooked_beef"
+    "projecte:filled_soul_vial"
   ],
   "catalyst": "projecte:klein_star_ein",
   "stages": [

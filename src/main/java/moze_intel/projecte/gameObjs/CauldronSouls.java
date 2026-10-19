@@ -61,6 +61,9 @@ public final class CauldronSouls {
 		} else {
 			amount = OTHER_SOULS;
 		}
+		if (event.getSource().getEntity() instanceof Player killer && AlchemistsGarb.isWearingFullSet(killer)) {
+			amount++;
+		}
 		if (!cauldron.addSouls(amount)) {
 			return;
 		}

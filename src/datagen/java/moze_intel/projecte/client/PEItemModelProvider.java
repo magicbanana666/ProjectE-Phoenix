@@ -75,6 +75,13 @@ public class PEItemModelProvider extends ModelProvider {
 		generated(itemModels, PEItems.LOW_COVALENCE_DUST, material("item/covalence_dust/low"));
 		generated(itemModels, PEItems.ALCHEMICAL_SALT, material("item/tria_prima/alchemical_salt"));
 		generated(itemModels, PEItems.WARDEN_HEART, material("item/boss/warden_heart"));
+		generated(itemModels, PEItems.SOUL_VIAL, material("item/soul_vial"));
+		generated(itemModels, PEItems.ALCHEMISTS_HOOD, material("item/alchemists_garb/head"));
+		generated(itemModels, PEItems.ALCHEMISTS_ROBE, material("item/alchemists_garb/chest"));
+		generated(itemModels, PEItems.ALCHEMISTS_TROUSERS, material("item/alchemists_garb/legs"));
+		generated(itemModels, PEItems.ALCHEMISTS_BOOTS, material("item/alchemists_garb/feet"));
+		generated(itemModels, PEItems.FILLED_SOUL_VIAL, material("item/filled_soul_vial"));
+		generated(itemModels, PEItems.MONOCLE_OF_COMPREHENSION, material("item/monocle_of_comprehension"));
 		generated(itemModels, PEItems.DRAGON_HEART, material("item/boss/dragon_heart"));
 		generated(itemModels, PEItems.BLIGHTED_SOUL, material("item/boss/blighted_soul"));
 		generated(itemModels, PEItems.ELDER_EYE, material("item/boss/elder_eye"));

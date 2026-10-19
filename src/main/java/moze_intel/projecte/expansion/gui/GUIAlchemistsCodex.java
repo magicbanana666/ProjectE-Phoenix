@@ -21,6 +21,7 @@ import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.input.KeyEvent;
@@ -102,6 +103,8 @@ public class GUIAlchemistsCodex extends Screen {
 	private PageButton forwardButton;
 	private PageButton backButton;
 	private Button historyButton;
+	private EditBox searchBox;
+	private static String lastSearch = "";
 
 	public GUIAlchemistsCodex() {
 		super(Component.translatable(Codex.TITLE));
@@ -130,11 +133,15 @@ public class GUIAlchemistsCodex extends Screen {
 		forwardButton = addRenderableWidget(new PageButton(left + BOOK_WIDTH - PAGE_MARGIN - 23, top + BOOK_HEIGHT - 18, true, button -> turn(1), true));
 		int buttonsTop = top + BOOK_HEIGHT + 10;
 		addRenderableWidget(Button.builder(Component.translatable(Codex.HOME), button -> open(View.HOME))
-				.pos(width / 2 - 151, buttonsTop).width(98).build());
+				.pos(width / 2 - 151, buttonsTop).width(64).build());
 		historyButton = addRenderableWidget(Button.builder(Component.translatable(Codex.BACK), button -> goBack())
-				.pos(width / 2 - 49, buttonsTop).width(98).build());
+				.pos(width / 2 - 83, buttonsTop).width(64).build());
+		searchBox = addRenderableWidget(new EditBox(font, width / 2 - 15, buttonsTop, 98, 20, Component.translatable(Codex.SEARCH)));
+		searchBox.setHint(Component.translatable(Codex.SEARCH));
+		searchBox.setValue(lastSearch);
+		searchBox.setResponder(this::search);
 		addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> onClose())
-				.pos(width / 2 + 53, buttonsTop).width(98).build());
+				.pos(width / 2 + 87, buttonsTop).width(64).build());
 		if (lastLocation != null) {
 			view = lastLocation.view();
 			spread = lastLocation.spread();
@@ -143,6 +150,10 @@ public class GUIAlchemistsCodex extends Screen {
 	}
 
 	private void open(View target) {
+		if (view.isSearch() && !target.isSearch()) {
+			//Leaving the results keeps the search, but the box no longer leads the way
+			searchBox.setFocused(false);
+		}
 		if (target.equals(view)) {
 			spread = 0;
 		} else {
@@ -150,6 +161,26 @@ public class GUIAlchemistsCodex extends Screen {
 			view = target;
 			spread = 0;
 		}
+		rebuild();
+	}
+
+	/**
+	 * Lists every entry whose title or text holds the text in the search box. Clearing the box goes back to where the search
+	 * started.
+	 */
+	private void search(String text) {
+		lastSearch = text;
+		if (text.isBlank()) {
+			if (view.isSearch()) {
+				goBack();
+			}
+			return;
+		}
+		if (!view.isSearch()) {
+			history.push(new Location(view, spread));
+			view = View.SEARCH;
+		}
+		spread = 0;
 		rebuild();
 	}
 
@@ -197,6 +228,25 @@ public class GUIAlchemistsCodex extends Screen {
 			//The chapters always face the introduction, like the contents page of a real book
 			addText(built, new ItemStack(ExpansionItems.ALCHEMISTS_CODEX.get()), Component.translatable(Codex.TITLE), Component.translatable(Codex.INTRO));
 			built.add(1, new ChapterGrid());
+		} else if (target.isSearch()) {
+			String query = lastSearch.trim().toLowerCase(java.util.Locale.ROOT);
+			List<Link> links = new ArrayList<>();
+			for (int c = 0; c < Codex.CHAPTERS.size(); c++) {
+				List<Entry> entries = Codex.CHAPTERS.get(c).entries();
+				for (int e = 0; e < entries.size(); e++) {
+					Entry entry = entries.get(e);
+					if (entry.title().getString().toLowerCase(java.util.Locale.ROOT).contains(query) || entry.text().getString().toLowerCase(java.util.Locale.ROOT).contains(query)) {
+						links.add(new Link(entry.icon(), entry.title(), new View(c, e)));
+					}
+				}
+			}
+			if (links.isEmpty()) {
+				built.add(new TextPage(null, null, font.split(Component.translatable(Codex.SEARCH_NOTHING, lastSearch.trim()), PAGE_WIDTH)));
+			}
+			int perPage = CONTENT_HEIGHT / ROW_HEIGHT;
+			for (int i = 0; i < links.size(); i += perPage) {
+				built.add(new LinkList(links.subList(i, Math.min(links.size(), i + perPage))));
+			}
 		} else if (target.isChapter()) {
 			Chapter chapter = Codex.CHAPTERS.get(target.chapter());
 			addText(built, chapter.icon(), chapter.title(), chapter.intro());
@@ -753,9 +803,14 @@ public class GUIAlchemistsCodex extends Screen {
 	private record View(int chapter, int entry) {
 
 		private static final View HOME = new View(-1, -1);
+		private static final View SEARCH = new View(-2, -1);
 
 		private boolean isHome() {
-			return chapter < 0;
+			return chapter == -1;
+		}
+
+		private boolean isSearch() {
+			return chapter == -2;
 		}
 
 		private boolean isChapter() {

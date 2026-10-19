@@ -26,6 +26,13 @@ public class PECreativeTabs {
 				output.accept(PEItems.SALT_CHALK);
 				output.accept(PEItems.SULPHUR_CHALK);
 				output.accept(PEItems.MERCURY_CHALK);
+				output.accept(PEItems.SOUL_VIAL);
+				output.accept(PEItems.ALCHEMISTS_HOOD);
+				output.accept(PEItems.ALCHEMISTS_ROBE);
+				output.accept(PEItems.ALCHEMISTS_TROUSERS);
+				output.accept(PEItems.ALCHEMISTS_BOOTS);
+				output.accept(PEItems.FILLED_SOUL_VIAL);
+				output.accept(PEItems.MONOCLE_OF_COMPREHENSION);
 				output.accept(PEItems.FALSE_PHILOSOPHERS_STONE);
 				output.accept(PEItems.WARDEN_HEART);
 				output.accept(PEItems.DRAGON_HEART);

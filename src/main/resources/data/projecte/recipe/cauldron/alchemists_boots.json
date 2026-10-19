@@ -1,0 +1,23 @@
+{
+  "type": "projecte:cauldron",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:leather_boots",
+      "count": 1
+    },
+    {
+      "ingredient": "projecte:alchemical_salt",
+      "count": 2
+    },
+    {
+      "ingredient": "projecte:alchemical_sulphur",
+      "count": 2
+    }
+  ],
+  "liquid": "water",
+  "heat": "soul",
+  "circles": 1,
+  "souls": 2,
+  "ticks": 140,
+  "result": "projecte:alchemists_boots"
+}

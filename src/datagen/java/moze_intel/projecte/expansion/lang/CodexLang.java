@@ -18,6 +18,8 @@ final class CodexLang {
 		lang.accept("codex.projecte.contents", "Contents");
 		lang.accept("codex.projecte.home", "Home");
 		lang.accept("codex.projecte.back", "Back");
+		lang.accept("codex.projecte.search", "Search");
+		lang.accept("codex.projecte.search.nothing", "Nothing in these notes about \"%1$s\".");
 		lang.accept("codex.projecte.chapters", "Chapters");
 		lang.accept("codex.projecte.page.crafting", "Crafting");
 		lang.accept("codex.projecte.page.shapeless", "Any arrangement");
@@ -92,7 +94,12 @@ final class CodexLang {
 		topic(lang, "souls", "Souls",
 				"Whatever dies inside the outer circle leaves its soul in the cauldron. An animal gives one, a monster two, a great beast fifty.\n\n"
 				+ "A villager gives ten. The village notices. Every villager who hears of it remembers who keeps the cauldron: prices climb, and after a few the iron golems come for you.\n\n"
-				+ "Souls are spent by the works that need them, on soul heat.");
+				+ "Souls are spent by the works that need them, on soul heat. A Soul Vial draws sixteen out of the cauldron to carry them to the Athanor; sneak to pour a full one back.");
+		topic(lang, "alchemists_garb", "Alchemist's Garb",
+				"Leather soaked in salt and sulphur over soul fire. It stops a blow about as well as the leather it was.\n\n"
+				+ "Worn whole, it serves the work: every kill inside a circle leaves one more soul, chalk wears half as fast, and soul fire does not burn you.");
+		item(lang, "monocle_of_comprehension",
+				"A lens for studying what you can not carry home. Look at a block through it for three seconds and it counts as one burned. Four looks at a vein of diamond ore, and you know diamond ore.");
 		item(lang, "false_philosophers_stone",
 				"Red Water hardened around a diamond. Brew the Red Water first, from redstone, nether wart and glowstone on soul heat with four souls. Then a diamond in it, on high heat inside all three circles, with sixteen more.\n\n"
 				+ "An imitation, red with the power it barely holds. It converts fuels, from coal up to Aeternalis Fuel and back, and it makes a Transmutation Table. That is enough to reach Dark Matter. Every use wears it down, and after 256 it crumbles.\n\n"

@@ -40,6 +40,17 @@ public class PEArmorMaterials {
 			37, DIAMOND_RESISTANCES, 1, SoundEvents.ARMOR_EQUIP_NETHERITE, 2.0F, 0.25F, NO_REPAIR, assetId("gem_armor")
 	);
 
+	//Cloth, about as tough as leather
+	public static final ArmorMaterial ALCHEMISTS_GARB = new ArmorMaterial(
+			7, Util.make(new EnumMap<>(ArmorType.class), map -> {
+				map.put(ArmorType.BOOTS, 1);
+				map.put(ArmorType.LEGGINGS, 2);
+				map.put(ArmorType.CHESTPLATE, 3);
+				map.put(ArmorType.HELMET, 1);
+				map.put(ArmorType.BODY, 3);
+			}), 18, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, TagKey.create(Registries.ITEM, PECore.rl("repairs_alchemists_garb")), assetId("alchemists_garb")
+	);
+
 	private static ResourceKey<EquipmentAsset> assetId(String path) {
 		return ResourceKey.create(EquipmentAssets.ROOT_ID, PECore.rl(path));
 	}

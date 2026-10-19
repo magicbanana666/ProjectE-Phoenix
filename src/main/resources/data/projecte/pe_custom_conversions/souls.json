@@ -1,0 +1,21 @@
+{
+  "groups": {
+    "souls": {
+      "comment": "Souls are free: a full vial is worth the vial",
+      "conversions": [
+        {
+          "output": {
+            "type": "projecte:item",
+            "id": "projecte:filled_soul_vial"
+          },
+          "ingredients": [
+            {
+              "type": "projecte:item",
+              "id": "projecte:soul_vial"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

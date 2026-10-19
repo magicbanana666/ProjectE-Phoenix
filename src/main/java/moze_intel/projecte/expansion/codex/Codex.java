@@ -20,6 +20,8 @@ public final class Codex {
 	public static final String CONTENTS = "codex.projecte.contents";
 	public static final String HOME = "codex.projecte.home";
 	public static final String BACK = "codex.projecte.back";
+	public static final String SEARCH = "codex.projecte.search";
+	public static final String SEARCH_NOTHING = "codex.projecte.search.nothing";
 	public static final String CHAPTERS_TITLE = "codex.projecte.chapters";
 	public static final String PAGE_CRAFTING = "codex.projecte.page.crafting";
 	public static final String PAGE_SHAPELESS = "codex.projecte.page.shapeless";
@@ -43,11 +45,13 @@ public final class Codex {
 			new Chapter("basics", "philosophers_stone", List.of(
 					Entry.topic("emc", "transmutation_table"),
 					Entry.topic("knowledge", "tome"),
+					Entry.item("monocle_of_comprehension"),
 					Entry.topic("keybinds", "minecraft:compass"),
 					Entry.item("alchemical_cauldron"),
 					Entry.topic("tria_prima", "alchemical_salt").withRecipes("alchemical_salt", "alchemical_sulphur", "quicksilver"),
 					Entry.topic("circles", "salt_chalk").withRecipes("salt_chalk", "sulphur_chalk", "mercury_chalk"),
-					Entry.topic("souls", "minecraft:soul_lantern"),
+					Entry.topic("souls", "minecraft:soul_lantern").withRecipes("soul_vial"),
+					Entry.topic("alchemists_garb", "alchemists_robe").withRecipes("alchemists_hood", "alchemists_robe", "alchemists_trousers", "alchemists_boots"),
 					Entry.item("false_philosophers_stone"),
 					Entry.item("transmutation_table"),
 					Entry.item("alchemical_crucible").withStructure(),

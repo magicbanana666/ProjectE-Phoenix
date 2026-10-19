@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import moze_intel.projecte.gameObjs.AlchemistsGarb;
 import moze_intel.projecte.gameObjs.customRecipes.cauldron.CauldronHeat;
 import moze_intel.projecte.gameObjs.customRecipes.cauldron.CauldronInput;
 import moze_intel.projecte.gameObjs.customRecipes.cauldron.CauldronLiquid;
 import moze_intel.projecte.gameObjs.customRecipes.cauldron.CauldronRecipe;
 import moze_intel.projecte.gameObjs.items.ChalkItem;
 import moze_intel.projecte.gameObjs.registries.PEBlockEntityTypes;
+import moze_intel.projecte.gameObjs.registries.PEItems;
 import moze_intel.projecte.gameObjs.registries.PERecipeTypes;
 import moze_intel.projecte.utils.text.PELang;
 import net.minecraft.ChatFormatting;
@@ -59,6 +61,10 @@ public class AlchemicalCauldronBlockEntity extends BlockEntity {
 
 	public static final int MAX_STACKS = CauldronRecipe.MAX_INGREDIENTS;
 	public static final int MAX_SOULS = 256;
+	/**
+	 * How many souls a Soul Vial holds.
+	 */
+	public static final int VIAL_SOULS = 16;
 	private static final DustParticleOptions RED_WATER = new DustParticleOptions(CauldronLiquid.RED_WATER.getColor(), 1.0F);
 
 	private final List<ItemStack> contents = new ArrayList<>();
@@ -151,6 +157,27 @@ public class AlchemicalCauldronBlockEntity extends BlockEntity {
 		}
 		if (held.getItem() instanceof ChalkItem chalk) {
 			drawCircle(serverLevel, player, hand, held, chalk.getCircle());
+			return InteractionResult.SUCCESS;
+		} else if (held.is(PEItems.SOUL_VIAL)) {
+			//Draw souls out of the cauldron
+			if (souls < VIAL_SOULS) {
+				player.sendOverlayMessage(PELang.CAULDRON_TOO_FEW_SOULS.translateColored(ChatFormatting.GRAY, VIAL_SOULS));
+				return InteractionResult.SUCCESS;
+			}
+			souls -= VIAL_SOULS;
+			player.setItemInHand(hand, ItemUtils.createFilledResult(held, player, new ItemStack(PEItems.FILLED_SOUL_VIAL.get())));
+			serverLevel.playSound(null, worldPosition, SoundEvents.SOUL_ESCAPE.value(), SoundSource.BLOCKS, 1.0F, 1.4F);
+			changed();
+			return InteractionResult.SUCCESS;
+		} else if (held.is(PEItems.FILLED_SOUL_VIAL) && player.isShiftKeyDown()) {
+			//Pour souls back in
+			if (souls + VIAL_SOULS > MAX_SOULS) {
+				return InteractionResult.SUCCESS;
+			}
+			souls += VIAL_SOULS;
+			player.setItemInHand(hand, ItemUtils.createFilledResult(held, player, new ItemStack(PEItems.SOUL_VIAL.get())));
+			serverLevel.playSound(null, worldPosition, SoundEvents.SOUL_ESCAPE.value(), SoundSource.BLOCKS, 1.0F, 0.8F);
+			changed();
 			return InteractionResult.SUCCESS;
 		} else if (held.is(Items.WATER_BUCKET)) {
 			if (liquid != CauldronLiquid.EMPTY) {
@@ -259,7 +286,7 @@ public class AlchemicalCauldronBlockEntity extends BlockEntity {
 		}
 		circles |= 1 << (circle - 1);
 		if (!player.isCreative()) {
-			chalk.hurtAndBreak(ChalkItem.USES_PER_CIRCLE, player, hand);
+			chalk.hurtAndBreak(AlchemistsGarb.isWearingFullSet(player) ? ChalkItem.USES_PER_CIRCLE / 2 : ChalkItem.USES_PER_CIRCLE, player, hand);
 		}
 		level.playSound(null, worldPosition, SoundEvents.BRUSH_GENERIC, SoundSource.BLOCKS, 1.0F, 0.8F);
 		for (BlockPos pos : ring(worldPosition, circle)) {

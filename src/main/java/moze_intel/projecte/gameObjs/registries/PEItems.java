@@ -14,6 +14,7 @@ import moze_intel.projecte.gameObjs.items.KleinStar.KleinTier;
 import moze_intel.projecte.gameObjs.items.MercurialEye;
 import moze_intel.projecte.gameObjs.items.ChalkItem;
 import moze_intel.projecte.gameObjs.items.LoreItem;
+import moze_intel.projecte.gameObjs.items.MonocleOfComprehension;
 import moze_intel.projecte.gameObjs.items.FalsePhilosophersStone;
 import moze_intel.projecte.gameObjs.items.PhilosophersStone;
 import moze_intel.projecte.gameObjs.items.RepairTalisman;
@@ -79,6 +80,13 @@ public class PEItems {
 	public static final ItemRegistryObject<LoreItem> DRAGON_HEART = ITEMS.register("dragon_heart", LoreItem::new, properties -> properties.rarity(Rarity.EPIC).fireResistant());
 	public static final ItemRegistryObject<LoreItem> BLIGHTED_SOUL = ITEMS.register("blighted_soul", LoreItem::new, properties -> properties.rarity(Rarity.RARE).fireResistant());
 	public static final ItemRegistryObject<LoreItem> ELDER_EYE = ITEMS.register("elder_eye", LoreItem::new, properties -> properties.rarity(Rarity.RARE));
+	public static final ItemRegistryObject<Item> SOUL_VIAL = ITEMS.register("soul_vial");
+	public static final ItemRegistryObject<Item> ALCHEMISTS_HOOD = ITEMS.register("alchemists_hood", Item::new, properties -> properties.humanoidArmor(PEArmorMaterials.ALCHEMISTS_GARB, ArmorType.HELMET));
+	public static final ItemRegistryObject<Item> ALCHEMISTS_ROBE = ITEMS.register("alchemists_robe", Item::new, properties -> properties.humanoidArmor(PEArmorMaterials.ALCHEMISTS_GARB, ArmorType.CHESTPLATE));
+	public static final ItemRegistryObject<Item> ALCHEMISTS_TROUSERS = ITEMS.register("alchemists_trousers", Item::new, properties -> properties.humanoidArmor(PEArmorMaterials.ALCHEMISTS_GARB, ArmorType.LEGGINGS));
+	public static final ItemRegistryObject<Item> ALCHEMISTS_BOOTS = ITEMS.register("alchemists_boots", Item::new, properties -> properties.humanoidArmor(PEArmorMaterials.ALCHEMISTS_GARB, ArmorType.BOOTS));
+	public static final ItemRegistryObject<Item> FILLED_SOUL_VIAL = ITEMS.register("filled_soul_vial", Item::new, properties -> properties.stacksTo(16).rarity(Rarity.UNCOMMON));
+	public static final ItemRegistryObject<MonocleOfComprehension> MONOCLE_OF_COMPREHENSION = ITEMS.registerNoStack("monocle_of_comprehension", MonocleOfComprehension::new);
 	public static final ItemRegistryObject<ChalkItem> MERCURY_CHALK = ITEMS.register("mercury_chalk", properties -> new ChalkItem(properties, 3), properties -> properties.durability(4 * ChalkItem.USES_PER_CIRCLE));
 
 	public static final ItemRegistryObject<PETrident> DARK_MATTER_TRIDENT = ITEMS.registerNoStackFireImmune("dark_matter_trident", properties -> new PETrident(EnumMatterType.DARK_MATTER, 2, 11, properties));

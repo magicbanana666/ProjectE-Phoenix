@@ -178,6 +178,7 @@ public class PECore {
 		NeoForge.EVENT_BUS.addListener(this::addReloadListeners);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.CauldronSouls::onLivingDeath);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.BossDrops::onLivingDeath);
+		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.AlchemistsGarb::onIncomingDamage);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.items.FalsePhilosophersStone::onItemCrafted);
 		NeoForge.EVENT_BUS.addListener(this::dataPackSync);
 		NeoForge.EVENT_BUS.addListener(this::registerCommands);

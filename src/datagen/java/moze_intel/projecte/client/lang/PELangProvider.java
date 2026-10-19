@@ -337,6 +337,13 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PEItems.PHILOSOPHERS_STONE, "Philosopher's Stone");
 		add(PEItems.FALSE_PHILOSOPHERS_STONE, "False Philosopher's Stone");
 		add(PEItems.ALCHEMICAL_SALT, "Alchemical Salt");
+		add(PEItems.SOUL_VIAL, "Soul Vial");
+		add(PEItems.ALCHEMISTS_HOOD, "Alchemist's Hood");
+		add(PEItems.ALCHEMISTS_ROBE, "Alchemist's Robe");
+		add(PEItems.ALCHEMISTS_TROUSERS, "Alchemist's Trousers");
+		add(PEItems.ALCHEMISTS_BOOTS, "Alchemist's Boots");
+		add(PEItems.FILLED_SOUL_VIAL, "Soul Vial (Full)");
+		add(PEItems.MONOCLE_OF_COMPREHENSION, "Monocle of Comprehension");
 		add(PEItems.WARDEN_HEART, "Warden's Heart");
 		add(PEItems.WARDEN_HEART.getTranslationKey() + ".lore", "It still listens.");
 		add(PEItems.DRAGON_HEART, "Dragon Heart");
@@ -562,6 +569,11 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PELang.TOOLTIP_CRUCIBLE_2, "The ritual draws on the personal EMC of whoever starts it.");
 		add(PELang.TOOLTIP_CRUCIBLE_PART, "Part of the Athanor, see the Alchemist's Codex.");
 		add(PELang.TOOLTIP_CAULDRON, "Brews on the heat of the block below it. Chalk circles drawn around it catch the souls of what dies inside.");
+		add(PELang.TOOLTIP_MONOCLE, "Look at a block through it to study it, as if you had burned one.");
+		add(PELang.MONOCLE_NOTHING, "There is nothing here worth knowing.");
+		add(PELang.MONOCLE_KNOWN, "You already know %1$s.");
+		add(PELang.MONOCLE_LEARNED, "You understand %1$s.");
+		add(PELang.CAULDRON_TOO_FEW_SOULS, "A vial takes %1$s souls.");
 		add(PELang.TOOLTIP_CHALK, "Draws circle %1$s around an Alchemical Cauldron.");
 		add(PELang.COMPREHENSION_STUDYING, "Studying %1$s: %2$s of %3$s burned.");
 		add(PELang.CAULDRON_STATUS, "%1$s, %2$s, circles: %3$s, souls: %4$s");
