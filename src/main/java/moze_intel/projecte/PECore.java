@@ -179,6 +179,7 @@ public class PECore {
 		NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.HIGH, moze_intel.projecte.gameObjs.Phoenix::onLivingDeath);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.Phoenix::onIncomingDamage);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.Phoenix::onPlayerTick);
+		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.CodexDiscoveries::onPlayerTick);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.items.armor.OuroborosRegalia::onPlayerTick);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.items.armor.OuroborosRegalia::onIncomingDamage);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.items.armor.OuroborosRegalia::onDamageDealt);

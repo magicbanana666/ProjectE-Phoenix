@@ -271,6 +271,11 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 				projecteItem(PEItems.OUROBOROS_GREAVES),
 				projecteItem(PEItems.OUROBOROS_TREADS)
 		);
+		for (String family : List.of("magnum", "colossal", "gargantuan")) {
+			for (String tier : List.of("ein", "zwei", "drei", "vier", "sphere", "omega")) {
+				ritualOnly.add(projecteItem(family + "_star_" + tier));
+			}
+		}
 		for (String color : List.of("magenta", "pink", "purple", "violet", "blue", "cyan", "green", "lime", "yellow", "orange", "white")) {
 			ritualOnly.add(projecteItem(color + "_matter"), projecteItem(color + "_matter_block"));
 		}

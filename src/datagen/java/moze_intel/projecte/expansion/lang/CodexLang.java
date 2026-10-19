@@ -19,6 +19,7 @@ final class CodexLang {
 		lang.accept("codex.projecte.home", "Home");
 		lang.accept("codex.projecte.back", "Back");
 		lang.accept("codex.projecte.search", "Search");
+		lang.accept("codex.projecte.locked", "Not yet discovered. Hold it, or learn it, to read about it.");
 		lang.accept("codex.projecte.bookmark.empty", "Mark this page");
 		lang.accept("codex.projecte.bookmark.used", "Click to open, shift click to take the ribbon out");
 		lang.accept("codex.projecte.search.nothing", "Nothing in these notes about \"%1$s\".");
@@ -304,8 +305,9 @@ final class CodexLang {
 				+ "The Warden leaves its heart, and it still listens. The Wither leaves a Blighted Soul beside its star. The Elder Guardian leaves an eye. The Ender Dragon's heart falls onto the exit portal, every time it dies.\n\n"
 				+ "The greatest works of the Athanor will ask for them. Keep them.");
 		topic(lang, "big_stars", "Magnum, Colossal and Gargantuan Stars",
-				"Stars that keep growing. Four Klein Star Omegas make a Magnum Star Ein of 204.8 million EMC, and every star holds four times the one before.\n\n"
-				+ "After the Magnum Omega come the Colossal stars, then the Gargantuan. The Gargantuan Omega holds some 3.5 quintillion.");
+				"Stars that keep growing, every one holding four times the one before. A Magnum Star Ein holds 204.8 million EMC, the Gargantuan Omega some 3.5 quintillion.\n\n"
+				+ "Each is made in the Athanor from four of the star before it: three on the dais, one in the centre that keeps what it holds. The Magnum stars need the Athanor. "
+				+ "The Colossal stars need the Grand Athanor and two coloured matters each, Blue through Orange. The Gargantuan stars need two of White Matter, Fading Matter or Final Star Shards.");
 		item(lang, "final_star_shard",
 				"The last tier of matter, and part of the finest things there are. Three Colossal Star Omegas, a Warden's Heart and a Blighted Soul around a Nether Star, in the Grand Athanor.");
 		item(lang, "final_star",

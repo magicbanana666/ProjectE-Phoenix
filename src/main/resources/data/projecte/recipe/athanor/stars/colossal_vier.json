@@ -1,0 +1,33 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:colossal_star_drei",
+    "projecte:colossal_star_drei",
+    "projecte:colossal_star_drei",
+    "projecte:lime_matter",
+    "projecte:lime_matter"
+  ],
+  "catalyst": "projecte:colossal_star_drei",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 320,
+      "emc": 17592186044416
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 420,
+      "emc": 17592186044416,
+      "rune": "cyan"
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 480,
+      "emc": 17592186044416,
+      "needs": "sky"
+    }
+  ],
+  "result": "projecte:colossal_star_vier"
+}

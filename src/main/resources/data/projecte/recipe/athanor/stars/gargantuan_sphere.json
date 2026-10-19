@@ -1,0 +1,33 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:gargantuan_star_vier",
+    "projecte:gargantuan_star_vier",
+    "projecte:gargantuan_star_vier",
+    "projecte:final_star_shard",
+    "projecte:final_star_shard"
+  ],
+  "catalyst": "projecte:gargantuan_star_vier",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 360,
+      "emc": 288230376151711744
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 460,
+      "emc": 288230376151711744,
+      "rune": "albedo"
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 540,
+      "emc": 288230376151711744,
+      "needs": "sky"
+    }
+  ],
+  "result": "projecte:gargantuan_star_sphere"
+}

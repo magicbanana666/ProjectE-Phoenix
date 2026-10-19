@@ -3,6 +3,7 @@ package moze_intel.projecte.gameObjs.registries;
 import com.mojang.serialization.MapCodec;
 import it.unimi.dsi.fastutil.ints.Int2ObjectFunction;
 import moze_intel.projecte.PECore;
+import moze_intel.projecte.gameObjs.CodexDiscoveries;
 import moze_intel.projecte.gameObjs.Comprehension;
 import moze_intel.projecte.gameObjs.Phoenix;
 import moze_intel.projecte.gameObjs.TheGate;
@@ -61,6 +62,14 @@ public class PEAttachmentTypes {
 	public static final PEDeferredHolder<AttachmentType<?>, AttachmentType<Phoenix.State>> PHOENIX = ATTACHMENT_TYPES.register("phoenix",
 			() -> AttachmentType.builder(holder -> Phoenix.State.NONE)
 					.serialize(MapCodec.assumeMapUnsafe(Phoenix.State.CODEC))
+					.copyOnDeath()
+					.build()
+	);
+
+	public static final PEDeferredHolder<AttachmentType<?>, AttachmentType<CodexDiscoveries.Discovered>> CODEX_DISCOVERED = ATTACHMENT_TYPES.register("codex_discovered",
+			() -> AttachmentType.builder(holder -> CodexDiscoveries.Discovered.NONE)
+					.serialize(MapCodec.assumeMapUnsafe(CodexDiscoveries.Discovered.CODEC.fieldOf("items").codec()))
+					.sync((holder, to) -> holder == to, CodexDiscoveries.Discovered.STREAM_CODEC)
 					.copyOnDeath()
 					.build()
 	);

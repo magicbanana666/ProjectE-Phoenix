@@ -1,0 +1,33 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:colossal_star_omega",
+    "projecte:colossal_star_omega",
+    "projecte:colossal_star_omega",
+    "projecte:white_matter",
+    "projecte:white_matter"
+  ],
+  "catalyst": "projecte:colossal_star_omega",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 200,
+      "emc": 1125899906842624
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 300,
+      "emc": 1125899906842624,
+      "rune": "albedo"
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 300,
+      "emc": 1125899906842624,
+      "needs": "sky"
+    }
+  ],
+  "result": "projecte:gargantuan_star_ein"
+}

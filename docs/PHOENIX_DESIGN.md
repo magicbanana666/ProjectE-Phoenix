@@ -72,7 +72,8 @@ crafting remainder stays the same item and EMC mapping keeps working.
 
 Rituals: the Philosopher's Stone; Klein Stars Ein to Vier (tier 1) and Sphere, Omega (tier 2, boss drops); Magenta to Orange
 Matter (tier 1, a catalyst from the world each) and White Matter (tier 2); Infinite Fuel and Steak (a full Klein Star Ein);
-the Final Star Shard and Final Star; the four Ouroboros pieces; Phoenix Ash; the forbidden human transmutation.
+the Final Star Shard and Final Star; the Magnum (tier 1), Colossal and Gargantuan stars (tier 2, with coloured matter, White, Fading
+Matter or Final Star Shards), each four of the star before; the four Ouroboros pieces; Phoenix Ash; the forbidden human transmutation.
 
 ## Dragon's Pulse and arrays
 
@@ -116,11 +117,11 @@ Heart drops on the exit portal every time the dragon dies (`BossDrops`). Fixed E
 Two-page book (`GUIAlchemistsCodex`): home spread with chapter icons, entry lists, text pages, then recipe pages (crafting,
 cauldron, Athanor, the Athanor's layers). Clicking an item opens its entry. Home, Back, search, three bookmark ribbons saved in
 `config/ProjectE/codex_bookmarks.txt`. The server sends crafting, Athanor and cauldron recipes to clients for it.
+Entries outside the Basics and Commands chapters stay locked ("???") until the player has held or learned one of their items;
+held items are tracked server side in the synced `codex_discovered` attachment (`CodexDiscoveries`). Creative players see all.
 
 ## Not built (ideas for later)
 
 - A rotating 3D preview of the Athanor in the Codex.
-- Locked "?" entries in the Codex for things the player has not found.
 - A dedicated Gate dimension instead of the effects and messages.
-- Magnum, Colossal and Gargantuan stars as rituals.
 - The real 3D models and textures for everything that has placeholder art.

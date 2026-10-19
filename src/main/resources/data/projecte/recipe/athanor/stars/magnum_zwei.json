@@ -1,0 +1,30 @@
+{
+  "type": "projecte:athanor",
+  "inputs": [
+    "projecte:magnum_star_ein",
+    "projecte:magnum_star_ein",
+    "projecte:magnum_star_ein"
+  ],
+  "catalyst": "projecte:magnum_star_ein",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 240,
+      "emc": 268435456
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 340,
+      "emc": 268435456,
+      "rune": "violet"
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 360,
+      "emc": 268435456,
+      "needs": "sky"
+    }
+  ],
+  "result": "projecte:magnum_star_zwei"
+}

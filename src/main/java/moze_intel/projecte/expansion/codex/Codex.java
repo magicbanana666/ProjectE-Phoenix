@@ -21,6 +21,7 @@ public final class Codex {
 	public static final String HOME = "codex.projecte.home";
 	public static final String BACK = "codex.projecte.back";
 	public static final String SEARCH = "codex.projecte.search";
+	public static final String LOCKED = "codex.projecte.locked";
 	public static final String BOOKMARK_EMPTY = "codex.projecte.bookmark.empty";
 	public static final String BOOKMARK_USED = "codex.projecte.bookmark.used";
 	public static final String SEARCH_NOTHING = "codex.projecte.search.nothing";
@@ -142,7 +143,7 @@ public final class Codex {
 			)),
 			new Chapter("artifacts", "final_star", List.of(
 					Entry.topic("boss_drops", "warden_heart"),
-					Entry.topic("big_stars", "magnum_star_ein").withRecipes("magnum_star_ein"),
+					Entry.topic("big_stars", "magnum_star_ein").withRecipes("magnum_star_ein", "magnum_star_zwei", "magnum_star_drei", "magnum_star_vier", "magnum_star_sphere", "magnum_star_omega", "colossal_star_ein", "colossal_star_zwei", "colossal_star_drei", "colossal_star_vier", "colossal_star_sphere", "colossal_star_omega", "gargantuan_star_ein", "gargantuan_star_zwei", "gargantuan_star_drei", "gargantuan_star_vier", "gargantuan_star_sphere", "gargantuan_star_omega"),
 					Entry.item("final_star_shard"),
 					Entry.item("final_star"),
 					Entry.topic("alchemical_books", "basic_alchemical_book").withRecipes("basic_alchemical_book"),

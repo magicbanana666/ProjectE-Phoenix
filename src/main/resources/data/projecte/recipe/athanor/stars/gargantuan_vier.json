@@ -1,0 +1,33 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:gargantuan_star_drei",
+    "projecte:gargantuan_star_drei",
+    "projecte:gargantuan_star_drei",
+    "projecte:fading_matter",
+    "projecte:fading_matter"
+  ],
+  "catalyst": "projecte:gargantuan_star_drei",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 320,
+      "emc": 72057594037927936
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 420,
+      "emc": 72057594037927936,
+      "rune": "albedo"
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 480,
+      "emc": 72057594037927936,
+      "needs": "sky"
+    }
+  ],
+  "result": "projecte:gargantuan_star_vier"
+}

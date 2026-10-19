@@ -246,7 +246,8 @@ public class GUIAlchemistsCodex extends Screen {
 				List<Entry> entries = Codex.CHAPTERS.get(c).entries();
 				for (int e = 0; e < entries.size(); e++) {
 					Entry entry = entries.get(e);
-					if (entry.title().getString().toLowerCase(java.util.Locale.ROOT).contains(query) || entry.text().getString().toLowerCase(java.util.Locale.ROOT).contains(query)) {
+					if (!isLocked(new View(c, e)) && (entry.title().getString().toLowerCase(java.util.Locale.ROOT).contains(query)
+													|| entry.text().getString().toLowerCase(java.util.Locale.ROOT).contains(query))) {
 						links.add(new Link(entry.icon(), entry.title(), new View(c, e)));
 					}
 				}
@@ -264,7 +265,8 @@ public class GUIAlchemistsCodex extends Screen {
 			List<Link> links = new ArrayList<>();
 			for (int e = 0; e < chapter.entries().size(); e++) {
 				Entry entry = chapter.entries().get(e);
-				links.add(new Link(entry.icon(), entry.title(), new View(target.chapter(), e)));
+				View entryView = new View(target.chapter(), e);
+				links.add(isLocked(entryView) ? Link.LOCKED : new Link(entry.icon(), entry.title(), entryView));
 			}
 			int perPage = CONTENT_HEIGHT / ROW_HEIGHT;
 			for (int i = 0; i < links.size(); i += perPage) {
@@ -557,7 +559,7 @@ public class GUIAlchemistsCodex extends Screen {
 		graphics.item(stack, x + 1, y + 1);
 		graphics.itemDecorations(font, stack, x + 1, y + 1);
 		View target = itemEntries.get(stack.getItem());
-		Runnable action = target == null || target.equals(view) ? null : () -> open(target);
+		Runnable action = target == null || target.equals(view) || isLocked(target) ? null : () -> open(target);
 		hotspots.add(new Hotspot(x, y, SLOT, SLOT, stack, List.of(), action));
 	}
 
@@ -665,7 +667,46 @@ public class GUIAlchemistsCodex extends Screen {
 		}
 	}
 
-	private record Link(ItemStack icon, Component name, View target) {
+	/**
+	 * @param target null for an entry that is still locked
+	 */
+	private record Link(ItemStack icon, Component name, @Nullable View target) {
+
+		private static final Link LOCKED = new Link(ItemStack.EMPTY, Component.literal("???"), null);
+	}
+
+	/**
+	 * Chapters whose entries are always open: the first steps, and the settings.
+	 */
+	private static final java.util.Set<String> ALWAYS_OPEN = java.util.Set.of("basics", "server");
+
+	/**
+	 * An entry about an item of the mod stays locked until the player has held it, or one of the items it shows the recipes of,
+	 * or has learned one of them.
+	 */
+	private boolean isLocked(View target) {
+		if (target.entry() < 0 || !target.isValid()) {
+			return false;
+		}
+		Chapter chapter = Codex.CHAPTERS.get(target.chapter());
+		Entry entry = chapter.entries().get(target.entry());
+		if (ALWAYS_OPEN.contains(chapter.id()) || !entry.iconId().getNamespace().equals(moze_intel.projecte.PECore.MODID)) {
+			return false;
+		}
+		net.minecraft.client.player.LocalPlayer player = Minecraft.getInstance().player;
+		if (player == null || player.isCreative()) {
+			return false;
+		}
+		moze_intel.projecte.gameObjs.CodexDiscoveries.Discovered discovered = player.getData(moze_intel.projecte.gameObjs.registries.PEAttachmentTypes.CODEX_DISCOVERED);
+		moze_intel.projecte.api.capabilities.IKnowledgeProvider knowledge = player.getCapability(moze_intel.projecte.api.capabilities.PECapabilities.KNOWLEDGE_CAPABILITY);
+		List<Identifier> items = new ArrayList<>(entry.recipeItems());
+		items.add(entry.iconId());
+		for (Identifier id : items) {
+			if (discovered.contains(id) || knowledge != null && knowledge.hasKnowledge(moze_intel.projecte.api.ItemInfo.fromItem(item(id)))) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private class LinkList implements Page {
@@ -680,9 +721,19 @@ public class GUIAlchemistsCodex extends Screen {
 		public void draw(GuiGraphicsExtractor graphics, int x, int y) {
 			int rowY = y;
 			for (Link link : links) {
-				graphics.item(link.icon(), x, rowY);
-				graphics.text(font, trim(link.name(), PAGE_WIDTH - 20), x + 20, rowY + 4, TEXT, false);
-				hotspots.add(new Hotspot(x - 1, rowY - 1, PAGE_WIDTH + 2, ROW_HEIGHT, ItemStack.EMPTY, List.of(), () -> open(link.target())));
+				if (link.target() == null) {
+					//Locked: a dark slot with a question mark, and nothing to click
+					graphics.fill(x, rowY, x + 16, rowY + 16, SLOT_BORDER);
+					graphics.text(font, "?", x + 6, rowY + 4, PARCHMENT, false);
+					graphics.text(font, link.name(), x + 20, rowY + 4, MUTED, false);
+					hotspots.add(new Hotspot(x - 1, rowY - 1, PAGE_WIDTH + 2, ROW_HEIGHT, ItemStack.EMPTY,
+							List.of(Component.translatable(Codex.LOCKED).getVisualOrderText()), null));
+				} else {
+					graphics.item(link.icon(), x, rowY);
+					graphics.text(font, trim(link.name(), PAGE_WIDTH - 20), x + 20, rowY + 4, TEXT, false);
+					View target = link.target();
+					hotspots.add(new Hotspot(x - 1, rowY - 1, PAGE_WIDTH + 2, ROW_HEIGHT, ItemStack.EMPTY, List.of(), () -> open(target)));
+				}
 				rowY += ROW_HEIGHT;
 			}
 		}

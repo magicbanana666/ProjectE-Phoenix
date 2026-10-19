@@ -1,0 +1,33 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:colossal_star_sphere",
+    "projecte:colossal_star_sphere",
+    "projecte:colossal_star_sphere",
+    "projecte:orange_matter",
+    "projecte:orange_matter"
+  ],
+  "catalyst": "projecte:colossal_star_sphere",
+  "keep_catalyst_components": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 400,
+      "emc": 281474976710656
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 500,
+      "emc": 281474976710656,
+      "rune": "cyan"
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 600,
+      "emc": 281474976710656,
+      "needs": "sky"
+    }
+  ],
+  "result": "projecte:colossal_star_omega"
+}
