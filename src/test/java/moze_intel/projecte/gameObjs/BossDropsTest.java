@@ -14,10 +14,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 class BossDropsTest {
 
 	@Test
-	@DisplayName("The loot modifiers that add the boss drops load")
+	@DisplayName("The loot modifiers that add the boss drops and the journal pages load")
 	void testLootModifiersLoad(MinecraftServer server) {
 		LootModifierManager manager = server.getServerResources().managers().getListener(NeoForgeReloadListeners.LOOT_MODIFIERS_KEY);
-		for (String drop : new String[]{"warden_heart", "blighted_soul", "elder_eye"}) {
+		for (String drop : new String[]{"warden_heart", "blighted_soul", "elder_eye", "journal_ancient_city", "journal_stronghold", "journal_end_city", "journal_trial_chambers"}) {
 			Assertions.assertNotNull(manager.getModifier(PECore.rl(drop)), () -> "Missing loot modifier " + drop);
 		}
 	}

@@ -1,0 +1,106 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "projecte:journal_page",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "projecte:journal_page": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "projecte:journal_page",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "projecte:journal_page": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "projecte:journal_page",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "projecte:journal_page": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "projecte:journal_page",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "projecte:journal_page": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "projecte:journal_page",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "projecte:journal_page": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "projecte:journal_page",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "projecte:journal_page": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "projecte:journal_page",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "projecte:journal_page": 7
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "projecte:journal_page",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "projecte:journal_page": 8
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

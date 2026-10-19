@@ -1,5 +1,6 @@
 package moze_intel.projecte.gameObjs.items.armor;
 
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import moze_intel.projecte.gameObjs.registries.PEArmorMaterials;
 import moze_intel.projecte.gameObjs.registries.PEItems;
 import net.minecraft.tags.DamageTypeTags;
@@ -11,7 +12,11 @@ import net.minecraft.world.item.equipment.ArmorType;
 public abstract class GemArmorBase extends PEArmor {
 
 	public GemArmorBase(ArmorType armorType, Properties props) {
-		super(PEArmorMaterials.GEM_ARMOR, armorType, props);
+		this(PEArmorMaterials.GEM_ARMOR, armorType, props);
+	}
+
+	protected GemArmorBase(ArmorMaterial material, ArmorType armorType, Properties props) {
+		super(material, armorType, props);
 	}
 
 	@Override
@@ -40,16 +45,16 @@ public abstract class GemArmorBase extends PEArmor {
 	}
 
 	public static boolean hasAnyPiece(Player player) {
-		return player.getItemBySlot(EquipmentSlot.HEAD).is(PEItems.GEM_HELMET) ||
-			   player.getItemBySlot(EquipmentSlot.CHEST).is(PEItems.GEM_CHESTPLATE) ||
-			   player.getItemBySlot(EquipmentSlot.LEGS).is(PEItems.GEM_LEGGINGS) ||
-			   player.getItemBySlot(EquipmentSlot.FEET).is(PEItems.GEM_BOOTS);
+		return player.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof GemHelmet ||
+			   player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof GemChest ||
+			   player.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof GemLegs ||
+			   player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof GemFeet;
 	}
 
 	public static boolean hasFullSet(Player player) {
-		return player.getItemBySlot(EquipmentSlot.HEAD).is(PEItems.GEM_HELMET) &&
-			   player.getItemBySlot(EquipmentSlot.CHEST).is(PEItems.GEM_CHESTPLATE) &&
-			   player.getItemBySlot(EquipmentSlot.LEGS).is(PEItems.GEM_LEGGINGS) &&
-			   player.getItemBySlot(EquipmentSlot.FEET).is(PEItems.GEM_BOOTS);
+		return player.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof GemHelmet &&
+			   player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof GemChest &&
+			   player.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof GemLegs &&
+			   player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof GemFeet;
 	}
 }

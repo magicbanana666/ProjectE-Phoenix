@@ -1,0 +1,43 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:dragon_heart",
+    "projecte:warden_heart",
+    "projecte:blighted_soul",
+    "minecraft:totem_of_undying",
+    "projecte:red_matter_block"
+  ],
+  "catalyst": "projecte:final_star",
+  "keep_catalyst": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 300,
+      "emc": 4398046511104
+    },
+    {
+      "stage": "cauda_pavonis",
+      "ticks": 400,
+      "emc": 4398046511104,
+      "rune": "orange"
+    },
+    {
+      "stage": "albedo",
+      "ticks": 400,
+      "emc": 4398046511104
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 400,
+      "emc": 4398046511104,
+      "needs": "sky"
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 800,
+      "emc": 8796093022208
+    }
+  ],
+  "result": "projecte:phoenix_ash"
+}

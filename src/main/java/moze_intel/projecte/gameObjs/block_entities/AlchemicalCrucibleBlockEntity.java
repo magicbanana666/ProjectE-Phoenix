@@ -12,6 +12,8 @@ import moze_intel.projecte.config.ProjectEConfig;
 import moze_intel.projecte.config.ServerConfig;
 import moze_intel.projecte.gameObjs.CrucibleStructure;
 import moze_intel.projecte.gameObjs.DragonsPulse;
+import moze_intel.projecte.gameObjs.TheGate;
+import moze_intel.projecte.gameObjs.items.armor.OuroborosRegalia;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorInput;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorRecipe;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorStage;
@@ -567,7 +569,12 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 					player.sendOverlayMessage(getStatus());
 				}
 				if (warning == 0) {
-					rebound(level, player);
+					if (player != null && OuroborosRegalia.isWearingFullSet(player)) {
+						//The Regalia holds the work together: it waits instead of hitting back
+						updateGlow();
+					} else {
+						rebound(level, player);
+					}
 				}
 			}
 			return;
@@ -601,6 +608,14 @@ public class AlchemicalCrucibleBlockEntity extends BlockEntity {
 		//Check once more before anything is used up, if something is off the ingredients stay where they are
 		AthanorInput input = new AthanorInput(inputList(), catalyst);
 		if (recipe == null || !recipe.matches(input, level)) {
+			reset();
+			return;
+		}
+		if (recipe.forbidden()) {
+			//There is no making a human. The Gate opens, and takes its toll
+			Arrays.fill(inputs, ItemStack.EMPTY);
+			catalyst = ItemStack.EMPTY;
+			TheGate.open(level, worldPosition, player);
 			reset();
 			return;
 		}

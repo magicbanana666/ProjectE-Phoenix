@@ -1,5 +1,7 @@
 package moze_intel.projecte.gameObjs.items.armor;
 
+import moze_intel.projecte.gameObjs.registries.PEArmorMaterials;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import it.unimi.dsi.fastutil.ints.Int2LongMap;
 import it.unimi.dsi.fastutil.ints.Int2LongOpenHashMap;
 import java.util.List;
@@ -29,7 +31,11 @@ public class GemLegs extends GemArmorBase {
 	private static final Vec3 DOWNWARD_MOVEMENT = new Vec3(0, -0.32F, 0);
 
 	public GemLegs(Properties props) {
-		super(ArmorType.LEGGINGS, props);
+		this(PEArmorMaterials.GEM_ARMOR, props);
+	}
+
+	protected GemLegs(ArmorMaterial material, Properties props) {
+		super(material, ArmorType.LEGGINGS, props);
 		NeoForge.EVENT_BUS.addListener(this::onJump);
 	}
 

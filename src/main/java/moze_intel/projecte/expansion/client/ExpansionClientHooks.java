@@ -32,6 +32,8 @@ public final class ExpansionClientHooks {
 		HitDirectionSource.setSource(ExpansionClientHooks::lookDirection);
 		ClientSideHandler.setScreen(new ExpansionClientHooks.ExpansionAlchemicalBookScreen());
 		ClientSideHandler.setCodexScreen(() -> Minecraft.getInstance().setScreen(new GUIAlchemistsCodex()));
+		ClientSideHandler.setBookScreen(pages -> Minecraft.getInstance().setScreen(new net.minecraft.client.gui.screens.inventory.BookViewScreen(
+				new net.minecraft.client.gui.screens.inventory.BookViewScreen.BookAccess(pages))));
 	}
 
 	@Nullable

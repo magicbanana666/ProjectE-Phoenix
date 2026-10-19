@@ -53,6 +53,7 @@ final class CodexLang {
 		chapter(lang, "trinkets", "Rings and Trinkets", "Rings, stones and amulets. Most work from the hotbar or a Curios slot and are switched with the Mode key.");
 		chapter(lang, "beyond", "Beyond Red Matter", "The peacock's tail: twelve coloured matters, and the collectors, relays, flowers and links built from them.");
 		chapter(lang, "artifacts", "Alchemical Artifacts", "Great stars, books that travel, and things that never run out.");
+		chapter(lang, "great_work", "The Great Work", "What lies past the stars: the forbidden work, the homunculus, the chimeras, the regalia and the phoenix.");
 		chapter(lang, "server", "Commands and Settings", "For those who keep the server and set its prices.");
 
 		//The Basics
@@ -320,6 +321,26 @@ final class CodexLang {
 				"Fuel that never burns out. Each time it lights a furnace its owner pays 128 EMC instead.");
 		item(lang, "infinite_steak",
 				"A meal that never ends. Every bite costs 64 EMC.");
+
+		//The Great Work
+		topic(lang, "forbidden", "The Forbidden Work",
+				"There is one work these notes will not write out: the making of a person. It can be done in the Grand Athanor, and it always fails.\n\n"
+				+ "Whoever tries it stands before the Gate and pays: two hearts, for good. In return their hands remember what they saw there. With nothing in them, the extra function key claps them together and transmutes the block they look at, as a Philosopher's Stone would.\n\n"
+				+ "What is left in the crucible breathes. The last keeper of an Athanor wrote down the ingredients. The pages are scattered.");
+		item(lang, "homunculus_flask",
+				"The only good thing to come of the Forbidden Work. Brewed in Red Water with a bottle and quicksilver, the homunculus lives in its flask and gathers the items lying within eight blocks into the chest, barrel or hopper below it.\n\n"
+				+ "It lives on its keeper's EMC, a thousand a day, and only while its keeper is near enough to feed it. Hungry, it sleeps.");
+		topic(lang, "chimera", "Chimera Charms",
+				"Two vials of souls brewed in Red Water with something of a beast, on soul heat inside all three circles. Carried anywhere, the charm lends what the beast could do: the owl sees in the dark, the fish breathes water, the strider does not burn, the rabbit jumps.");
+		topic(lang, "ouroboros", "Ouroboros Regalia",
+				"Gem armor bound in the Grand Athanor with the hearts of the great beasts. Every piece keeps all the powers of the Gem piece it was, and adds one:\n\n"
+				+ "The Crown, with the Elder Eye: darkness and weariness do not touch you, and nothing hostile can hide. The Mantle, with the Warden's Heart: what strikes you may be answered with a sonic boom. The Greaves, with the Blighted Soul: the wither does not touch you, and your blows heal you. The Treads, with the Dragon Heart: arrows pass through you.\n\n"
+				+ "All four: a ritual you lead holds together instead of rebounding.");
+		item(lang, "phoenix_ash",
+				"The end of the Work, and its sign: the phoenix, that burns and rises. The hearts of the dragon and the warden, the Wither's soul, a Totem of Undying and a block of Red Matter around a Final Star, in the Grand Athanor. The star survives.\n\n"
+				+ "Take in the ash and you burn, and rise a Phoenix, for good. Death burns you to ash and you rise again; then the fire needs half an hour to return. You fly on wings of embers, for a little EMC every second in the air. Fire does not burn you, and standing in it heals you. And the Gate gives back what it took.");
+		topic(lang, "journal", "The Keeper's Journal",
+				"Eight torn pages from the journal of the last keeper of an Athanor. They turn up in the libraries of strongholds, the vaults of ancient cities, the treasure of end cities and the rewards of trial chambers. Read one by using it.");
 
 		//Commands and Settings
 		topic(lang, "commands", "Commands",

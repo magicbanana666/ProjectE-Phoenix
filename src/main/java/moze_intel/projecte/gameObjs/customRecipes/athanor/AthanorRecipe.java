@@ -33,8 +33,10 @@ import org.jetbrains.annotations.NotNull;
  * @param keepCatalyst             whether the catalyst is left in the crucible instead of being used up
  * @param keepCatalystComponents   whether the result takes over the data of the catalyst, so an upgraded Klein Star keeps its EMC
  * @param catalystFull             whether the catalyst has to be filled to the brim with EMC, such as a charged Klein Star
+ * @param forbidden                whether the work can never succeed: at its end the Gate opens, see {@link moze_intel.projecte.gameObjs.TheGate}.
+ *                                 Forbidden rituals are not shown in the Codex or recipe viewers
  */
-public record AthanorRecipe(int tier, List<Ingredient> inputs, Ingredient catalyst, boolean keepCatalyst, boolean keepCatalystComponents, boolean catalystFull,
+public record AthanorRecipe(int tier, List<Ingredient> inputs, Ingredient catalyst, boolean keepCatalyst, boolean keepCatalystComponents, boolean catalystFull, boolean forbidden,
 							List<AthanorStage> stages, ItemStackTemplate result) implements Recipe<AthanorInput> {
 
 	public static final int TIER_ONE_INPUTS = 3;
@@ -47,6 +49,7 @@ public record AthanorRecipe(int tier, List<Ingredient> inputs, Ingredient cataly
 			Codec.BOOL.optionalFieldOf("keep_catalyst", false).forGetter(AthanorRecipe::keepCatalyst),
 			Codec.BOOL.optionalFieldOf("keep_catalyst_components", false).forGetter(AthanorRecipe::keepCatalystComponents),
 			Codec.BOOL.optionalFieldOf("catalyst_full", false).forGetter(AthanorRecipe::catalystFull),
+			Codec.BOOL.optionalFieldOf("forbidden", false).forGetter(AthanorRecipe::forbidden),
 			AthanorStage.CODEC.listOf(1, 16).fieldOf("stages").forGetter(AthanorRecipe::stages),
 			ItemStackTemplate.CODEC.fieldOf("result").forGetter(AthanorRecipe::result)
 	).apply(instance, AthanorRecipe::new)).validate(recipe -> recipe.inputs.size() > TIER_ONE_INPUTS && recipe.tier < 2
@@ -60,6 +63,7 @@ public record AthanorRecipe(int tier, List<Ingredient> inputs, Ingredient cataly
 			ByteBufCodecs.BOOL, AthanorRecipe::keepCatalyst,
 			ByteBufCodecs.BOOL, AthanorRecipe::keepCatalystComponents,
 			ByteBufCodecs.BOOL, AthanorRecipe::catalystFull,
+			ByteBufCodecs.BOOL, AthanorRecipe::forbidden,
 			AthanorStage.STREAM_CODEC.apply(ByteBufCodecs.list(16)), AthanorRecipe::stages,
 			ItemStackTemplate.STREAM_CODEC, AthanorRecipe::result,
 			AthanorRecipe::new

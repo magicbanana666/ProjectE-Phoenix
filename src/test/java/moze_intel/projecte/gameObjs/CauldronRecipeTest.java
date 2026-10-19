@@ -39,7 +39,7 @@ class CauldronRecipeTest {
 	@DisplayName("The cauldron recipes load from the datapack")
 	void testRecipesLoad(MinecraftServer server) {
 		List<CauldronRecipe> recipes = server.getRecipeManager().recipeMap().byType(PERecipeTypes.CAULDRON.get()).stream().map(RecipeHolder::value).toList();
-		Assertions.assertEquals(10, recipes.size());
+		Assertions.assertEquals(15, recipes.size());
 		CauldronRecipe redWater = recipe(server, "red_water");
 		Assertions.assertEquals(Optional.of(CauldronLiquid.RED_WATER), redWater.resultLiquid());
 		Assertions.assertEquals(Optional.of(CauldronHeat.SOUL), redWater.heat());

@@ -1,0 +1,22 @@
+{
+  "type": "projecte:cauldron",
+  "ingredients": [
+    {
+      "ingredient": "projecte:filled_soul_vial",
+      "count": 2
+    },
+    {
+      "ingredient": "minecraft:magma_cream",
+      "count": 1
+    },
+    {
+      "ingredient": "minecraft:warped_fungus",
+      "count": 1
+    }
+  ],
+  "liquid": "red_water",
+  "heat": "soul",
+  "circles": 3,
+  "ticks": 300,
+  "result": "projecte:chimera_strider"
+}

@@ -48,6 +48,7 @@ public class PEBlockLootTable extends BlockLootSubProvider {
 		dropSelf(PEBlocks.ALCHEMICAL_CRUCIBLE.getBlock());
 		dropSelf(PEBlocks.ALCHEMICAL_CAULDRON.getBlock());
 		dropSelf(PEBlocks.PULSE_STAKE.getBlock());
+		dropSelf(PEBlocks.HOMUNCULUS_FLASK.getBlock());
 		dropSelf(PEBlocks.CRUCIBLE_STEP.getBlock());
 		dropSelf(PEBlocks.CRUCIBLE_PLINTH.getBlock());
 		dropSelf(PEBlocks.CRUCIBLE_DAIS.getBlock());

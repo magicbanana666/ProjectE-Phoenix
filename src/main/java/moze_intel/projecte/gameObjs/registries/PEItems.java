@@ -15,6 +15,11 @@ import moze_intel.projecte.gameObjs.items.MercurialEye;
 import moze_intel.projecte.gameObjs.items.AlkahestFlask;
 import moze_intel.projecte.gameObjs.items.ChalkItem;
 import moze_intel.projecte.gameObjs.items.LoreItem;
+import moze_intel.projecte.gameObjs.items.ChimeraCharm;
+import moze_intel.projecte.gameObjs.items.JournalPage;
+import net.minecraft.world.effect.MobEffects;
+import moze_intel.projecte.gameObjs.items.armor.OuroborosRegalia;
+import moze_intel.projecte.gameObjs.items.PhoenixAsh;
 import moze_intel.projecte.gameObjs.items.MonocleOfComprehension;
 import moze_intel.projecte.gameObjs.items.FalsePhilosophersStone;
 import moze_intel.projecte.gameObjs.items.PhilosophersStone;
@@ -80,6 +85,13 @@ public class PEItems {
 	public static final ItemRegistryObject<LoreItem> WARDEN_HEART = ITEMS.register("warden_heart", LoreItem::new, properties -> properties.rarity(Rarity.EPIC).fireResistant());
 	public static final ItemRegistryObject<LoreItem> DRAGON_HEART = ITEMS.register("dragon_heart", LoreItem::new, properties -> properties.rarity(Rarity.EPIC).fireResistant());
 	public static final ItemRegistryObject<LoreItem> BLIGHTED_SOUL = ITEMS.register("blighted_soul", LoreItem::new, properties -> properties.rarity(Rarity.RARE).fireResistant());
+	public static final ItemRegistryObject<ChimeraCharm> CHIMERA_OWL = ITEMS.register("chimera_owl", properties -> new ChimeraCharm(properties, MobEffects.NIGHT_VISION), properties -> properties.stacksTo(1).rarity(Rarity.RARE));
+	public static final ItemRegistryObject<ChimeraCharm> CHIMERA_FISH = ITEMS.register("chimera_fish", properties -> new ChimeraCharm(properties, MobEffects.WATER_BREATHING), properties -> properties.stacksTo(1).rarity(Rarity.RARE));
+	public static final ItemRegistryObject<ChimeraCharm> CHIMERA_STRIDER = ITEMS.register("chimera_strider", properties -> new ChimeraCharm(properties, MobEffects.FIRE_RESISTANCE), properties -> properties.stacksTo(1).rarity(Rarity.RARE));
+	public static final ItemRegistryObject<ChimeraCharm> CHIMERA_RABBIT = ITEMS.register("chimera_rabbit", properties -> new ChimeraCharm(properties, MobEffects.JUMP_BOOST), properties -> properties.stacksTo(1).rarity(Rarity.RARE));
+	public static final ItemRegistryObject<JournalPage> JOURNAL_PAGE = ITEMS.register("journal_page", JournalPage::new, properties -> properties.stacksTo(1).rarity(Rarity.UNCOMMON));
+	public static final ItemRegistryObject<PhoenixAsh> PHOENIX_ASH = ITEMS.register("phoenix_ash", PhoenixAsh::new, properties -> properties.rarity(Rarity.EPIC).fireResistant().stacksTo(1));
+	public static final ItemRegistryObject<LoreItem> MALFORMED_HOMUNCULUS = ITEMS.register("malformed_homunculus", LoreItem::new, properties -> properties.rarity(Rarity.RARE).stacksTo(1));
 	public static final ItemRegistryObject<LoreItem> ELDER_EYE = ITEMS.register("elder_eye", LoreItem::new, properties -> properties.rarity(Rarity.RARE));
 	public static final ItemRegistryObject<Item> SOUL_VIAL = ITEMS.register("soul_vial");
 	public static final ItemRegistryObject<AlkahestFlask> ALKAHEST = ITEMS.register("alkahest", AlkahestFlask::new, properties -> properties.durability(64).rarity(Rarity.UNCOMMON));
@@ -154,6 +166,10 @@ public class PEItems {
 	public static final ItemRegistryObject<RMArmor> RED_MATTER_LEGGINGS = ITEMS.registerArmor("rm_leggings", properties -> new RMArmor(ArmorType.LEGGINGS, properties));
 	public static final ItemRegistryObject<RMArmor> RED_MATTER_BOOTS = ITEMS.registerArmor("rm_boots", properties -> new RMArmor(ArmorType.BOOTS, properties));
 
+	public static final ItemRegistryObject<OuroborosRegalia.Crown> OUROBOROS_CROWN = ITEMS.registerArmor("ouroboros_crown", OuroborosRegalia.Crown::new);
+	public static final ItemRegistryObject<OuroborosRegalia.Mantle> OUROBOROS_MANTLE = ITEMS.registerArmor("ouroboros_mantle", OuroborosRegalia.Mantle::new);
+	public static final ItemRegistryObject<OuroborosRegalia.Greaves> OUROBOROS_GREAVES = ITEMS.registerArmor("ouroboros_greaves", OuroborosRegalia.Greaves::new);
+	public static final ItemRegistryObject<OuroborosRegalia.Treads> OUROBOROS_TREADS = ITEMS.registerArmor("ouroboros_treads", OuroborosRegalia.Treads::new);
 	public static final ItemRegistryObject<GemHelmet> GEM_HELMET = ITEMS.registerArmor("gem_helmet", GemHelmet::new);
 	public static final ItemRegistryObject<GemChest> GEM_CHESTPLATE = ITEMS.registerArmor("gem_chestplate", GemChest::new);
 	public static final ItemRegistryObject<GemLegs> GEM_LEGGINGS = ITEMS.registerArmor("gem_leggings", GemLegs::new);

@@ -1,0 +1,36 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "forbidden": true,
+  "inputs": [
+    "minecraft:bone_block",
+    "minecraft:coal_block",
+    "minecraft:rotten_flesh",
+    "projecte:alchemical_salt",
+    "minecraft:redstone_block"
+  ],
+  "catalyst": "projecte:filled_soul_vial",
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 200,
+      "emc": 65536
+    },
+    {
+      "stage": "albedo",
+      "ticks": 200,
+      "emc": 65536
+    },
+    {
+      "stage": "citrinitas",
+      "ticks": 200,
+      "emc": 65536
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 300,
+      "emc": 131072
+    }
+  ],
+  "result": "minecraft:player_head"
+}

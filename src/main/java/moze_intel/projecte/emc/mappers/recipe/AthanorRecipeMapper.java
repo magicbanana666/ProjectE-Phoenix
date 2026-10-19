@@ -56,6 +56,9 @@ public class AthanorRecipeMapper implements IRecipeTypeMapper {
 			INSSFakeGroupManager fakeGroupManager) {
 		if (!(recipeHolder.value() instanceof AthanorRecipe recipe)) {
 			return false;
+		} else if (recipe.forbidden()) {
+			//A forbidden work makes nothing, whatever its result says
+			return true;
 		}
 		List<Ingredient> used = new ArrayList<>(recipe.inputs());
 		if (!recipe.keepCatalyst()) {

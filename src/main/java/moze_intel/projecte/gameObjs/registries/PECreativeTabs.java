@@ -40,6 +40,17 @@ public class PECreativeTabs {
 				output.accept(PEItems.DRAGON_HEART);
 				output.accept(PEItems.BLIGHTED_SOUL);
 				output.accept(PEItems.ELDER_EYE);
+				output.accept(PEItems.MALFORMED_HOMUNCULUS);
+				output.accept(PEItems.PHOENIX_ASH);
+				output.accept(PEItems.CHIMERA_OWL);
+				output.accept(PEItems.CHIMERA_FISH);
+				output.accept(PEItems.CHIMERA_STRIDER);
+				output.accept(PEItems.CHIMERA_RABBIT);
+				output.accept(PEBlocks.HOMUNCULUS_FLASK);
+				output.accept(PEItems.OUROBOROS_CROWN);
+				output.accept(PEItems.OUROBOROS_MANTLE);
+				output.accept(PEItems.OUROBOROS_GREAVES);
+				output.accept(PEItems.OUROBOROS_TREADS);
 				output.accept(PEItems.PHILOSOPHERS_STONE);
 				output.accept(PEBlocks.ALCHEMICAL_CRUCIBLE);
 				output.accept(PEBlocks.CRUCIBLE_STEP);

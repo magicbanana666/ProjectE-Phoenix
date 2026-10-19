@@ -1,0 +1,31 @@
+{
+  "type": "projecte:athanor",
+  "tier": 2,
+  "inputs": [
+    "projecte:gem_helmet",
+    "projecte:elder_eye",
+    "projecte:alchemical_salt",
+    "projecte:alchemical_sulphur",
+    "projecte:quicksilver"
+  ],
+  "catalyst": "projecte:klein_star_omega",
+  "keep_catalyst": true,
+  "stages": [
+    {
+      "stage": "nigredo",
+      "ticks": 300,
+      "emc": 68719476736
+    },
+    {
+      "stage": "albedo",
+      "ticks": 300,
+      "emc": 68719476736
+    },
+    {
+      "stage": "rubedo",
+      "ticks": 500,
+      "emc": 137438953472
+    }
+  ],
+  "result": "projecte:ouroboros_crown"
+}

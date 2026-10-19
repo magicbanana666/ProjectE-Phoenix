@@ -179,6 +179,14 @@ public class PECore {
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.CauldronSouls::onLivingDeath);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.BossDrops::onLivingDeath);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.AlchemistsGarb::onIncomingDamage);
+		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.TheGate::onJoinLevel);
+		//Before anything else sees the death: a Phoenix does not die
+		NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.HIGH, moze_intel.projecte.gameObjs.Phoenix::onLivingDeath);
+		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.Phoenix::onIncomingDamage);
+		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.Phoenix::onPlayerTick);
+		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.items.armor.OuroborosRegalia::onPlayerTick);
+		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.items.armor.OuroborosRegalia::onIncomingDamage);
+		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.items.armor.OuroborosRegalia::onDamageDealt);
 		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.items.FalsePhilosophersStone::onItemCrafted);
 		NeoForge.EVENT_BUS.addListener(this::dataPackSync);
 		NeoForge.EVENT_BUS.addListener(this::registerCommands);

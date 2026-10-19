@@ -1,5 +1,7 @@
 package moze_intel.projecte.gameObjs.items.armor;
 
+import moze_intel.projecte.gameObjs.registries.PEArmorMaterials;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import com.google.common.base.Suppliers;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -39,7 +41,11 @@ public class GemFeet extends GemArmorBase {
 	private final Supplier<ItemAttributeModifiers> defaultWithStepAssistModifiers;
 
 	public GemFeet(Properties props) {
-		super(ArmorType.BOOTS, props.component(PEDataComponentTypes.STEP_ASSIST, STEP_ASSIST_DEFAULT));
+		this(PEArmorMaterials.GEM_ARMOR, props);
+	}
+
+	protected GemFeet(ArmorMaterial material, Properties props) {
+		super(material, ArmorType.BOOTS, props.component(PEDataComponentTypes.STEP_ASSIST, STEP_ASSIST_DEFAULT));
 		this.defaultModifiers = Suppliers.memoize(() -> super.getDefaultAttributeModifiers(ItemStack.EMPTY).withModifierAdded(
 				Attributes.MOVEMENT_SPEED,
 				new AttributeModifier(PECore.rl("armor"), 1.0, Operation.ADD_MULTIPLIED_TOTAL),

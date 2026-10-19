@@ -1,4 +1,4 @@
-// 26.1.2	2026-10-19T23:30:15.2696688	Loot Tables
+// 26.1.2	2026-10-19T23:41:03.6137439	Loot Tables
 4f93d02c262072a182bcf0339861ab876f73f0ad data/projecte/loot_table/blocks/aeternalis_fuel_block.json
 779870836435449286fa0744c3c350ec3e5da232 data/projecte/loot_table/blocks/alchemical_barrel.json
 adb3f56c8fad2b0d55fc33079521aa5acdd27a6e data/projecte/loot_table/blocks/alchemical_cauldron.json
@@ -20,6 +20,7 @@ dd7069e82438ebe7da5aa733687f670b693892dd data/projecte/loot_table/blocks/dark_ma
 8d754c1400bb880f4149aabd6dfc0f5321705c09 data/projecte/loot_table/blocks/dm_furnace.json
 0a24fa826ba80e12845659fe6648ba014c83c581 data/projecte/loot_table/blocks/dm_pedestal.json
 cbdbbf14299b4db40884a643dec0c804841576f4 data/projecte/loot_table/blocks/gilded_arch.json
+c25e68233210250fee38bbe59740039c96fe840f data/projecte/loot_table/blocks/homunculus_flask.json
 99a3c1977398f83992edd9b4dd8340b13995131d data/projecte/loot_table/blocks/interdiction_lantern.json
 333b631bb424770f4ffa3777288bbef625868af3 data/projecte/loot_table/blocks/interdiction_torch.json
 0754b5a326efb786e29ba21c44417a19a673b9de data/projecte/loot_table/blocks/mobius_fuel_block.json

@@ -1,5 +1,7 @@
 package moze_intel.projecte.handlers;
 
+import moze_intel.projecte.gameObjs.items.armor.GemChest;
+import moze_intel.projecte.gameObjs.items.armor.GemHelmet;
 import net.neoforged.neoforge.transfer.item.ItemUtil;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.ResourceHandler;
@@ -82,9 +84,9 @@ public class InternalAbilities {
 			}
 		}
 		ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
-		boolean hasGemHelmet = !helmet.isEmpty() && helmet.is(PEItems.GEM_HELMET);
+		boolean hasGemHelmet = !helmet.isEmpty() && helmet.getItem() instanceof GemHelmet;
 		ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
-		boolean hasGemChestplate = !chestplate.isEmpty() && chestplate.is(PEItems.GEM_CHESTPLATE);
+		boolean hasGemChestplate = !chestplate.isEmpty() && chestplate.getItem() instanceof GemChest;
 
 		WalkOnType waterWalkOnType = hasEvertide ? WalkOnType.ABLE_WITH_SPEED : (hasGemHelmet ? WalkOnType.ABLE : WalkOnType.UNABLE);
 		WalkOnType lavaWalkOnType = hasVolcanite ? WalkOnType.ABLE_WITH_SPEED : (hasGemChestplate ? WalkOnType.ABLE : WalkOnType.UNABLE);

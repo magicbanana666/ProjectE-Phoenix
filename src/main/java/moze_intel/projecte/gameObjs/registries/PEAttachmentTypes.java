@@ -4,6 +4,8 @@ import com.mojang.serialization.MapCodec;
 import it.unimi.dsi.fastutil.ints.Int2ObjectFunction;
 import moze_intel.projecte.PECore;
 import moze_intel.projecte.gameObjs.Comprehension;
+import moze_intel.projecte.gameObjs.Phoenix;
+import moze_intel.projecte.gameObjs.TheGate;
 import moze_intel.projecte.gameObjs.registration.PEDeferredHolder;
 import moze_intel.projecte.gameObjs.registration.PEDeferredRegister;
 import moze_intel.projecte.impl.capability.AlchBagImpl.AlchemicalBagAttachment;
@@ -45,6 +47,20 @@ public class PEAttachmentTypes {
 			() -> AttachmentType.builder(holder -> new Comprehension.Progress())
 					.serialize(MapCodec.assumeMapUnsafe(Comprehension.Progress.CODEC))
 					.copyHandler(Comprehension.Progress::copy)
+					.copyOnDeath()
+					.build()
+	);
+
+	public static final PEDeferredHolder<AttachmentType<?>, AttachmentType<TheGate.Truth>> TRUTH = ATTACHMENT_TYPES.register("truth",
+			() -> AttachmentType.builder(holder -> TheGate.Truth.NONE)
+					.serialize(MapCodec.assumeMapUnsafe(TheGate.Truth.CODEC))
+					.copyOnDeath()
+					.build()
+	);
+
+	public static final PEDeferredHolder<AttachmentType<?>, AttachmentType<Phoenix.State>> PHOENIX = ATTACHMENT_TYPES.register("phoenix",
+			() -> AttachmentType.builder(holder -> Phoenix.State.NONE)
+					.serialize(MapCodec.assumeMapUnsafe(Phoenix.State.CODEC))
 					.copyOnDeath()
 					.build()
 	);

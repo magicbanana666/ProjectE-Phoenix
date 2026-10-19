@@ -53,13 +53,14 @@ public final class CodexRecipes {
 	}
 
 	public static List<AthanorRecipe> rituals() {
-		return recipes.byType(PERecipeTypes.ATHANOR.get()).stream().map(RecipeHolder::value).toList();
+		//Forbidden works are not written down anywhere
+		return recipes.byType(PERecipeTypes.ATHANOR.get()).stream().map(RecipeHolder::value).filter(recipe -> !recipe.forbidden()).toList();
 	}
 
 	public static List<AthanorRecipe> ritualsFor(Item item) {
 		List<AthanorRecipe> found = new ArrayList<>();
 		for (RecipeHolder<AthanorRecipe> holder : recipes.byType(PERecipeTypes.ATHANOR.get())) {
-			if (holder.value().result().item().value() == item) {
+			if (holder.value().result().item().value() == item && !holder.value().forbidden()) {
 				found.add(holder.value());
 			}
 		}

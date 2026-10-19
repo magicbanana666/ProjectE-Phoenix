@@ -1,5 +1,7 @@
 package moze_intel.projecte.gameObjs.items.armor;
 
+import moze_intel.projecte.gameObjs.registries.PEArmorMaterials;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import java.util.List;
 import moze_intel.projecte.config.ProjectEConfig;
 import moze_intel.projecte.gameObjs.items.IFireProtector;
@@ -25,7 +27,11 @@ import net.minecraft.world.item.equipment.ArmorType;
 public class GemChest extends GemArmorBase implements IFireProtector {
 
 	public GemChest(Properties props) {
-		super(ArmorType.CHESTPLATE, props);
+		this(PEArmorMaterials.GEM_ARMOR, props);
+	}
+
+	protected GemChest(ArmorMaterial material, Properties props) {
+		super(material, ArmorType.CHESTPLATE, props);
 	}
 
 	@Override

@@ -151,6 +151,14 @@ public final class Codex {
 					Entry.item("infinite_fuel"),
 					Entry.item("infinite_steak")
 			)),
+			new Chapter("great_work", "phoenix_ash", List.of(
+					Entry.topic("forbidden", "malformed_homunculus"),
+					Entry.item("homunculus_flask"),
+					Entry.topic("chimera", "chimera_owl").withRecipes("chimera_owl", "chimera_fish", "chimera_strider", "chimera_rabbit"),
+					Entry.topic("ouroboros", "ouroboros_mantle").withRecipes("ouroboros_crown", "ouroboros_mantle", "ouroboros_greaves", "ouroboros_treads"),
+					Entry.item("phoenix_ash"),
+					Entry.topic("journal", "journal_page")
+			)),
 			new Chapter("server", "minecraft:command_block", List.of(
 					Entry.topic("commands", "minecraft:command_block"),
 					Entry.topic("emc_values", "minecraft:writable_book"),

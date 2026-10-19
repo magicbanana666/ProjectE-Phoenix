@@ -40,6 +40,11 @@ public class PEArmorMaterials {
 			37, DIAMOND_RESISTANCES, 1, SoundEvents.ARMOR_EQUIP_NETHERITE, 2.0F, 0.25F, NO_REPAIR, assetId("gem_armor")
 	);
 
+	//Gem armor bound with the hearts of the great beasts
+	public static final ArmorMaterial OUROBOROS = new ArmorMaterial(
+			37, DIAMOND_RESISTANCES, 1, SoundEvents.ARMOR_EQUIP_NETHERITE, 4.0F, 0.35F, NO_REPAIR, assetId("ouroboros")
+	);
+
 	//Cloth, about as tough as leather
 	public static final ArmorMaterial ALCHEMISTS_GARB = new ArmorMaterial(
 			7, Util.make(new EnumMap<>(ArmorType.class), map -> {

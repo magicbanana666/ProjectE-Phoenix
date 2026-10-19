@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "projecte:ouroboros"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "projecte:ouroboros"
+      }
+    ]
+  }
+}

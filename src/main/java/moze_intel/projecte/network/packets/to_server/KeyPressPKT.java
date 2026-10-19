@@ -1,5 +1,6 @@
 package moze_intel.projecte.network.packets.to_server;
 
+import moze_intel.projecte.gameObjs.TheGate;
 import io.netty.buffer.ByteBuf;
 import moze_intel.projecte.PECore;
 import moze_intel.projecte.expansion.ExpansionAlchemicalCollection;
@@ -60,13 +61,13 @@ public record KeyPressPKT(PEKeybind key) implements IPEPacket {
 		}
 		if (key == PEKeybind.HELMET_TOGGLE) {
 			ItemStack helm = player.getItemBySlot(EquipmentSlot.HEAD);
-			if (!helm.isEmpty() && helm.is(PEItems.GEM_HELMET)) {
+			if (helm.getItem() instanceof GemHelmet) {
 				GemHelmet.toggleNightVision(helm, player);
 			}
 			return;
 		} else if (key == PEKeybind.BOOTS_TOGGLE) {
 			ItemStack boots = player.getItemBySlot(EquipmentSlot.FEET);
-			if (!boots.isEmpty() && boots.is(PEItems.GEM_BOOTS)) {
+			if (boots.getItem() instanceof GemFeet) {
 				GemFeet.toggleStepAssist(boots, player);
 			}
 			return;
@@ -83,6 +84,10 @@ public record KeyPressPKT(PEKeybind key) implements IPEPacket {
                 }
             }
         }
+		if (key == PEKeybind.EXTRA_FUNCTION && player instanceof ServerPlayer serverPlayer && TheGate.clap(serverPlayer)) {
+			//One who has seen the Truth transmutes with empty hands
+			return;
+		}
 		for (InteractionHand hand : InteractionHand.values()) {
 			ItemStack stack = player.getItemInHand(hand);
 			switch (key) {
@@ -101,7 +106,7 @@ public record KeyPressPKT(PEKeybind key) implements IPEPacket {
 						return;
 					} else if (hand == InteractionHand.MAIN_HAND && isSafe(stack) && player.getData(PEAttachmentTypes.GEM_ARMOR_STATE)) {
 						ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
-						if (!chestplate.isEmpty() && chestplate.is(PEItems.GEM_CHESTPLATE) &&
+						if (chestplate.getItem() instanceof GemChest &&
 							PlayerHelper.checkCooldown(player, PEItems.GEM_CHESTPLATE.get(), ProjectEConfig.server.cooldown.player.gemChest)) {
 							GemChest.doExplode(player);
 							return;
@@ -115,7 +120,7 @@ public record KeyPressPKT(PEKeybind key) implements IPEPacket {
 					}
 					if (hand == InteractionHand.MAIN_HAND && isSafe(stack) && player.getData(PEAttachmentTypes.GEM_ARMOR_STATE)) {
 						ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
-						if (!helmet.isEmpty() && helmet.is(PEItems.GEM_HELMET)) {
+						if (helmet.getItem() instanceof GemHelmet) {
 							GemHelmet.doZap(player);
 							return;
 						}

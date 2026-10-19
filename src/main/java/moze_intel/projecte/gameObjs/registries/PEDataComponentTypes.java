@@ -39,6 +39,10 @@ public class PEDataComponentTypes {
 	 * @see moze_intel.projecte.api.PEDataComponents#CHARGE
 	 */
 	public static final PEDeferredHolder<DataComponentType<?>, DataComponentType<Integer>> CHARGE = DATA_COMPONENT_TYPES.registerNonNegativeInt("charge");
+	/**
+	 * Which page of the keeper's journal a torn page is.
+	 */
+	public static final PEDeferredHolder<DataComponentType<?>, DataComponentType<Integer>> JOURNAL_PAGE = DATA_COMPONENT_TYPES.registerNonNegativeInt("journal_page");
 	public static final PEDeferredHolder<DataComponentType<?>, DataComponentType<Integer>> STORED_EXP = DATA_COMPONENT_TYPES.registerNonNegativeInt("stored_exp");
 
 	public static final PEDeferredHolder<DataComponentType<?>, DataComponentType<Long>> STORED_EMC = DATA_COMPONENT_TYPES.registerNonNegativeLong("stored_emc");

@@ -58,7 +58,7 @@ public class PEItemModelProvider extends ModelProvider {
 
 	@Override
 	protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-		registerBlockParentModels(itemModels, PEBlocks.PULSE_STAKE, PEBlocks.ALCHEMICAL_CAULDRON, PEBlocks.ALCHEMICAL_CRUCIBLE, PEBlocks.CRUCIBLE_STEP, PEBlocks.CRUCIBLE_PLINTH, PEBlocks.CRUCIBLE_DAIS, PEBlocks.CRUCIBLE_PILLAR, PEBlocks.CRUCIBLE_ARCH, PEBlocks.CRUCIBLE_APEX, PEBlocks.GILDED_ARCH, PEBlocks.QUINTESSENCE_APEX, PEBlocks.ALCHEMICAL_BARREL, PEBlocks.ALCHEMICAL_COAL, PEBlocks.MOBIUS_FUEL,
+		registerBlockParentModels(itemModels, PEBlocks.HOMUNCULUS_FLASK, PEBlocks.PULSE_STAKE, PEBlocks.ALCHEMICAL_CAULDRON, PEBlocks.ALCHEMICAL_CRUCIBLE, PEBlocks.CRUCIBLE_STEP, PEBlocks.CRUCIBLE_PLINTH, PEBlocks.CRUCIBLE_DAIS, PEBlocks.CRUCIBLE_PILLAR, PEBlocks.CRUCIBLE_ARCH, PEBlocks.CRUCIBLE_APEX, PEBlocks.GILDED_ARCH, PEBlocks.QUINTESSENCE_APEX, PEBlocks.ALCHEMICAL_BARREL, PEBlocks.ALCHEMICAL_COAL, PEBlocks.MOBIUS_FUEL,
 				PEBlocks.AETERNALIS_FUEL, PEBlocks.DARK_MATTER, PEBlocks.RED_MATTER, PEBlocks.DARK_MATTER_PEDESTAL,
 				PEBlocks.DARK_MATTER_FURNACE, PEBlocks.RED_MATTER_FURNACE, PEBlocks.COLLECTOR,
 				PEBlocks.COLLECTOR_MK2, PEBlocks.COLLECTOR_MK3, PEBlocks.NOVA_CATALYST, PEBlocks.NOVA_CATACLYSM,
@@ -86,6 +86,17 @@ public class PEItemModelProvider extends ModelProvider {
 		generated(itemModels, PEItems.DRAGON_HEART, material("item/boss/dragon_heart"));
 		generated(itemModels, PEItems.BLIGHTED_SOUL, material("item/boss/blighted_soul"));
 		generated(itemModels, PEItems.ELDER_EYE, material("item/boss/elder_eye"));
+		generated(itemModels, PEItems.MALFORMED_HOMUNCULUS, material("item/malformed_homunculus"));
+		generated(itemModels, PEItems.PHOENIX_ASH, material("item/phoenix_ash"));
+		generated(itemModels, PEItems.CHIMERA_OWL, material("item/chimera/chimera_owl"));
+		generated(itemModels, PEItems.CHIMERA_FISH, material("item/chimera/chimera_fish"));
+		generated(itemModels, PEItems.CHIMERA_STRIDER, material("item/chimera/chimera_strider"));
+		generated(itemModels, PEItems.CHIMERA_RABBIT, material("item/chimera/chimera_rabbit"));
+		generated(itemModels, PEItems.JOURNAL_PAGE, material("item/journal_page"));
+		generated(itemModels, PEItems.OUROBOROS_CROWN, material("item/ouroboros/head"));
+		generated(itemModels, PEItems.OUROBOROS_MANTLE, material("item/ouroboros/chest"));
+		generated(itemModels, PEItems.OUROBOROS_GREAVES, material("item/ouroboros/legs"));
+		generated(itemModels, PEItems.OUROBOROS_TREADS, material("item/ouroboros/feet"));
 		generated(itemModels, PEItems.ALCHEMICAL_SULPHUR, material("item/tria_prima/alchemical_sulphur"));
 		generated(itemModels, PEItems.QUICKSILVER, material("item/tria_prima/quicksilver"));
 		generated(itemModels, PEItems.SALT_CHALK, material("item/chalk/salt_chalk"));

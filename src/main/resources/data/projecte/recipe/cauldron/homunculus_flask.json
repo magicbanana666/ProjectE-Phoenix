@@ -1,0 +1,24 @@
+{
+  "type": "projecte:cauldron",
+  "ingredients": [
+    {
+      "ingredient": "projecte:malformed_homunculus",
+      "count": 1
+    },
+    {
+      "ingredient": "minecraft:glass_bottle",
+      "count": 1
+    },
+    {
+      "ingredient": "projecte:quicksilver",
+      "count": 2
+    }
+  ],
+  "liquid": "red_water",
+  "heat": "soul",
+  "circles": 3,
+  "souls": 8,
+  "ticks": 400,
+  "result": "projecte:homunculus_flask",
+  "result_liquid": "empty"
+}

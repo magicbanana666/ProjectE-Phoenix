@@ -38,6 +38,23 @@ public class ClientSideHandler {
 		codexScreen = newCodexScreen;
 	}
 
+	@Nullable
+	private static volatile java.util.function.Consumer<java.util.List<net.minecraft.network.chat.Component>> bookScreen;
+
+	/**
+	 * Installs what opens a book of plain pages, such as a page of the keeper's journal. Only ever called from client code.
+	 */
+	public static void setBookScreen(@Nullable java.util.function.Consumer<java.util.List<net.minecraft.network.chat.Component>> newBookScreen) {
+		bookScreen = newBookScreen;
+	}
+
+	public static void openBook(java.util.List<net.minecraft.network.chat.Component> pages) {
+		java.util.function.Consumer<java.util.List<net.minecraft.network.chat.Component>> current = bookScreen;
+		if (current != null) {
+			current.accept(pages);
+		}
+	}
+
 	public static void openCodex() {
 		Runnable current = codexScreen;
 		if (current != null) {

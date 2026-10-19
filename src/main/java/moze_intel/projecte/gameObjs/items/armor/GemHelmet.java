@@ -1,5 +1,7 @@
 package moze_intel.projecte.gameObjs.items.armor;
 
+import moze_intel.projecte.gameObjs.registries.PEArmorMaterials;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import java.util.function.Consumer;
 import moze_intel.projecte.config.ProjectEConfig;
 import moze_intel.projecte.gameObjs.registries.PEDataComponentTypes;
@@ -37,7 +39,11 @@ public class GemHelmet extends GemArmorBase {
 	private static final boolean NIGHT_VISION_DEFAULT = false;
 
 	public GemHelmet(Properties props) {
-		super(ArmorType.HELMET, props.component(PEDataComponentTypes.NIGHT_VISION, NIGHT_VISION_DEFAULT));
+		this(PEArmorMaterials.GEM_ARMOR, props);
+	}
+
+	protected GemHelmet(ArmorMaterial material, Properties props) {
+		super(material, ArmorType.HELMET, props.component(PEDataComponentTypes.NIGHT_VISION, NIGHT_VISION_DEFAULT));
 	}
 
 	public static void toggleNightVision(ItemStack helm, Player player) {

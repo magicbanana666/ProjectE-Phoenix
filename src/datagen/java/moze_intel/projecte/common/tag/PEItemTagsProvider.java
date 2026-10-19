@@ -264,7 +264,12 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 				projecteItem("infinite_fuel"),
 				projecteItem("infinite_steak"),
 				projecteItem("final_star_shard"),
-				projecteItem("final_star")
+				projecteItem("final_star"),
+				projecteItem(PEItems.PHOENIX_ASH),
+				projecteItem(PEItems.OUROBOROS_CROWN),
+				projecteItem(PEItems.OUROBOROS_MANTLE),
+				projecteItem(PEItems.OUROBOROS_GREAVES),
+				projecteItem(PEItems.OUROBOROS_TREADS)
 		);
 		for (String color : List.of("magenta", "pink", "purple", "violet", "blue", "cyan", "green", "lime", "yellow", "orange", "white")) {
 			ritualOnly.add(projecteItem(color + "_matter"), projecteItem(color + "_matter_block"));
