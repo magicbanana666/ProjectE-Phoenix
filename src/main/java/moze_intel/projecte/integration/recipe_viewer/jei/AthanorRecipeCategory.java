@@ -112,6 +112,10 @@ public class AthanorRecipeCategory implements IRecipeCategory<AthanorRecipe> {
 			graphics.text(font, emc, WIDTH - font.width(emc), y, TEXT, false);
 			y += STAGE_HEIGHT;
 		}
+		if (recipe.catalystFull()) {
+			//Right of the ingredients and under the arrow, where nothing else is drawn
+			graphics.text(font, Component.translatable("codex.projecte.ritual.catalyst_full"), 64, 46, 0xFF2D6E6E, false);
+		}
 		if (recipe.tier() > 1) {
 			Component grand = PELang.JEI_ATHANOR_GRAND.translate();
 			graphics.text(font, grand, WIDTH - font.width(grand), 0, 0xFFB08A3C, false);

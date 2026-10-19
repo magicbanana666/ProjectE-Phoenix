@@ -21,6 +21,8 @@ public final class Codex {
 	public static final String HOME = "codex.projecte.home";
 	public static final String BACK = "codex.projecte.back";
 	public static final String SEARCH = "codex.projecte.search";
+	public static final String BOOKMARK_EMPTY = "codex.projecte.bookmark.empty";
+	public static final String BOOKMARK_USED = "codex.projecte.bookmark.used";
 	public static final String SEARCH_NOTHING = "codex.projecte.search.nothing";
 	public static final String CHAPTERS_TITLE = "codex.projecte.chapters";
 	public static final String PAGE_CRAFTING = "codex.projecte.page.crafting";
@@ -39,6 +41,7 @@ public final class Codex {
 	public static final String RITUAL_TOTAL = "codex.projecte.ritual.total";
 	public static final String RITUAL_NEEDS = "codex.projecte.ritual.needs";
 	public static final String RITUAL_KEEPS_CATALYST = "codex.projecte.ritual.keeps_catalyst";
+	public static final String RITUAL_CATALYST_FULL = "codex.projecte.ritual.catalyst_full";
 	public static final String STRUCTURE_LAYER = "codex.projecte.structure.layer";
 
 	public static final List<Chapter> CHAPTERS = List.of(

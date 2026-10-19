@@ -6,6 +6,7 @@
     "projecte:filled_soul_vial"
   ],
   "catalyst": "projecte:klein_star_ein",
+  "catalyst_full": true,
   "stages": [
     {
       "stage": "albedo",

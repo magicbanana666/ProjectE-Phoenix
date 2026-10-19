@@ -105,6 +105,17 @@ public class GUIAlchemistsCodex extends Screen {
 	private Button historyButton;
 	private EditBox searchBox;
 	private static String lastSearch = "";
+	private static final int BOOKMARKS = 3;
+	private static final int[] RIBBONS = {0xFFB0262E, 0xFF2E7D4A, 0xFF2F5BA8};
+	/**
+	 * The pages the three ribbons mark, kept in a file so they last between sessions. Unused ribbons are null.
+	 */
+	@Nullable
+	private static View[] bookmarks;
+	/**
+	 * Whether shift was held for the click being handled, a ribbon clicked with shift is taken out.
+	 */
+	private boolean shiftClick;
 
 	public GUIAlchemistsCodex() {
 		super(Component.translatable(Codex.TITLE));
@@ -312,6 +323,7 @@ public class GUIAlchemistsCodex extends Screen {
 	@Override
 	public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
 		if (event.button() == 0) {
+			shiftClick = event.hasShiftDown();
 			for (Hotspot hotspot : hotspots) {
 				if (hotspot.action() != null && hotspot.contains(event.x(), event.y())) {
 					hotspot.action().run();
@@ -395,6 +407,7 @@ public class GUIAlchemistsCodex extends Screen {
 				}
 			}
 		}
+		drawBookmarks(graphics);
 		//Highlight what can be clicked, and show the tooltip of what the mouse is over
 		for (Hotspot hotspot : hotspots) {
 			if (hotspot.contains(mouseX, mouseY)) {
@@ -408,6 +421,87 @@ public class GUIAlchemistsCodex extends Screen {
 				}
 				break;
 			}
+		}
+	}
+
+	//Bookmarks
+
+	private static View[] getBookmarks() {
+		if (bookmarks == null) {
+			bookmarks = new View[BOOKMARKS];
+			try {
+				List<String> lines = java.nio.file.Files.readAllLines(bookmarkFile());
+				for (int i = 0; i < Math.min(BOOKMARKS, lines.size()); i++) {
+					String[] parts = lines.get(i).trim().split(" ");
+					if (parts.length == 2) {
+						View saved = new View(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+						if (saved.isValid()) {
+							bookmarks[i] = saved;
+						}
+					}
+				}
+			} catch (java.io.IOException | NumberFormatException ignored) {
+				//No bookmarks yet, or a file someone edited by hand
+			}
+		}
+		return bookmarks;
+	}
+
+	private static void saveBookmarks() {
+		StringBuilder text = new StringBuilder();
+		for (View bookmark : getBookmarks()) {
+			text.append(bookmark == null ? "-" : bookmark.chapter() + " " + bookmark.entry()).append('\n');
+		}
+		try {
+			java.nio.file.Files.createDirectories(bookmarkFile().getParent());
+			java.nio.file.Files.writeString(bookmarkFile(), text);
+		} catch (java.io.IOException e) {
+			moze_intel.projecte.PECore.LOGGER.warn("Could not save the bookmarks of the Alchemist's Codex", e);
+		}
+	}
+
+	private static java.nio.file.Path bookmarkFile() {
+		return Minecraft.getInstance().gameDirectory.toPath().resolve("config").resolve("ProjectE").resolve("codex_bookmarks.txt");
+	}
+
+	/**
+	 * Three ribbons hang from the right edge of the book. An empty one marks the page that is open, a used one opens its page,
+	 * and shift clicking a used one takes it out.
+	 */
+	private void drawBookmarks(GuiGraphicsExtractor graphics) {
+		View[] marks = getBookmarks();
+		int x = bookLeft() + BOOK_WIDTH + 6;
+		for (int i = 0; i < BOOKMARKS; i++) {
+			int y = bookTop() + 16 + i * 28;
+			View mark = marks[i];
+			int width = mark == null ? 6 : 12;
+			graphics.fill(x, y, x + width, y + 22, RIBBONS[i]);
+			graphics.fill(x + width - 3, y + 22, x + width, y + 25, RIBBONS[i]);
+			int index = i;
+			List<FormattedCharSequence> tooltip = new ArrayList<>();
+			Runnable action;
+			if (mark == null) {
+				tooltip.add(Component.translatable(Codex.BOOKMARK_EMPTY).getVisualOrderText());
+				action = () -> {
+					//Search results change with the search, so they can not be marked
+					if (!view.isSearch()) {
+						marks[index] = view;
+						saveBookmarks();
+					}
+				};
+			} else {
+				tooltip.add(mark.title().getVisualOrderText());
+				tooltip.add(Component.translatable(Codex.BOOKMARK_USED).withStyle(net.minecraft.ChatFormatting.GRAY).getVisualOrderText());
+				action = () -> {
+					if (shiftClick) {
+						marks[index] = null;
+						saveBookmarks();
+					} else {
+						open(mark);
+					}
+				};
+			}
+			hotspots.add(new Hotspot(x, y, 12, 25, ItemStack.EMPTY, tooltip, action));
 		}
 	}
 
@@ -667,6 +761,10 @@ public class GUIAlchemistsCodex extends Screen {
 				drawCentred(graphics, Component.translatable(Codex.RITUAL_KEEPS_CATALYST), x, lineY, MUTED);
 				lineY += LINE_HEIGHT + 2;
 			}
+			if (recipe.catalystFull()) {
+				drawCentred(graphics, Component.translatable(Codex.RITUAL_CATALYST_FULL), x, lineY, MUTED);
+				lineY += LINE_HEIGHT + 2;
+			}
 			//The stages, one line each, with the colour of their runes
 			for (AthanorStage stage : recipe.stages()) {
 				RuneColor rune = stage.rune();
@@ -811,6 +909,28 @@ public class GUIAlchemistsCodex extends Screen {
 
 		private boolean isSearch() {
 			return chapter == -2;
+		}
+
+		/**
+		 * @return whether the view exists in the codex as it is now, a saved bookmark may point at an entry that was removed
+		 */
+		private boolean isValid() {
+			if (chapter == -1) {
+				return entry == -1;
+			} else if (chapter < 0 || chapter >= Codex.CHAPTERS.size()) {
+				return false;
+			}
+			return entry >= -1 && entry < Codex.CHAPTERS.get(chapter).entries().size();
+		}
+
+		private Component title() {
+			if (isHome()) {
+				return Component.translatable(Codex.TITLE);
+			} else if (isSearch()) {
+				return Component.translatable(Codex.SEARCH);
+			}
+			Chapter page = Codex.CHAPTERS.get(chapter);
+			return entry < 0 ? page.title() : page.entries().get(entry).title();
 		}
 
 		private boolean isChapter() {

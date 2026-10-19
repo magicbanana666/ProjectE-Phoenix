@@ -6,6 +6,7 @@
     "minecraft:magma_block"
   ],
   "catalyst": "projecte:klein_star_ein",
+  "catalyst_full": true,
   "stages": [
     {
       "stage": "nigredo",

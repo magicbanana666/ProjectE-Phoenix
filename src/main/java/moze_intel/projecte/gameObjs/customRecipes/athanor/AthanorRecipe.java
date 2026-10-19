@@ -6,6 +6,8 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import moze_intel.projecte.api.capabilities.PECapabilities;
+import moze_intel.projecte.api.capabilities.item.IItemEmcHolder;
 import moze_intel.projecte.gameObjs.registries.PERecipeSerializers;
 import moze_intel.projecte.gameObjs.registries.PERecipeTypes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -30,8 +32,9 @@ import org.jetbrains.annotations.NotNull;
  * @param tier                     1 for the Athanor, 2 for the Grand Athanor. A recipe with more than three inputs needs tier 2.
  * @param keepCatalyst             whether the catalyst is left in the crucible instead of being used up
  * @param keepCatalystComponents   whether the result takes over the data of the catalyst, so an upgraded Klein Star keeps its EMC
+ * @param catalystFull             whether the catalyst has to be filled to the brim with EMC, such as a charged Klein Star
  */
-public record AthanorRecipe(int tier, List<Ingredient> inputs, Ingredient catalyst, boolean keepCatalyst, boolean keepCatalystComponents,
+public record AthanorRecipe(int tier, List<Ingredient> inputs, Ingredient catalyst, boolean keepCatalyst, boolean keepCatalystComponents, boolean catalystFull,
 							List<AthanorStage> stages, ItemStackTemplate result) implements Recipe<AthanorInput> {
 
 	public static final int TIER_ONE_INPUTS = 3;
@@ -43,6 +46,7 @@ public record AthanorRecipe(int tier, List<Ingredient> inputs, Ingredient cataly
 			Ingredient.CODEC.fieldOf("catalyst").forGetter(AthanorRecipe::catalyst),
 			Codec.BOOL.optionalFieldOf("keep_catalyst", false).forGetter(AthanorRecipe::keepCatalyst),
 			Codec.BOOL.optionalFieldOf("keep_catalyst_components", false).forGetter(AthanorRecipe::keepCatalystComponents),
+			Codec.BOOL.optionalFieldOf("catalyst_full", false).forGetter(AthanorRecipe::catalystFull),
 			AthanorStage.CODEC.listOf(1, 16).fieldOf("stages").forGetter(AthanorRecipe::stages),
 			ItemStackTemplate.CODEC.fieldOf("result").forGetter(AthanorRecipe::result)
 	).apply(instance, AthanorRecipe::new)).validate(recipe -> recipe.inputs.size() > TIER_ONE_INPUTS && recipe.tier < 2
@@ -55,6 +59,7 @@ public record AthanorRecipe(int tier, List<Ingredient> inputs, Ingredient cataly
 			Ingredient.CONTENTS_STREAM_CODEC, AthanorRecipe::catalyst,
 			ByteBufCodecs.BOOL, AthanorRecipe::keepCatalyst,
 			ByteBufCodecs.BOOL, AthanorRecipe::keepCatalystComponents,
+			ByteBufCodecs.BOOL, AthanorRecipe::catalystFull,
 			AthanorStage.STREAM_CODEC.apply(ByteBufCodecs.list(16)), AthanorRecipe::stages,
 			ItemStackTemplate.STREAM_CODEC, AthanorRecipe::result,
 			AthanorRecipe::new
@@ -67,7 +72,12 @@ public record AthanorRecipe(int tier, List<Ingredient> inputs, Ingredient cataly
 
 	@Override
 	public boolean matches(@NotNull AthanorInput input, @NotNull Level level) {
-		return catalyst.test(input.catalyst()) && inputsMatch(input.inputs());
+		return catalyst.test(input.catalyst()) && (!catalystFull || isFull(input.catalyst())) && inputsMatch(input.inputs());
+	}
+
+	private static boolean isFull(ItemStack stack) {
+		IItemEmcHolder holder = stack.getCapability(PECapabilities.EMC_HOLDER_ITEM_CAPABILITY);
+		return holder != null && holder.getStoredEmc(stack) >= holder.getMaximumEmc(stack);
 	}
 
 	/**

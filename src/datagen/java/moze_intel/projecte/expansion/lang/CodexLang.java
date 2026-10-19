@@ -19,6 +19,8 @@ final class CodexLang {
 		lang.accept("codex.projecte.home", "Home");
 		lang.accept("codex.projecte.back", "Back");
 		lang.accept("codex.projecte.search", "Search");
+		lang.accept("codex.projecte.bookmark.empty", "Mark this page");
+		lang.accept("codex.projecte.bookmark.used", "Click to open, shift click to take the ribbon out");
 		lang.accept("codex.projecte.search.nothing", "Nothing in these notes about \"%1$s\".");
 		lang.accept("codex.projecte.chapters", "Chapters");
 		lang.accept("codex.projecte.page.crafting", "Crafting");
@@ -34,6 +36,7 @@ final class CodexLang {
 		lang.accept("codex.projecte.structure.switch", "Click to switch between the Athanor and the Grand Athanor");
 		lang.accept("codex.projecte.structure.layer", "Layer %1$s of %2$s");
 		lang.accept("codex.projecte.ritual.keeps_catalyst", "The catalyst stays");
+		lang.accept("codex.projecte.ritual.catalyst_full", "The catalyst must be full");
 		lang.accept("codex.projecte.ritual.stage", "%1$s seconds, %2$s EMC");
 		lang.accept("codex.projecte.ritual.total", "Total: %1$s EMC over %2$s seconds");
 		lang.accept("codex.projecte.ritual.needs", "Needs %1$s");
