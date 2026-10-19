@@ -1,5 +1,10 @@
 package moze_intel.projecte.expansion.block.entity;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
+import java.util.Objects;
+import javax.annotation.Nullable;
 import moze_intel.projecte.api.ItemInfo;
 import moze_intel.projecte.api.capabilities.IKnowledgeProvider;
 import moze_intel.projecte.api.capabilities.PECapabilities;
@@ -10,6 +15,7 @@ import moze_intel.projecte.expansion.config.Config;
 import moze_intel.projecte.expansion.registries.ExpansionBlockEntityTypes;
 import moze_intel.projecte.expansion.registries.ExpansionCapabilities;
 import moze_intel.projecte.expansion.util.*;
+import moze_intel.projecte.gameObjs.Comprehension;
 import moze_intel.projecte.gameObjs.block_entities.ItemHandlerResourceAdapter;
 import moze_intel.projecte.utils.WorldHelper;
 import net.minecraft.ChatFormatting;
@@ -42,12 +48,6 @@ import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.transaction.RootCommitJournal;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.transaction.TransactionContext;
-
-import javax.annotation.Nullable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.RoundingMode;
-import java.util.Objects;
 
 @SuppressWarnings("unused")
 public class BlockEntityEMCLink extends BlockEntityNBTFilterable implements IHasMatter {
@@ -337,8 +337,9 @@ public class BlockEntityEMCLink extends BlockEntityNBTFilterable implements IHas
 				provider.setEmc(provider.getEmc().add(totalValue));
 				ServerPlayer player = Util.getPlayer(owner);
 				if (player != null) {
-					if (provider.addKnowledge(stack))
-						provider.syncKnowledgeChange(player, IEMCProxy.INSTANCE.getPersistentInfo(info), true);
+					ItemInfo learned = IEMCProxy.INSTANCE.getPersistentInfo(info);
+					if (!provider.hasKnowledge(learned) && Comprehension.study(player, learned, insertCount, false) && provider.addKnowledge(stack))
+						provider.syncKnowledgeChange(player, learned, true);
 					provider.syncEmc(player);
 				}
 				if(!isFinal) remainingImport -= insertCount;

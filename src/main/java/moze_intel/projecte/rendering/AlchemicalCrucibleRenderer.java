@@ -4,11 +4,14 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import java.util.List;
 import moze_intel.projecte.PECore;
+import moze_intel.projecte.gameObjs.CrucibleStructure;
 import moze_intel.projecte.gameObjs.block_entities.AlchemicalCrucibleBlockEntity;
+import moze_intel.projecte.gameObjs.blocks.CruciblePart;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorRecipe;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.OpusStage;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.RuneColor;
 import moze_intel.projecte.gameObjs.registries.PEItems;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -23,6 +26,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomModelData;
@@ -107,10 +112,40 @@ public class AlchemicalCrucibleRenderer implements BlockEntityRenderer<Alchemica
 		if (!core.getResult().isEmpty()) {
 			context.itemModelResolver().updateForTopItem(state.result, core.getResult(), ItemDisplayContext.GROUND, level, null, seed + 6);
 		}
+		//While the player holds a block of the Athanor, every block that is still missing floats where it belongs
+		state.ghostCount = 0;
+		Player player = Minecraft.getInstance().player;
+		if (!core.isFormed() && player != null && isAthanorBlock(player.getMainHandItem())) {
+			for (CrucibleStructure.Part part : CrucibleStructure.getParts()) {
+				if (!part.matches(level.getBlockState(pos.offset(part.offset())))) {
+					if (state.ghostCount == state.ghosts.size()) {
+						state.ghosts.add(new ItemStackRenderState());
+						state.ghostOffsets.add(BlockPos.ZERO);
+					}
+					context.itemModelResolver().updateForTopItem(state.ghosts.get(state.ghostCount), new ItemStack(part.block().getBlock()), ItemDisplayContext.GROUND,
+							level, null, seed + 7 + state.ghostCount);
+					state.ghostOffsets.set(state.ghostCount, part.offset());
+					state.ghostCount++;
+				}
+			}
+		}
+	}
+
+	private static boolean isAthanorBlock(ItemStack stack) {
+		return stack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof CruciblePart;
 	}
 
 	@Override
 	public void submit(@NotNull RenderState state, @NotNull PoseStack poseStack, @NotNull SubmitNodeCollector collector, @NotNull CameraRenderState camera) {
+		for (int i = 0; i < state.ghostCount; i++) {
+			BlockPos offset = state.ghostOffsets.get(i);
+			poseStack.pushPose();
+			poseStack.translate(offset.getX() + 0.5F, offset.getY() + 0.25F + Mth.sin(state.time / 15F + i) * 0.05F, offset.getZ() + 0.5F);
+			poseStack.mulPose(Axis.YP.rotation(state.time / 30F));
+			poseStack.scale(0.6F, 0.6F, 0.6F);
+			state.ghosts.get(i).submit(poseStack, collector, FULL_BRIGHT, OverlayTexture.NO_OVERLAY, 0);
+			poseStack.popPose();
+		}
 		int light = state.glowing ? FULL_BRIGHT : state.lightCoords;
 		float time = state.time;
 		if (state.formed) {
@@ -223,6 +258,9 @@ public class AlchemicalCrucibleRenderer implements BlockEntityRenderer<Alchemica
 		public final float[] angles = new float[AthanorRecipe.MAX_INPUTS];
 		public OpusStage stage = OpusStage.IDLE;
 		public RuneColor rune = RuneColor.FORMED;
+		public final List<ItemStackRenderState> ghosts = new java.util.ArrayList<>();
+		public final List<BlockPos> ghostOffsets = new java.util.ArrayList<>();
+		public int ghostCount;
 		public float time;
 		public float fraction;
 		public float radius;

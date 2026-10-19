@@ -1,11 +1,13 @@
 package moze_intel.projecte.expansion.block.entity;
 
-import moze_intel.projecte.expansion.config.Config;
-import moze_intel.projecte.expansion.registries.ExpansionBlockEntityTypes;
-import moze_intel.projecte.expansion.util.Util;
+import java.math.BigInteger;
 import moze_intel.projecte.api.ItemInfo;
 import moze_intel.projecte.api.capabilities.IKnowledgeProvider;
 import moze_intel.projecte.api.proxy.IEMCProxy;
+import moze_intel.projecte.expansion.config.Config;
+import moze_intel.projecte.expansion.registries.ExpansionBlockEntityTypes;
+import moze_intel.projecte.expansion.util.Util;
+import moze_intel.projecte.gameObjs.Comprehension;
 import moze_intel.projecte.utils.WorldHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,8 +23,6 @@ import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.transaction.RootCommitJournal;
 import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 import org.jetbrains.annotations.Nullable;
-
-import java.math.BigInteger;
 
 @SuppressWarnings("unused")
 public class BlockEntityTransmutationInterface extends BlockEntityNBTFilterable {
@@ -124,7 +124,10 @@ public class BlockEntityTransmutationInterface extends BlockEntityNBTFilterable 
 				provider.setEmc(provider.getEmc().add(totalEmcValue));
 				ServerPlayer player = Util.getPlayer(level, owner);
 				if (player != null) {
-					if (provider.addKnowledge(resource.toStack(1))) provider.syncKnowledgeChange(player, IEMCProxy.INSTANCE.getPersistentInfo(itemInfo), true);
+					ItemInfo learned = IEMCProxy.INSTANCE.getPersistentInfo(itemInfo);
+					if (!provider.hasKnowledge(learned) && Comprehension.study(player, learned, amount, false) && provider.addKnowledge(resource.toStack(1))) {
+						provider.syncKnowledgeChange(player, learned, true);
+					}
 					provider.syncEmc(player);
 				}
 			}).updateSnapshots(transaction);

@@ -20,7 +20,8 @@ import net.minecraft.world.entity.player.Player;
  * several of it. Cheap items are learned on the first burn as always. How valuable is valuable, and how many burns it takes,
  * is up to the server config.
  * <p>
- * Only burning counts. Putting an item in the lock or input slot of a table teaches it only once it is understood.
+ * Only burning counts. Putting an item in the lock or input slot of a table teaches it only once it is understood. Items fed
+ * into an EMC Link or a Transmutation Interface count as burned too, while their owner is online.
  */
 public final class Comprehension {
 
@@ -48,6 +49,13 @@ public final class Comprehension {
 	 * @return whether the item is understood now, and so may be learned
 	 */
 	public static boolean study(ServerPlayer player, ItemInfo info, int burned) {
+		return study(player, info, burned, true);
+	}
+
+	/**
+	 * @param announce whether to tell the player how far along they are; automation that feeds items in leaves it quiet
+	 */
+	public static boolean study(ServerPlayer player, ItemInfo info, int burned, boolean announce) {
 		if (!needsStudy(info)) {
 			return true;
 		}
@@ -57,7 +65,9 @@ public final class Comprehension {
 		if (studied >= needed) {
 			return true;
 		}
-		player.sendOverlayMessage(PELang.COMPREHENSION_STUDYING.translateColored(ChatFormatting.GRAY, info.createStack().getHoverName(), studied, needed));
+		if (announce) {
+			player.sendOverlayMessage(PELang.COMPREHENSION_STUDYING.translateColored(ChatFormatting.GRAY, info.createStack().getHoverName(), studied, needed));
+		}
 		return false;
 	}
 

@@ -122,7 +122,7 @@ final class CodexLang {
 				"The Athanor is the alchemist's furnace, built around the Alchemical Crucible: 5 by 5 wide and 6 high, the same from every side.\n\n"
 				+ "The base is a square of nine Plinths inside a ring of sixteen Steps. On it stand the Crucible in the middle, eight Dais around it, and a Pillar three blocks high on each corner.\n\n"
 				+ "An Arch caps every pillar. A second ring of arches sits one block in and one higher, with the Apex over the crucible.\n\n"
-				+ "When it is whole the runes wake and a circle burns on the dais. If a block is missing, the crucible says which and where.\n\n"
+				+ "When it is whole the runes wake and a circle burns on the dais. If a block is missing, the crucible says which and where, and while you hold a block of the Athanor every missing block floats where it belongs.\n\n"
 				+ "Gild the four inner arches and crown it with a Quintessence Apex, and it becomes the Grand Athanor: the fifth element joins the four, and the dais holds five ingredients. The greatest works need it.");
 		topic(lang, "magnum_opus", "The Magnum Opus",
 				"A ritual takes up to three items on the dais and one catalyst in the centre. Place them on the crucible one by one, sneak with an empty hand to take the last one back, and use the crucible with an empty hand to begin.\n\n"

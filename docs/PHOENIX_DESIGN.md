@@ -53,7 +53,8 @@ crafting remainder stays the same item and EMC mapping keeps working.
 
 `AlchemicalCrucibleBlockEntity`, `CrucibleStructure`, recipes of type `projecte:athanor` (`data/projecte/recipe/athanor`).
 
-- 5 by 5 base, eight dais, four pillars, arches and the apex around the Alchemical Crucible.
+- 5 by 5 base, eight dais, four pillars, arches and the apex around the Alchemical Crucible. While the player holds a block of
+  the Athanor, the crucible shows every missing block floating where it belongs.
 - **Grand Athanor**: the four inner arches gilded (Gilded Athanor Arch) and a Quintessence Apex. Holds five ingredients instead
   of three. Placeholder models until the real assets arrive.
 - A ritual has a tier, up to three (tier 1) or five (tier 2) inputs in any order, a catalyst, a list of stages and a result.
@@ -84,7 +85,8 @@ the Final Star Shard and Final Star; the four Ouroboros pieces; Phoenix Ash; the
 ## Knowledge
 
 - **Comprehension**: items worth more than 2,048 EMC must be burned four times before they are learned. Lock and input slots
-  teach only what is understood. Config section `comprehension`. EMC Links and the Transmutation Interface skip it.
+  teach only what is understood. Items fed into EMC Links and the Transmutation Interface count as burned while their owner is
+  online. Config section `comprehension`.
 - **Monocle of Comprehension**: three seconds looking at a block counts as one burn.
 
 ## Boss drops
@@ -117,9 +119,8 @@ cauldron, Athanor, the Athanor's layers). Clicking an item opens its entry. Home
 
 ## Not built (ideas for later)
 
-- A rotating 3D preview of the Athanor and "show in world" ghost blocks in the Codex.
+- A rotating 3D preview of the Athanor in the Codex.
 - Locked "?" entries in the Codex for things the player has not found.
 - A dedicated Gate dimension instead of the effects and messages.
-- Comprehension for EMC Links and the Transmutation Interface.
 - Magnum, Colossal and Gargantuan stars as rituals.
 - The real 3D models and textures for everything that has placeholder art.
