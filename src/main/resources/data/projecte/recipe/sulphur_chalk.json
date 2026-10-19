@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "projecte:alchemical_sulphur",
+    "minecraft:calcite",
+    "minecraft:bone_meal"
+  ],
+  "result": {
+    "id": "projecte:sulphur_chalk"
+  }
+}

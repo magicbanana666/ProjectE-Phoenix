@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "projecte:alchemical_salt",
+    "minecraft:calcite",
+    "minecraft:bone_meal"
+  ],
+  "result": {
+    "id": "projecte:salt_chalk"
+  }
+}

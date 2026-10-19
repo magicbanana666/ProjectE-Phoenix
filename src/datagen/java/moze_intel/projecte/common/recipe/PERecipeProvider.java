@@ -903,9 +903,7 @@ public class PERecipeProvider extends RecipeProvider {
 				.define('O', Tags.Items.OBSIDIANS_NORMAL)
 				.unlockedBy("has_matter", has(PEBlocks.RED_MATTER))
 				.save(recipeOutput);
-		//Philosopher's Stone
-		philosopherStoneRecipe(recipeOutput, false);
-		philosopherStoneRecipe(recipeOutput, true);
+		//The False Philosopher's Stone is brewed in the Alchemical Cauldron, the real one is made in the Athanor
 		//Repair Talisman
 		repairTalismanRecipe(recipeOutput, false);
 		repairTalismanRecipe(recipeOutput, true);
@@ -935,28 +933,6 @@ public class PERecipeProvider extends RecipeProvider {
 			lens.save(recipeOutput, name + "_alt");
 		} else {
 			lens.save(recipeOutput);
-		}
-	}
-
-	private void philosopherStoneRecipe(RecipeOutput recipeOutput, boolean alternate) {
-		//The real stone is only made in the Alchemical Crucible, this recipe makes the imitation it starts from
-		String name = PEItems.FALSE_PHILOSOPHERS_STONE.getId().toString();
-		ShapedRecipeBuilder philoStone = shaped(RecipeCategory.TOOLS, PEItems.FALSE_PHILOSOPHERS_STONE)
-				.define('R', Tags.Items.DUSTS_REDSTONE)
-				.define('G', Tags.Items.DUSTS_GLOWSTONE)
-				.define('D', Tags.Items.GEMS_DIAMOND)
-				.unlockedBy("has_glowstone", has(Tags.Items.DUSTS_GLOWSTONE))
-				.group(name);
-		if (alternate) {
-			philoStone.pattern("GRG")
-					.pattern("RDR")
-					.pattern("GRG")
-					.save(recipeOutput, name + "_alt");
-		} else {
-			philoStone.pattern("RGR")
-					.pattern("GDG")
-					.pattern("RGR")
-					.save(recipeOutput);
 		}
 	}
 

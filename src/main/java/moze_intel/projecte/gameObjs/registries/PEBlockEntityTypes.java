@@ -19,6 +19,7 @@ import moze_intel.projecte.gameObjs.block_entities.RMFurnaceBlockEntity;
 import moze_intel.projecte.gameObjs.block_entities.RelayMK1BlockEntity;
 import moze_intel.projecte.gameObjs.block_entities.RelayMK2BlockEntity;
 import moze_intel.projecte.gameObjs.block_entities.RelayMK3BlockEntity;
+import moze_intel.projecte.gameObjs.block_entities.AlchemicalCauldronBlockEntity;
 import moze_intel.projecte.gameObjs.block_entities.AlchemicalCrucibleBlockEntity;
 import moze_intel.projecte.gameObjs.registration.impl.BlockEntityTypeDeferredRegister;
 import moze_intel.projecte.gameObjs.registration.impl.BlockEntityTypeRegistryObject;
@@ -88,6 +89,10 @@ public class PEBlockEntityTypes {
 			.build();
 	public static final BlockEntityTypeRegistryObject<InterdictionBlockEntity> INTERDICTION_TORCH = BLOCK_ENTITY_TYPES.builder(PEBlocks.INTERDICTION_TORCH, InterdictionBlockEntity::new)
 			.commonTicker(InterdictionBlockEntity::tick)
+			.build();
+	public static final BlockEntityTypeRegistryObject<AlchemicalCauldronBlockEntity> ALCHEMICAL_CAULDRON = BLOCK_ENTITY_TYPES.builder(PEBlocks.ALCHEMICAL_CAULDRON, AlchemicalCauldronBlockEntity::new)
+			.clientTicker(AlchemicalCauldronBlockEntity::tickClient)
+			.serverTicker(AlchemicalCauldronBlockEntity::tickServer)
 			.build();
 	public static final BlockEntityTypeRegistryObject<AlchemicalCrucibleBlockEntity> ALCHEMICAL_CRUCIBLE = BLOCK_ENTITY_TYPES.builder(PEBlocks.ALCHEMICAL_CRUCIBLE, AlchemicalCrucibleBlockEntity::new)
 			.clientTicker(AlchemicalCrucibleBlockEntity::tickClient)

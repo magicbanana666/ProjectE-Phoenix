@@ -74,6 +74,7 @@ public enum PELang implements ILangEntry {
 	//JEI
 	JEI_COLLECTOR("jei", "collector"),
 	JEI_ATHANOR("jei", "athanor"),
+	JEI_CAULDRON("jei", "cauldron"),
 	JEI_ATHANOR_STAGE("jei", "athanor.stage"),
 	JEI_ATHANOR_TOTAL("jei", "athanor.total"),
 	JEI_ATHANOR_STRUCTURE("jei", "athanor.structure"),
@@ -190,6 +191,15 @@ public enum PELang implements ILangEntry {
 	TOOLTIP_CRUCIBLE_1("tooltip", "alchemical_crucible.1"),
 	TOOLTIP_CRUCIBLE_2("tooltip", "alchemical_crucible.2"),
 	TOOLTIP_CRUCIBLE_PART("tooltip", "crucible_part"),
+	TOOLTIP_CAULDRON("tooltip", "alchemical_cauldron"),
+	TOOLTIP_CHALK("tooltip", "chalk"),
+	CAULDRON_STATUS("cauldron", "status"),
+	CAULDRON_LIQUID("cauldron", "liquid"),
+	CAULDRON_BREWING("cauldron", "brewing"),
+	CAULDRON_EMPTY("cauldron", "empty"),
+	CAULDRON_FULL("cauldron", "full"),
+	CAULDRON_CIRCLE_DRAWN("cauldron", "circle_drawn"),
+	CAULDRON_CIRCLE_BLOCKED("cauldron", "circle_blocked"),
 	//Magnum Opus ritual in the Alchemical Crucible
 	RITUAL_NIGREDO("ritual", "nigredo"),
 	RITUAL_ALBEDO("ritual", "albedo"),

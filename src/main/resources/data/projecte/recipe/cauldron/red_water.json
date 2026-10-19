@@ -1,0 +1,23 @@
+{
+  "type": "projecte:cauldron",
+  "ingredients": [
+    {
+      "ingredient": "#c:dusts/redstone",
+      "count": 4
+    },
+    {
+      "ingredient": "minecraft:nether_wart",
+      "count": 2
+    },
+    {
+      "ingredient": "#c:dusts/glowstone",
+      "count": 4
+    }
+  ],
+  "liquid": "water",
+  "heat": "soul",
+  "circles": 2,
+  "souls": 4,
+  "ticks": 200,
+  "result_liquid": "red_water"
+}

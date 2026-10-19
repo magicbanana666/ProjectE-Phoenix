@@ -3,7 +3,7 @@
   "inputs": [
     "minecraft:diamond",
     "projecte:mobius_fuel",
-    "projecte:high_covalence_dust"
+    "projecte:quicksilver"
   ],
   "catalyst": "minecraft:ender_pearl",
   "stages": [

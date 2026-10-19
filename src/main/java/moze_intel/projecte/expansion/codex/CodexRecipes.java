@@ -3,6 +3,8 @@ package moze_intel.projecte.expansion.codex;
 import java.util.ArrayList;
 import java.util.List;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorRecipe;
+import moze_intel.projecte.gameObjs.customRecipes.cauldron.CauldronLiquid;
+import moze_intel.projecte.gameObjs.customRecipes.cauldron.CauldronRecipe;
 import moze_intel.projecte.gameObjs.registries.PERecipeTypes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.CraftingRecipe;
@@ -59,6 +61,30 @@ public final class CodexRecipes {
 		for (RecipeHolder<AthanorRecipe> holder : recipes.byType(PERecipeTypes.ATHANOR.get())) {
 			if (holder.value().result().item().value() == item) {
 				found.add(holder.value());
+			}
+		}
+		return found;
+	}
+
+	public static List<CauldronRecipe> brews() {
+		return recipes.byType(PERecipeTypes.CAULDRON.get()).stream().map(RecipeHolder::value).toList();
+	}
+
+	/**
+	 * @return the cauldron recipes that make the item, each preceded by the recipes that make the liquid it is brewed in
+	 */
+	public static List<CauldronRecipe> brewsFor(Item item) {
+		List<CauldronRecipe> found = new ArrayList<>();
+		for (CauldronRecipe recipe : brews()) {
+			if (recipe.result().isPresent() && recipe.result().get().item().value() == item) {
+				if (recipe.liquid() != CauldronLiquid.WATER) {
+					for (CauldronRecipe liquid : brews()) {
+						if (liquid.result().isEmpty() && liquid.resultLiquid().orElse(null) == recipe.liquid() && !found.contains(liquid)) {
+							found.add(liquid);
+						}
+					}
+				}
+				found.add(recipe);
 			}
 		}
 		return found;

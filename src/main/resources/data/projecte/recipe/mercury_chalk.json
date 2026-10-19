@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "projecte:quicksilver",
+    "minecraft:calcite",
+    "minecraft:bone_meal"
+  ],
+  "result": {
+    "id": "projecte:mercury_chalk"
+  }
+}

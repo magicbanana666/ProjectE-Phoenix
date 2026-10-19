@@ -22,6 +22,10 @@ final class CodexLang {
 		lang.accept("codex.projecte.page.crafting", "Crafting");
 		lang.accept("codex.projecte.page.shapeless", "Any arrangement");
 		lang.accept("codex.projecte.page.ritual", "Athanor Ritual");
+		lang.accept("codex.projecte.page.cauldron", "Alchemical Cauldron");
+		lang.accept("codex.projecte.cauldron.conditions", "In %1$s, on %2$s, inside %3$s circles. %4$s seconds.");
+		lang.accept("codex.projecte.cauldron.souls", "Takes %1$s souls.");
+		lang.accept("codex.projecte.cauldron.becomes", "The cauldron is left with: %1$s.");
 		lang.accept("codex.projecte.page.structure", "The Athanor");
 		lang.accept("codex.projecte.structure.layer", "Layer %1$s of %2$s");
 		lang.accept("codex.projecte.ritual.keeps_catalyst", "The catalyst stays");
@@ -69,8 +73,25 @@ final class CodexLang {
 				"Where exchange happens. Burn an item to learn it and add its worth to your EMC. Whatever you know and can afford waits in the ring around the burn slot.\n\n"
 				+ "Lock an item to show only things worth up to it. A Klein Star in the table stores EMC.\n\n"
 				+ "Either stone makes one, false or true.");
+		item(lang, "alchemical_cauldron",
+				"Every work begins in the pot. Fill it with water, put what you want refined in it, and give it heat from below.\n\n"
+				+ "A lit campfire or magma gives low heat. Fire or lava gives high heat. Soul fire gives soul heat, the only heat that works on souls. Ice keeps it cold.\n\n"
+				+ "When what is in it, the water, the heat, the circles and the souls are right, it brews on its own. Sneak with an empty hand to take back what went in last.");
+		topic(lang, "tria_prima", "The Tria Prima",
+				"Salt, the body. Sulphur, the soul. Mercury, the spirit. Everything is made of the three, and the three are hidden in the covalence dusts.\n\n"
+				+ "Each dust is refined in the cauldron: salt from the low dust on a gentle heat, sulphur from the medium dust on a strong one inside the salt circle, quicksilver from the high dust inside two circles.\n\n"
+				+ "With calcite and bone meal, each principle becomes a chalk.");
+		topic(lang, "circles", "Circles",
+				"Chalk draws circles around a cauldron: salt the smallest, a block out, sulphur the next, mercury the outer one, three blocks out. Use the chalk on the cauldron.\n\n"
+				+ "A circle needs open floor all the way round. Build on it, or dig under it, and it is gone. Rain washes the chalk away, slowly.\n\n"
+				+ "The deeper works need more circles. A chalk lasts four.");
+		topic(lang, "souls", "Souls",
+				"Whatever dies inside the outer circle leaves its soul in the cauldron. An animal gives one, a monster two, a great beast fifty.\n\n"
+				+ "A villager gives ten. The village notices. Every villager who hears of it remembers who keeps the cauldron: prices climb, and after a few the iron golems come for you.\n\n"
+				+ "Souls are spent by the works that need them, on soul heat.");
 		item(lang, "false_philosophers_stone",
-				"An imitation, red with the power it barely holds. It converts fuels, from coal up to Aeternalis Fuel and back, and it makes a Transmutation Table. That is enough to reach Dark Matter.\n\n"
+				"Red Water hardened around a diamond. Brew the Red Water first, from redstone, nether wart and glowstone on soul heat with four souls. Then a diamond in it, on high heat inside all three circles, with sixteen more.\n\n"
+				+ "An imitation, red with the power it barely holds. It converts fuels, from coal up to Aeternalis Fuel and back, and it makes a Transmutation Table. That is enough to reach Dark Matter. Every use wears it down, and after 256 it crumbles.\n\n"
 				+ "Red Matter and everything after it needs the true stone. Three false stones and a Nether Star become one in the Athanor.");
 		item(lang, "alchemical_crucible",
 				"The Athanor is the alchemist's furnace, built around the Alchemical Crucible: 5 by 5 wide and 6 high, the same from every side.\n\n"

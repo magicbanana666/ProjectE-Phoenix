@@ -173,6 +173,7 @@ public class PEClient {
 		event.registerBlockEntityRenderer(PEBlockEntityTypes.CONDENSER_MK2.get(), context -> new ChestRenderer(context, PECore.rl("textures/block/condenser_mk2.png"),PEBlocks.CONDENSER_MK2));
 		event.registerBlockEntityRenderer(PEBlockEntityTypes.DARK_MATTER_PEDESTAL.get(), PedestalRenderer::new);
 		event.registerBlockEntityRenderer(PEBlockEntityTypes.ALCHEMICAL_CRUCIBLE.get(), AlchemicalCrucibleRenderer::new);
+		event.registerBlockEntityRenderer(PEBlockEntityTypes.ALCHEMICAL_CAULDRON.get(), moze_intel.projecte.rendering.AlchemicalCauldronRenderer::new);
 
 		//Entities
 		event.registerEntityRenderer(PEEntityTypes.WATER_PROJECTILE.get(), context -> new EntitySpriteRenderer<>(context, PECore.rl("textures/entity/water_orb.png")));

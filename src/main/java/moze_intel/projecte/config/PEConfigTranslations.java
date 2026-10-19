@@ -233,6 +233,8 @@ public enum PEConfigTranslations implements IConfigTranslation {
 			"Add Conversions for Crafting Recipes gathered from net.minecraft.world.item.crafting.RecipeManager", true),
 	MAPPING_CRAFTING_MAPPER_VANILLA("mapping.mapper.crafting.vanilla", "Vanilla Recipe Types", "Maps the different vanilla recipe types.", true),
 	MAPPING_CRAFTING_MAPPER_SMITHING("mapping.mapper.crafting.smithing", "Smithing", "Maps smithing recipes.", true),
+	MAPPING_CRAFTING_MAPPER_CAULDRON("mapping.mapper.crafting.cauldron", "Alchemical Cauldron",
+			"Maps the recipes of the Alchemical Cauldron. Souls and heat are free, the result is worth its ingredients and the liquid it was brewed in."),
 	MAPPING_CRAFTING_MAPPER_ATHANOR("mapping.mapper.crafting.athanor", "Athanor",
 			"Maps the rituals of the Athanor. The result is worth its ingredients, the catalyst if it is used up, and the personal EMC the ritual costs."),
 	MAPPING_CRAFTING_MAPPER_FALLBACK("mapping.mapper.crafting.fallback", "Fallback",

@@ -249,11 +249,12 @@ public class PEItemTagsProvider extends ItemTagsProvider {
 	}
 
 	/**
-	 * Everything the rituals in data/projecte/recipe/athanor make, and the blocks that would give the matter back.
+	 * Everything the rituals in data/projecte/recipe/athanor make, the stone the cauldron brews, and the blocks that would give the matter back.
 	 */
 	private void addRitualOnly() {
 		TagAppender<Item, Item> ritualOnly = tag(PETags.Items.RITUAL_ONLY).add(
 				projecteItem(PEItems.PHILOSOPHERS_STONE),
+				projecteItem(PEItems.FALSE_PHILOSOPHERS_STONE),
 				projecteItem(PEItems.KLEIN_STAR_EIN),
 				projecteItem(PEItems.KLEIN_STAR_ZWEI),
 				projecteItem(PEItems.KLEIN_STAR_DREI),

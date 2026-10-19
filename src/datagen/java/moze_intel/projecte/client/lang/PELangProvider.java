@@ -78,6 +78,7 @@ public class PELangProvider extends BaseLanguageProvider {
 		//JEI
 		add(PELang.JEI_COLLECTOR, "Collector Fuel Upgrades");
 		add(PELang.JEI_ATHANOR, "Athanor Ritual");
+		add(PELang.JEI_CAULDRON, "Alchemical Cauldron");
 		add(PELang.JEI_ATHANOR_STAGE, "%1$s seconds, %2$s EMC");
 		add(PELang.JEI_ATHANOR_TOTAL, "%1$s EMC, %2$s s");
 		add(PELang.JEI_ATHANOR_STRUCTURE, "The heart of the Athanor, a 5 by 5 structure of 55 blocks. The base is a square of nine Athanor Plinths inside a ring of sixteen Athanor Steps. On it stand this crucible in the middle, eight Athanor Dais around it, and an Athanor Pillar three blocks high on each corner. An Athanor Arch caps every pillar, a second ring of arches sits one block in and one higher, and the Athanor Apex hangs over the crucible. The Alchemist's Codex shows it layer by layer.");
@@ -167,6 +168,7 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PEBlocks.INTERDICTION_TORCH, "Interdiction Torch");
 		add(PEBlocks.TRANSMUTATION_TABLE, "Transmutation Table");
 		add(PEBlocks.ALCHEMICAL_CRUCIBLE, "Alchemical Crucible");
+		add(PEBlocks.ALCHEMICAL_CAULDRON, "Alchemical Cauldron");
 		add(PEBlocks.CRUCIBLE_STEP, "Athanor Step");
 		add(PEBlocks.CRUCIBLE_PLINTH, "Athanor Plinth");
 		add(PEBlocks.CRUCIBLE_DAIS, "Athanor Dais");
@@ -331,6 +333,12 @@ public class PELangProvider extends BaseLanguageProvider {
 	private void addItems() {
 		add(PEItems.PHILOSOPHERS_STONE, "Philosopher's Stone");
 		add(PEItems.FALSE_PHILOSOPHERS_STONE, "False Philosopher's Stone");
+		add(PEItems.ALCHEMICAL_SALT, "Alchemical Salt");
+		add(PEItems.ALCHEMICAL_SULPHUR, "Alchemical Sulphur");
+		add(PEItems.QUICKSILVER, "Quicksilver");
+		add(PEItems.SALT_CHALK, "Salt Chalk");
+		add(PEItems.SULPHUR_CHALK, "Sulphur Chalk");
+		add(PEItems.MERCURY_CHALK, "Mercury Chalk");
 		add(PEItems.REPAIR_TALISMAN, "Repair Talisman");
 		add(PEItems.WHITE_ALCHEMICAL_BAG, "Alchemical Bag (White)");
 		add(PEItems.ORANGE_ALCHEMICAL_BAG, "Alchemical Bag (Orange)");
@@ -542,6 +550,23 @@ public class PELangProvider extends BaseLanguageProvider {
 		add(PELang.TOOLTIP_CRUCIBLE_1, "The heart of the Athanor, a 5 by 5 ritual structure, see the Alchemist's Codex. Three items on the dais and a catalyst in the centre pass through the Magnum Opus and become something new.");
 		add(PELang.TOOLTIP_CRUCIBLE_2, "The ritual draws on the personal EMC of whoever starts it.");
 		add(PELang.TOOLTIP_CRUCIBLE_PART, "Part of the Athanor, see the Alchemist's Codex.");
+		add(PELang.TOOLTIP_CAULDRON, "Brews on the heat of the block below it. Chalk circles drawn around it catch the souls of what dies inside.");
+		add(PELang.TOOLTIP_CHALK, "Draws circle %1$s around an Alchemical Cauldron.");
+		add(PELang.CAULDRON_STATUS, "%1$s, %2$s, circles: %3$s, souls: %4$s");
+		add(PELang.CAULDRON_LIQUID, "%1$s");
+		add(PELang.CAULDRON_BREWING, "Brewing %1$s%%");
+		add(PELang.CAULDRON_EMPTY, "Fill it with water first.");
+		add(PELang.CAULDRON_FULL, "There is no room for another ingredient.");
+		add(PELang.CAULDRON_CIRCLE_DRAWN, "That circle is already drawn.");
+		add(PELang.CAULDRON_CIRCLE_BLOCKED, "The circle needs open floor. Blocked at %1$s %2$s %3$s.");
+		add("cauldron.projecte.liquid.empty", "Empty");
+		add("cauldron.projecte.liquid.water", "Water");
+		add("cauldron.projecte.liquid.red_water", "Red Water");
+		add("cauldron.projecte.heat.none", "no heat");
+		add("cauldron.projecte.heat.cold", "cold");
+		add("cauldron.projecte.heat.low", "low heat");
+		add("cauldron.projecte.heat.high", "high heat");
+		add("cauldron.projecte.heat.soul", "soul heat");
 		add(PELang.RITUAL_NIGREDO, "Nigredo");
 		add(PELang.RITUAL_ALBEDO, "Albedo");
 		add(PELang.RITUAL_CITRINITAS, "Citrinitas");

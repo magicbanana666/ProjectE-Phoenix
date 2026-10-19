@@ -15,6 +15,9 @@ import moze_intel.projecte.gameObjs.CrucibleStructure;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorRecipe;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorStage;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.RuneColor;
+import moze_intel.projecte.gameObjs.customRecipes.cauldron.CauldronLiquid;
+import moze_intel.projecte.gameObjs.customRecipes.cauldron.CauldronRecipe;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -219,6 +222,9 @@ public class GUIAlchemistsCodex extends Screen {
 					continue;
 				}
 				Item recipeItem = item(id);
+				for (CauldronRecipe brew : CodexRecipes.brewsFor(recipeItem)) {
+					built.add(new CauldronPage(brew));
+				}
 				for (AthanorRecipe ritual : CodexRecipes.ritualsFor(recipeItem)) {
 					built.add(new RitualPage(ritual));
 				}
@@ -635,6 +641,60 @@ public class GUIAlchemistsCodex extends Screen {
 				graphics.text(font, line, x, lineY, TEXT, false);
 				lineY += LINE_HEIGHT;
 			}
+		}
+	}
+
+	/**
+	 * A recipe of the Alchemical Cauldron: what goes in, what it brews into, and what the cauldron has to be like for it.
+	 */
+	private class CauldronPage implements Page {
+
+		private final CauldronRecipe recipe;
+
+		private CauldronPage(CauldronRecipe recipe) {
+			this.recipe = recipe;
+		}
+
+		@Override
+		public void draw(GuiGraphicsExtractor graphics, int x, int y) {
+			drawCentredTitle(graphics, Component.translatable(Codex.PAGE_CAULDRON), x, y);
+			int top = y + 18;
+			for (int i = 0; i < recipe.ingredients().size(); i++) {
+				SizedIngredient ingredient = recipe.ingredients().get(i);
+				List<ItemStack> options = ingredient.ingredient().items().map(item -> new ItemStack(item, ingredient.count())).toList();
+				drawStack(graphics, options, x + (i % 3) * SLOT, top + (i / 3) * SLOT);
+			}
+			int middle = top + (recipe.ingredients().size() > 3 ? SLOT / 2 : 0);
+			graphics.text(font, "→", x + 3 * SLOT + 7, middle + 5, MUTED, false);
+			int resultX = x + 3 * SLOT + 22;
+			if (recipe.result().isPresent()) {
+				drawStack(graphics, List.of(recipe.result().get().create()), resultX, middle);
+			} else {
+				Component liquid = liquidName(recipe.resultLiquid().orElse(CauldronLiquid.WATER));
+				graphics.fill(resultX, middle, resultX + SLOT, middle + SLOT, SLOT_BORDER);
+				graphics.fill(resultX + 1, middle + 1, resultX + SLOT - 1, middle + SLOT - 1, 0xFF000000 | recipe.resultLiquid().orElse(CauldronLiquid.WATER).getColor());
+				hotspots.add(new Hotspot(resultX, middle, SLOT, SLOT, ItemStack.EMPTY, List.of(liquid.getVisualOrderText()), null));
+			}
+			int lineY = top + 2 * SLOT + 8;
+			List<Component> lines = new ArrayList<>();
+			Component heat = Component.translatable("cauldron.projecte.heat." + recipe.heat().map(h -> h.getSerializedName()).orElse("none"));
+			lines.add(Component.translatable(Codex.CAULDRON_CONDITIONS, liquidName(recipe.liquid()), heat, recipe.circles(), String.format("%.0f", recipe.ticks() / 20F)));
+			if (recipe.souls() > 0) {
+				lines.add(Component.translatable(Codex.CAULDRON_SOULS, recipe.souls()));
+			}
+			recipe.resultLiquid().filter(liquid -> recipe.result().isPresent() || liquid != recipe.liquid())
+					.ifPresent(liquid -> lines.add(Component.translatable(Codex.CAULDRON_BECOMES, liquidName(liquid))));
+			for (Component line : lines) {
+				for (FormattedCharSequence wrapped : font.split(line, PAGE_WIDTH)) {
+					graphics.text(font, wrapped, x, lineY, TEXT, false);
+					lineY += LINE_HEIGHT;
+				}
+				lineY += 2;
+			}
+		}
+
+		private static Component liquidName(CauldronLiquid liquid) {
+			return Component.translatable("cauldron.projecte.liquid." + liquid.getSerializedName());
 		}
 	}
 

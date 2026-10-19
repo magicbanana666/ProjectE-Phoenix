@@ -29,6 +29,11 @@ public class PEBlockTagsProvider extends BlockTagsProvider {
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		tag(PETags.Blocks.FARMING_OVERRIDE).add(Blocks.PINK_PETALS);
+		//The heat of the Alchemical Cauldron
+		tag(PETags.Blocks.CAULDRON_HEAT_COLD).add(Blocks.ICE, Blocks.PACKED_ICE, Blocks.BLUE_ICE);
+		tag(PETags.Blocks.CAULDRON_HEAT_LOW).add(Blocks.CAMPFIRE, Blocks.MAGMA_BLOCK);
+		tag(PETags.Blocks.CAULDRON_HEAT_HIGH).add(Blocks.FIRE, Blocks.LAVA);
+		tag(PETags.Blocks.CAULDRON_HEAT_SOUL).add(Blocks.SOUL_FIRE, Blocks.SOUL_CAMPFIRE);
 		TagAppender<Block, Block> blacklistHarvest = tag(PETags.Blocks.BLACKLIST_HARVEST);
 		//Add blocks that sometimes return false from isValidBonemealTarget, but that we don't actually want to be broken
 		blacklistHarvest.add(
@@ -106,7 +111,7 @@ public class PEBlockTagsProvider extends BlockTagsProvider {
 		tag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(PETags.Blocks.EXPANSION_MINEABLE_WITH_PICKAXE).add(
 				projecteBlock(PEBlocks.ALCHEMICAL_CHEST), projecteBlock(PEBlocks.ALCHEMICAL_COAL),
 				projecteBlock(PEBlocks.ALCHEMICAL_BARREL), projecteBlock(PEBlocks.MOBIUS_FUEL),
-				projecteBlock(PEBlocks.ALCHEMICAL_CRUCIBLE), projecteBlock(PEBlocks.CRUCIBLE_STEP), projecteBlock(PEBlocks.CRUCIBLE_PLINTH), projecteBlock(PEBlocks.CRUCIBLE_DAIS), projecteBlock(PEBlocks.CRUCIBLE_PILLAR), projecteBlock(PEBlocks.CRUCIBLE_ARCH), projecteBlock(PEBlocks.CRUCIBLE_APEX),
+				projecteBlock(PEBlocks.ALCHEMICAL_CRUCIBLE), projecteBlock(PEBlocks.ALCHEMICAL_CAULDRON), projecteBlock(PEBlocks.CRUCIBLE_STEP), projecteBlock(PEBlocks.CRUCIBLE_PLINTH), projecteBlock(PEBlocks.CRUCIBLE_DAIS), projecteBlock(PEBlocks.CRUCIBLE_PILLAR), projecteBlock(PEBlocks.CRUCIBLE_ARCH), projecteBlock(PEBlocks.CRUCIBLE_APEX),
 				projecteBlock(PEBlocks.AETERNALIS_FUEL), projecteBlock(PEBlocks.COLLECTOR),
 				projecteBlock(PEBlocks.COLLECTOR_MK2), projecteBlock(PEBlocks.COLLECTOR_MK3),
 				projecteBlock(PEBlocks.CONDENSER), projecteBlock(PEBlocks.CONDENSER_MK2),

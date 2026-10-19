@@ -58,7 +58,7 @@ public class PEItemModelProvider extends ModelProvider {
 
 	@Override
 	protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-		registerBlockParentModels(itemModels, PEBlocks.ALCHEMICAL_CRUCIBLE, PEBlocks.CRUCIBLE_STEP, PEBlocks.CRUCIBLE_PLINTH, PEBlocks.CRUCIBLE_DAIS, PEBlocks.CRUCIBLE_PILLAR, PEBlocks.CRUCIBLE_ARCH, PEBlocks.CRUCIBLE_APEX, PEBlocks.ALCHEMICAL_BARREL, PEBlocks.ALCHEMICAL_COAL, PEBlocks.MOBIUS_FUEL,
+		registerBlockParentModels(itemModels, PEBlocks.ALCHEMICAL_CAULDRON, PEBlocks.ALCHEMICAL_CRUCIBLE, PEBlocks.CRUCIBLE_STEP, PEBlocks.CRUCIBLE_PLINTH, PEBlocks.CRUCIBLE_DAIS, PEBlocks.CRUCIBLE_PILLAR, PEBlocks.CRUCIBLE_ARCH, PEBlocks.CRUCIBLE_APEX, PEBlocks.ALCHEMICAL_BARREL, PEBlocks.ALCHEMICAL_COAL, PEBlocks.MOBIUS_FUEL,
 				PEBlocks.AETERNALIS_FUEL, PEBlocks.DARK_MATTER, PEBlocks.RED_MATTER, PEBlocks.DARK_MATTER_PEDESTAL,
 				PEBlocks.DARK_MATTER_FURNACE, PEBlocks.RED_MATTER_FURNACE, PEBlocks.COLLECTOR,
 				PEBlocks.COLLECTOR_MK2, PEBlocks.COLLECTOR_MK3, PEBlocks.NOVA_CATALYST, PEBlocks.NOVA_CATACLYSM,
@@ -73,6 +73,12 @@ public class PEItemModelProvider extends ModelProvider {
 		generated(itemModels, PEItems.DARK_MATTER, material("item/matter/dark"));
 		generated(itemModels, PEItems.RED_MATTER, material("item/matter/red"));
 		generated(itemModels, PEItems.LOW_COVALENCE_DUST, material("item/covalence_dust/low"));
+		generated(itemModels, PEItems.ALCHEMICAL_SALT, material("item/tria_prima/alchemical_salt"));
+		generated(itemModels, PEItems.ALCHEMICAL_SULPHUR, material("item/tria_prima/alchemical_sulphur"));
+		generated(itemModels, PEItems.QUICKSILVER, material("item/tria_prima/quicksilver"));
+		generated(itemModels, PEItems.SALT_CHALK, material("item/chalk/salt_chalk"));
+		generated(itemModels, PEItems.SULPHUR_CHALK, material("item/chalk/sulphur_chalk"));
+		generated(itemModels, PEItems.MERCURY_CHALK, material("item/chalk/mercury_chalk"));
 		generated(itemModels, PEItems.MEDIUM_COVALENCE_DUST, material("item/covalence_dust/medium"));
 		generated(itemModels, PEItems.HIGH_COVALENCE_DUST, material("item/covalence_dust/high"));
 		generated(itemModels, PEBlocks.INTERDICTION_TORCH, material("block/interdiction_torch"));

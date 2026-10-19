@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "I I",
+    "IDI",
+    "IGI"
+  ],
+  "key": {
+    "I": "#c:ingots/iron",
+    "D": "projecte:low_covalence_dust",
+    "G": "#c:ingots/gold"
+  },
+  "result": {
+    "id": "projecte:alchemical_cauldron"
+  }
+}

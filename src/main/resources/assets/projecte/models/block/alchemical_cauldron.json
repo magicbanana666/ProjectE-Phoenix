@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/cauldron",
+  "textures": {
+    "particle": "projecte:block/alchemical_cauldron/side",
+    "top": "projecte:block/alchemical_cauldron/top",
+    "bottom": "projecte:block/alchemical_cauldron/bottom",
+    "side": "projecte:block/alchemical_cauldron/side",
+    "inside": "projecte:block/alchemical_cauldron/inner"
+  }
+}

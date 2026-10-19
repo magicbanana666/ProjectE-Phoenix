@@ -104,6 +104,13 @@ public class PETags {
 		 */
 		public static final TagKey<Block> BLACKLIST_HARVEST = tag("blacklist/harvest");
 		/**
+		 * Blocks that heat an Alchemical Cauldron placed on top of them, one tag per heat. A campfire only counts while it is lit.
+		 */
+		public static final TagKey<Block> CAULDRON_HEAT_COLD = tag("cauldron_heat/cold");
+		public static final TagKey<Block> CAULDRON_HEAT_LOW = tag("cauldron_heat/low");
+		public static final TagKey<Block> CAULDRON_HEAT_HIGH = tag("cauldron_heat/high");
+		public static final TagKey<Block> CAULDRON_HEAT_SOUL = tag("cauldron_heat/soul");
+		/**
 		 * Blocks added here will be considered plantable and affected by the harvest goddess band.
 		 *
 		 * @apiNote This does not include all blocks that will be affected due to being bonemealable.

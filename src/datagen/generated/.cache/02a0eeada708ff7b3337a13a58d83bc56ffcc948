@@ -1,4 +1,4 @@
-// 26.1.2	2026-10-18T22:06:51.5770424	Tags for minecraft:block mod id projecte
+// 26.1.2	2026-10-19T22:46:45.7261295	Tags for minecraft:block mod id projecte
 852bf3ba785fe482e8e546bebaa0dd5685ce44b8 data/c/tags/block/barrels.json
 b1526b0ba3ea9a6445822180462b59f848cbf363 data/c/tags/block/chests.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/block/mineable/hammer.json
@@ -15,12 +15,16 @@ bcd85ff68afa9b32aacf78bed536235b6fc9bccb data/minecraft/tags/block/incorrect_for
 bcd85ff68afa9b32aacf78bed536235b6fc9bccb data/minecraft/tags/block/incorrect_for_stone_tool.json
 bcd85ff68afa9b32aacf78bed536235b6fc9bccb data/minecraft/tags/block/incorrect_for_wooden_tool.json
 0582259e631d0a33ab2047aec1e93a2f1b2733d1 data/minecraft/tags/block/infiniburn_overworld.json
-5984814a986c0d878fb0706fc98357699711db96 data/minecraft/tags/block/mineable/pickaxe.json
+e0ff1929d74bf6e253f9861cbf1e3a6758a1691c data/minecraft/tags/block/mineable/pickaxe.json
 c60d5d7b498fef0232a38e05d5120f23ceec999d data/minecraft/tags/block/piglin_repellents.json
 1f18749008a9b10f3ef3d1e859d8a2ae600174fc data/minecraft/tags/block/wall_post_override.json
 e72dc6778d07783a225231d1c414b1616dc5f85e data/minecraft/tags/block/wither_immune.json
 21addf7dda163430df6fed55844821f0fc01d699 data/projecte/tags/block/blacklist/harvest.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/projecte/tags/block/blacklist/time_watch.json
+52413a870520da3227b0d97b44e5455211b16e49 data/projecte/tags/block/cauldron_heat/cold.json
+20ea9ce68786347a9049b2cc6d4b0923856aa1a7 data/projecte/tags/block/cauldron_heat/high.json
+8f3ae1f87856cf69d686ec0be92f6b700f51bd30 data/projecte/tags/block/cauldron_heat/low.json
+d8dfe60bd1ae85f7a46defc4a7cc4bf42b5cf87e data/projecte/tags/block/cauldron_heat/soul.json
 42b5932d84aa4d97dce73d8c585b55df13725472 data/projecte/tags/block/expansion_needs_dark_matter_tool.json
 72f1485b32e7dbc351a69595729a86d17777f9d7 data/projecte/tags/block/expansion_needs_red_matter_tool.json
 f549715bfd65ed54ca643077696fcff45e31cb72 data/projecte/tags/block/farming_override.json

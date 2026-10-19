@@ -1,0 +1,14 @@
+{
+  "type": "projecte:cauldron",
+  "ingredients": [
+    {
+      "ingredient": "projecte:high_covalence_dust",
+      "count": 8
+    }
+  ],
+  "liquid": "water",
+  "heat": "high",
+  "circles": 2,
+  "ticks": 180,
+  "result": "projecte:quicksilver"
+}

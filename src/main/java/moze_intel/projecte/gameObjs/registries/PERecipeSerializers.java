@@ -7,6 +7,7 @@ import moze_intel.projecte.gameObjs.customRecipes.PhiloStoneSmeltingRecipe;
 import moze_intel.projecte.gameObjs.customRecipes.RecipeShapelessKleinStar;
 import moze_intel.projecte.gameObjs.customRecipes.RecipesCovalenceRepair;
 import moze_intel.projecte.gameObjs.customRecipes.athanor.AthanorRecipe;
+import moze_intel.projecte.gameObjs.customRecipes.cauldron.CauldronRecipe;
 import moze_intel.projecte.gameObjs.registration.PEDeferredHolder;
 import moze_intel.projecte.gameObjs.registration.PEDeferredRegister;
 import com.mojang.serialization.MapCodec;
@@ -25,6 +26,7 @@ public class PERecipeSerializers {
 	public static final PEDeferredHolder<RecipeSerializer<?>, RecipeSerializer<RecipeShapelessKleinStar>> KLEIN = RECIPE_SERIALIZERS.register("crafting_shapeless_kleinstar", () -> PERecipeSerializer.wrapped(RecipeShapelessKleinStar::new));
 	public static final PEDeferredHolder<RecipeSerializer<?>, RecipeSerializer<PhiloStoneSmeltingRecipe>> PHILO_STONE_SMELTING = RECIPE_SERIALIZERS.register("philo_stone_smelting", () -> simpleSerializer(PhiloStoneSmeltingRecipe::new));
 	public static final PEDeferredHolder<RecipeSerializer<?>, RecipeSerializer<AthanorRecipe>> ATHANOR = RECIPE_SERIALIZERS.register("athanor", () -> new RecipeSerializer<>(AthanorRecipe.CODEC, AthanorRecipe.STREAM_CODEC));
+	public static final PEDeferredHolder<RecipeSerializer<?>, RecipeSerializer<CauldronRecipe>> CAULDRON = RECIPE_SERIALIZERS.register("cauldron", () -> new RecipeSerializer<>(CauldronRecipe.CODEC, CauldronRecipe.STREAM_CODEC));
 
 	/**
 	 * Replacement for the removed {@code SimpleCraftingRecipeSerializer}: a codec-less serializer for recipes

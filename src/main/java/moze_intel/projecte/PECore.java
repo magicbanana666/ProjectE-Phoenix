@@ -176,6 +176,8 @@ public class PECore {
 		moze_intel.projecte.expansion.ExpansionCore.register(modEventBus);
 		moze_intel.projecte.expansion.net.ExpansionPacketHandler.register(modEventBus);
 		NeoForge.EVENT_BUS.addListener(this::addReloadListeners);
+		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.CauldronSouls::onLivingDeath);
+		NeoForge.EVENT_BUS.addListener(moze_intel.projecte.gameObjs.items.FalsePhilosophersStone::onItemCrafted);
 		NeoForge.EVENT_BUS.addListener(this::dataPackSync);
 		NeoForge.EVENT_BUS.addListener(this::registerCommands);
 		NeoForge.EVENT_BUS.addListener(this::serverStarting);
@@ -289,7 +291,7 @@ public class PECore {
 
 	private void dataPackSync(OnDatapackSyncEvent event) {
 		//The Alchemist's Codex shows these recipes, and since 26.1 the client only gets the recipe types that are asked for
-		event.sendRecipes(RecipeType.CRAFTING, PERecipeTypes.ATHANOR.get());
+		event.sendRecipes(RecipeType.CRAFTING, PERecipeTypes.ATHANOR.get(), PERecipeTypes.CAULDRON.get());
 		if (emcUpdateResourceManager != null) {
 			long start = System.currentTimeMillis();
 			//Clear the cached created tags

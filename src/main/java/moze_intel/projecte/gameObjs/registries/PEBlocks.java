@@ -10,6 +10,7 @@ import moze_intel.projecte.gameObjs.EnumRelayTier;
 import moze_intel.projecte.gameObjs.blocks.AlchemicalBarrel;
 import moze_intel.projecte.gameObjs.blocks.CrucibleArch;
 import moze_intel.projecte.gameObjs.blocks.CruciblePart;
+import moze_intel.projecte.gameObjs.blocks.AlchemicalCauldron;
 import moze_intel.projecte.gameObjs.blocks.AlchemicalCrucible;
 import moze_intel.projecte.gameObjs.blocks.AlchemicalChest;
 import moze_intel.projecte.gameObjs.blocks.Collector;
@@ -56,6 +57,7 @@ public class PEBlocks {
 	public static final BlockRegistryObject<Collector, BlockItem> COLLECTOR_MK3 = registerCollector("collector_mk3", EnumCollectorTier.MK3, state -> 15);
 	public static final BlockRegistryObject<Condenser, BlockItem> CONDENSER = registerCondenser("condenser_mk1", Condenser::new, (block, properties) -> PEBlockItem.of(block, properties));
 	public static final BlockRegistryObject<CondenserMK2, BlockItem> CONDENSER_MK2 = registerCondenser("condenser_mk2", CondenserMK2::new, (block, properties) -> PEBlockItem.of(block, properties.fireResistant()));
+	public static final BlockRegistryObject<AlchemicalCauldron, BlockItem> ALCHEMICAL_CAULDRON = BLOCKS.register("alchemical_cauldron", properties -> new AlchemicalCauldron(properties.mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3, 6).noOcclusion()));
 	//The Alchemical Crucible, the multiblock of the Magnum Opus
 	public static final BlockRegistryObject<AlchemicalCrucible, BlockItem> ALCHEMICAL_CRUCIBLE = BLOCKS.register("alchemical_crucible", properties -> new AlchemicalCrucible(crucibleProperties(properties)), (block, properties) -> PEBlockItem.of(block, properties.fireResistant()));
 	public static final BlockRegistryObject<CruciblePart, BlockItem> CRUCIBLE_STEP = registerCruciblePart("crucible_step", Block.box(0, 0, 0, 16, 13, 16));

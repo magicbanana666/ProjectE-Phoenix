@@ -1,0 +1,16 @@
+{
+  "type": "projecte:cauldron",
+  "ingredients": [
+    {
+      "ingredient": "#c:gems/diamond",
+      "count": 1
+    }
+  ],
+  "liquid": "red_water",
+  "heat": "high",
+  "circles": 3,
+  "souls": 16,
+  "ticks": 300,
+  "result": "projecte:false_philosophers_stone",
+  "result_liquid": "empty"
+}

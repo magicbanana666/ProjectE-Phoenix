@@ -24,6 +24,10 @@ public final class Codex {
 	public static final String PAGE_CRAFTING = "codex.projecte.page.crafting";
 	public static final String PAGE_SHAPELESS = "codex.projecte.page.shapeless";
 	public static final String PAGE_RITUAL = "codex.projecte.page.ritual";
+	public static final String PAGE_CAULDRON = "codex.projecte.page.cauldron";
+	public static final String CAULDRON_CONDITIONS = "codex.projecte.cauldron.conditions";
+	public static final String CAULDRON_SOULS = "codex.projecte.cauldron.souls";
+	public static final String CAULDRON_BECOMES = "codex.projecte.cauldron.becomes";
 	public static final String PAGE_STRUCTURE = "codex.projecte.page.structure";
 	public static final String RITUAL_CATALYST = "codex.projecte.ritual.catalyst";
 	public static final String RITUAL_STAGE = "codex.projecte.ritual.stage";
@@ -37,6 +41,10 @@ public final class Codex {
 					Entry.topic("emc", "transmutation_table"),
 					Entry.topic("knowledge", "tome"),
 					Entry.topic("keybinds", "minecraft:compass"),
+					Entry.item("alchemical_cauldron"),
+					Entry.topic("tria_prima", "alchemical_salt").withRecipes("alchemical_salt", "alchemical_sulphur", "quicksilver"),
+					Entry.topic("circles", "salt_chalk").withRecipes("salt_chalk", "sulphur_chalk", "mercury_chalk"),
+					Entry.topic("souls", "minecraft:soul_lantern"),
 					Entry.item("false_philosophers_stone"),
 					Entry.item("transmutation_table"),
 					Entry.item("alchemical_crucible").withStructure(),

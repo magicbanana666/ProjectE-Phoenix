@@ -12,6 +12,7 @@ import moze_intel.projecte.gameObjs.items.HyperkineticLens;
 import moze_intel.projecte.gameObjs.items.KleinStar;
 import moze_intel.projecte.gameObjs.items.KleinStar.KleinTier;
 import moze_intel.projecte.gameObjs.items.MercurialEye;
+import moze_intel.projecte.gameObjs.items.ChalkItem;
 import moze_intel.projecte.gameObjs.items.FalsePhilosophersStone;
 import moze_intel.projecte.gameObjs.items.PhilosophersStone;
 import moze_intel.projecte.gameObjs.items.RepairTalisman;
@@ -61,11 +62,18 @@ public class PEItems {
 	public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(PECore.MODID);
 
 	public static final ItemRegistryObject<PhilosophersStone> PHILOSOPHERS_STONE = ITEMS.registerNoStack("philosophers_stone", PhilosophersStone::new);
-	public static final ItemRegistryObject<FalsePhilosophersStone> FALSE_PHILOSOPHERS_STONE = ITEMS.register("false_philosophers_stone", FalsePhilosophersStone::new, properties -> properties.stacksTo(16));
+	public static final ItemRegistryObject<FalsePhilosophersStone> FALSE_PHILOSOPHERS_STONE = ITEMS.register("false_philosophers_stone", FalsePhilosophersStone::new, properties -> properties.durability(FalsePhilosophersStone.USES));
 	public static final ItemRegistryObject<RepairTalisman> REPAIR_TALISMAN = ITEMS.registerNoStack("repair_talisman", RepairTalisman::new);
 	public static final ItemRegistryObject<Item> LOW_COVALENCE_DUST = ITEMS.register("low_covalence_dust");
 	public static final ItemRegistryObject<Item> MEDIUM_COVALENCE_DUST = ITEMS.register("medium_covalence_dust");
 	public static final ItemRegistryObject<Item> HIGH_COVALENCE_DUST = ITEMS.register("high_covalence_dust");
+	//The three principles, refined from the covalence dusts in the Alchemical Cauldron, and the chalks made from them
+	public static final ItemRegistryObject<Item> ALCHEMICAL_SALT = ITEMS.register("alchemical_salt");
+	public static final ItemRegistryObject<Item> ALCHEMICAL_SULPHUR = ITEMS.register("alchemical_sulphur");
+	public static final ItemRegistryObject<Item> QUICKSILVER = ITEMS.register("quicksilver");
+	public static final ItemRegistryObject<ChalkItem> SALT_CHALK = ITEMS.register("salt_chalk", properties -> new ChalkItem(properties, 1), properties -> properties.durability(4 * ChalkItem.USES_PER_CIRCLE));
+	public static final ItemRegistryObject<ChalkItem> SULPHUR_CHALK = ITEMS.register("sulphur_chalk", properties -> new ChalkItem(properties, 2), properties -> properties.durability(4 * ChalkItem.USES_PER_CIRCLE));
+	public static final ItemRegistryObject<ChalkItem> MERCURY_CHALK = ITEMS.register("mercury_chalk", properties -> new ChalkItem(properties, 3), properties -> properties.durability(4 * ChalkItem.USES_PER_CIRCLE));
 
 	public static final ItemRegistryObject<PETrident> DARK_MATTER_TRIDENT = ITEMS.registerNoStackFireImmune("dark_matter_trident", properties -> new PETrident(EnumMatterType.DARK_MATTER, 2, 11, properties));
 	public static final ItemRegistryObject<PEShield> DARK_MATTER_SHIELD = ITEMS.registerNoStackFireImmune("dark_matter_shield", properties -> new PEShield(EnumMatterType.DARK_MATTER, properties));

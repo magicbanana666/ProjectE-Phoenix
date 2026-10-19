@@ -1,0 +1,13 @@
+{
+  "type": "projecte:cauldron",
+  "ingredients": [
+    {
+      "ingredient": "projecte:low_covalence_dust",
+      "count": 8
+    }
+  ],
+  "liquid": "water",
+  "heat": "low",
+  "ticks": 100,
+  "result": "projecte:alchemical_salt"
+}

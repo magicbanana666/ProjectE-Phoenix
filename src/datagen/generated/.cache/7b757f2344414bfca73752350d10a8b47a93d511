@@ -1,4 +1,4 @@
-// 26.1.2	2026-10-19T21:55:43.2372753	ProjectE Recipes
+// 26.1.2	2026-10-19T22:46:45.7236199	ProjectE Recipes
 05099afdf58687b82549dd70ee134a9615a02b44 data/projecte/advancement/recipes/building_blocks/aeternalis_fuel_block.json
 417ea0320f1af02e94e29ceba18460f654b608f6 data/projecte/advancement/recipes/building_blocks/alchemical_coal_block.json
 818c0ee04140558c4c4154e225cfeb5b9bd1b46f data/projecte/advancement/recipes/building_blocks/dark_matter_block.json
@@ -118,8 +118,6 @@ c8e7fda68532cd77bbb73fcaa7757181d2a63bad data/projecte/advancement/recipes/tools
 95d900472080476a376a64bd033cf59a4b5392ca data/projecte/advancement/recipes/tools/dm_shears.json
 6419dd9539e4321673281095f04c0ee6c4bc59ad data/projecte/advancement/recipes/tools/dm_shovel.json
 20332575e6e94f61a1001975f1e1910217ad75cd data/projecte/advancement/recipes/tools/evertide_amulet.json
-58612e1da8a7750ac2eb4ebbbd8586d852f13174 data/projecte/advancement/recipes/tools/false_philosophers_stone.json
-19706c818049a9c39526315c44ea1a96520a1bae data/projecte/advancement/recipes/tools/false_philosophers_stone_alt.json
 885c709125f2d1e4967a03b78b3127f036bd1b5c data/projecte/advancement/recipes/tools/full_star_tome.json
 2fde76075cf07908f2ef11b2851f3925c568a43e data/projecte/advancement/recipes/tools/full_star_tome_alt.json
 27debdac01f6c4522a92a2f524f5dd5012b84247 data/projecte/advancement/recipes/tools/gem_of_eternal_density.json
@@ -248,8 +246,6 @@ d6886418380db5a95c6eed912653bd544901f730 data/projecte/recipe/dm_shears.json
 8389967762ca059bab955c6fefc5545b143faf0d data/projecte/recipe/dm_shovel.json
 214a94eb8ef39eb0fa19d9535730933b6e4384f8 data/projecte/recipe/dm_sword.json
 46b2d676e4f304ec586e2c9d4c6a70a294e8a0d1 data/projecte/recipe/evertide_amulet.json
-06d0a582b1433a48a8f98f9e33907f70ee1ec513 data/projecte/recipe/false_philosophers_stone.json
-fe51b282c232cc209e58b8c997a88418205302c8 data/projecte/recipe/false_philosophers_stone_alt.json
 b72dc21e35d6e0e7717c773866d52c445d833745 data/projecte/recipe/full_star_gem_boots.json
 29ddd90dbe7e5b4e850b43e36e275878c6207803 data/projecte/recipe/full_star_gem_chestplate.json
 40c5a3799dec2a34ef2d2e8ac3d7ef85b34610df data/projecte/recipe/full_star_gem_helmet.json

@@ -22,6 +22,7 @@ public class PEBlockLootTable extends BlockLootSubProvider {
 	public PEBlockLootTable(HolderLookup.Provider registries) {
 		super(Set.of(
 				PEBlocks.ALCHEMICAL_CRUCIBLE.getSecondary(),
+				PEBlocks.ALCHEMICAL_CAULDRON.getSecondary(),
 				PEBlocks.COLLECTOR.getSecondary(),
 				PEBlocks.COLLECTOR_MK2.getSecondary(),
 				PEBlocks.COLLECTOR_MK3.getSecondary(),
@@ -45,6 +46,7 @@ public class PEBlockLootTable extends BlockLootSubProvider {
 		dropSelf(PEBlocks.ALCHEMICAL_CHEST.getBlock());
 		dropSelf(PEBlocks.ALCHEMICAL_COAL.getBlock());
 		dropSelf(PEBlocks.ALCHEMICAL_CRUCIBLE.getBlock());
+		dropSelf(PEBlocks.ALCHEMICAL_CAULDRON.getBlock());
 		dropSelf(PEBlocks.CRUCIBLE_STEP.getBlock());
 		dropSelf(PEBlocks.CRUCIBLE_PLINTH.getBlock());
 		dropSelf(PEBlocks.CRUCIBLE_DAIS.getBlock());
